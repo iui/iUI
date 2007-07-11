@@ -4,7 +4,7 @@ body {
     font-family: Helvetica;
     background: #FFFFFF;
     color: #000000;
-    overflow: hidden;
+    overflow-x: hidden;
     -webkit-user-select: none;
     -webkit-text-size-adjust: none;
 }
