@@ -53,7 +53,7 @@ window.iui =
         }
     },
 
-    showPageByHref: function(href, args, cb)
+    showPageByHref: function(href, args, replace, cb)
     {
         var req = new XMLHttpRequest();
         req.onerror = function()
@@ -66,9 +66,14 @@ window.iui =
         {
             if (req.readyState == 4)
             {
-                var frag = document.createElement("div");
-                frag.innerHTML = req.responseText;
-                iui.insertPages(frag.childNodes);
+                if (replace)
+                    replaceElementWithSource(replace, req.responseText);
+                else
+                {
+                    var frag = document.createElement("div");
+                    frag.innerHTML = req.responseText;
+                    iui.insertPages(frag.childNodes);
+                }
                 if (cb)
                     setTimeout(cb, 1000, true);
             }
@@ -99,9 +104,11 @@ window.iui =
                 if (!child.id)
                     child.id = "__" + (++newPageCount) + "__";
 
-                if (child.ownerDocument != document)
-                    document.adoptNode(child);
-                document.body.appendChild(child);
+                var clone = $(child.id);
+                if (clone)
+                    clone.parentNode.replaceChild(child, clone);
+                else
+                    document.body.appendChild(child);
 
                 if (child.getAttribute("selected") == "true" || !targetPage)
                     targetPage = child;
@@ -154,10 +161,15 @@ addEventListener("click", function(event)
             history.back();
         else if (link.getAttribute("type") == "submit")
             submitForm(findParent(link, "form"));
+        else if (link.target == "_replace")
+        {
+            link.setAttribute("selected", "progress");
+            iui.showPageByHref(link.href, null, link, unselect);
+        }
         else if (!link.target)
         {
             link.setAttribute("selected", "progress");
-            iui.showPageByHref(link.href, null, unselect);
+            iui.showPageByHref(link.href, null, null, unselect);
         }
         else
             return;
@@ -193,14 +205,17 @@ function checkOrientAndLocation()
     }
 }
 
-function showDialog(form)
+function showDialog(page)
 {
-    currentDialog = form;
-    form.setAttribute("selected", "true");
+    currentDialog = page;
+    page.setAttribute("selected", "true");
     
-    if (form.target)
-        return;
-        
+    if (page.localName.toLowerCase() == "form" && !page.target)
+        showForm(page);
+}
+
+function showForm(form)
+{
     form.onsubmit = function(event)
     {
         event.preventDefault();
@@ -219,12 +234,18 @@ function showDialog(form)
 
 function updatePage(page, fromPage)
 {
+    if (!page.id)
+        page.id = "__" + (++newPageCount) + "__";
+
     location.href = currentHash = hashPrefix + page.id;
     pageHistory.push(page.id);
 
     var pageTitle = $("pageTitle");
     pageTitle.innerHTML = page.title || "-";
 
+    if (page.localName.toLowerCase() == "form" && !page.target)
+        showForm(page);
+        
     var backButton = $("backButton");
     if (backButton)
     {
@@ -282,13 +303,18 @@ function submitForm(form)
 
 function encodeForm(form)
 {
-    var args = [];
-    var inputs = form.getElementsByTagName("input");
-    for (var i = 0; i < inputs.length; ++i)
+    function encode(inputs)
     {
-        if (inputs[i].name)
-            args.push(inputs[i].name + "=" + escape(inputs[i].value));
+        for (var i = 0; i < inputs.length; ++i)
+        {
+            if (inputs[i].name)
+                args.push(inputs[i].name + "=" + escape(inputs[i].value));
+        }
     }
+
+    var args = [];
+    encode(form.getElementsByTagName("input"));
+    encode(form.getElementsByTagName("select"));
     return args;    
 }
 
@@ -297,6 +323,25 @@ function findParent(node, localName)
     while (node && (node.nodeType != 1 || node.localName.toLowerCase() != localName))
         node = node.parentNode;
     return node;
+}
+
+function replaceElementWithSource(replace, source)
+{
+    var page = replace.parentNode;
+    var parent = replace;
+    while (page.parentNode != document.body)
+    {
+        page = page.parentNode;
+        parent = parent.parentNode;
+    }
+
+    var frag = document.createElement(parent.localName);
+    frag.innerHTML = source;
+
+    page.removeChild(parent);
+
+    while (frag.firstChild)
+        page.appendChild(frag.firstChild);
 }
 
 function $(id) { return document.getElementById(id); }

@@ -44,6 +44,7 @@ a[selected="progress"] {
 
 body > .toolbar {
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
     border-bottom: 1px solid #2d3642;
     border-top: 1px solid #6d84a2;
     padding: 10px;
@@ -105,7 +106,7 @@ body[orient="landscape"] > .toolbar > h1 {
     left: 6px;
     right: auto;
     padding: 0;
-    max-width: 45px;
+    max-width: 55px;
     border-width: 0 8px 0 14px;
     -webkit-border-image: url(backButton.png) 0 8 0 14;
 }
@@ -113,6 +114,7 @@ body[orient="landscape"] > .toolbar > h1 {
 /************************************************************************************************/
 
 body > ul > li {
+    position: relative;
     margin: 0;
     border-bottom: 1px solid #E0E0E0;
     padding: 0;
@@ -146,6 +148,15 @@ body > ul > li > a {
     padding: 8px 32px 8px 10px;
     text-decoration: none;
     color: inherit;
+}
+
+a[target="_replace"] {
+    box-sizing: border-box;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    font-size: 18px;
+    color: cornflowerblue;
+    background: #FFFFFF;
 }
 
 /************************************************************************************************/
