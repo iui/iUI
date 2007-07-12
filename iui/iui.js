@@ -53,7 +53,7 @@ window.iui =
         }
     },
 
-    showPageByHref: function(href, args, replace, cb)
+    showPageByHref: function(href, args, method, replace, cb)
     {
         var req = new XMLHttpRequest();
         req.onerror = function()
@@ -81,14 +81,14 @@ window.iui =
 
         if (args)
         {
-            req.open("POST", href, true);
+            req.open(method || "GET", href, true);
             req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             req.setRequestHeader("Content-Length", args.length);
             req.send(args.join("&"));
         }
         else
         {
-            req.open("GET", href, true);
+            req.open(method || "GET", href, true);
             req.send(null);
         }
     },
@@ -164,12 +164,12 @@ addEventListener("click", function(event)
         else if (link.target == "_replace")
         {
             link.setAttribute("selected", "progress");
-            iui.showPageByHref(link.href, null, link, unselect);
+            iui.showPageByHref(link.href, null, null, link, unselect);
         }
         else if (!link.target)
         {
             link.setAttribute("selected", "progress");
-            iui.showPageByHref(link.href, null, null, unselect);
+            iui.showPageByHref(link.href, null, null, null, unselect);
         }
         else
             return;
@@ -265,13 +265,12 @@ function slidePages(fromPage, toPage, backwards)
     toPage.style.left = "100%";
     toPage.setAttribute("selected", "true");
     scrollTo(0, 1);
+    clearInterval(checkTimer);
     
     var percent = 100;
     slide();
     var timer = setInterval(slide, slideInterval);
 
-    clearInterval(checkTimer);
-    
     function slide()
     {
         percent -= slideSpeed;
@@ -298,7 +297,7 @@ function preloadImages()
 
 function submitForm(form)
 {
-    iui.showPageByHref(form.action, encodeForm(form));    
+    iui.showPageByHref(form.action, encodeForm(form), form.method);
 }
 
 function encodeForm(form)

@@ -29,15 +29,15 @@ body > *[selected="true"] {
 }
 
 a[selected], a:active {
-    background-color: #194fdb;
-    background-image: url(listArrowSel.png), url(selection.png);
+    background-color: #194fdb !important;
+    background-image: url(listArrowSel.png), url(selection.png) !important;
     background-repeat: no-repeat, repeat-x;
     background-position: right center, left top;
-    color: #FFFFFF;    
+    color: #FFFFFF !important;
 }
 
 a[selected="progress"] {
-    background-image: url(loading.gif), url(selection.png);
+    background-image: url(loading.gif), url(selection.png) !important;
 }
 
 /************************************************************************************************/
@@ -117,8 +117,7 @@ body > ul > li {
     position: relative;
     margin: 0;
     border-bottom: 1px solid #E0E0E0;
-    padding: 0;
-    background: url(listArrow.png) no-repeat right center;
+    padding: 8px 0 8px 10px;
     font-size: 20px;
     font-weight: bold;
     list-style: none;
@@ -145,9 +144,11 @@ body > ul > li.group:first-child {
 
 body > ul > li > a {
     display: block;
+    margin: -8px 0 -8px -10px;
     padding: 8px 32px 8px 10px;
     text-decoration: none;
     color: inherit;
+    background: url(listArrow.png) no-repeat right center;
 }
 
 a[target="_replace"] {
@@ -156,7 +157,8 @@ a[target="_replace"] {
     padding-bottom: 25px;
     font-size: 18px;
     color: cornflowerblue;
-    background: #FFFFFF;
+    background-color: #FFFFFF;
+    background-image: none;
 }
 
 /************************************************************************************************/
