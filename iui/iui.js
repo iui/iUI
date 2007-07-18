@@ -19,23 +19,26 @@ window.iui =
 {
     showPage: function(page, backwards)
     {
-        if (currentDialog)
+        if (page)
         {
-            currentDialog.removeAttribute("selected");
-            currentDialog = null;
-        }
+            if (currentDialog)
+            {
+                currentDialog.removeAttribute("selected");
+                currentDialog = null;
+            }
 
-        if (page.className.indexOf("dialog") != -1)
-            showDialog(page);
-        else
-        {        
-            var fromPage = currentPage;
-            currentPage = page;
-
-            if (fromPage)
-                setTimeout(slidePages, 0, fromPage, page, backwards);
+            if (hasClass(page, "dialog"))
+                showDialog(page);
             else
-                updatePage(page, fromPage);
+            {
+                var fromPage = currentPage;
+                currentPage = page;
+
+                if (fromPage)
+                    setTimeout(slidePages, 0, fromPage, page, backwards);
+                else
+                    updatePage(page, fromPage);
+            }
         }
     },
 
@@ -161,6 +164,8 @@ addEventListener("click", function(event)
             history.back();
         else if (link.getAttribute("type") == "submit")
             submitForm(findParent(link, "form"));
+        else if (link.getAttribute("type") == "cancel")
+            cancelDialog(findParent(link, "form"));
         else if (link.target == "_replace")
         {
             link.setAttribute("selected", "progress");
@@ -181,7 +186,7 @@ addEventListener("click", function(event)
 addEventListener("click", function(event)
 {
     var div = findParent(event.target, "div");
-    if (div && div.className == "toggle")
+    if (div && hasClass(div, "toggle"))
     {
         div.setAttribute("toggled", div.getAttribute("toggled") != "true");
         event.preventDefault();        
@@ -210,7 +215,7 @@ function showDialog(page)
     currentDialog = page;
     page.setAttribute("selected", "true");
     
-    if (page.localName.toLowerCase() == "form" && !page.target)
+    if (hasClass(page, "dialog") && !page.target)
         showForm(page);
 }
 
@@ -224,12 +229,14 @@ function showForm(form)
     
     form.onclick = function(event)
     {
-        if (event.target == form)
-        {
-            form.removeAttribute("selected");
-            document.body.removeChild(iframe);
-        }
+        if (event.target == form && hasClass(form, "dialog"))
+            cancelDialog(form);
     };
+}
+
+function cancelDialog(form)
+{
+    form.removeAttribute("selected");
 }
 
 function updatePage(page, fromPage)
@@ -241,7 +248,8 @@ function updatePage(page, fromPage)
     pageHistory.push(page.id);
 
     var pageTitle = $("pageTitle");
-    pageTitle.innerHTML = page.title || "-";
+    if (page.title)
+        pageTitle.innerHTML = page.title;
 
     if (page.localName.toLowerCase() == "form" && !page.target)
         showForm(page);
@@ -250,7 +258,7 @@ function updatePage(page, fromPage)
     if (backButton)
     {
         var prevPage = $(pageHistory[pageHistory.length-2]);
-        if (prevPage)
+        if (prevPage && !page.getAttribute("hideBackButton"))
         {
             backButton.style.display = "inline";
             backButton.innerHTML = prevPage.title ? prevPage.title : "Back";
@@ -262,7 +270,12 @@ function updatePage(page, fromPage)
 
 function slidePages(fromPage, toPage, backwards)
 {        
-    toPage.style.left = "100%";
+    var axis = (backwards ? fromPage : toPage).getAttribute("axis");
+    if (axis == "y")
+        (backwards ? fromPage : toPage).style.top = "100%";
+    else
+        toPage.style.left = "100%";
+
     toPage.setAttribute("selected", "true");
     scrollTo(0, 1);
     clearInterval(checkTimer);
@@ -277,14 +290,24 @@ function slidePages(fromPage, toPage, backwards)
         if (percent <= 0)
         {
             percent = 0;
-            fromPage.removeAttribute("selected");
+            if (!hasClass(toPage, "dialog"))
+                fromPage.removeAttribute("selected");
             clearInterval(timer);
             checkTimer = setInterval(checkOrientAndLocation, 300);
             setTimeout(updatePage, 0, toPage, fromPage);
         }
-
-        fromPage.style.left = (backwards ? (100-percent) : (percent-100)) + "%"; 
-        toPage.style.left = (backwards ? -percent : percent) + "%"; 
+    
+        if (axis == "y")
+        {
+            backwards
+                ? fromPage.style.top = (100-percent) + "%"
+                : toPage.style.top = percent + "%";
+        }
+        else
+        {
+            fromPage.style.left = (backwards ? (100-percent) : (percent-100)) + "%"; 
+            toPage.style.left = (backwards ? -percent : percent) + "%"; 
+        }
     }
 }
 
@@ -297,7 +320,7 @@ function preloadImages()
 
 function submitForm(form)
 {
-    iui.showPageByHref(form.action, encodeForm(form), form.method);
+    iui.showPageByHref(form.action || "POST", encodeForm(form), form.method);
 }
 
 function encodeForm(form)
@@ -322,6 +345,12 @@ function findParent(node, localName)
     while (node && (node.nodeType != 1 || node.localName.toLowerCase() != localName))
         node = node.parentNode;
     return node;
+}
+
+function hasClass(self, name)
+{
+    var re = new RegExp("(^|\\s)"+name+"($|\\s)");
+    return re.exec(self.getAttribute("class")) != null;
 }
 
 function replaceElementWithSource(replace, source)

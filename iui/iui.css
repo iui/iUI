@@ -101,6 +101,11 @@ body[orient="landscape"] > .toolbar > h1 {
     border-width: 0 5px;
 }
 
+.leftButton {
+    left: 6px;
+    right: auto;
+}
+
 #backButton {
     display: none;
     left: 6px;
@@ -109,6 +114,28 @@ body[orient="landscape"] > .toolbar > h1 {
     max-width: 55px;
     border-width: 0 8px 0 14px;
     -webkit-border-image: url(backButton.png) 0 8 0 14;
+}
+
+.whiteButton,
+.grayButton {
+    display: block;
+    border-width: 0 12px;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: inherit;
+    color: inherit;
+}
+
+.whiteButton {
+    -webkit-border-image: url(whiteButton.png) 0 12 0 12;
+    text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
+}
+
+.grayButton {
+    -webkit-border-image: url(grayButton.png) 0 12 0 12;
+    color: #FFFFFF;
 }
 
 /************************************************************************************************/
