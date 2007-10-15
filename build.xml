@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--+
+		+ iUI Ant Buildfile
+		+ http://code.google.com/p/iui
+		+
+		+ Use "ant -p" for help...
+		+
+		+ (c) 2007 by the iUI Team
+		+ See LICENSE.txt for licensing terms
+		+
+		+-->
+<project name="iui" default="tarball" basedir=".">
+	<description>
+		Build file for iUI distributions, type "ant -p" on the command line for project help
+	</description>
+
+  <property name="iui.version"				value="test"													/>
+  <property name="src.dir"						value="iui"														/>
+	<property name="target.dir"					value="target"												/>
+	<property name="release.dir"   			value="${target.dir}/release"					/>
+	<property name="tarfilename"				value="iui-${iui.version}.tar.gz"			/>
+	<property name="zipfilename"				value="iui-${iui.version}.zip"				/>
+	<property name="tarfile"						value="${target.dir}/${tarfilename}"	/>
+	<property name="zipfile"						value="${target.dir}/${zipfilename}"	/>
+	
+	<property file="local.build.properties" />		<!-- Optional,overrides -->
+	<loadproperties srcFile="build.properties" />	<!-- Required -->
+
+	<taskdef name="compress-js"						classname="com.webpanes.tools.ant.taskdefs.CompressJS"/>
+	<taskdef name="GoogleCodeUploadTask"	classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask"/>
+
+	<target name="tarball" depends="releasedir" description="Make the tarball">
+		<mkdir dir="${release.dir}"/>
+		<tar basedir="${release.dir}" tarfile="${tarfile}" compression="gzip" />
+	</target>
+
+	<target name="zipfile" depends="releasedir" description="Make the zipfile">
+		<mkdir dir="${release.dir}"/>
+		<zip basedir="${release.dir}" destfile="${zipfile}" />
+	</target>
+
+	<target name="shrink" description="Create iuix.js by compressing iui.js">
+		<mkdir dir="${release.dir}" />
+		<compress-js	file="${src.dir}/iui.js"
+									tofile="${release.dir}/iuix.js"
+									stripCR="true" />
+	</target>
+	
+	<target name="docopy" description="Copy Files to Release Directory">
+		<mkdir dir="${release.dir}"/>
+		<copy todir="${release.dir}">
+   		<fileset dir="${src.dir}">
+   			<exclude name="iuix.js"/>	<!-- Exclude for now, delete from SVN when we've made official release -->
+   	 	</fileset>
+    </copy>
+	</target>
+	
+	<target name="releasedir" depends="docopy,shrink" description="all tasks to build releasedir">
+	</target>
+	
+	<target name="release" depends="tarball" 
+	        description="Upload to download ara of project site, requires Ant 1.7">
+	  <echo message="Uploading using username ${gc.username}..." />
+		<GoogleCodeUploadTask
+			userName="${gc.username}"
+			password="${gc.password}"
+			projectName="iui"
+			filename="${tarfile}"
+			targetFileName="${tarfilename}"
+			summary="Test release"/>
+	</target>
+	
+	<target name="clean" description="Remove all generated files">
+	  <echo message="Deleting ${target.dir}" />
+		<delete dir="${target.dir}" />
+	</target>
+
+</project>
