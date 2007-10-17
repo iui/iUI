@@ -9,7 +9,7 @@
 		+ See LICENSE.txt for licensing terms
 		+
 		+-->
-<project name="iui" default="tarball" basedir=".">
+<project name="iui" default="iui-tarball" basedir=".">
 	<description>
 		Build file for iUI distributions, type "ant -p" on the command line for project help
 	</description>
@@ -29,7 +29,7 @@
 	<taskdef name="compress-js"						classname="com.webpanes.tools.ant.taskdefs.CompressJS"/>
 	<taskdef name="GoogleCodeUploadTask"	classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask"/>
 
-	<target name="tarball" depends="releasedir" description="Make the tarball">
+	<target name="iui-tarball" depends="releasedir" description="Make the tarball">
 		<mkdir dir="${release.dir}"/>
 		<tar basedir="${release.dir}" tarfile="${tarfile}" compression="gzip" />
 	</target>
@@ -58,7 +58,7 @@
 	<target name="releasedir" depends="docopy,shrink" description="all tasks to build releasedir">
 	</target>
 	
-	<target name="release" depends="tarball" 
+	<target name="release" depends="iui-tarball" 
 	        description="Upload to download ara of project site, requires Ant 1.7">
 	  <echo message="Uploading using username ${gc.username}..." />
 		<GoogleCodeUploadTask
