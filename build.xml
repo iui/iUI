@@ -14,7 +14,9 @@
 		Build file for iUI distributions, type "ant -p" on the command line for project help
 	</description>
 
-  <property name="iui.version"				value="test"													/>
+	<property file="local.build.properties" />		<!-- Optional,overrides -->
+	<loadproperties srcFile="build.properties" />	<!-- Required -->
+
   <property name="src.dir"						value="iui"														/>
 	<property name="target.dir"					value="target"												/>
 	<property name="release.dir"   			value="${target.dir}/release"					/>
@@ -23,8 +25,6 @@
 	<property name="tarfile"						value="${target.dir}/${tarfilename}"	/>
 	<property name="zipfile"						value="${target.dir}/${zipfilename}"	/>
 	
-	<property file="local.build.properties" />		<!-- Optional,overrides -->
-	<loadproperties srcFile="build.properties" />	<!-- Required -->
 
 	<taskdef name="compress-js"						classname="com.webpanes.tools.ant.taskdefs.CompressJS"/>
 	<taskdef name="GoogleCodeUploadTask"	classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask"/>
@@ -34,7 +34,7 @@
 		<tar basedir="${release.dir}" tarfile="${tarfile}" compression="gzip" />
 	</target>
 
-	<target name="zipfile" depends="releasedir" description="Make the zipfile">
+	<target name="iui-zipfile" depends="releasedir" description="Make the zipfile">
 		<mkdir dir="${release.dir}"/>
 		<zip basedir="${release.dir}" destfile="${zipfile}" />
 	</target>
@@ -49,9 +49,7 @@
 	<target name="docopy" description="Copy Files to Release Directory">
 		<mkdir dir="${release.dir}"/>
 		<copy todir="${release.dir}">
-   		<fileset dir="${src.dir}">
-   			<exclude name="iuix.js"/>	<!-- Exclude for now, delete from SVN when we've made official release -->
-   	 	</fileset>
+   		<fileset dir="${src.dir}"/>
     </copy>
 	</target>
 	
@@ -59,7 +57,7 @@
 	</target>
 	
 	<target name="release" depends="iui-tarball" 
-	        description="Upload to download ara of project site, requires Ant 1.7">
+	        description="Upload to download area of project site, requires Ant 1.7">
 	  <echo message="Uploading using username ${gc.username}..." />
 		<GoogleCodeUploadTask
 			userName="${gc.username}"

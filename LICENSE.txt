@@ -1,12 +1,11 @@
 <OWNER> = Regents of the University of California
 <ORGANIZATION> = University of California, Berkeley
-<YEAR> = 1998
 
 In the original BSD license, both occurrences of the phrase "COPYRIGHT HOLDERS AND CONTRIBUTORS" in the disclaimer read "REGENTS AND CONTRIBUTORS".
 
 Here is the license template:
 
-Copyright (c) <YEAR>, <OWNER>
+Copyright (c) 2007, <OWNER>
 
 All rights reserved.
 
