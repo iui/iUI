@@ -28,7 +28,8 @@
 	
 	<!-- If version undefined at this point, use a timestamp -->
 	<tstamp />
-	<property name="iui.version"				value="v${DSTAMP}-${TSTAMP}"				/>
+	<property name="iui.version"					value="v${DSTAMP}-${TSTAMP}"					/>
+	<property name="iui.release.summary"	value="Release summary goes here"			/>
 
 	<property name="tarfilename"				value="iui-${iui.version}.tar.gz"				/>
 
@@ -78,7 +79,7 @@
 			projectName="iui"
 			filename="${tarfile}"
 			targetFileName="${tarfilename}"
-			summary="Test release"/>
+			summary="${iui.release.summary}"/>
 	</target>
 	
 
