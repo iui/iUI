@@ -3,61 +3,74 @@
 		+ iUI Ant Buildfile
 		+ http://code.google.com/p/iui
 		+
-		+ Use "ant -p" for help...
+		+ For help, open a command-line window and set yoru current directory to
+		+ the iui project root.  Then type "ant -p" for help...
 		+
-		+ (c) 2007 by the iUI Team
+		+ Copyright (c) 2007, iUI Project Members
 		+ See LICENSE.txt for licensing terms
 		+
 		+-->
-<project name="iui" default="iui-tarball" basedir=".">
+<project name="iui" default="releasedir" basedir=".">
 	<description>
-		Build file for iUI distributions, type "ant -p" on the command line for project help
+		Build file for iUI distributions
+		
+		Targets marked with an "*" (asterisk) are useful when you have local modifications to iUI
+		Targets marked with an "r" are typically used only by the iUI team for building releases
+		
+		To run a target type "ant [targetname]" 
 	</description>
 
-	<property file="local.build.properties" />		<!-- Optional,overrides -->
+	<!-- If  you wish to override build settings, create a file called local.build.properties in
+	     The project root.  SVN is configured to ignore this file, so it won't accidentally be
+	     checked in.  Note that in Ant, whatever sets a property first "wins".  -->
+	<property file="local.build.properties" />
 	<loadproperties srcFile="build.properties" />	<!-- Required -->
-
-  <property name="src.dir"						value="iui"														/>
-	<property name="target.dir"					value="target"												/>
-	<property name="release.dir"   			value="${target.dir}/release"					/>
-	<property name="tarfilename"				value="iui-${iui.version}.tar.gz"			/>
-	<property name="zipfilename"				value="iui-${iui.version}.zip"				/>
-	<property name="tarfile"						value="${target.dir}/${tarfilename}"	/>
-	<property name="zipfile"						value="${target.dir}/${zipfilename}"	/>
 	
+	<!-- If version undefined at this point, use a timestamp -->
+	<tstamp />
+	<property name="iui.version"				value="v${DSTAMP}-${TSTAMP}"				/>
 
+	<property name="tarfilename"				value="iui-${iui.version}.tar.gz"				/>
+
+  <property name="src.dir"						location="iui"													/>
+	<property name="target.dir"					location="target"												/>
+	<property name="release.dir"   			location="${target.dir}/release"				/>
+	<property name="tarfile"						location="${target.dir}/${tarfilename}"	/>
+	
+	<!-- Define extension Ant tasks that aren't part of the standard Ant distro -->
 	<taskdef name="compress-js"						classname="com.webpanes.tools.ant.taskdefs.CompressJS"/>
 	<taskdef name="GoogleCodeUploadTask"	classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask"/>
 
-	<target name="iui-tarball" depends="releasedir" description="Make the tarball">
-		<mkdir dir="${release.dir}"/>
-		<tar basedir="${release.dir}" tarfile="${tarfile}" compression="gzip" />
-	</target>
-
-	<target name="iui-zipfile" depends="releasedir" description="Make the zipfile">
-		<mkdir dir="${release.dir}"/>
-		<zip basedir="${release.dir}" destfile="${zipfile}" />
-	</target>
-
-	<target name="shrink" description="Create iuix.js by compressing iui.js">
+	<!-- Ant targets, use "ant -p" for easier reading of the "description" attributes -->
+	<target name="shrink" description="* - Create iuix.js by compressing iui.js">
 		<mkdir dir="${release.dir}" />
 		<compress-js	file="${src.dir}/iui.js"
 									tofile="${release.dir}/iuix.js"
 									stripCR="true" />
 	</target>
 	
-	<target name="docopy" description="Copy Files to Release Directory">
+	<target name="docopy" description="* - Copy Files to release directory">
 		<mkdir dir="${release.dir}"/>
 		<copy todir="${release.dir}">
    		<fileset dir="${src.dir}"/>
     </copy>
 	</target>
 	
-	<target name="releasedir" depends="docopy,shrink" description="all tasks to build releasedir">
+	<target name="releasedir" depends="shrink, docopy" description="* - Build releasedir (all tasks)">
 	</target>
 	
-	<target name="release" depends="iui-tarball" 
-	        description="Upload to download area of project site, requires Ant 1.7">
+	<target name="clean" description="* - Remove all generated files">
+	  <echo message="Deleting ${target.dir}" />
+		<delete dir="${target.dir}" />
+	</target>
+
+	<target name="iui-tarball" depends="releasedir" description="r - Make the tarball">
+		<mkdir dir="${release.dir}"/>
+		<tar basedir="${release.dir}" tarfile="${tarfile}" compression="gzip" />
+	</target>
+
+	<target name="iui-release" depends="iui-tarball" 
+	        description="r - Upload to download area of project site, requires Ant 1.7">
 	  <echo message="Uploading using username ${gc.username}..." />
 		<GoogleCodeUploadTask
 			userName="${gc.username}"
@@ -68,9 +81,5 @@
 			summary="Test release"/>
 	</target>
 	
-	<target name="clean" description="Remove all generated files">
-	  <echo message="Deleting ${target.dir}" />
-		<delete dir="${target.dir}" />
-	</target>
 
 </project>

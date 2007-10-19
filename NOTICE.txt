@@ -10,23 +10,17 @@ NOTICE.txt - iUI credits and copyright notices
 THIRD PARTY COMPONENTS
 
    * iUI includes software developed by the Mozilla Project
-        Copyright (c) xyz. All rights reserved.
-        
+        Copyright (c) 1997-2007, Netscape Communications Corporation and others.
+        All rights reserved.
         http://www.mozilla.org/rhino/
 
    * iUI includes software developed by the Dojo Foundation
-        Copyright (c) xyz. All rights reserved.
-        
         http://dojotoolkit.org/docs/shrinksafe
 
-   * iUI includes software developed by the Mozilla Project
-        Copyright (c) xyz. All rights reserved.
-        
+   * iUI includes software developed by LCA Soft  Ltd.
         http://www.lcasoft.com/compress-js.html
 
    * iUI includes software developed by the ant-googlcode Project
-        Copyright (c) xyz. All rights reserved.
-        
         http://code.google.com/p/ant-googlecode/
 
 
