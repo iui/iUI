@@ -1,4 +1,4 @@
-/* iui.css (c) 2007 by iUI Project Members, see LICENSE.txt for license */
+
 body {
     margin: 0;
     font-family: Helvetica;
@@ -139,6 +139,10 @@ body[orient="landscape"] > .toolbar > h1 {
 }
 
 /************************************************************************************************/
+
+body > ul {
+  background: #FFFFFF;
+}
 
 body > ul > li {
     position: relative;

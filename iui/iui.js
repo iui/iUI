@@ -1,7 +1,7 @@
 
 (function() {
 
-var slideSpeed = 20;
+var slideSpeed = 5.5;
 var slideInterval = 0;
 
 var currentPage = null;
@@ -11,7 +11,7 @@ var currentHash = location.hash;
 var hashPrefix = "#_";
 var pageHistory = [];
 var newPageCount = 0;
-var checkTimer;
+var animating = false;
 
 // *************************************************************************************************
 
@@ -33,6 +33,12 @@ window.iui =
             {
                 var fromPage = currentPage;
                 currentPage = page;
+
+                if (!page.id)
+                    page.id = "__" + (++newPageCount) + "__";
+
+                location.href = currentHash = hashPrefix + page.id;
+                pageHistory.push(page.id);
 
                 if (fromPage)
                     setTimeout(slidePages, 0, fromPage, page, backwards);
@@ -144,7 +150,7 @@ addEventListener("load", function(event)
 
     setTimeout(preloadImages, 0);
     setTimeout(checkOrientAndLocation, 0);
-    checkTimer = setInterval(checkOrientAndLocation, 300);
+    setInterval(checkOrientAndLocation, 300);
 }, false);
     
 addEventListener("click", function(event)
@@ -194,7 +200,10 @@ addEventListener("click", function(event)
 }, true);
 
 function checkOrientAndLocation()
-{
+{                              
+    if (animating)
+        return;
+    
     if (window.innerWidth != currentWidth)
     {   
         currentWidth = window.innerWidth;
@@ -241,12 +250,6 @@ function cancelDialog(form)
 
 function updatePage(page, fromPage)
 {
-    if (!page.id)
-        page.id = "__" + (++newPageCount) + "__";
-
-    location.href = currentHash = hashPrefix + page.id;
-    pageHistory.push(page.id);
-
     var pageTitle = $("pageTitle");
     if (page.title)
         pageTitle.innerHTML = page.title;
@@ -265,50 +268,85 @@ function updatePage(page, fromPage)
         }
         else
             backButton.style.display = "none";
-    }    
+    }
+    
+    animating = false;
 }
 
 function slidePages(fromPage, toPage, backwards)
-{        
-    var axis = (backwards ? fromPage : toPage).getAttribute("axis");
-    if (axis == "y")
-        (backwards ? fromPage : toPage).style.top = "100%";
-    else
-        toPage.style.left = "100%";
+{
+    animating = true;
 
-    toPage.setAttribute("selected", "true");
-    scrollTo(0, 1);
-    clearInterval(checkTimer);
-    
-    var percent = 100;
-    slide();
-    var timer = setInterval(slide, slideInterval);
+    var titlebar = findParent($("pageTitle"), "div");
+    var titlebar2 = titlebar.cloneNode(true);
+    titlebar2.style.position = "absolute";
+    titlebar2.style.top = "0";
+    titlebar2.style.width = titlebar.offsetWidth + "px";
+    titlebar2.style.left = "100%";
+    document.body.appendChild(titlebar2);
 
-    function slide()
+    if (backwards)
     {
-        percent -= slideSpeed;
-        if (percent <= 0)
-        {
-            percent = 0;
-            if (!hasClass(toPage, "dialog"))
-                fromPage.removeAttribute("selected");
-            clearInterval(timer);
-            checkTimer = setInterval(checkOrientAndLocation, 300);
-            setTimeout(updatePage, 0, toPage, fromPage);
-        }
-    
-        if (axis == "y")
-        {
-            backwards
-                ? fromPage.style.top = (100-percent) + "%"
-                : toPage.style.top = percent + "%";
-        }
-        else
-        {
-            fromPage.style.left = (backwards ? (100-percent) : (percent-100)) + "%"; 
-            toPage.style.left = (backwards ? -percent : percent) + "%"; 
-        }
+        var from2 = fromPage.cloneNode(true);
+        from2.style.left = "100%";
+        document.body.appendChild(from2);
+        scrollTo(320, 1);
     }
+    
+    setTimeout(function()
+    {
+        if (backwards)
+        {
+            fromPage.style.left = "100%";
+            document.body.removeChild(from2);
+        }
+        
+        toPage.style.left = backwards ? "0" : "100%";
+
+        toPage.setAttribute("selected", "true");
+        scrollTo(0, 1);
+        animating = true;
+
+        var percent = 100;
+        var timer = setInterval(slide, slideInterval);
+
+        function slide()
+        {
+            percent -= slideSpeed;
+            if (percent <= 0)
+            {
+                percent = 0;
+                clearInterval(timer);
+
+                if (!hasClass(toPage, "dialog"))
+                    fromPage.removeAttribute("selected");
+            }
+
+            var x = backwards ? (320 + (((percent-100)/100) * 320)) : ((100-percent)/100) * 320;
+            scrollTo(x, 1);
+
+            if (percent == 0)
+            {
+                if (!backwards)
+                {
+                    var page2 = toPage.cloneNode(true);
+                    page2.style.left = "0";
+                    document.body.appendChild(page2);
+
+                    setTimeout(function() {
+                        scrollTo(0, 1);
+                        toPage.style.left = "0";
+                        document.body.removeChild(page2);
+                    }, 0);
+                }
+
+                setTimeout(function() {
+                    document.body.removeChild(titlebar2);
+                    setTimeout(updatePage, 0, toPage, fromPage);
+                }, 0);
+            }
+        }
+    }, 10);
 }
 
 function preloadImages()
