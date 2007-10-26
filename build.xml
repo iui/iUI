@@ -38,26 +38,62 @@
 	<property name="release.dir"   			location="${target.dir}/release"				/>
 	<property name="tarfile"						location="${target.dir}/${tarfilename}"	/>
 	
+	<path id="compress-js.path">
+		<fileset dir="releasetools/lib">
+			<include name="compress-js.jar"/>
+			<include name="custom_rhino_from_lcasoft.jar"/>
+		</fileset>
+	</path>
+
+	<path id="yui-compressor.path">
+		<fileset dir="releasetools/lib">
+			<include name="yuicompressor-2.2.5.jar"/>
+			<include name="yui-rhino-1.6R7.jar"/>
+			<include name="yui-jargs-1.0.jar"/>
+		</fileset>
+	</path>
+
+	<path id="ant-googlecode.path">
+		<fileset dir="releasetools/lib">
+			<include name="ant-googlecode-0.0.0test.jar"/>
+		</fileset>
+	</path>
+	
 	<!-- Define extension Ant tasks that aren't part of the standard Ant distro -->
-	<taskdef name="compress-js"						classname="com.webpanes.tools.ant.taskdefs.CompressJS"/>
-	<taskdef name="GoogleCodeUploadTask"	classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask"/>
+	<taskdef name="compress-js"						classname="com.webpanes.tools.ant.taskdefs.CompressJS"
+																				classpathref="compress-js.path" />
+	<taskdef name="GoogleCodeUploadTask"	classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask"
+																				classpathref="ant-googlecode.path" />
 
 	<!-- Ant targets, use "ant -p" for easier reading of the "description" attributes -->
-	<target name="shrink" description="* - Create iuix.js by compressing iui.js">
+	<target name="compress-js" description="* - Create iuix.js by compressing iui.js">
 		<mkdir dir="${release.dir}" />
 		<compress-js	file="${src.dir}/iui.js"
 									tofile="${release.dir}/iuix.js"
 									stripCR="true" />
 	</target>
 	
+	<target name="compress-css" description="* - Create iuix.css by compressing iui.css">
+   	<java jar="releasetools/lib/yuicompressor-2.2.5.jar" fork="true" classpathref="yui-compressor.path">
+      <arg value="--type"/>
+      <arg value="css"/>
+			<arg value="iui/iui.css" />
+			<arg value="-o"/>
+			<arg value="${release.dir}/iuix.css"/>
+		</java>
+	</target>
+	
 	<target name="docopy" description="* - Copy Files to release directory">
 		<mkdir dir="${release.dir}"/>
 		<copy todir="${release.dir}">
    		<fileset dir="${src.dir}"/>
+   		<fileset dir="${basedir}">
+   			<include name ="*.txt"/>
+   		</fileset>
     </copy>
 	</target>
 	
-	<target name="releasedir" depends="shrink, docopy" description="* - Build releasedir (all tasks)">
+	<target name="releasedir" depends="compress-js, compress-css, docopy" description="* - Build releasedir (all tasks)">
 	</target>
 	
 	<target name="clean" description="* - Remove all generated files">
