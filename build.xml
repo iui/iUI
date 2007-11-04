@@ -59,17 +59,30 @@
 		</fileset>
 	</path>
 	
+<!--	
+	<path id="ant-scp.path">
+		<fileset dir="releasetools/lib">
+			<include name="sch-0.1.36.jar"/>
+		</fileset>
+	</path>
+-->
+	
 	<!-- Define extension Ant tasks that aren't part of the standard Ant distro -->
 	<taskdef name="compress-js"						classname="com.webpanes.tools.ant.taskdefs.CompressJS"
 																				classpathref="compress-js.path" />
 	<taskdef name="GoogleCodeUploadTask"	classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask"
 																				classpathref="ant-googlecode.path" />
+																				
+<!--
+	<taskdef name="scp"										classname="org.apache.tools.ant.taskdefs.optional.ssh.Scp"
+																				classpathref="ant-scp.path" />
+-->
 
 	<!-- Ant targets, use "ant -p" for easier reading of the "description" attributes -->
 	<target name="compress-js" description="* - Create iuix.js by compressing iui.js">
 		<mkdir dir="${release.dir}" />
 		<compress-js	file="${src.dir}/iui.js"
-									tofile="${release.dir}/iuix.js"
+									tofile="${release.dir}/iui/iuix.js"
 									stripCR="true" />
 	</target>
 	
@@ -79,17 +92,36 @@
       <arg value="css"/>
 			<arg value="iui/iui.css" />
 			<arg value="-o"/>
-			<arg value="${release.dir}/iuix.css"/>
+			<arg value="${release.dir}/iui/iuix.css"/>
 		</java>
 	</target>
 	
 	<target name="docopy" description="* - Copy Files to release directory">
-		<mkdir dir="${release.dir}"/>
+		<mkdir dir="${release.dir}/iui"/>
+		<mkdir dir="${release.dir}/samples"/>
 		<copy todir="${release.dir}">
-   		<fileset dir="${src.dir}"/>
    		<fileset dir="${basedir}">
-   			<include name ="*.txt"/>
+   			<include name="*.txt"/>
+   			<include name="index.html"/>
    		</fileset>
+    </copy>
+		<copy todir="${release.dir}/iui">
+   		<fileset dir="${src.dir}"/>
+    </copy>
+		<copy todir="${release.dir}/samples">
+   		<fileset dir="samples"/>
+    </copy>
+		<copy todir="${release.dir}/samples">
+			<fileset dir="samples">
+				<include name="*.html"/>
+			</fileset>
+			<globmapper from="*.html" to="*x.html"/>
+			<filterchain>
+		  	<tokenfilter>
+    			<replaceregex pattern="../iui/iui.css" replace="../iui/iuix.css" flags="g"/>
+    			<replaceregex pattern="../iui/iui.js" replace="../iui/iuix.js" flags="g"/>
+				</tokenfilter>
+		  </filterchain>
     </copy>
 	</target>
 	
@@ -116,6 +148,12 @@
 			filename="${tarfile}"
 			targetFileName="${tarfilename}"
 			summary="${iui.release.summary}"/>
+	</target>
+	
+	<target name="publish-samples" depends="releasedir" description="publish sample apps via SSH">
+		<scp verbose="true" todir="${sample-server.ssh.user}:${sample-server.ssh.password}@${sample-server.ssh.host}:~/iui">
+			<fileset dir="${release.dir}"/>
+		</scp>
 	</target>
 	
 
