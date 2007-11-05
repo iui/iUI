@@ -1,6 +1,6 @@
 NOTICE.txt - iUI credits and copyright notices
 
-   Roller is Copyright (c) 2007 by the iUI project members: 
+   iUI is Copyright (c) 2007 by the iUI project members: 
            Joe  Hewitt
            Christopher Allen 
            M. Sean Gilligan 
