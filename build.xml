@@ -59,13 +59,6 @@
 		</fileset>
 	</path>
 	
-<!--	
-	<path id="ant-scp.path">
-		<fileset dir="releasetools/lib">
-			<include name="sch-0.1.36.jar"/>
-		</fileset>
-	</path>
--->
 	
 	<!-- Define extension Ant tasks that aren't part of the standard Ant distro -->
 	<taskdef name="compress-js"						classname="com.webpanes.tools.ant.taskdefs.CompressJS"
@@ -73,11 +66,6 @@
 	<taskdef name="GoogleCodeUploadTask"	classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask"
 																				classpathref="ant-googlecode.path" />
 																				
-<!--
-	<taskdef name="scp"										classname="org.apache.tools.ant.taskdefs.optional.ssh.Scp"
-																				classpathref="ant-scp.path" />
--->
-
 	<!-- Ant targets, use "ant -p" for easier reading of the "description" attributes -->
 	<target name="compress-js" description="* - Create iuix.js by compressing iui.js">
 		<mkdir dir="${release.dir}" />
@@ -86,6 +74,7 @@
 									stripCR="true" />
 	</target>
 	
+	<!-- Compress CSS using Yahoo YUI Compressor -->
 	<target name="compress-css" description="* - Create iuix.css by compressing iui.css">
    	<java jar="releasetools/lib/yuicompressor-2.2.5.jar" fork="true" classpathref="yui-compressor.path">
       <arg value="--type"/>
@@ -99,18 +88,22 @@
 	<target name="docopy" description="* - Copy Files to release directory">
 		<mkdir dir="${release.dir}/iui"/>
 		<mkdir dir="${release.dir}/samples"/>
+		<!-- Copy subset of files of project root to release root -->
 		<copy todir="${release.dir}">
    		<fileset dir="${basedir}">
    			<include name="*.txt"/>
    			<include name="index.html"/>
    		</fileset>
     </copy>
+    <!-- Copy iUI images, css, and js -->
 		<copy todir="${release.dir}/iui">
    		<fileset dir="${src.dir}"/>
     </copy>
+    <!-- Copy samples -->
 		<copy todir="${release.dir}/samples">
    		<fileset dir="samples"/>
     </copy>
+    <!-- Make second copy of sample.html in samplex.html that uses iuix.css and iuix.js -->
 		<copy todir="${release.dir}/samples">
 			<fileset dir="samples">
 				<include name="*.html"/>
@@ -150,10 +143,41 @@
 			summary="${iui.release.summary}"/>
 	</target>
 	
-	<target name="publish-samples" depends="releasedir" description="publish sample apps via SSH">
+	<target name="publish-samples" depends="releasedir" description="r - publish sample apps via SSH">
 		<scp verbose="true" todir="${sample-server.ssh.user}:${sample-server.ssh.password}@${sample-server.ssh.host}:~/iui">
 			<fileset dir="${release.dir}"/>
 		</scp>
+	</target>
+	
+	<target name="install-myproj" depends="releasedir" description="* - Install iUI into YOUR local project">
+		<mkdir dir="${myproj.dir.scripts}"/>
+		<mkdir dir="${myproj.dir.styles}"/>
+		<mkdir dir="${myproj.dir.images}"/>
+		<copy todir="${myproj.dir.styles}">
+   		<fileset dir="${release.dir}/iui">
+   			<include name="iui.css" if="myproj.copy-uncompressed"/>
+   			<include name="iuix.css" if="myproj.copy-compressed"/>
+   		</fileset>
+			<filterchain>
+		  	<tokenfilter>
+		  		<!-- Adjust image urls in the CSS file to use ${myproj.image.path} -->
+    			<replaceregex pattern="url\(([^.]*)\.(png|gif)\)" replace="url\(${myproj.image.path}\1.\2\)" flags="g"/>
+				</tokenfilter>
+		  </filterchain>
+    </copy>
+		<copy todir="${myproj.dir.scripts}">
+   		<fileset dir="${release.dir}/iui">
+   			<include name="iui.js" if="myproj.copy-uncompressed"/>
+   			<include name="iuix.js" if="myproj.copy-compressed"/>
+   		</fileset>
+    </copy>
+		<copy todir="${myproj.dir.images}">
+			<fileset dir="${release.dir}/iui">
+				<include name="*.png"/>
+				<include name="*.gif"/>
+			</fileset>
+    </copy>
+	
 	</target>
 	
 
