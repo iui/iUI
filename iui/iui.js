@@ -136,7 +136,22 @@ window.iui =
             if (child.nodeType == 1 && child.getAttribute("selected") == "true")
                 return child;
         }    
-    }    
+    },
+    isNativeUrl: function(href)
+    {
+        for(var i = 0; i < iui.nativeUrlPatterns.length; i++)
+        {
+            if(href.match(iui.nativeUrlPatterns[i])) return true;
+        }
+        return false;
+    },
+    nativeUrlPatterns: [
+        new RegExp("^http:\/\/maps.google.com\/maps\?"),
+        new RegExp("^mailto:"),
+        new RegExp("^tel:"),
+        new RegExp("^http:\/\/www.youtube.com\/watch\\?v="),
+        new RegExp("^http:\/\/www.youtube.com\/v\/")
+    ]
 };
 
 // *************************************************************************************************
@@ -175,6 +190,10 @@ addEventListener("click", function(event)
         {
             link.setAttribute("selected", "progress");
             iui.showPageByHref(link.href, null, null, link, unselect);
+        }
+        else if (iui.isNativeUrl(link.href))
+        {
+            return;
         }
         else if (!link.target)
         {
