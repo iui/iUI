@@ -12,15 +12,15 @@
     <fieldset>
         <div class="row">
             <label>Years</label>
-            <input type="text" value="2"/>
+            <span>2</span>
         </div>
         <div class="row">
             <label>Months</label>
-            <input type="text" value="8"/>
+            <span>8</span>
         </div>
         <div class="row">
             <label>Days</label>
-            <input type="text" value="27"/>
+            <span>27</span>
         </div>
     </fieldset>
 </div>
