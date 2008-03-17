@@ -289,6 +289,12 @@ fieldset > .row:last-child {
     font-weight: bold;
 }
 
+.row > span {
+    position: absolute;
+    padding: 12px 10px 0 110px;
+    margin: 0;
+}
+
 .row > .toggle {
     position: absolute;
     top: 6px;
