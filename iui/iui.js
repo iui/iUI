@@ -1,6 +1,6 @@
 /*
- 	 Copyright (c) 2007, iUI Project Members
-	 See LICENSE.txt for licensing terms
+   Copyright (c) 2007, iUI Project Members
+   See LICENSE.txt for licensing terms
  */
 
 
@@ -17,6 +17,7 @@ var hashPrefix = "#_";
 var pageHistory = [];
 var newPageCount = 0;
 var checkTimer;
+var hasOrientationEvent = false;
 
 // *************************************************************************************************
 
@@ -217,14 +218,38 @@ addEventListener("click", function(event)
     }
 }, true);
 
+function orientChangeHandler()
+{
+  var orientation=window.orientation;
+  switch(orientation)
+  {
+    case 0:
+        setOrientation("portrait");
+        break;  
+        
+    case 90:
+    case -90: 
+        setOrientation("landscape");
+        break;
+  }
+}
+
+if (typeof window.onorientationchange == "object")
+{
+    window.onorientationchange=orientChangeHandler;
+    hasOrientationEvent = true;
+}
+
 function checkOrientAndLocation()
 {
-    if (window.innerWidth != currentWidth)
-    {   
-        currentWidth = window.innerWidth;
-        var orient = currentWidth == 320 ? "profile" : "landscape";
-        document.body.setAttribute("orient", orient);
-        setTimeout(scrollTo, 100, 0, 1);
+    if (!hasOrientationEvent)
+    {
+      if (window.innerWidth != currentWidth)
+      {   
+          currentWidth = window.innerWidth;
+          var orient = currentWidth == 320 ? "portrait" : "landscape";
+          setOrientation(orient);
+      }
     }
 
     if (location.hash != currentHash)
@@ -232,6 +257,12 @@ function checkOrientAndLocation()
         var pageId = location.hash.substr(hashPrefix.length)
         iui.showPageById(pageId);
     }
+}
+
+function setOrientation(orient)
+{
+    document.body.setAttribute("orient", orient);
+    setTimeout(scrollTo, 100, 0, 1);
 }
 
 function showDialog(page)
