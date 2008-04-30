@@ -238,6 +238,7 @@ if (typeof window.onorientationchange == "object")
 {
     window.onorientationchange=orientChangeHandler;
     hasOrientationEvent = true;
+    setTimeout(orientChangeHandler, 0);
 }
 
 function checkOrientAndLocation()
