@@ -11,6 +11,7 @@
        {
            document.getElementById("load").innerHTML = getOrientationString();
        }
+			 function unloadHandler() {}
        function orientHandler()
        {
            document.getElementById("orient").innerHTML = getOrientationString();
@@ -23,7 +24,7 @@
        {
             document.getElementById("manual").innerHTML =  getOrientationString();
        }
-       
+      
        function getOrientationString()
        {
            var displayStr = "";
@@ -56,7 +57,7 @@
 
     </script>
   </head>
-  <body onload="loadHandler();" onresize="resizeHandler();" onorientationchange="orientHandler();">
+  <body onload="loadHandler();" onunload="unloadHandler();" onresize="resizeHandler();" onorientationchange="orientHandler();">
      <h2 style="text-decoration: underline;">Tracking Orientation</h2>
      Load Events: <span id="load">unknown</span><br/>
      Resize Events: <span id="resize">unknown</span><br/>
