@@ -255,7 +255,7 @@ function checkOrientAndLocation()
 
     if (location.hash != currentHash)
     {
-        var pageId = location.hash.substr(hashPrefix.length)
+        var pageId = location.hash.substr(hashPrefix.length);
         iui.showPageById(pageId);
     }
 }
@@ -392,6 +392,7 @@ function encodeForm(form)
 
     var args = [];
     encode(form.getElementsByTagName("input"));
+    encode(form.getElementsByTagName("textarea"));
     encode(form.getElementsByTagName("select"));
     return args;    
 }
