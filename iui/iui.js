@@ -167,6 +167,11 @@ addEventListener("load", function(event)
     setTimeout(checkOrientAndLocation, 0);
     checkTimer = setInterval(checkOrientAndLocation, 300);
 }, false);
+
+addEventListener("unload", function(event)
+{
+	return;
+}, false);
     
 addEventListener("click", function(event)
 {
