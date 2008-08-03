@@ -244,6 +244,7 @@ input:not(input[type|=radio]):not(input[type|=checkbox]) {
 
 body > .panel {
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     padding: 10px;
     background: #c8c8c8 url(pinstripes.png);
@@ -255,6 +256,7 @@ body > .panel {
     padding: 0;
     background: #FFFFFF;
     -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     border: 1px solid #999999;
     text-align: right;
     font-size: 16px;
@@ -265,7 +267,8 @@ body > .panel {
     min-height: 42px;
     border-bottom: 1px solid #999999;
     -webkit-border-radius: 0;
-    text-align: right;
+//    text-align: right;
+    text-align: left;
 }
 
 fieldset > .row:last-child {
@@ -274,6 +277,7 @@ fieldset > .row:last-child {
 
 .row > input:not(input[type|=radio]):not(input[type|=checkbox]) {
     box-sizing: border-box;
+    -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     margin: 0;
     border: none;
