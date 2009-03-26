@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HybridiUIAppDelegate : NSObject <UIApplicationDelegate> {
+@interface HybridiUIAppDelegate : NSObject <UIWebViewDelegate> {
     UIWindow *window;
 	IBOutlet UIWebView *webView;
 }

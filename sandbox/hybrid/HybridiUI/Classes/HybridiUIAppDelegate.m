@@ -14,10 +14,27 @@
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
+//	NSURL *url = [NSURL URLWithString:@"http://iui.googlecode.com/svn/tags/REL-current/samples/music.html"];
+//	NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//	[webView loadRequest:request];
+
+//	NSURL			*url		= [[NSURL fileURLWithPath:[thisBundle pathForResource:@"index" ofType:@"html" inDirectory:@"docroot"]] retain];
 	NSURL *url = [NSURL URLWithString:@"http://iui.googlecode.com/svn/tags/REL-current/samples/music.html"];
-	NSURLRequest *request = [NSURLRequest requestWithURL:url];
-	[webView loadRequest:request];
+	NSData			*htmlData	= [NSData dataWithContentsOfURL:url];
 	
+//	NSString *imagePath = [[NSBundle mainBundle] resourcePath];
+	NSString *imagePath = [[NSBundle mainBundle] resourcePath];
+	imagePath = [imagePath stringByAppendingString:@"/docroot"];
+	NSLog(@"%@", imagePath);
+	imagePath = [imagePath stringByReplacingOccurrencesOfString:@"/" withString:@"//"];
+	imagePath = [imagePath stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+	NSLog(@"%@", imagePath);
+	NSURL *myBaseURL = [NSURL URLWithString: [NSString stringWithFormat:@"file:/%@//",imagePath]];
+	
+	
+
+	[webView loadData:htmlData MIMEType:@"text/html" textEncodingName:@"UTF-8" baseURL:myBaseURL];
+
     [window makeKeyAndVisible];
 }
 
