@@ -8,12 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum wvm {
+	modeLocal = 1,	// Everything local
+	modeRemote,		// Everything remote
+	modeMixed		// Remote page, local baseDir
+} WebViewMode;
+	
+
 @interface HybridiUIAppDelegate : NSObject <UIWebViewDelegate> {
     UIWindow *window;
 	IBOutlet UIWebView *webView;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+
+- (void)loadWebView;
 
 @end
 
