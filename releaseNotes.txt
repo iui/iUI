@@ -1,6 +1,14 @@
-REL-0.13 (in process)
+REL-0.20 2009-xx-yy
 
+* Release notes TBD
+
+REL-0.13 2007-11-04
+
+* Add Joe's examples directory to SVN
+* Add -webkit-box-sizing to CSS
+* Generate compressed CSS as part of Ant build
 * Changed releaseNotes.txt to reverse chronological order
+* See Google code issues: http://code.google.com/p/iui/issues/list?can=1&q=milestone:REL-0.13
 
 REL-0.12 2007-10-19
 
