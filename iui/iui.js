@@ -1,5 +1,5 @@
 /*
-   Copyright (c) 2007-8, iUI Project Members
+   Copyright (c) 2007-9, iUI Project Members
    See LICENSE.txt for licensing terms
  */
 
@@ -18,6 +18,8 @@ var pageHistory = [];
 var newPageCount = 0;
 var checkTimer;
 var hasOrientationEvent = false;
+var portraitVal = "portrait";
+var landscapeVal = "landscape";
 
 // *************************************************************************************************
 
@@ -229,12 +231,12 @@ function orientChangeHandler()
   switch(orientation)
   {
     case 0:
-        setOrientation("portrait");
+        setOrientation(portraitVal);
         break;  
         
     case 90:
     case -90: 
-        setOrientation("landscape");
+        setOrientation(landscapeVal);
         break;
   }
 }
@@ -253,7 +255,7 @@ function checkOrientAndLocation()
       if (window.innerWidth != currentWidth)
       {   
           currentWidth = window.innerWidth;
-          var orient = currentWidth == 320 ? "portrait" : "landscape";
+          var orient = currentWidth == 320 ? portraitVal : landscapeVal;
           setOrientation(orient);
       }
     }
