@@ -1,6 +1,8 @@
 REL-0.20 2009-xx-yy
 
-* Release notes TBD
+* Use onorientationchange event for orientation with fallback to use of window.innerWidth. (Issue 84)
+* Change value of orient attribute on body element for portrait mode from profile to portrait. (Issue 85)
+* More release notes TBD
 
 REL-0.13 2007-11-04
 
