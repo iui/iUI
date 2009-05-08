@@ -153,7 +153,9 @@ window.iui =
         new RegExp("^mailto:"),
         new RegExp("^tel:"),
         new RegExp("^http:\/\/www.youtube.com\/watch\\?v="),
-        new RegExp("^http:\/\/www.youtube.com\/v\/")
+        new RegExp("^http:\/\/www.youtube.com\/v\/"),
+        new RegExp("^javascript:"),
+
     ]
 };
 
@@ -202,6 +204,10 @@ addEventListener("click", function(event)
         else if (iui.isNativeUrl(link.href))
         {
             return;
+        }
+        else if (link.target == "_webapp")
+        {
+            location.href = link.href;
         }
         else if (!link.target)
         {

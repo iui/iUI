@@ -1,3 +1,9 @@
+REL-0.30 (TBD)
+
+* Support javascript: URLs in links (Issue 134)
+* Support loading complete pages in "WebApp" mode using target="_webapp" (Issue 135)
+* TBD
+
 REL-0.20 2009-05-08
 
 * Use onorientationchange event for orientation with fallback to use of window.innerWidth. (Issue 84)
