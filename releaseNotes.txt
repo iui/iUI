@@ -5,7 +5,6 @@ REL-0.20 2009-05-08
 * Add support for radio buttons and checkboxes (Issue 9)
 * Add support for textarea in forms (Issue 11)
 * Add support for static text in a panel using span tags (Issue 52)
-* More release notes TBD
 
 REL-0.13 2007-11-04
 
