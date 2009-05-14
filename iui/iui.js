@@ -340,15 +340,43 @@ function updatePage(page, fromPage)
 function slidePages(fromPage, toPage, backwards)
 {        
     var axis = (backwards ? fromPage : toPage).getAttribute("axis");
+
+    clearInterval(checkTimer);
+    
+    if (canDoSlideAnim() && axis != 'y')
+    {
+      slide2(fromPage, toPage, backwards, slideDone);
+    }
+    else
+    {
+      slide1(fromPage, toPage, backwards, axis, slideDone);
+    }
+
+    function slideDone()
+    {
+//      console.log("slideDone");
+      if (!hasClass(toPage, "dialog"))
+          fromPage.removeAttribute("selected");
+      checkTimer = setInterval(checkOrientAndLocation, 300);
+      setTimeout(updatePage, 0, toPage, fromPage);
+      fromPage.removeEventListener('webkitTransitionEnd', slideDone, false);
+    }
+}
+
+function canDoSlideAnim()
+{
+  return RegExp(" AppleWebKit/").test(navigator.userAgent); // At the very least, should check WebKit version, maybe support FF, etc
+}
+
+function slide1(fromPage, toPage, backwards, axis, cb)
+{
     if (axis == "y")
         (backwards ? fromPage : toPage).style.top = "100%";
     else
         toPage.style.left = "100%";
 
-    toPage.setAttribute("selected", "true");
     scrollTo(0, 1);
-    clearInterval(checkTimer);
-    
+    toPage.setAttribute("selected", "true");
     var percent = 100;
     slide();
     var timer = setInterval(slide, slideInterval);
@@ -359,11 +387,8 @@ function slidePages(fromPage, toPage, backwards)
         if (percent <= 0)
         {
             percent = 0;
-            if (!hasClass(toPage, "dialog"))
-                fromPage.removeAttribute("selected");
             clearInterval(timer);
-            checkTimer = setInterval(checkOrientAndLocation, 300);
-            setTimeout(updatePage, 0, toPage, fromPage);
+            cb();
         }
     
         if (axis == "y")
@@ -378,6 +403,33 @@ function slidePages(fromPage, toPage, backwards)
             toPage.style.left = (backwards ? -percent : percent) + "%"; 
         }
     }
+}
+
+//function durationInt(dur)
+//{
+//  var val = parseFloat(dur);
+//  return (dur.indexOf('ms') == -1) ? val * 1000 : val;
+//}
+
+function slide2(fromPage, toPage, backwards, cb)
+{
+  toPage.style.webkitTransitionDuration = '0ms'; // Turn off transitions to set toPage start offset
+  // fromStart is always 0% and toEnd is always 0%
+  // iPhone won't take % width on toPage
+  var toStart = 'translateX(' + (backwards ? '-' : '') + window.innerWidth +  'px)';
+  var fromEnd = 'translateX(' + (backwards ? '100%' : '-100%') + ')';
+  toPage.style.webkitTransform = toStart;
+  toPage.setAttribute("selected", "true");
+  toPage.style.webkitTransitionDuration = '';   // Turn transitions back on
+//  var duration = durationInt(window.getComputedStyle(toPage, null).webkitTransitionDuration);
+  function startTrans()
+  {
+    fromPage.style.webkitTransform = fromEnd;
+    toPage.style.webkitTransform = 'translateX(0%)'; //toEnd
+//    setTimeout(cb, duration);
+  }
+  fromPage.addEventListener('webkitTransitionEnd', cb, false);
+  setTimeout(startTrans, 0);
 }
 
 function preloadImages()

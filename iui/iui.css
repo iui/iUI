@@ -18,6 +18,9 @@ body > *:not(.toolbar) {
     top: 45px;
     width: 100%;
     min-height: 372px;
+    -webkit-transition-duration: 300ms;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transform: translateX(0%);
 }
 
 body[orient="landscape"] > *:not(.toolbar) {
