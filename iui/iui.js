@@ -365,7 +365,7 @@ function slidePages(fromPage, toPage, backwards)
 
 function canDoSlideAnim()
 {
-  return RegExp(" AppleWebKit/").test(navigator.userAgent); // At the very least, should check WebKit version, maybe support FF, etc
+  return (typeof WebKitCSSMatrix == "object");
 }
 
 function slide1(fromPage, toPage, backwards, axis, cb)
