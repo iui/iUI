@@ -2,7 +2,7 @@
          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>iUI Minimal Sample</title>
+  <title>Feature Testing</title>
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
   <style type="text/css" media="screen">@import "../iui/iui.css";</style>
   <script type="application/x-javascript" src="../iui/iui.js"></script>
@@ -16,7 +16,7 @@ function addLI(elem,str)
 }
 function load()
 {
-  var list = document.getElementById('browser-info');
+  var list = document.getElementById('feature-info');
   addLI(list, 'WebKitTransitionEvent = ' + (typeof WebKitTransitionEvent == "object"));
   addLI(list, 'WebKitPoint = ' + (typeof WebKitPoint == "object"));
   addLI(list, 'WebKitCSSTransformValue = ' + (typeof WebKitCSSTransformValue == "object"));
@@ -31,7 +31,7 @@ function load()
         <a id="backButton" class="button" href="#"></a>
     </div>
     
-    <ul id="browser-info" title="Browser" selected="true">
+    <ul id="feature-info" title="Features" selected="true">
     </ul>
 </body>
 
