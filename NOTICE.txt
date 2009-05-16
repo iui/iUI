@@ -1,11 +1,17 @@
 NOTICE.txt - iUI credits and copyright notices
 
    iUI is Copyright (c) 2007-2009 by the iUI project members: 
-           Joe  Hewitt
-           Christopher Allen 
-           M. Sean Gilligan 
+           M. Sean Gilligan (msgilligan)
        Past members:  	 
-           (none) 
+           Joe  Hewitt (joehewitt)
+           Christopher Allen (ChristopherA)
+
+CREDITS
+	schlueter - committed fixes for issues #9, #11, #63 -- added samples
+	???       - created iUI icon
+	kris.tate - named it "iUI", created Google Code project, initial checkin
+	others    - let us know if we missed you
+	iUI users - thanks for your patience, feedback, and bug reports
 
 THIRD PARTY COMPONENTS
 
