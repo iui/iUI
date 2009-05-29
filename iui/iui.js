@@ -326,7 +326,7 @@ function updatePage(page, fromPage)
     if (!page.id)
         page.id = "__" + (++newPageCount) + "__";
 
-    location.href = currentHash = hashPrefix + page.id;
+    location.hash = currentHash = hashPrefix + page.id;
     pageHistory.push(page.id);
 
     var pageTitle = $("pageTitle");
