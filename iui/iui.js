@@ -163,13 +163,18 @@ window.iui =
 
 addEventListener("load", function(event)
 {
-    var page = iui.getSelectedPage();
-    if (page)
-        iui.showPage(page);
-
-    setTimeout(preloadImages, 0);
-    setTimeout(checkOrientAndLocation, 0);
-    checkTimer = setInterval(checkOrientAndLocation, 300);
+	var page = iui.getSelectedPage();
+	var locPage = getPageFromLoc();
+		
+	if (page)
+			iui.showPage(page);
+	
+	if (locPage && (locPage != page))
+		iui.showPage(locPage);
+	
+	setTimeout(preloadImages, 0);
+	setTimeout(checkOrientAndLocation, 0);
+	checkTimer = setInterval(checkOrientAndLocation, 300);
 }, false);
 
 addEventListener("unload", function(event)
@@ -230,6 +235,14 @@ addEventListener("click", function(event)
         event.preventDefault();        
     }
 }, true);
+
+function getPageFromLoc()
+{
+	var page = location.hash.match(/#_([^\?_]+)/)[1];
+	if (page)
+		page = $(page);
+  return page;
+}
 
 function orientChangeHandler()
 {
