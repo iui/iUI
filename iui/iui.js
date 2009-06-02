@@ -238,7 +238,10 @@ addEventListener("click", function(event)
 
 function getPageFromLoc()
 {
-	var page = location.hash.match(/#_([^\?_]+)/)[1];
+	var page;
+	var result = location.hash.match(/#_([^\?_]+)/);
+	if (result)
+		page = result[1];
 	if (page)
 		page = $(page);
   return page;
