@@ -121,6 +121,7 @@ body[orient="landscape"] > .toolbar > h1 {
 }
 
 .whiteButton,
+.redButton,
 .grayButton {
     display: block;
     border-width: 0 12px;
@@ -135,6 +136,12 @@ body[orient="landscape"] > .toolbar > h1 {
 .whiteButton {
     -webkit-border-image: url(whiteButton.png) 0 12 0 12;
     text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
+}
+
+.redButton {
+    -webkit-border-image: url(redButton.png) 0 12 0 12;
+    color:#fff;
+    text-shadow: #7a0001 0 -1px 0;
 }
 
 .grayButton {
