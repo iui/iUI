@@ -25,6 +25,8 @@ var landscapeVal = "landscape";
 
 window.iui =
 {
+    animOn: false,	// Experimental slide animation with CSS transition disabled by default
+
     showPage: function(page, backwards)
     {
         if (page)
@@ -381,7 +383,7 @@ function slidePages(fromPage, toPage, backwards)
 
 function canDoSlideAnim()
 {
-  return (typeof WebKitCSSMatrix == "object");
+  return (iui.animOn) && (typeof WebKitCSSMatrix == "object");
 }
 
 function slide1(fromPage, toPage, backwards, axis, cb)
