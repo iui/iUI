@@ -144,7 +144,7 @@
 	</target>
 	
 	<target name="publish-samples" depends="releasedir" description="r - publish sample apps via SSH">
-		<scp verbose="true" todir="${sample-server.ssh.user}:${sample-server.ssh.password}@${sample-server.ssh.host}:~/iui">
+		<scp verbose="true" todir="${sample-server.ssh.user}:${sample-server.ssh.password}@${sample-server.ssh.host}:${sample-server.ssh.path}">
 			<fileset dir="${release.dir}"/>
 		</scp>
 	</target>
