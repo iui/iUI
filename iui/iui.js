@@ -165,23 +165,29 @@ window.iui =
 
 addEventListener("load", function(event)
 {
-	var page = iui.getSelectedPage();
-	var locPage = getPageFromLoc();
-		
-	if (page)
-			iui.showPage(page);
-	
-	if (locPage && (locPage != page))
-		iui.showPage(locPage);
-	
-	setTimeout(preloadImages, 0);
-	setTimeout(checkOrientAndLocation, 0);
-	checkTimer = setInterval(checkOrientAndLocation, 300);
+    var page = iui.getSelectedPage();
+    var locPage = getPageFromLoc();
+        
+    if (page)
+            iui.showPage(page);
+    
+    if (locPage && (locPage != page))
+        iui.showPage(locPage);
+    
+    setTimeout(preloadImages, 0);
+    if (typeof window.onorientationchange == "object")
+    {
+				window.onorientationchange=orientChangeHandler;
+				hasOrientationEvent = true;
+				setTimeout(orientChangeHandler, 0);
+    }
+    setTimeout(checkOrientAndLocation, 0);
+    checkTimer = setInterval(checkOrientAndLocation, 300);
 }, false);
 
 addEventListener("unload", function(event)
 {
-	return;
+    return;
 }, false);
     
 addEventListener("click", function(event)
@@ -240,12 +246,12 @@ addEventListener("click", function(event)
 
 function getPageFromLoc()
 {
-	var page;
-	var result = location.hash.match(/#_([^\?_]+)/);
-	if (result)
-		page = result[1];
-	if (page)
-		page = $(page);
+    var page;
+    var result = location.hash.match(/#_([^\?_]+)/);
+    if (result)
+        page = result[1];
+    if (page)
+        page = $(page);
   return page;
 }
 
@@ -265,12 +271,6 @@ function orientChangeHandler()
   }
 }
 
-if (typeof window.onorientationchange == "object")
-{
-    window.onorientationchange=orientChangeHandler;
-    hasOrientationEvent = true;
-    setTimeout(orientChangeHandler, 0);
-}
 
 function checkOrientAndLocation()
 {
