@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Link Types</title>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+  <link rel="apple-touch-icon-precomposed" href="../iui/iui-logo-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <style type="text/css" media="screen">@import "../iui/iui.css";</style>
+  <script type="application/x-javascript" src="../iui/iui.js"></script>
+  <script language="JavaScript" type="text/javascript">
+  </script>
+</head>
+
+<body>
+    <div class="toolbar">
+        <h1 id="pageTitle"></h1>
+        <a id="backButton" class="button" href="#"></a>
+    </div>
+    
+    <ul id="links" title="Link Types" selected="true">
+      <li><a href="#panel">Internal Link</a></li>
+      <li><a href="fragPanel.frag">Ajax Link (Fragment)</a></li>
+      <li><a target="_self" href="../samples/music.html">Ext Link</a></li>
+      <li><a target="_webapp" href="../test/webappBack.html">Ext Link WebApp Style</a></li>
+      <li><a target="_self" href="../samples/music.html#_artists">Ext Link w/Anchor</a></li>
+      <li><a target="_replace" href="replacingFrag1.frag">Load 2 more (_replace)</a></li>
+    </ul>
+    
+    <div id="panel" title="Int Panel" class="panel">
+      <h1>Internal Panel</h1>
+    </div>
+</body>
+
+</html>
