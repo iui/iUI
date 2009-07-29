@@ -372,7 +372,6 @@ function slidePages(fromPage, toPage, backwards)
 
     function slideDone()
     {
-//      console.log("slideDone");
       if (!hasClass(toPage, "dialog"))
           fromPage.removeAttribute("selected");
       checkTimer = setInterval(checkOrientAndLocation, 300);
@@ -423,11 +422,6 @@ function slide1(fromPage, toPage, backwards, axis, cb)
     }
 }
 
-//function durationInt(dur)
-//{
-//  var val = parseFloat(dur);
-//  return (dur.indexOf('ms') == -1) ? val * 1000 : val;
-//}
 
 function slide2(fromPage, toPage, backwards, cb)
 {
@@ -439,12 +433,10 @@ function slide2(fromPage, toPage, backwards, cb)
   toPage.style.webkitTransform = toStart;
   toPage.setAttribute("selected", "true");
   toPage.style.webkitTransitionDuration = '';   // Turn transitions back on
-//  var duration = durationInt(window.getComputedStyle(toPage, null).webkitTransitionDuration);
   function startTrans()
   {
     fromPage.style.webkitTransform = fromEnd;
     toPage.style.webkitTransform = 'translateX(0%)'; //toEnd
-//    setTimeout(cb, duration);
   }
   fromPage.addEventListener('webkitTransitionEnd', cb, false);
   setTimeout(startTrans, 0);
