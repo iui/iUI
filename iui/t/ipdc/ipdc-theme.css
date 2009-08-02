@@ -13,22 +13,18 @@ body {
 
 /************************************************************************************************/
 
-//!!!!!
 body > .toolbar {
     background: url(toolbar.png) #6d84a2 repeat-x;
 }
 
-//!!!!
 .button {
     -webkit-border-image: url(toolButton.png) 0 5 0 5;
 }
 
-//!!!
 .blueButton {
     -webkit-border-image: url(blueButton.png) 0 5 0 5;
 }
 
-//!!!!!
 #backButton {
     -webkit-border-image: url(backButton.png) 0 8 0 14;
 }
@@ -39,7 +35,6 @@ body > .toolbar {
     text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
 }
 
-//!!!
 .redButton {
     -webkit-border-image: url(redButton.png) 0 12 0 12;
 }
@@ -82,7 +77,6 @@ body > .dialog {
     text-align: right;
 }
 
-//!!!!
 .dialog > fieldset {
     background: url(toolbar.png) #7388a5 repeat-x;
 }
@@ -116,7 +110,6 @@ input:not(input[type|=radio]):not(input[type|=checkbox]) {
 
 /************************************************************************************************/
 
-//!!!!
 body > .panel {
     background: #c8c8c8 url(pinstripes.png);
 }
@@ -126,7 +119,6 @@ body > .panel {
     background: #FFFFFF url(../../toggle.png) repeat-x;
 }
 
-//!!!
 .toggle[toggled="true"] {
     background: #194fdb url(toggleOn.png) repeat-x;
 }
@@ -136,7 +128,6 @@ body > .panel {
 }
 
 /************************************************************************************************/
-//!!!!
 #theme-preloader {
     display: none;
     background-image: url(blueButton.png), url(../../listArrowSel.png), url(listGroup.png);
