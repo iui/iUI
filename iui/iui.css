@@ -31,7 +31,7 @@ body > *[selected="true"] {
     display: block;
 }
 
-a[selected], a:active {
+li > a[selected], li > a:active {
     background-color: #194fdb !important;
     background-image: url(listArrowSel.png), url(selection.png) !important;
     background-repeat: no-repeat, repeat-x;
@@ -39,7 +39,7 @@ a[selected], a:active {
     color: #FFFFFF !important;
 }
 
-a[selected="progress"] {
+li > a[selected="progress"] {
     background-image: url(loading.gif), url(selection.png) !important;
 }
 
