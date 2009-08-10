@@ -337,6 +337,8 @@ function updatePage(page, fromPage)
 	var pageTitle = $("pageTitle");
 	if (page.title)
 		pageTitle.innerHTML = page.title;
+	var ttlClass = page.getAttribute("ttlclass");
+	pageTitle.className = ttlClass ? ttlClass : "";
 
 	if (page.localName.toLowerCase() == "form" && !page.target)
 		showForm(page);
@@ -349,6 +351,8 @@ function updatePage(page, fromPage)
 		{
 			backButton.style.display = "inline";
 			backButton.innerHTML = prevPage.title ? prevPage.title : "Back";
+			var bbClass = prevPage.getAttribute("bbclass");
+			backButton.className = (bbClass) ? 'button ' + bbClass : 'button';
 		}
 		else
 			backButton.style.display = "none";

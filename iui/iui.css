@@ -51,7 +51,7 @@ body > .toolbar {
     -webkit-box-sizing: border-box;
     border-bottom: 1px solid #2d3642;
     border-top: 1px solid #6d84a2;
-    padding: 10px;
+    padding: 0 10px 10px 10px;
     height: 45px;
     background: url(toolbar.png) #6d84a2 repeat-x;
 }
@@ -61,6 +61,7 @@ body > .toolbar {
     overflow: hidden;
     left: 50%;
     margin: 1px 0 0 -75px;
+    padding-top: 10px;
     height: 45px;
     font-size: 20px;
     width: 150px;
@@ -117,7 +118,8 @@ body[orient="landscape"] > .toolbar > h1 {
     padding: 0;
     max-width: 55px;
     border-width: 0 8px 0 14px;
-    -webkit-border-image: url(backButton.png) 0 8 0 14;
+    -webkit-border-image: url(backButtonBrdr.png) 0 8 0 14;
+    background: url(backButtonBack.png) repeat-x;
 }
 
 .whiteButton,
