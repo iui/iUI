@@ -7,12 +7,16 @@
 <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
 <link rel="apple-touch-icon" href="../iui/iui-logo-touch-icon.png" />
 <meta name="apple-touch-fullscreen" content="YES" />
-<style type="text/css" media="screen">@import "../iui/iui.css";</style>
-<style type="text/css" media="screen">@import "../iui/t/ipdc/ipdc-theme.css";</style>
-<script type="application/x-javascript" src="../iui/iui.js"></script>
-<script type="text/javascript">
-	iui.animOn = true;
-</script>
+<!--
+<style type="text/css" media="screen">@import "../../iui/iui.css";</style>
+<style type="text/css" media="screen">@import "../../iui/t/ipdc/ipdc-theme.css";</style>
+-->
+<link rel="stylesheet" href="../../iui/iui.css" type="text/css" />
+<link rel="stylesheet" title="Default" href="../../iui/t/default/default-theme.css"  type="text/css"/>
+<link rel="alternate stylesheet" title="iPhoneDevCamp" href="../../iui/t/ipdc/ipdc-theme.css"  type="text/css"/>
+<script type="application/x-javascript" src="../../iui/iui.js"></script>
+<script type="application/x-javascript" src="../../iui/js/iui-theme-switcher.js"></script>
+<script type="application/x-javascript" src="music-app.js"></script>
 <!--
 <script type="application/x-javascript" src="http://10.0.1.2:1840/ibug.js"></script>
 -->
@@ -29,6 +33,7 @@
         <li><a href="#artists">Artists</a></li>
         <li><a href="#settings">Settings</a></li>
         <li><a href="stats.php">Stats</a></li>
+        <li><a href="#themes">Themes</a></li>
         <li><a href="http://code.google.com/p/iui/" target="_self">About</a></li>
         <li>Nothing</li>
     </ul>
@@ -94,6 +99,17 @@
         <h2>If this weren't just a demo, you might be hearing a song...</h2>
     </div>
     
+    <div id="themes" class="panel" title="Theme Switcher">
+        <h2>Theme Switcher</h2>
+        <form id="theme-form" onsubmit="return iui.ts.themeSubmit(this)" method="">
+            <select onchange="return iui.ts.themeSelect(this)" name="themeSelect" size="1">
+                <option>Default</option>
+                <option>iPhoneDevCamp</option>
+            </select>
+           <!-- <input type="submit" name="submit" value="Set"/> -->
+        </form>
+    </div>
+
     <form id="searchForm" class="dialog" action="search.php">
         <fieldset>
             <h1>Music Search</h1>
