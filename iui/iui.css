@@ -99,10 +99,12 @@ body[orient="landscape"] > .toolbar > h1 {
     white-space: nowrap;
     background: none;
     -webkit-border-image: url(toolButton.png) 0 5 0 5;
+    -moz-border-image: url(toolButton.png) 0 5 0 5;
 }
 
 .blueButton {
     -webkit-border-image: url(blueButton.png) 0 5 0 5;
+    -moz-border-image: url(blueButton.png) 0 5 0 5;
     border-width: 0 5px;
 }
 
@@ -119,6 +121,7 @@ body[orient="landscape"] > .toolbar > h1 {
     max-width: 55px;
     border-width: 0 8px 0 14px;
     -webkit-border-image: url(backButtonBrdr.png) 0 8 0 14;
+    -moz-border-image: url(backButtonBrdr.png) 0 8 0 14;
     background: url(backButtonBack.png) repeat-x;
 }
 
@@ -137,6 +140,7 @@ body[orient="landscape"] > .toolbar > h1 {
 
 .whiteButton {
     -webkit-border-image: url(whiteButton.png) 0 12 0 12;
+    -moz-border-image: url(whiteButton.png) 0 12 0 12;
     text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
 }
 
@@ -148,6 +152,7 @@ body[orient="landscape"] > .toolbar > h1 {
 
 .grayButton {
     -webkit-border-image: url(grayButton.png) 0 12 0 12;
+    -moz-border-image: url(grayButton.png) 0 12 0 12;
     color: #FFFFFF;
 }
 
@@ -194,6 +199,7 @@ body > ul > li > a {
 a[target="_replace"] {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     padding-top: 25px;
     padding-bottom: 25px;
     font-size: 18px;
@@ -217,6 +223,7 @@ body > .dialog {
 .dialog > fieldset {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     width: 100%;
     margin: 0;
     border: none;
@@ -245,6 +252,7 @@ body > .dialog {
 input:not(input[type|=radio]):not(input[type|=checkbox]) {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     width: 100%;
     margin: 8px 0 0 0;
     padding: 6px 6px 6px 44px;
@@ -279,6 +287,7 @@ body > .panel {
     min-height: 42px;
     border-bottom: 1px solid #999999;
     -webkit-border-radius: 0;
+    -moz-border-radius: 0;
     text-align: right;
 }
 
@@ -326,6 +335,7 @@ fieldset > .row:last-child {
 .toggle {
     border: 1px solid #888888;
     -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
     background: #FFFFFF url(toggle.png) repeat-x;
     font-size: 19px;
     font-weight: bold;
@@ -373,6 +383,7 @@ fieldset > .row:last-child {
     height: 28px;    
     border: 1px solid #888888;
     -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
     background: #ffffff url(thumb.png) repeat-x;
 }
 
