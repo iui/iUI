@@ -1,0 +1,67 @@
+/* iui-moz.css (c) 2007-9 by iUI Project Members, see LICENSE.txt for license */
+
+body > .toolbar {
+    -moz-box-sizing: border-box;
+}
+
+.button {
+    -moz-border-image: url(toolButton.png) 0 5 0 5;
+}
+
+.blueButton {
+    -moz-border-image: url(blueButton.png) 0 5 0 5;
+}
+
+#backButton {
+    -moz-border-image: url(backButtonBrdr.png) 0 8 0 14;
+}
+
+.whiteButton {
+    -moz-border-image: url(whiteButton.png) 0 12 0 12;
+}
+
+.grayButton {
+    -moz-border-image: url(grayButton.png) 0 12 0 12;
+}
+
+/************************************************************************************************/
+
+a[target="_replace"] {
+    -moz-box-sizing: border-box;
+}
+
+/************************************************************************************************/
+    
+.dialog > fieldset {
+    -moz-box-sizing: border-box;
+}
+
+input:not(input[type|=radio]):not(input[type|=checkbox]) {
+    -moz-box-sizing: border-box;
+}
+
+/************************************************************************************************/
+
+body > .panel {
+    -moz-box-sizing: border-box;
+}
+
+.panel > fieldset {
+    -moz-border-radius: 10px;
+}
+
+.row  {
+    -moz-border-radius: 0;
+}
+
+.row > input:not(input[type|=radio]):not(input[type|=checkbox]) {
+    -moz-box-sizing: border-box;
+}
+
+.toggle {
+    -moz-border-radius: 6px;
+}
+
+.thumb {
+    -moz-border-radius: 6px;
+}
