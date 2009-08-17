@@ -57,58 +57,10 @@ body > ul > li > a {
     background: url(../../listArrow.png) no-repeat right center;
 }
 
-a[target="_replace"] {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    font-size: 18px;
-    color: cornflowerblue;
-    background-color: #FFFFFF;
-    background-image: none;
-}
-
 /************************************************************************************************/
     
-body > .dialog {
-    top: 0;
-    width: 100%;
-    min-height: 417px;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 0;
-    text-align: right;
-}
-
 .dialog > fieldset {
     background: url(toolbar.png) #7388a5 repeat-x;
-}
-
-.dialog > fieldset > h1 {
-    margin: 0 10px 0 10px;
-    padding: 0;
-    font-size: 20px;
-    font-weight: bold;
-    color: #FFFFFF;
-    text-shadow: rgba(0, 0, 0, 0.4) 0px -1px 0;
-    text-align: center;
-}
-
-.dialog > fieldset > label {
-    position: absolute;
-    margin: 16px 0 0 6px;
-    font-size: 14px;
-    color: #999999;
-}
-
-input:not(input[type|=radio]):not(input[type|=checkbox]) {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    width: 100%;
-    margin: 8px 0 0 0;
-    padding: 6px 6px 6px 44px;
-    font-size: 16px;
-    font-weight: normal;
 }
 
 /************************************************************************************************/
