@@ -12,6 +12,13 @@ body {
 	*/
 }
 
+li > a[selected], li > a:active {
+    background-image: url(listArrowSel.png), url(selection.png) !important;
+}
+
+li > a[selected="progress"] {
+    background-image: url(loading.gif), url(selection.png) !important;
+}
 
 /************************************************************************************************/
 
@@ -33,7 +40,7 @@ body > .toolbar {
 
 
 .whiteButton {
-    -webkit-border-image: url(../../whiteButton.png) 0 12 0 12;
+    -webkit-border-image: url(../default/whiteButton.png) 0 12 0 12;
     text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
 }
 
@@ -42,7 +49,7 @@ body > .toolbar {
 }
 
 .grayButton {
-    -webkit-border-image: url(../../grayButton.png) 0 12 0 12;
+    -webkit-border-image: url(../default/grayButton.png) 0 12 0 12;
     color: #FFFFFF;
 }
 
@@ -54,7 +61,7 @@ body > ul > li.group {
 }
 
 body > ul > li > a {
-    background: url(../../listArrow.png) no-repeat right center;
+    background: url(../default/listArrow.png) no-repeat right center;
 }
 
 /************************************************************************************************/
@@ -71,7 +78,7 @@ body > .panel {
 
 .toggle {
     border: 1px solid #888888;
-    background: #FFFFFF url(../../toggle.png) repeat-x;
+    background: #FFFFFF url(../default/toggle.png) repeat-x;
 }
 
 .toggle[toggled="true"] {
@@ -79,11 +86,11 @@ body > .panel {
 }
 
 .thumb {
-    background: #ffffff url(../../thumb.png) repeat-x;
+    background: #ffffff url(../default/thumb.png) repeat-x;
 }
 
 /************************************************************************************************/
-#theme-preloader {
-    display: none;
-    background-image: url(blueButton.png), url(../../listArrowSel.png), url(listGroup.png);
+#preloader {
+    background-image: url(../default/loading.gif), url(../defalt/selection.png),
+        url(blueButton.png), url(../default/listArrowSel.png), url(listGroup.png);
 }
