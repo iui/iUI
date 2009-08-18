@@ -6,6 +6,6 @@
 .backButtonImg {
   width: 50px;
   background: url(../img/back-img.png) no-repeat center left,
-              url(../../../iui/backButtonBack.png) repeat-x top left !important;
+              url(../../../iui/t/default/backButtonBack.png) repeat-x top left !important;
   color: rgba(0,0,0,0);
 }
