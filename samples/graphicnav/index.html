@@ -4,9 +4,13 @@
 <head>
   <title>iUI Graphic NavBar Sample</title>
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-  <style type="text/css" media="screen">@import "../../iui/iui.css";</style>
+<link rel="stylesheet" href="../../iui/iui.css" type="text/css" />
+<link rel="stylesheet" href="../../iui/iui-moz.css" type="text/css" />
+<link rel="stylesheet" title="Default" href="../../iui/t/default/default-theme.css"  type="text/css"/>
+<link rel="alternate stylesheet" title="iPhoneDevCamp" href="../../iui/t/ipdc/ipdc-theme.css"  type="text/css"/>
   <style type="text/css" media="screen">@import "css/navimg.css";</style>
   <script type="application/x-javascript" src="../../iui/iui.js"></script>
+<script type="application/x-javascript" src="../../iui/js/iui-theme-switcher.js"></script>
   <script type="text/javascript">
     iui.animOn = true;
   </script>
@@ -22,6 +26,7 @@
         <li><a href="#sub">Sub</a></li>
         <li><a href="#subimg">Sub (w/image)</a></li>
         <li><a href="#subLongName">SubWithReallyReallyLongName</a></li>
+        <li><a href="#themes">Theme Switcher</a></li>
     </ul>
 
     <ul id="sub" title="Sub" >
@@ -37,6 +42,18 @@
 
     <ul id="subLongName" title="SubWithReallyReallyLongName">
     </ul>
+
+
+
+    <div id="themes" class="panel" title="Theme Switcher">
+        <h2>Theme Switcher</h2>
+        <form id="theme-form" onsubmit="return iui.ts.themeSubmit(this)" method="">
+            <select onchange="return iui.ts.themeSelect(this)" name="themeSelect" size="1">
+                <option>Default</option>
+                <option>iPhoneDevCamp</option>
+            </select>
+        </form>
+    </div>
 
 </body>
 
