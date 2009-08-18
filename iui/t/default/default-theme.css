@@ -8,7 +8,7 @@ li > a[selected], li > a:active {
 }
 
 li > a[selected="progress"] {
-    background-image: url(loading.gif), url(selection.png) !important;
+    background-image: url(../default/loading.gif), url(selection.png) !important;
 }
 
 /************************************************************************************************/

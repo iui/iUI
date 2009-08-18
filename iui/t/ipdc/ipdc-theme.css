@@ -13,11 +13,11 @@ body {
 }
 
 li > a[selected], li > a:active {
-    background-image: url(listArrowSel.png), url(selection.png) !important;
+    background-image: url(../default/listArrowSel.png), url(../default/selection.png) !important;
 }
 
 li > a[selected="progress"] {
-    background-image: url(loading.gif), url(selection.png) !important;
+    background-image: url(../default/loading.gif), url(../default/selection.png) !important;
 }
 
 /************************************************************************************************/
@@ -82,7 +82,7 @@ body > .panel {
 }
 
 .toggle[toggled="true"] {
-    background: #194fdb url(toggleOn.png) repeat-x;
+    background: #194fdb url(../default/toggleOn.png) repeat-x;
 }
 
 .thumb {
