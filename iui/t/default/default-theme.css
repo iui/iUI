@@ -87,3 +87,15 @@ body > .panel {
     background-image: url(loading.gif), url(selection.png),
         url(blueButton.png), url(listArrowSel.png), url(listGroup.png);
 }
+
+.toolbar > h1.titleImg {
+  background: url(title-img.png) no-repeat top center;
+  color: rgba(0,0,0,0);
+}
+
+.backButtonImg {
+  width: 50px;
+  background: url(back-img.png) no-repeat center left,
+              url(backButtonBack.png) repeat-x top left !important;
+  color: rgba(0,0,0,0);
+}
