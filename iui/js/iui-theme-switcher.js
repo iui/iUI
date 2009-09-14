@@ -6,7 +6,6 @@
 iui.ts = {
 	themeSelect: function(select)
 	{
-		console.log("select!!!!");
 		var curTheme = iui.ts.getTheme();
 		var index = select.selectedIndex;
 		var newTheme = select.options[index].value;
