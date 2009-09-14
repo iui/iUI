@@ -92,17 +92,19 @@ window.iui =
 			}
 		};
 
-		if (args)
+		method = method ? method.toUpperCase() : "GET";
+		if (args && method == "GET")
 		{
-			req.open(method || "GET", href, true);
+			href =  href + "?" + args.join("&");
+		}
+		req.open(method, href, true);
+		var data = null;
+		if (args && method != "GET")
+		{
 			req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-			req.send(args.join("&"));
+			data = args.join("&");
 		}
-		else
-		{
-			req.open(method || "GET", href, true);
-			req.send(null);
-		}
+		req.send(data);
 	},
 	
 	insertPages: function(nodes)
@@ -211,7 +213,7 @@ addEventListener("click", function(event)
 		else if (link.target == "_replace")
 		{
 			link.setAttribute("selected", "progress");
-			iui.showPageByHref(link.href, null, null, link, unselect);
+			iui.showPageByHref(link.href, null, "GET", link, unselect);
 		}
 		else if (iui.isNativeUrl(link.href))
 		{
@@ -224,7 +226,7 @@ addEventListener("click", function(event)
 		else if (!link.target)
 		{
 			link.setAttribute("selected", "progress");
-			iui.showPageByHref(link.href, null, null, null, unselect);
+			iui.showPageByHref(link.href, null, "GET", null, unselect);
 		}
 		else
 			return;
@@ -454,7 +456,7 @@ function preloadImages()
 
 function submitForm(form)
 {
-	iui.showPageByHref(form.action || "POST", encodeForm(form), form.method);
+	iui.showPageByHref(form.action, encodeForm(form), form.method || "GET");
 }
 
 function encodeForm(form)
