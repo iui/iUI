@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+    <servlet>
+        <servlet-name>gaelyk</servlet-name>
+        <servlet-class>groovyx.gaelyk.servlet.GaelykServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>template</servlet-name>
+        <servlet-class>groovyx.gaelyk.servlet.GaelykTemplateServlet</servlet-class>
+    </servlet>
+	
+    <servlet-mapping>
+        <servlet-name>gaelyk</servlet-name>
+        <url-pattern>*.groovy</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>template</servlet-name>
+<!-- 
+        <url-pattern>*.gtpl</url-pattern>
+ -->
+        <url-pattern>*.gtpl</url-pattern>
+    </servlet-mapping>
+
+<!--
+  Welcome file list causes GAE simulator (and  I'm assuming GAE itself)
+  to try to use files (e.g. iui/iui.css) as directories and append the
+  welcome file name to it!  Disable for now and  use meta http-equiv to
+  redirect from index.html to index.gtpl for the root.
+    <welcome-file-list>
+        <welcome-file>index.gtpl</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+-->
+
+</web-app>

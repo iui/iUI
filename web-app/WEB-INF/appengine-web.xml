@@ -1,0 +1,15 @@
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+    <application>iui-js</application>
+    <version>5</version>
+
+    <static-files>
+        <include path="/**.gif"/>
+        <include path="/**.png"/>
+        <include path="/**.js"/>
+        <include path="/**.css"/>
+        <include path="/**.html"/>
+        <exclude path="/WEB-INF/**.groovy" />
+        <exclude path="**.gtpl" />
+    </static-files>
+
+</appengine-web-app>
