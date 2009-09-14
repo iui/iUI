@@ -22,6 +22,7 @@
 <ul id="home" title="iUI.GAE" selected="true">
 	<li><a href="#about">About</a></li>
 	<li><a href="#samples">Samples</a></li>
+	<li><a href="#tests">Tests</a></li>
 	<li>
     <%  if (user) {  %>
       User: <%= user.nickname %>
@@ -30,6 +31,7 @@
     <%  }  %>
    </li>
 </ul>
+
 <ul id="samples" title="Samples">
 	<li><a target="_blank" href="samples/music/music.html">Music</a></li>
 	<li><a target="_blank" href="samples/prefs.html">Prefs</a></li>
@@ -37,6 +39,15 @@
 	<li><a target="_blank" href="samples/theaters/index.html">Theaters</a></li>
 	<li><a target="_blank" href="samples/graphicnav/index.html">Graphic NavBar</a></li>
 </ul>
+
+<ul id="tests" title="Tests">
+	<li><a target="_blank" href="test/complete.html">iUI (not) Complete</a></li>
+	<li><a target="_blank" href="test/features.html">Features</a></li>
+	<li><a target="_blank" href="test/inputs.html">Inputs</a></li>
+	<li><a target="_blank" href="test/link-types.html">Link Types</a></li>
+</ul>
+
+
 <div id="about" class="panel">
   <h2>iUI Demo running on Google App Engine using GAElyk</h2>
 </div>
