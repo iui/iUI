@@ -247,6 +247,7 @@ body > .panel {
     padding: 10px;
 }
 
+.panel > ul, 
 .panel > fieldset {
     position: relative;
     margin: 0 0 20px 0;
@@ -258,6 +259,7 @@ body > .panel {
     font-size: 16px;
 }
 
+.panel > ul li,
 .row  {
     position: relative;
     min-height: 42px;
@@ -266,6 +268,7 @@ body > .panel {
     text-align: right;
 }
 
+.panel > ul li:last-child,
 fieldset > .row:last-child {
     border-bottom: none !important;
 }
