@@ -17,7 +17,8 @@ body > *:not(.toolbar) {
     left: 0;
     top: 45px;
     width: 100%;
-    min-height: 372px;
+    height: 100%;           // Issue #124
+//    min-height: 372px;
     -webkit-transition-duration: 300ms;
     -webkit-transition-property: -webkit-transform;
     -webkit-transform: translateX(0%);
