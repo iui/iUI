@@ -1,3 +1,6 @@
 .DS_Store
 target
 local.build.properties
+web-app/WEB-INF/lib
+web-app/WEB-INF/classes
+web-app/samples.copy
