@@ -35,6 +35,7 @@
 	<li><a target="_blank" href="samples/prefs.html">Prefs</a></li>
 	<li><a target="_blank" href="samples/digg/index.html">Digg</a></li>
 	<li><a target="_blank" href="samples/theaters/index.html">Theaters</a></li>
+	<li><a target="_blank" href="samples/graphicnav/index.html">Graphic NavBar</a></li>
 </ul>
 <div id="about" class="panel">
   <h2>iUI Demo running on Google App Engine using GAElyk</h2>
