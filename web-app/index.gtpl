@@ -4,9 +4,10 @@
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
   <link rel="apple-touch-icon" href="iui/iui-logo-touch-icon.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <link rel="stylesheet" href="../../iui/iui.css" type="text/css" />
-  <link rel="stylesheet" href="../../iui/iui-moz.css" type="text/css" />
-  <link rel="stylesheet" title="Default" href="../../iui/t/default/default-theme.css"  type="text/css"/>
+  <link rel="stylesheet" href="iui/iui.css" type="text/css" />
+  <link rel="stylesheet" href="iui/iui-moz.css" type="text/css" />
+  <link rel="stylesheet" title="Default" href="iui/t/default/default-theme.css"  type="text/css"/>
+  <link rel="stylesheet" href="css/iui-panel-list.css" type="text/css" />
   <script type="application/x-javascript" src="iui/iui.js"></script>
 </head>
 <body>
@@ -49,7 +50,14 @@
 
 
 <div id="about" class="panel">
-  <h2>iUI Demo running on Google App Engine using GAElyk</h2>
+  <h2>iUI Samples/Tests on Google App Engine & Gaelyk</h2>
+  <ul>
+	<li><a target="_blank" href="http://code.google.com/p/iui/">iUI Project</a></li>
+	<li><a target="_blank" href="http://code.google.com/appengine/">Google App Engine</a></li>
+	<li><a target="_blank" href="http://gaelyk.appspot.com/">Gaelyk</a></li>
+	<li><a target="_blank" href="http://code.google.com/p/iui/wiki/iUIOnGoogleAppEngine">iUI on GAE wiki page</a></li>
+  </ul>
+
 </div>
 
 </body>
