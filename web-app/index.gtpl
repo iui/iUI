@@ -46,6 +46,7 @@
 	<li><a target="_blank" href="test/features.html">Features</a></li>
 	<li><a target="_blank" href="test/inputs.html">Inputs</a></li>
 	<li><a target="_blank" href="test/link-types.html">Link Types</a></li>
+	<li><a target="_blank" href="test/form-test.html">Forms</a></li>
 </ul>
 
 
