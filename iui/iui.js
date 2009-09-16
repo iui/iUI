@@ -34,20 +34,36 @@ window.iui =
 			if (currentDialog)
 			{
 				currentDialog.removeAttribute("selected");
+				// EVENT blur->currentDialog
+				sendEvent("blur", currentDialog);
 				currentDialog = null;
 			}
 
 			if (hasClass(page, "dialog"))
+			{
+			    // EVENT focus->page
+				sendEvent("focus", page);
 				showDialog(page);
+			}
 			else
 			{
+				sendEvent("load", page);    // 127(stylesheet), 128(script), 129(onload)
+			                                    // 130(onFocus), 133(loadActionButton)
 				var fromPage = currentPage;
+				// EVENT blur->currentPage
+				sendEvent("blur", currentPage);
 				currentPage = page;
+				// EVENT focus->currentPage
+				sendEvent("focus", page);
 
 				if (fromPage)
+				{
+				    if (backwards) sendEvent("unload", fromPage);
 					setTimeout(slidePages, 0, fromPage, page, backwards);
+				}
 				else
 					updatePage(page, fromPage);
+					
 			}
 		}
 	},
@@ -79,6 +95,7 @@ window.iui =
 		{
 			if (req.readyState == 4)
 			{
+			    // beforeDOMHook
 				if (replace)
 					replaceElementWithSource(replace, req.responseText);
 				else
@@ -245,6 +262,24 @@ addEventListener("click", function(event)
 	}
 }, true);
 
+
+function sendEvent(type, node, props)
+{
+    if (node)
+    {
+        var event = document.createEvent("UIEvent");
+        event.initEvent(type, false, false);  // no bubble, no cancel
+        if (props)
+        {
+            for (i in props)
+            {
+                event[i] = props[i];
+            }
+        }
+        node.dispatchEvent(event);
+    }
+}
+
 function getPageFromLoc()
 {
 	var page;
@@ -366,6 +401,8 @@ function slidePages(fromPage, toPage, backwards)
 
 	clearInterval(checkTimer);
 	
+	sendEvent("beforetransition", fromPage, {out:true});
+	sendEvent("beforetransition", toPage, {out:false});
 	if (canDoSlideAnim() && axis != 'y')
 	{
 	  slide2(fromPage, toPage, backwards, slideDone);
@@ -382,6 +419,9 @@ function slidePages(fromPage, toPage, backwards)
 	  checkTimer = setInterval(checkOrientAndLocation, 300);
 	  setTimeout(updatePage, 0, toPage, fromPage);
 	  fromPage.removeEventListener('webkitTransitionEnd', slideDone, false);
+	  sendEvent("aftertransition", fromPage, {out:true});
+      sendEvent("aftertransition", toPage, {out:false});
+
 	}
 }
 
