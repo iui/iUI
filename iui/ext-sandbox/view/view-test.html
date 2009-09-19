@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>View Test</title>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+  <link rel="apple-touch-icon-precomposed" href="../iui/iui-logo-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <link rel="stylesheet" href="../../iui.css" type="text/css" />
+  <link rel="stylesheet" href="../../iui-moz.css" type="text/css" />
+  <link rel="stylesheet" title="Default" href="../../t/default/default-theme.css"  type="text/css"/>
+  <script type="application/x-javascript" src="../../iui.js"></script>
+<!-- 
+  <script type="application/x-javascript" src="../../js/iui-event-log.js"></script>
+ -->
+  <script type="application/x-javascript" src="iui-views.js"></script>
+  <script type="application/x-javascript" src="view-test.js"></script>
+  <script language="JavaScript" type="text/javascript">
+  </script>
+</head>
+
+<body>
+    <div class="toolbar">
+        <h1 id="pageTitle"></h1>
+        <a id="backButton" class="button" href="#"></a>
+    </div>
+    
+    <ul id="main" title="ViewTest" selected="true">
+      <li><a href="#panel">Panel</a></li>
+    </ul>
+
+    <div id="panel" title="Panel(r/o)" class="panel">
+      <h2>Panel (read/only)</h2>
+      <fieldset>
+        <div class="row">
+            <label>Label</label>
+            <span>Text in a span</span>
+        </div>
+        <div class="row">
+            <label>Label 2</label>
+            <span>More text</span>
+        </div>
+      </fieldset>
+    </div>
+</body>
+
+</html>
