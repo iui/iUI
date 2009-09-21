@@ -32,10 +32,10 @@ body > *[selected="true"] {
 }
 
 a[selected], a:active {
-    background-color: #194fdb !important;
+    background-color: #1748c9 !important;	/* TG colour */
     background-image: url(listArrowSel.png), url(selection.png) !important;
-    background-repeat: no-repeat, repeat-x;
-    background-position: right center, left top;
+    background-repeat: no-repeat, repeat-x !important;	/* TG */
+    background-position: right center, left top !important;	/* TG */
     color: #FFFFFF !important;
 }
 
@@ -133,20 +133,25 @@ body[orient="landscape"] > .toolbar > h1 {
     color: inherit;
 }
 
+/* TG */ .grayButton[selected], .grayButton:active,
 .whiteButton {
     -webkit-border-image: url(whiteButton.png) 0 12 0 12;
     text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
+/* TG */ background:transparent !important;
 }
 
 .redButton {
     -webkit-border-image: url(redButton.png) 0 12 0 12;
+/* TG */ background:transparent !important;
     color:#fff;
     text-shadow: #7a0001 0 -1px 0;
 }
 
+/* TG */ .whiteButton[selected], .whiteButton:active,
 .grayButton {
     -webkit-border-image: url(grayButton.png) 0 12 0 12;
     color: #FFFFFF;
+/* TG */ background:transparent !important;
 }
 
 /************************************************************************************************/
@@ -260,6 +265,7 @@ body > .panel {
     background: #c8c8c8 url(pinstripes.png);
 }
 
+/*TG*/ .panel > ul, 
 .panel > fieldset {
     position: relative;
     margin: 0 0 20px 0;
@@ -272,6 +278,7 @@ body > .panel {
     font-size: 16px;
 }
 
+/*TG*/ .panel > ul li,
 .row  {
     position: relative;
     min-height: 42px;
@@ -280,6 +287,7 @@ body > .panel {
     text-align: right;
 }
 
+/*TG*/ .panel > ul li:last-child,
 fieldset > .row:last-child {
     border-bottom: none !important;
 }

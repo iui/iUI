@@ -25,34 +25,42 @@ var landscapeVal = "landscape";
 
 window.iui =
 {
-	animOn: false,	// Experimental slide animation with CSS transition disabled by default
+	animOn: true,	// TG
 
-	showPage: function(page, backwards)
+	showPage: function(page, backwards, trigger)	// TG trigger
 	{
 		if (page)
 		{
+			if (window.iui_ext)	window.iui_ext.injectEventMethods(page);	// TG
+			
 			if (currentDialog)
 			{
 				currentDialog.removeAttribute("selected");
+				if (window.iui_ext)	window.iui_ext.triggerUiEvent(currentDialog,"blur",trigger);	// TG
 				currentDialog = null;
 			}
 
-			if (hasClass(page, "dialog"))
-				showDialog(page);
-			else
-			{
-				var fromPage = currentPage;
-				currentPage = page;
+            if (hasClass(page, "dialog"))
+            {
+            	if (window.iui_ext)	window.iui_ext.triggerUiEvent(page,"focus",trigger);	// TG
+                showDialog(page);
+            }
+            else
+            {
+                var fromPage = currentPage;
+                if (window.iui_ext)	window.iui_ext.triggerUiEvent(fromPage,"blur",trigger);	// TG
+                currentPage = page;
+                if (window.iui_ext)	window.iui_ext.triggerUiEvent(currentPage,"focus",trigger);	// TG
 
-				if (fromPage)
-					setTimeout(slidePages, 0, fromPage, page, backwards);
-				else
-					updatePage(page, fromPage);
-			}
+                if (fromPage)
+                    setTimeout(slidePages, 0, fromPage, page, backwards);
+                else
+                    updatePage(page, fromPage);
+            }
 		}
 	},
 
-	showPageById: function(pageId)
+	showPageById: function(pageId,trigger)	// TG trigger
 	{
 		var page = $(pageId);
 		if (page)
@@ -62,7 +70,7 @@ window.iui =
 			if (backwards)
 				pageHistory.splice(index, pageHistory.length);
 
-			iui.showPage(page, backwards);
+			iui.showPage(page, backwards, trigger);	// TG trigger
 		}
 	},
 
@@ -200,7 +208,7 @@ addEventListener("click", function(event)
 		if (link.href && link.hash && link.hash != "#" && !link.target)
 		{
 			link.setAttribute("selected", "true");
-			iui.showPage($(link.hash.substr(1)));
+			iui.showPage($(link.hash.substr(1)),null,event);	// TG event
 			setTimeout(unselect, 500);
 		}
 		else if (link == $("backButton"))
@@ -212,7 +220,7 @@ addEventListener("click", function(event)
 		else if (link.target == "_replace")
 		{
 			link.setAttribute("selected", "progress");
-			iui.showPageByHref(link.href, null, null, link, unselect);
+			iui.showPageByHref(link.href, null, null, link, unselect,event);	// TG event
 		}
 		else if (iui.isNativeUrl(link.href))
 		{
@@ -225,7 +233,7 @@ addEventListener("click", function(event)
 		else if (!link.target)
 		{
 			link.setAttribute("selected", "progress");
-			iui.showPageByHref(link.href, null, null, null, unselect);
+			iui.showPageByHref(link.href, null, null, null, unselect,event);	// TG event
 		}
 		else
 			return;

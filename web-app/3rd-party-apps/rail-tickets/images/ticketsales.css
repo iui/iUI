@@ -5,6 +5,9 @@ body, .panel { width:320px !important; max-width:320px }*/
 /* CUSTOM HEADER */
 body > div.toolbar { background-image:url(logo.png), url(toolbar.png); background-position:top right, top left; background-repeat:no-repeat, repeat-x; }
 
+/* CUSTOM BACKBUTTON */
+#backButton {  -webkit-border-image: url(backButton.png) 0 8 0 14; }
+
 
 /* FORM STYLING */
 .row > .pair { padding: 0 10px 0 110px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; height:42px; }
@@ -24,7 +27,7 @@ body > div.toolbar { background-image:url(logo.png), url(toolbar.png); backgroun
 
 #scr_view { text-align:center }
 ul.ticket > li:first-child, ul.ticket > li:last-child { background-color:#4085bd !important; padding:2px 6px; }
-ul.ticket > li:first-child  { -webkit-border-top-right-radius:10px; -webkit-border-top-left-radius:10px; border-top-width:1px !important; background:#4085bd url(images/ticket.png) center left no-repeat !important; text-align:right; vertical-align:middle; }
+ul.ticket > li:first-child  { -webkit-border-top-right-radius:10px; -webkit-border-top-left-radius:10px; border-top-width:1px !important; background:#4085bd url(ticket.png) center left no-repeat !important; text-align:right; vertical-align:middle; }
 ul.ticket > li:last-child { -webkit-border-bottom-right-radius:10px; -webkit-border-bottom-left-radius:10px; border-bottom-width:1px !important; }
 ul.ticket > li { text-align:left; background-color:#fff; padding:3px 8px; height:auto !important; min-height:10px !important; border:1px solid #aaa; border-width:0 1px; }
 ul.ticket > li:nth-child(odd) { background-color:#eee; }
