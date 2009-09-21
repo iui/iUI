@@ -1,0 +1,64 @@
+/* iUI EXTENSIONS */
+.panel > ul { margin:5px 0 15px 0; padding:0; list-style:none; -webkit-border-radius:0; border-width:0; background-color:transparent; }
+.panel > ul > li { margin:0; padding:0; border-width:0; }
+.panel > ul > li a, .row > a { text-align:left; padding:11px 0 9px 10px; background:url(listArrow.png) center right no-repeat; display:block; text-decoration:none; overflow:hidden; text-overflow:ellipsis; color:#000; font-weight:bold; font-size:17px; }
+.panel > ul > li a { margin:0; border:1px solid #aaa; border-bottom-width:0 !important; margin-top:-1px; background-color:#fff; }
+.panel > ul > li:first-child a { -webkit-border-top-right-radius:10px; -webkit-border-top-left-radius:10px; }
+.panel > ul > li:last-child a { -webkit-border-bottom-right-radius:10px; -webkit-border-bottom-left-radius:10px; border-bottom-width:1px !important; }
+.panel > ul > li a img { vertical-align:middle; margin-left:-4px; }
+
+.panel > form > div img { vertical-align:middle; margin-left:-4px; }
+
+body > .text { box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; padding:10px 7px; background-color:#fff; min-height:408px;}
+.text p { margin-top:5px; }
+.text p:first-child { margin-top:0; }
+
+.panel > p { text-align:center; margin:10px 10px 0 10px; color:#4d4d70; text-shadow:rgba(255, 255, 255, 0.75) 2px 2px 0; }
+
+
+/* FORM STYLING */
+.panel a { position:relative; }
+.panel var { position:absolute; right:23px; top:12px; font-size:14px; color:#666; font-weight:normal; font-style:normal; }
+a[selected] var, a:active var, a[selected] .details, a:active .details { color:#ccf }
+.panel a > small { display:block; color:#99a; }
+a[selected] small, a:active small { color:#bbc }
+
+label img { margin-bottom:-5px; }
+fieldset.radiogroup label { display:block; text-align:left; width:94%; }
+fieldset.radiogroup input[type="radio"] { display:none; }
+fieldset.radiogroup label > input:checked { display:block !important; float:right; -khtml-appearance:none; width:20px; height:27px; background:url(tick.png) bottom right no-repeat; }
+
+
+/* SORTED LISTS */
+ul.az > nav { display:block; position:absolute; top:6px; right:0; font-size:11px; width:4em; z-index:1000; }
+ul.az > nav > div { display:block; text-decoration:none; color:#666; text-align:center; padding-bottom:1px; font-weight:bold; }
+ul.az > li.selected { background:url(tick.png) 90% 50% no-repeat; }
+ul.az > li > a { display:inline; background:none; }
+
+
+/* DATE PICKER */
+#_dptable { background-color:#e3e2e5; border:1px solid #666; padding:0; margin:0 auto; -webkit-border-radius:2px; -moz-border-radius:2px; }
+#_dptable tr, #_dptable col { padding:0; margin:0 }
+#_dptable th { font-size:12px; text-align:center; padding:5px 0 0 0; margin:0; border-bottom:1px solid #b2b5bc; color:#37424d; background:-webkit-gradient(linear, left top, left bottom, from(#eeedf0), to(#ceced2)); }
+#_dptable tr > td { font-size:22px; font-weight:bold; text-align:center; width:46px; padding:0; height:40px; margin:0; color:#37424d; border:1px solid #b2b5bc; border-top-color:#fff; border-right-color:#fff; }
+#_dptable tr > td.other { opacity:0.3; }
+#_dptable tr > td.outofrange { opacity:0.2; }
+#_dptable tr > td.selected { background:#d33; /*-webkit-gradient(linear,left top,left bottom,from(#f00),to(#c00));*/ color:#fff; }
+#_dptable td.today { background-color:#b0abbf; color:#000; border-color:#000; }
+#_datepicker #_dptable col.sat td, #_datepicker #_dptable col.sun td { background-color:#cecaaf; }
+#_datepicker p, #dp_table th, #dp_table tr > td { text-shadow:rgba(255, 255, 255, 0.7) 0 1px 0; }
+
+#_datepicker .wk2 td { background-color:#dbdbde }
+#_datepicker .wk3 td { background-color:#d5d5d9 }
+#_datepicker .wk4 td { background-color:#d0cfd4 }
+#_datepicker .wk5 td { background-color:#c9c8ce }
+#_datepicker .wk6 td { background-color:#c8c8cd }
+
+#_datepicker p { padding-bottom:3px; margin:0; min-height:33px; /*background:-webkit-gradient(linear, left top, left bottom, from(#c8c8cd), to(#e3e2e5));*/ font-size:22px; font-weight:bold; text-align:center; }
+#_datepicker p > .back, #_datepicker p > .fwd { width:36px; height:30px; display:block; background-repeat:no-repeat; background-position:center center; }
+#_datepicker p > .back { background-image:url(dpBack.png); float:left; }
+#_datepicker p > .fwd { background-image:url(dpFwd.png); float:right; }
+
+
+/* DESKTOP HACKS */
+ul.az li, fieldset.radiogroup label, #_dptable td { cursor:pointer; }

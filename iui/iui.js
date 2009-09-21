@@ -25,12 +25,14 @@ var landscapeVal = "landscape";
 
 window.iui =
 {
-	animOn: false,	// Experimental slide animation with CSS transition disabled by default
+	animOn: true,	// TG
 
 	showPage: function(page, backwards)
 	{
 		if (page)
 		{
+			if (window.iui_ext)	window.iui_ext.injectEventMethods(page);	// TG
+			
 			if (currentDialog)
 			{
 				currentDialog.removeAttribute("selected");
