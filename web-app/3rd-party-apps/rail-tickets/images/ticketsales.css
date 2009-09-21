@@ -1,0 +1,57 @@
+/* TODO for screenshots
+body, .panel { width:320px !important; max-width:320px }*/
+
+
+/* CUSTOM HEADER */
+body > div.toolbar { background-image:url(logo.png), url(toolbar.png); background-position:top right, top left; background-repeat:no-repeat, repeat-x; }
+
+
+/* FORM STYLING */
+.row > .pair { padding: 0 10px 0 110px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; height:42px; }
+.row > .pair > input { box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; margin:0; border:none; height:42px; background:none; width:40%; padding:12px 5px 0 5px}
+.row > .pair > input:first-child { text-align:right; }
+
+
+/* TICKET STYLING */
+.from, .destination { display:block; overflow:hidden; text-overflow:ellipsis; }
+.destination { padding-left:22px; background:url(arrow_fromto.png) 6px top no-repeat; }
+.details { float:right; margin-right:23px; width:120px; font-size:14px; color:#666; font-weight:normal; }
+.details span { display:block; text-align:center; }
+.details img { vertical-align:bottom; }
+.details .datetime { margin-top:4px; }
+.date:before { content:url(summary_date.png); vertical-align:middle; padding-right:4px; }
+.time:before { content:url(summary_time.png); vertical-align:middle; padding-left:8px; padding-right:4px; }
+
+#scr_view { text-align:center }
+ul.ticket > li:first-child, ul.ticket > li:last-child { background-color:#4085bd !important; padding:2px 6px; }
+ul.ticket > li:first-child  { -webkit-border-top-right-radius:10px; -webkit-border-top-left-radius:10px; border-top-width:1px !important; background:#4085bd url(images/ticket.png) center left no-repeat !important; text-align:right; vertical-align:middle; }
+ul.ticket > li:last-child { -webkit-border-bottom-right-radius:10px; -webkit-border-bottom-left-radius:10px; border-bottom-width:1px !important; }
+ul.ticket > li { text-align:left; background-color:#fff; padding:3px 8px; height:auto !important; min-height:10px !important; border:1px solid #aaa; border-width:0 1px; }
+ul.ticket > li:nth-child(odd) { background-color:#eee; }
+img.barcode { -webkit-border-radius:10px; border:1px solid #aaa; background-color:#fff; text-align:center; padding:8px; margin:0 0 20px 0; }
+
+.panel > .review { text-align:left; margin:4px 10px 12px 10px; }
+.review var { display:block; position:relative; color:#4D4D70; right:auto; top:auto; }
+.review .journeyoptions > var { margin-left:5px; }
+.review .from { margin-top:3px; }
+.review .destination { margin-bottom:3px; }
+
+.journeyoptions > var { display:block; padding:2px 0 1px 24px; background-position:4px center; background-repeat:no-repeat; min-height:18px; }
+.rc_youth:before { content:url(RC_YOUTH.png); vertical-align:-6px; margin-right:.3em; }
+.rc_family:before { content:url(RC_FAMILY.png); vertical-align:-6px; margin-right:.3em; }
+.rc_senior:before { content:url(RC_SENIOR.png); vertical-align:-6px; margin-right:.3em; }
+.rc_disabled:before { content:url(RC_DISABLED.png); vertical-align:-6px; margin-right:.3em; }
+.rc_hm:before { content:url(RC_HM.png); vertical-align:-6px; margin-right:.3em; }
+.rc_network:before { content:url(RC_NETWORK.png); vertical-align:-6px; margin-right:.3em; }
+.rc_none:before { content:url(RC_NONE.png); vertical-align:-6px; margin-right:.3em; }
+.tc_1st:before { content:url(TC_1ST.png); vertical-align:-6px; margin-right:.3em; }
+.tc_std:before { content:url(TC_STD.png); vertical-align:-6px; margin-right:.3em; }
+.pt_adult:before { content:url(PT_ADULT.png); vertical-align:-3px; margin-right:.3em; }
+.pt_child:before { content:url(PT_CHILD.png); vertical-align:-3px; margin-right:.3em; }
+.tt_day:before { content:url(TT_DAY.png); vertical-align:-3px; margin-right:.3em; }
+.tt_month:before { content:url(TT_MONTH.png); vertical-align:-3px; margin-right:.3em; }
+.tt_single:before { content:url(TT_SINGLE.png); vertical-align:-3px; margin-right:.3em; }
+
+
+/* ICON TWEAKING */
+#scr_mainMenu > ul > li a img { margin:2px 0 -3px 0; }
