@@ -1,4 +1,7 @@
-REL-0.30 (TBD)
+REL-0.40-prototype1 with Masabi sample
+ * Work in progress
+
+REL-0.30 2009-08-06
 
 * CSS transitions for slide animation (for backward compatibility disabled by default) (Issue 97)
 * Support javascript: URLs in links (Issue 134)
@@ -7,7 +10,6 @@ REL-0.30 (TBD)
 * Allow outbound links to anchor tags (Issue 82)
 * If HTML page is loaded with anchor to a loaded page/fragment/view, scroll to it (Issue 107)
 * Fix problem with hash and URLs like http://[site]/[webapp]/page.php/pageName.htm (Issue 122)
-* TBD
 
 REL-0.20 2009-05-08
 
