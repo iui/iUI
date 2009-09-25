@@ -25,7 +25,7 @@ var landscapeVal = "landscape";
 
 window.iui =
 {
-	animOn: true,	// TG
+	animOn: true,
 
 	showPage: function(page, backwards)
 	{
