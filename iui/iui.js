@@ -207,7 +207,25 @@ window.iui =
 		new RegExp("^http:\/\/www.youtube.com\/v\/"),
 		new RegExp("^javascript:"),
 
-	]
+	],
+	hasClass: function(self, name)
+	{
+		var re = new RegExp("(^|\\s)"+name+"($|\\s)");
+		return re.exec(self.getAttribute("class")) != null;
+	},
+		
+	addClass: function(self, name)
+	{
+	  if (!iui.hasClass(self,name)) self.className += " "+name;
+	},
+		
+	removeClass: function(self, name)
+	{
+	  if (iui.hasClass(self,name)) {
+		  var reg = new RegExp('(\\s|^)'+name+'(\\s|$)');
+		self.className=self.className.replace(reg,' ');
+	  }
+	}
 };
 
 // *************************************************************************************************
@@ -527,7 +545,9 @@ function preloadImages()
 
 function submitForm(form)
 {
-	iui.showPageByHref(form.action, encodeForm(form), form.method || "GET");
+    iui.addClass(form, "progress");
+    iui.showPageByHref(form.action, encodeForm(form), form.method || "GET", null, clear);
+    function clear() {   iui.removeClass(form, "progress"); }
 }
 
 function encodeForm(form)
@@ -558,8 +578,7 @@ function findParent(node, localName)
 
 function hasClass(self, name)
 {
-	var re = new RegExp("(^|\\s)"+name+"($|\\s)");
-	return re.exec(self.getAttribute("class")) != null;
+	iui.hasClass(self,name);
 }
 
 function replaceElementWithFrag(replace, frag)
