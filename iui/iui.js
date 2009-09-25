@@ -118,7 +118,7 @@ window.iui =
         method = method ? method.toUpperCase() : "GET";
         if (args && method == "GET")
         {
-          url =  url + "?" + args.join("&");
+          url =  url + "?" + iui.param(args);
         }
         xhr.open(method, url, true);
         if (cb)
