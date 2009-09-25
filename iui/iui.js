@@ -128,7 +128,7 @@ window.iui =
         var data = null;
         if (args && method != "GET")
         {
-            req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             data = iui.param(args);
         }
         xhr.send(data);
