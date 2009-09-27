@@ -23,6 +23,7 @@
 <ul id="home" title="iUI.GAE" selected="true">
 	<li><a href="#about">About</a></li>
 	<li><a href="#samples">Samples</a></li>
+	<li><a href="#3rd-party">3rd Party Samples</a></li>
 	<li><a href="#tests">Tests</a></li>
 	<li>
     <%  if (user) {  %>
@@ -39,6 +40,10 @@
 	<li><a target="_blank" href="samples/digg/index.html">Digg</a></li>
 	<li><a target="_blank" href="samples/theaters/index.html">Theaters</a></li>
 	<li><a target="_blank" href="samples/graphicnav/index.html">Graphic NavBar</a></li>
+</ul>
+
+<ul id="3rd-party" title="3rd Party Samples">
+	<li><a target="_blank" href="3rd-party-apps/rail-tickets/index.html">Rail Tickets</a></li>
 </ul>
 
 <ul id="tests" title="Tests">

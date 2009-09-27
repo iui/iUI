@@ -33,9 +33,9 @@ body > *[selected="true"] {
 }
 
 li > a[selected], li > a:active {
-    background-color: #194fdb !important;
-    background-repeat: no-repeat, repeat-x;
-    background-position: right center, left top;
+    background-color: #1748c9 !important;	/* TG colour */
+    background-repeat: no-repeat, repeat-x !important;	/* TG */
+    background-position: right center, left top !important;	/* TG */
     color: #FFFFFF !important;
 }
 
@@ -128,17 +128,22 @@ body[orient="landscape"] > .toolbar > h1 {
     color: inherit;
 }
 
+/* TG */ .grayButton[selected], .grayButton:active,
 .whiteButton {
     text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
+/* TG */ background:transparent !important;
 }
 
 .redButton {
+/* TG */ background:transparent !important;
     color:#fff;
     text-shadow: #7a0001 0 -1px 0;
 }
 
+/* TG */ .whiteButton[selected], .whiteButton:active,
 .grayButton {
     color: #FFFFFF;
+/* TG */ background:transparent !important;
 }
 
 /************************************************************************************************/

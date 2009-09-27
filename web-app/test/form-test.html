@@ -10,6 +10,22 @@
   <link rel="stylesheet" href="../../iui/iui.css" type="text/css" />
   <link rel="stylesheet" href="../../iui/iui-moz.css" type="text/css" />
   <link rel="stylesheet" title="Default" href="../../iui/t/default/default-theme.css"  type="text/css"/>
+  <style type="text/css">
+    div.spinner {
+       visibility: hidden;
+       background: black url(../iui/t/default/loading.gif) no-repeat center center;
+       position: absolute;
+       top: 0px;
+       left: 0px;
+       height: 100%;
+       width: 100%;
+       opacity: 0.5;
+    }
+    
+    form.progress div.spinner {
+        visibility: visible;  // need better styling here, placeholder
+    }
+  </style>
   <script type="application/x-javascript" src="../iui/iui.js"></script>
   <script language="JavaScript" type="text/javascript">
   </script>
@@ -27,6 +43,7 @@
       <li><a href="#POST">POST</a></li>
       <li><a href="#get">get</a></li>
       <li><a href="#post">post</a></li>
+      <li><a href="#delay">default w/delay</a></li>
     </ul>
     
     <form id="def" title="default" class="panel" action="form-echo.gtpl">
@@ -41,6 +58,7 @@
             </div>
         </fieldset>
         <a class="whiteButton" type="submit">Submit</a>
+        <div class="spinner"></div>
     </form>
 
     <form id="GET" title="GET" class="panel" action="form-echo.gtpl" method="GET">
@@ -55,6 +73,7 @@
             </div>
         </fieldset>
         <a class="whiteButton" type="submit">Submit</a>
+        <div class="spinner"></div>
     </form>
 
     <form id="POST" title="POST" class="panel" action="form-echo.gtpl" method="POST">
@@ -69,6 +88,7 @@
             </div>
         </fieldset>
         <a class="whiteButton" type="submit">Submit</a>
+        <div class="spinner"></div>
     </form>
 
     <form id="get" title="get" class="panel" action="form-echo.gtpl" method="get">
@@ -83,6 +103,7 @@
             </div>
         </fieldset>
         <a class="whiteButton" type="submit">Submit</a>
+        <div class="spinner"></div>
     </form>
 
     <form id="post" title="post" class="panel" action="form-echo.gtpl" method="post">
@@ -96,7 +117,27 @@
                 <input type="text" name="parm2" value="value 2"/>
             </div>
         </fieldset>
+        <div class="spinner"></div>
         <a class="whiteButton" type="submit">Submit</a>
+    </form>
+
+    <form id="delay" title="delay" class="panel" action="form-echo.gtpl">
+        <fieldset>
+            <div class="row">
+                <label>Parm1:</label>
+                <input type="text" name="parm1" value="value 1"/>
+            </div>
+            <div class="row">
+                <label>Parm2:</label>
+                <input type="text" name="parm2" value="value 2"/>
+            </div>
+            <div class="row">
+                <label>delay:</label>
+                <input type="text" name="delay" value="2"/>(seconds)
+            </div>
+        </fieldset>
+        <a class="whiteButton" type="submit">Submit</a>
+        <div class="spinner"></div>
     </form>
 
 </body>

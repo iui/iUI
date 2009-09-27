@@ -1,3 +1,10 @@
+REL-0.40-prototype1
+
+ * Work in progress
+ * Add events to iui/iui.js
+ * Add iui-views extension
+ * Integrate masabi rail-tickets and iui_ext
+
 REL-0.30 2009-08-06
 
 * CSS transitions for slide animation (for backward compatibility disabled by default) (Issue 97)

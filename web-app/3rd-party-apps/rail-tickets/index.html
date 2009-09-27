@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en"><!-- manifest="html5.manifest"-->
+<head>
+<title>Rail Tickets</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css" media="screen">
+@import "../../iui/iui.css";
+@import "../../iui/t/default/default-theme.css";
+@import "../../iui/ext-sandbox/masabi/t/default/iui_ext.css";
+@import "images/ticketsales.css";
+</style>
+<script type="application/x-javascript" src="../../iui/ext-sandbox/masabi/iui_ext.js"></script>
+<script type="application/x-javascript" src="../../iui/iui.js"></script>
+<script type="application/x-javascript" src="ticketsales.js"></script>
+<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="iphone.jpg"/>
+</head>
+
+<body>
+<div class="toolbar">
+<a id="backButton" class="button" href="#"></a>
+<h1 id="pageTitle"></h1>
+</div>
+
+<div id="scr_mainMenu" class="panel" title="Rail Ticketing" selected="true">
+<ul>
+<li><a href="#scr_buy"><img src="images/mainmenu_buy.png"> Buy a Ticket</a></li>
+<li><a href="#scr_info"><img src="images/mainmenu_info.png"> Info</a></li>
+</ul>
+<h2>Your Current Tickets</h2>
+<ul>
+<li><a href="#scr_view">
+<span class="details">
+ <span class="options"><img src="images/TT_DAY.png" title="Day Return"> <img src="images/TC_1ST.png" title="1st class"> <img src="images/RC_YOUTH.png" title="Youth Rail Card"> <img src="images/PT_ADULT.png" title="Adult traveller"></span>
+ <span class="datetime">22/10/09 11:23</span>
+</span><span class="from">Aberdeen</span><span class="destination">London Liverpool St</span></a></li>
+</ul>
+<p style="margin-top:30px">Welcome to the rail ticket sales application, which manages your tickets and allows you to buy more.</p>
+</div>
+
+
+
+<!-- View Tickets Section -->
+<div id="scr_view" class="panel" title="View Ticket">
+<ul class="ticket">
+<li><img src="images/toc.png"></li>
+<li><span class="date">Friday, 22nd Oct 2009</span></li>
+<li><span class="time">11:23</span></li>
+<li><span class="from">Aberdeen</span><span class="destination">London Liverpool St</span></li>
+<li class="journeyoptions">
+<span class="tt_day">Day Return</span>
+<span class="tc_1st">1st Class</span>
+<span class="rc_youth">Youth Rail Card</span>
+<span class="pt_adult">Adult Traveller</span>
+</li>
+<li>&nbsp;</li>
+</ul>
+
+<img src="images/aztec.png" width="287" height="287" class="barcode">
+
+<p>Note: only delete a ticket when you left the station after the final train of the journey!</p>
+<a class="grayButton" type="submit" href="#">Delete This Ticket</a>
+</div>
+
+
+
+<!-- Buy Tickets section -->
+<div id="scr_buy" class="panel" title="Buy Ticket">
+<ul>
+<li class="newJourney"><a href="#scr_buy_select"><img src="images/mainmenu_buy.png"> New Journey</a></li>
+</ul>
+<h2>Repeat Previous Journeys:</h2>
+<ul>
+<li><a href="#scr_buy_select"><span class="from">Aberdeen</span><span class="destination">London</span></a></li>
+<li><a href="#scr_buy_select"><span class="from">Cambridge</span><span class="destination">Leeds</span></a></li>
+<li><a href="#scr_buy_select"><span class="from">Glasgow Central</span><span class="destination">Gleneagles</span></a></li>
+</ul>
+</div>
+
+
+<form id="scr_buy_select" class="panel" title="Journey">
+<fieldset>
+<div class="row"><label for="buy_fromStation">From</label><select id="buy_fromStation" class="az" name="from">
+<option value="ABD">Aberdeen</option>
+<option value="ABW">Aberystwyth</option>
+<option value="BGR">Bognor Regis</option>
+<option value="CAM">Cambridge</option>
+<option value="CAN">Canterbury</option>
+<option value="CUL">Culloden</option>
+<option value="ELY">Ely</option>
+<option value="EXE">Exeter</option>
+<option value="FAR">Farnsworth</option>
+</select></div>
+<div class="row"><a href="#az__buy_fromStation" onClick="window.ticketsales.destination()">To <input type="hidden" name="destination" value="..."/><var id="from-whatever" class="_lookup" title="destination">...</var></a></div>
+<div class="row">
+<label for="buy_journeytype">Journey Type</label>
+<select id="buy_journeytype" name="journeytype" class="panel">
+<option value="tt_single" selected>Single</option>
+<option value="tt_day">Day Return</option>
+<option value="tt_month">Month Return</option>
+</select>
+</div>
+<div class="row"><label for="buy_travelDate">Outbound Date</label> <input name="travelDate" id="buy_travelDate" type="date" class="date future today" value="Today"></div>
+</fieldset>
+<fieldset>
+<div class="row">
+<label for="buy_travellertype">Traveller</label>
+<select id="buy_travellertype" name="travellertype" class="panel">
+<option value="pt_adult" selected>Adult Traveller</option>
+<option value="pt_child">Child Traveller</option>
+</select>
+</div>
+<div class="row">
+<label for="buy_travellerclass">Class</label>
+<select id="buy_travellerclass" name="travellerclass" class="panel">
+<option value="tc_1st">1st Class</option>
+<option value="tc_std" selected>Standard Class</option>
+</select>
+</div>
+<div class="row">
+<label for="buy_railcard">Railcard</label>
+<select id="buy_railcard" name="railcard" class="panel">
+<option value="rc_none" selected>No Railcard</option>
+<option value="rc_youth">Youth</option>
+<option value="rc_family">Family</option>
+<option value="rc_senior">Senior</option>
+<option value="rc_disabled">Disabled</option>
+<option value="rc_network">Network</option>
+<option value="rc_hm">HM Services</option>
+</select>
+</div>
+</fieldset>
+<a class="whiteButton" type="submit" href="#scr_buy_pricelist">Retrieve Prices</a>
+</form>
+
+<form id="scr_buy_pricelist" class="panel" title="Price">
+<p class="review">
+<var class="date" title="travelDate">Friday, 22nd Oct 2009</var>
+<var id="from-scr_but_pricelist" title="from" class="from _lookup">.</var>
+ <var id="from-dest-scr_but_pricelist" title="destination" class="destination _lookup">.</var>
+</p>
+<ul>
+<li><a href="#scr_buy_cardSelect">Anytime <var>&pound;20.00</var><small>Valid Anytime</small></a></li>
+<li><a href="#scr_buy_cardSelect">Off Peak <var>&pound;15.00</var><small>Valid from 08:00 - 10:00</small></a></li>
+<li><a href="#scr_buy_cardSelect">Spr Off Peak <var>&pound;10.00</var><small>Valid after 22:00</small></a></li>
+</ul>
+</form>
+
+<div id="scr_buy_cardSelect" class="panel" title="Card Details">
+<ul>
+<li><a href="#scr_buy_cardDetails">New Card</a></li>
+</ul>
+<h2>Use Previous Card:</h2>
+<ul>
+<li><a href="#scr_buy_review"><img src="images/card_visa.png"> **** **** **** 1111</a></li>
+</ul>
+</div>
+
+<form id="scr_buy_cardDetails" class="panel" title="Card Details">
+<!-- TODO enable cancel button -&gt; home -->
+<h2>Review The Ticket:</h2>
+<p class="review">
+<var class="date" title="travelDate">Friday, 22nd Oct 2009</var>
+<!-- var class="time" title="time">11:23</var -->
+<var class="from _lookup" title="from" id="from-scr_buy_cardDetails">.</var> <var class="destination _lookup" title="destination" id="from-dest-scr_buy_cardDetails">.</var>
+<input type="hidden" name="from" value=""/><input type="hidden" name="destination" value=""/>
+<span class="journeyoptions">
+ <input type="hidden" name="journeytype" value=""/><var id="journeytype-scr_buy_cardDetails" class="_lookup" title="journeytype">.</var>
+ <input type="hidden" name="travellerclass" value=""/><var id="travellerclass-scr_buy_cardDetails" class="_lookup" title="travellerclass">.</var>
+ <input type="hidden" name="travellertype" value=""/><var id="travellertype-scr_buy_cardDetails" class="_lookup" title="travellertype">.</var>
+ <input type="hidden" name="railcard" value=""/><var id="railcard-scr_buy_cardDetails" class="_lookup" title="railcard">.</var>
+</span>
+</p>
+<h2>Enter Card Details:</h2>
+<fieldset>
+<div class="row"><label>Name</label><input type="text" name="cardName"></div>
+<div class="row"><label>Number</label><input type="number" name="cardNumber" maxlength="16"></div>
+<div class="row"><label>Expiry Date</label><div class="pair"><input type="number" name="cardExpiryMonth" maxlength="2"> / <input type="number" name="cardExpiryYear" maxlength="2"></div></div>
+<div class="row"><label>Start Date</label><div class="pair"><input type="number" name="cardExpiryMonth" maxlength="2"> / <input type="number" name="cardExpiryYear" maxlength="2"></div></div>
+<div class="row"><label><img src="images/cvv.png" alt="CVV" title="CVV" style="margin:2px 0;"></label><input type="number" name="cardCVV" maxlength="3"></div>
+</fieldset>
+<a class="whiteButton" type="submit" href="#scr_view">Purchase Ticket</a>
+</form>
+
+<form id="scr_buy_review" class="panel" title="Review Ticket">
+<!-- TODO enable cancel button -&gt; home -->
+<h2>Review The Ticket:</h2>
+<p class="review">
+<var class="date" title="travelDate">Friday, 22nd Oct 2009</var>
+<var class="time" title="time">11:23</var>
+<var class="from _lookup" title="from" id="from-scr_buy_cardDetails">.</var> <var class="destination" title="destination" id="from-dest-scr_buy_cardDetails">.</var>
+<input type="hidden" name="from" value=""/><input type="hidden" name="destination" value=""/>
+<span class="journeyoptions">
+ <input type="hidden" name="journeytype" value=""/><var id="journeytype-scr_buy_cardDetails" class="_lookup" title="journeytype">.</var>
+ <input type="hidden" name="travellerclass" value=""/><var id="travellerclass-scr_buy_cardDetails" class="_lookup" title="travellerclass">.</var>
+ <input type="hidden" name="travellertype" value=""/><var id="travellertype-scr_buy_cardDetails" class="_lookup" title="travellertype">.</var>
+ <input type="hidden" name="railcard" value=""/><var id="railcard-scr_buy_cardDetails" class="_lookup" title="railcard">.</var>
+</span>
+</p>
+<h2>Authorise Card Reuse:</h2>
+<fieldset>
+<div class="row"><label>Number</label><input type="number" name="cardNumber" maxlength="16" value="************1111" disabled="true"></div>
+<div class="row"><label><img src="images/cvv.png" alt="CVV" title="CVV" style="margin:2px 0;"></label><input type="number" name="cardCVV" maxlength="3"></div>
+</fieldset>
+<a class="whiteButton" type="submit" href="#scr_view">Purchase Ticket</a>
+</form>
+
+
+
+
+<!-- Info Section -->
+<div id="scr_info" class="panel" title="Information">
+<ul>
+<li><a href="#scr_info_introduction"><img src="images/mainmenu_info.png"> Introduction</a></li>
+<li><a href="#scr_info_help"><img src="images/mainmenu_info.png"> Help</a></li>
+<li><a href="#scr_info_tcs"><img src="images/mainmenu_info.png"> Terms &amp; Conditions</a></li>
+<li><a href="#scr_info_security"><img src="images/mainmenu_info.png"> Security</a></li>
+<li><a href="#scr_info_about"><img src="images/mainmenu_info.png"> About</a></li>
+</ul>
+</div>
+
+<div id="scr_info_introduction" class="text" title="Introduction">
+<p>Welcome to the Masabi ticket purchase demo.</p>
+<p>This application allows you to buy and store your train tickets.</p>
+</div>
+
+<div id="scr_info_help" class="text" title="Help">
+<p>This application downloads mobile tickets and stores them, so that you can quickly access them during your journey.</p>
+<p>Select &ldquo;Buy Tickets&rdquo; to start the purchase process.</p>
+<p>Once a ticket is downloaded, it will be available on your phone until the day after it expires, based on your phone&rsquo;s clock and date settings.</p>
+<p>For support, call 0845X XXXXXX.</p>
+</div>
+
+<div id="scr_info_tcs" class="text" title="Terms &amp; Conditions">
+<p>...</p>
+</div>
+
+<div id="scr_info_security" class="text" title="Security">
+<p>This application uses full internet 'HTTPS' security, just like any normal e-commerce web site.</p>
+</div>
+
+<div id="scr_info_about" class="text" title="About">
+<p>The Masabi Ticket application is developed by Masabi for Masabi Tickets.</p>
+</div>
+</body>
+</html>

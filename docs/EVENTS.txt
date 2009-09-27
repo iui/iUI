@@ -1,0 +1,57 @@
+Events
+	•	beforeInsert (view)
+	      differentiate HTML from XML?
+	•	load (view) - Executed before any transition is started (only first time loaded)
+	•	unload (view) (only called on "back button" click -- is this really needed? Issue #132)
+            Could patch #132 use the onBlur event and then see if it is an unload as
+            a special case?  (if we can detect the onBlur was caused by back button)
+	•	onFocus (view)
+	•	onBlur (view)
+	•   beforeTransition
+	•   afterTransition
+	      
+
+Use cases
+
+Standard scenarios
+  A - default view (selected="true" at HTML page load)
+  B - Preloaded view (anchor reference)
+  C - Standard iUI AHAH (asynchronous HTTP and HTML)
+  D - text data view
+  E - legacy HTML data view
+  F - XML data view
+  G - JSON data view
+  
+Use case summary
+
+1 - load view
+2 - unload view
+3 - transition to view
+4 - transition from fiew
+5 - 
+	      
+Use Case #1 // LOAD VIEW
+
+  1) (C-G) beforeInsert called 
+  2) (C-G) view inserted
+  3) (C-G) (view plugin) registered CSS selectors run (against body??) to see if new view matches
+           any of them.  If so viewHandler is attached to the view.
+     A-B view plugin CSS selectors run against all pre-loaded views
+        attach view to page
+  2) loadView called when HTML page is loaded (page has an inited flag)
+        A - called from showPage if inited flag not set (from body onload)
+        B-G - called from showPage if inited flag not set
+  3) onFocus - called from showPage
+  
+  Note: beforeInsert is never called since the view is in the initial dom
+  
+  
+Use case #1b - transition from default page
+  1) onBlur called
+  
+  Note: onUnload will never be called because the default pageis never unlaoded (?)
+  
+Use case #1
+
+
+
