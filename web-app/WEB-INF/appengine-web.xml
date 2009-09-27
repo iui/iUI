@@ -9,6 +9,7 @@
         <include path="/**.css"/>
         <include path="/**.html"/>
         <include path="/**.frag"/>
+        <include path="/**.manifest"/>
         <exclude path="/WEB-INF/**.groovy" />
         <exclude path="**.gtpl" />
     </static-files>
