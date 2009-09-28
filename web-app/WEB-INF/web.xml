@@ -27,6 +27,11 @@
         <url-pattern>*.gtpl</url-pattern>
     </servlet-mapping>
 
+    <mime-mapping>    
+        <extension>manifest</extension>        
+        <mime-type>text/cache-manifest</mime-type>        
+    </mime-mapping>    
+
 <!--
   Welcome file list causes GAE simulator (and  I'm assuming GAE itself)
   to try to use files (e.g. iui/iui.css) as directories and append the
