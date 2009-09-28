@@ -578,7 +578,7 @@ function findParent(node, localName)
 
 function hasClass(self, name)
 {
-	iui.hasClass(self,name);
+	return iui.hasClass(self,name);
 }
 
 function replaceElementWithFrag(replace, frag)
