@@ -276,7 +276,13 @@ addEventListener("click", function(event)
 		}
 		else if (link.getAttribute("type") == "submit")
 		{
-			submitForm(findParent(link, "form"));
+			var form = findParent(link, "form");
+			if (form.target == "_self")
+			{
+			    form.submit();
+			    return;  // allow default
+			}
+			submitForm(form);
 		}
 		else if (link.getAttribute("type") == "cancel")
 		{
@@ -393,16 +399,25 @@ function showDialog(page)
 	currentDialog = page;
 	page.setAttribute("selected", "true");
 	
-	if (hasClass(page, "dialog") && !page.target)
+	if (hasClass(page, "dialog"))
 		showForm(page);
 }
 
 function showForm(form)
 {
+//
+// Walking through this code on 9/28 shows that neither
+// submitForm or cancelDialog is called here, but 
+// submitForm seems to be called elsewhere and so does
+// removeAttribute("selected")
+//
 	form.onsubmit = function(event)
 	{
-		event.preventDefault();
-		submitForm(form);
+//  submitForm and preventDefault seem to be called in the click handler
+//  so we don't need to call them again here
+// 
+//		event.preventDefault();
+//		submitForm(form);
 	};
 	
 	form.onclick = function(event)
