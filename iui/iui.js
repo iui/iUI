@@ -271,11 +271,17 @@ addEventListener("click", function(event)
 			setTimeout(unselect, 500);
 		}
 		else if (link == $("backButton"))
+		{
 			history.back();
+		}
 		else if (link.getAttribute("type") == "submit")
+		{
 			submitForm(findParent(link, "form"));
+		}
 		else if (link.getAttribute("type") == "cancel")
+		{
 			cancelDialog(findParent(link, "form"));
+		}
 		else if (link.target == "_replace")
 		{
 			link.setAttribute("selected", "progress");
