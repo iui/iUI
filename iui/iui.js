@@ -206,7 +206,15 @@ addEventListener("click", function(event)
 		else if (link == $("backButton"))
 			history.back();
 		else if (link.getAttribute("type") == "submit")
-			submitForm(findParent(link, "form"));
+		{
+			var form = findParent(link, "form");
+			if (form.target == "_self")
+			{
+			    form.submit();
+			    return;  // return so we don't preventDefault
+			}
+			submitForm(form);
+		}
 		else if (link.getAttribute("type") == "cancel")
 			cancelDialog(findParent(link, "form"));
 		else if (link.target == "_replace")
