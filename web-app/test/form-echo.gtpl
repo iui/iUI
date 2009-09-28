@@ -2,8 +2,8 @@
 <% 
 Integer delay
 try{
-   delay = Integer.parseInt(params.delay.trim())
-   println delay
+  delayStr = params?.delay?.trim()
+  delay = delayStr ? Integer.parseInt(delayStr) : 0
   java.lang.Thread.currentThread().sleep(1000  * delay);
 }
 catch(InterruptedException ie){
