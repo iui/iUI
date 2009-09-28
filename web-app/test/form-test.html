@@ -35,6 +35,7 @@
     <div class="toolbar">
         <h1 id="pageTitle"></h1>
         <a id="backButton" class="button" href="#"></a>
+        <a class="button" href="#dialogForm">Dialog</a>
     </div>
     
     <ul id="formTest" title="Form Tests" selected="true">
@@ -43,6 +44,7 @@
       <li><a href="#POST">POST</a></li>
       <li><a href="#get">get</a></li>
       <li><a href="#post">post</a></li>
+      <li><a href="#targ-self">POST to target="_self"</a></li>
       <li><a href="#delay">default w/delay</a></li>
     </ul>
     
@@ -121,6 +123,21 @@
         <a class="whiteButton" type="submit">Submit</a>
     </form>
 
+    <form id="targ-self" title="Target Self" class="panel" target="_self" action="form-echo.gtpl" method="POST">
+        <fieldset>
+            <div class="row">
+                <label>Parm1:</label>
+                <input type="text" name="parm1" value="value 1"/>
+            </div>
+            <div class="row">
+                <label>Parm2:</label>
+                <input type="text" name="parm2" value="value 2"/>
+            </div>
+        </fieldset>
+        <a class="whiteButton" type="submit">Submit</a>
+        <div class="spinner"></div>
+    </form>
+
     <form id="delay" title="delay" class="panel" action="form-echo.gtpl">
         <fieldset>
             <div class="row">
@@ -139,6 +156,21 @@
         <a class="whiteButton" type="submit">Submit</a>
         <div class="spinner"></div>
     </form>
+
+    <form id="dialogForm" title="Dialog" class="dialog" target="_self" action="form-echo.gtpl" method="POST">
+        <fieldset>
+            <h1>Dialog Form</h1>
+            <a class="button leftButton" type="cancel">Cancel</a>
+            <a class="button blueButton" type="submit">Search</a>
+            
+            <label>Parm1:</label>
+            <input type="text" name="parm1" value="value 1"/>
+            <label>Parm2:</label>
+            <input type="text" name="parm2" value="value 2"/>
+        </fieldset>
+        <div class="spinner"></div>
+    </form>
+
 
 </body>
 
