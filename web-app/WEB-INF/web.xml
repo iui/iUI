@@ -5,25 +5,22 @@
 
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     <servlet>
-        <servlet-name>gaelyk</servlet-name>
-        <servlet-class>groovyx.gaelyk.servlet.GaelykServlet</servlet-class>
+        <servlet-name>GroovletServlet</servlet-name>
+        <servlet-class>groovyx.gaelyk.GaelykServlet</servlet-class>
     </servlet>
     
     <servlet>
-        <servlet-name>template</servlet-name>
-        <servlet-class>groovyx.gaelyk.servlet.GaelykTemplateServlet</servlet-class>
+        <servlet-name>TemplateServlet</servlet-name>
+        <servlet-class>groovyx.gaelyk.GaelykTemplateServlet</servlet-class>
     </servlet>
 	
     <servlet-mapping>
-        <servlet-name>gaelyk</servlet-name>
+        <servlet-name>GroovletServlet</servlet-name>
         <url-pattern>*.groovy</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>template</servlet-name>
-<!-- 
-        <url-pattern>*.gtpl</url-pattern>
- -->
+        <servlet-name>TemplateServlet</servlet-name>
         <url-pattern>*.gtpl</url-pattern>
     </servlet-mapping>
 
