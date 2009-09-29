@@ -41,8 +41,7 @@ CACHE MANIFEST
 ../../iui/t/ipdc/toolButton.png
 ../../iui/js/iui-theme-switcher.js
 NETWORK:
-search.gtpl
-stats.gtpl
+*
 FALLBACK:
 search.gtpl search.html
 stats.gtpl stats.html
