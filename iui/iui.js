@@ -27,6 +27,10 @@ window.iui =
 {
 	animOn: true,	// Slide animation with CSS transition is now enabled by default where supported
 
+	httpHeaders: {
+	    "X-Requested-With" : "XMLHttpRequest"
+	},
+
 	showPage: function(page, backwards)
 	{
 		if (page)
@@ -130,6 +134,10 @@ window.iui =
         {
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             data = iui.param(args);
+        }
+        for (var header in iui.httpHeaders)
+        {
+            xhr.setRequestHeader(header, iui.httpHeaders[header]);
         }
         xhr.send(data);
 	},
