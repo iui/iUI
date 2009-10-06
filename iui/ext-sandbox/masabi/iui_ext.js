@@ -17,19 +17,6 @@ var sesh = new Array();
 
 window.iui_ext =
 {
-	triggerUiEvent: function(target, type, trigger)
-	{
-		if (target)
-		{
-			var event = document.createEvent("UIEvent");
-			event.initEvent(type, false, false);
-			// preserve the clicked-on element in case it's relevant to setup
-			//  - but target has no setter, so we have to use the non-standard IE property for same thing. grrrr.
-			if (trigger)	event.srcElement=trigger.target;
-			target.dispatchEvent(event);
-		}
-	},
-
 	// replacements for HTML5 sessionStorage object, not implemented for iPhone Safari (<v4)
 	setItem: function(key,value) { sesh[key] = value; },
 	getItem: function(key) { return sesh[key]; },
