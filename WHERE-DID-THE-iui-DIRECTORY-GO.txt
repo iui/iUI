@@ -1,0 +1,8 @@
+The iui directory has been moved into the web-app directory at web-app/iui
+
+The reason for this change is because the web-app directory represents "document root"
+or the root of the portion of the project that should be served with a webserver
+for development, testing, or deployment.
+
+Note: There is now a symbolic link 'iui' that points to 'web-app/iui' that should work on
+the Mac OS X or Linux platforms.
