@@ -5,8 +5,8 @@ body, .panel { width:320px !important; max-width:320px }*/
 /* CUSTOM HEADER */
 body > div.toolbar { background-image:url(logo.png), url(toolbar.png); background-position:top right, top left; background-repeat:no-repeat, repeat-x; }
 
-/* CUSTOM BACKBUTTON */
-#backButton {  -webkit-border-image: url(backButton.png) 0 8 0 14; }
+/* CUSTOM BACKBUTTON, change color with new border-image, set background-image to none since we don't support images on backButton */
+#backButton {  -webkit-border-image: url(backButton.png) 0 8 0 14;  background-image: none;}
 
 
 /* FORM STYLING */
