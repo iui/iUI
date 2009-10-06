@@ -1,3 +1,8 @@
+REL-0.31 2009-10-05
+
+* Slide animation with CSS transitions is now on by default where enabled
+* Non-AJAX form subission when target="_self" (Issue #136)
+
 REL-0.30 2009-08-06
 
 * CSS transitions for slide animation (for backward compatibility disabled by default) (Issue 97)
