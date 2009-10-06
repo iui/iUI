@@ -6,6 +6,7 @@
 // requires iui.js
 // requires querySelectorAll, therefore iPhone OS 2.x or later
 // or Safari 3.x or later
+// requires DOMContentLoaded event
 
 (function() {
 
