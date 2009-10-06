@@ -1,5 +1,15 @@
 /*
-   Copyright (c) 2009, Masabi Ltd
+   Copyright (c) 2007-9, iUI Project Members
+   See LICENSE.txt for licensing terms
+ */
+
+// requires iui.js
+// requires querySelectorAll, therefore iPhone OS 2.x or later
+// or Safari 3.x or later
+// requires DOMContentLoaded event
+
+/*
+   Portions Copyright (c) 2009, Masabi Ltd
    http://www.masabi.com/
  */
 
@@ -22,52 +32,68 @@ window.iui_ext =
 	getItem: function(key) { return sesh[key]; },
 	removeItem: function(key) { sesh[key] = null; },
 	clear: function() { sesh=new Array(); },
-
-	injectEventMethods: function(page)
-	{
-		// avoid recursion!
-		if (page.done)	return;
-		page.done = true;
-
-		// overriding methods in the prototype just didn't want to work...
-		if (page.tagName=="FORM")
-		{
-			// preserve any explicitly defined events in markup
-			page._onfocus = page.onfocus;
-			page._onblur = page.onblur;
-			page.onfocus = function(event)
-			{
-				setFormTags(page,"var");
-				// swap out any special funky screen types (inputs first, because selects > inputs)
-				var fields = page.getElementsByTagName("input");
-				for (var i=fields.length-1; i>=0; i--)
-				{
-					applyFormTagValue(fields[i]);
-					// if unsupported, html5 types are replaced with 'text'
-					if (hasClass(fields[i],"date") && fields[i].type!="date")
-						convertInputToDatePicker(fields[i]);
-				}
-				fields = page.getElementsByTagName("select");
-				for (var i=fields.length-1; i>=0; i--)
-				{
-					applyFormTagValue(fields[i]);
-					if (hasClass(fields[i],"panel"))
-						convertSelectToPanel(fields[i]);
-					else if (hasClass(fields[i],"az"))
-						convertSelectToSortedList(fields[i]);
-				}
-				if (page._onfocus)	page._onfocus(event);
-			};
-			page.onblur = function(event)
-			{
-				storeFormTags(page,"input");
-				storeFormTags(page,"select");
-				if (page._onblur)	page._onblur(event);
-			};
-		}
-	}
-
 };
+
+addEventListener("DOMContentLoaded", function(event)
+{
+// Use afterinsert to injectEventMethods on inserted (via ajax) nodes
+	document.body.addEventListener('afterinsert', afterInsert, false);
+// This will register event handlers on all initial form nodes
+	nodes = document.querySelectorAll("body > form");
+	for (var i = 0; i  < nodes.length  ; i++)
+	{
+		injectEventMethods(nodes[i]);
+	}
+}, false);
+
+function injectEventMethods(page)
+{
+	// avoid recursion!
+	if (page.done)	return;
+	page.done = true;
+
+	// overriding methods in the prototype just didn't want to work...
+	if (page.tagName=="FORM")
+	{
+		// preserve any explicitly defined events in markup
+		page._onfocus = page.onfocus;
+		page._onblur = page.onblur;
+		page.onfocus = function(event)
+		{
+			setFormTags(page,"var");
+			// swap out any special funky screen types (inputs first, because selects > inputs)
+			var fields = page.getElementsByTagName("input");
+			for (var i=fields.length-1; i>=0; i--)
+			{
+				applyFormTagValue(fields[i]);
+				// if unsupported, html5 types are replaced with 'text'
+				if (hasClass(fields[i],"date") && fields[i].type!="date")
+					convertInputToDatePicker(fields[i]);
+			}
+			fields = page.getElementsByTagName("select");
+			for (var i=fields.length-1; i>=0; i--)
+			{
+				applyFormTagValue(fields[i]);
+				if (hasClass(fields[i],"panel"))
+					convertSelectToPanel(fields[i]);
+				else if (hasClass(fields[i],"az"))
+					convertSelectToSortedList(fields[i]);
+			}
+			if (page._onfocus)	page._onfocus(event);
+		};
+		page.onblur = function(event)
+		{
+			storeFormTags(page,"input");
+			storeFormTags(page,"select");
+			if (page._onblur)	page._onblur(event);
+		};
+	}
+}
+
+function afterInsert(e)
+{
+	injectEventMethods(e.insertedNode);	// injectEventMethods on newly added node
+}
 
 function back()
 {

@@ -35,7 +35,7 @@ window.iui =
 	{
 		if (page)
 		{
-			if (window.iui_ext)	window.iui_ext.injectEventMethods(page);	// TG
+//			if (window.iui_ext)	window.iui_ext.injectEventMethods(page);	// TG
 			
 			if (currentDialog)
 			{
