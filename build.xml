@@ -28,15 +28,21 @@
 	
 	<!-- If version undefined at this point, use a timestamp -->
 	<tstamp />
-	<property name="iui.version"					value="v${DSTAMP}-${TSTAMP}"					/>
-	<property name="iui.release.summary"	value="Release summary goes here"			/>
+<!--	<property name="iui.version"			value="v${DSTAMP}-${TSTAMP}"				        /> -->
+	<property name="iui.version"			value="v${DSTAMP}"	            			        />
+	<property name="iui.release.summary"	value="Release summary goes here"			        />
 
-	<property name="tarfilename"				value="iui-${iui.version}.tar.gz"				/>
+	<property name="iui.dash.vers"			value="iui-${iui.version}"				            />
+	<property name="tarfilename"			value="${iui.dash.vers}.tar.gz"			            />
+	<property name="zipfilename"			value="${iui.dash.vers}.zip"			            />
 
-  <property name="src.dir"						location="iui"													/>
-	<property name="target.dir"					location="target"												/>
-	<property name="release.dir"   			location="${target.dir}/release"				/>
-	<property name="tarfile"						location="${target.dir}/${tarfilename}"	/>
+    <property name="src.dir.webapp"			location="web-app"  						        />
+    <property name="src.dir.iui"			location="${src.dir.webapp}/iui"					/>
+	<property name="target.dir"				location="target"							        />
+	<property name="release.dir"   			location="${target.dir}/${iui.dash.vers}"	        />
+	<property name="release.dir.webapp"   	location="${target.dir}/${iui.dash.vers}/web-app"	/>
+	<property name="tarfile"				location="${target.dir}/${tarfilename}"	            />
+	<property name="zipfile"				location="${target.dir}/${zipfilename}"	            />
 	
 	<path id="compress-js.path">
 		<fileset dir="releasetools/lib">
@@ -61,49 +67,52 @@
 	
 	
 	<!-- Define extension Ant tasks that aren't part of the standard Ant distro -->
-	<taskdef name="compress-js"						classname="com.webpanes.tools.ant.taskdefs.CompressJS"
+	<taskdef name="compress-js"				classname="com.webpanes.tools.ant.taskdefs.CompressJS"
 																				classpathref="compress-js.path" />
 	<taskdef name="GoogleCodeUploadTask"	classname="net.bluecow.googlecode.ant.GoogleCodeUploadTask"
 																				classpathref="ant-googlecode.path" />
 																				
 	<!-- Ant targets, use "ant -p" for easier reading of the "description" attributes -->
-	<target name="compress-js" description="* - Create iuix.js by compressing iui.js">
+	<target name="compress-js" depends="docopy" description="* - Create iuix.js by compressing iui.js">
 		<mkdir dir="${release.dir}" />
-		<compress-js	file="${src.dir}/iui.js"
-									tofile="${release.dir}/iui/iuix.js"
-									stripCR="true" />
+		<compress-js	file="${src.dir.iui}/iui.js"
+						tofile="${release.dir.webapp}/iui/iuix.js"
+						stripCR="true" />
+        <!-- TODO: Compress/Concat extensions & optional files -->
 	</target>
 	
 	<!-- Compress CSS using Yahoo YUI Compressor -->
-	<target name="compress-css" description="* - Create iuix.css by compressing iui.css">
-   	<java jar="releasetools/lib/yuicompressor-2.2.5.jar" fork="true" classpathref="yui-compressor.path">
-      <arg value="--type"/>
-      <arg value="css"/>
-			<arg value="iui/iui.css" />
+    <target name="compress-css" depends="docopy" description="* - Create iuix.css by compressing iui.css">
+        <java jar="releasetools/lib/yuicompressor-2.2.5.jar" fork="true" classpathref="yui-compressor.path">
+            <arg value="--type"/>
+            <arg value="css"/>
+			<arg value="${src.dir.iui}/iui.css" />
 			<arg value="-o"/>
-			<arg value="${release.dir}/iui/iuix.css"/>
+			<arg value="${release.dir.webapp}/iui/iuix.css"/>
 		</java>
+        <!-- TODO: Compress/Concat themes & extensions -->
 	</target>
 	
 	<target name="docopy" description="* - Copy Files to release directory">
-		<mkdir dir="${release.dir}/iui"/>
-		<mkdir dir="${release.dir}/samples"/>
+		<mkdir dir="${release.dir.webapp}/iui"/>
 		<!-- Copy subset of files of project root to release root -->
 		<copy todir="${release.dir}">
-   		<fileset dir="${basedir}">
-   			<include name="*.txt"/>
-   			<include name="index.html"/>
-   		</fileset>
-    </copy>
-    <!-- Copy iUI images, css, and js -->
-		<copy todir="${release.dir}/iui">
-   		<fileset dir="${src.dir}"/>
-    </copy>
-    <!-- Copy samples -->
-		<copy todir="${release.dir}/samples">
-   		<fileset dir="samples"/>
-    </copy>
+            <fileset dir="${basedir}">
+                <include name="*.txt"/>
+                <include name="*.sh"/>
+            </fileset>
+        </copy>
+        <!-- Copy iUI images, css, and js -->
+         <copy todir="${release.dir.webapp}">
+            <fileset dir="${src.dir.webapp}">
+                <exclude name="**/*.jar"/>
+            </fileset>
+            <filterset>
+              <filter token="VERSION" value="${iui.version}"/>
+            </filterset>
+        </copy>
     <!-- Make second copy of sample.html in samplex.html that uses iuix.css and iuix.js -->
+    <!-- Disable for now...
 		<copy todir="${release.dir}/samples">
 			<fileset dir="samples">
 				<include name="*.html"/>
@@ -115,10 +124,11 @@
     			<replaceregex pattern="../iui/iui.js" replace="../iui/iuix.js" flags="g"/>
 				</tokenfilter>
 		  </filterchain>
-    </copy>
+        </copy>
+    -->
 	</target>
 	
-	<target name="releasedir" depends="compress-js, compress-css, docopy" description="* - Build releasedir (all tasks)">
+	<target name="releasedir" depends="compress-js, compress-css" description="* - Build releasedir (all tasks)">
 	</target>
 	
 	<target name="clean" description="* - Remove all generated files">
@@ -128,21 +138,27 @@
 
 	<target name="iui-tarball" depends="releasedir" description="r - Make the tarball">
 		<mkdir dir="${release.dir}"/>
-		<tar basedir="${release.dir}" tarfile="${tarfile}" compression="gzip" />
+		<tar basedir="${target.dir}" includes="${iui.dash.vers}/**" destfile="${tarfile}" compression="gzip" longfile="gnu" />
 	</target>
 
-	<target name="iui-release" depends="iui-tarball" 
+	<target name="iui-zipfile" depends="releasedir" description="r - Make the zipfile">
+		<mkdir dir="${release.dir}"/>
+		<zip basedir="${target.dir}" includes="${iui.dash.vers}/**" destfile="${zipfile}" />
+	</target>
+
+	<target name="iui-release" depends="iui-zipfile" 
 	        description="r - Upload to download area of project site, requires Ant 1.7">
 	  <echo message="Uploading using username ${gc.username}..." />
 		<GoogleCodeUploadTask
 			userName="${gc.username}"
 			password="${gc.password}"
 			projectName="iui"
-			filename="${tarfile}"
+			filename="${zipfile}"
 			targetFileName="${tarfilename}"
 			summary="${iui.release.summary}"/>
 	</target>
-	
+
+<!--	
 	<target name="publish-samples" depends="releasedir" description="r - publish sample apps via SSH">
 		<scp verbose="true" todir="${sample-server.ssh.user}:${sample-server.ssh.password}@${sample-server.ssh.host}:${sample-server.ssh.path}">
 			<fileset dir="${release.dir}"/>
@@ -160,7 +176,7 @@
    		</fileset>
 			<filterchain>
 		  	<tokenfilter>
-		  		<!-- Adjust image urls in the CSS file to use ${myproj.image.path} -->
+		  		<!-+- Adjust image urls in the CSS file to use ${myproj.image.path} -+->
     			<replaceregex pattern="url\(([^.]*)\.(png|gif)\)" replace="url\(${myproj.image.path}\1.\2\)" flags="g"/>
 				</tokenfilter>
 		  </filterchain>
@@ -179,6 +195,7 @@
     </copy>
 	
 	</target>
+-->
 	
 
 </project>
