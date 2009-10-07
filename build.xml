@@ -154,7 +154,7 @@
 			password="${gc.password}"
 			projectName="iui"
 			filename="${zipfile}"
-			targetFileName="${tarfilename}"
+			targetFileName="${zipfilename}"
 			summary="${iui.release.summary}"/>
 	</target>
 
