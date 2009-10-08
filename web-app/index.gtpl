@@ -52,6 +52,8 @@
 	<li><a target="_blank" href="test/inputs.html">Inputs</a></li>
 	<li><a target="_blank" href="test/link-types.html">Link Types</a></li>
 	<li><a target="_blank" href="test/form-test.html">Forms</a></li>
+	<li><a target="_blank" href="test/orient-test-attr.html">Orientation (using orient attr)</a></li>
+	<li><a target="_blank" href="test/orient-test-class.html">Orientation (using classnames)</a></li>
 </ul>
 
 

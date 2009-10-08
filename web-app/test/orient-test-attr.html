@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>Orientation Test using orient attribute</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+<link rel="stylesheet" href="../../iui/iui.css" type="text/css" />
+<link rel="stylesheet" href="../../iui/iui-moz.css" type="text/css" />
+<link rel="stylesheet" title="Default" href="../../iui/t/default/default-theme.css"  type="text/css"/>
+<script type="application/x-javascript" src="../iui/iui.js"></script>
+<style type="text/css">
+   /* CSS to add ": True" or ": False" after headings to indicate orientation */
+   /* These rules use the body/@orient attribute */
+   div.panel > h2:after { content: ":  False"; }
+   div.panel > h2.neither:after { content: ":  True"; }
+   body[orient="landscape"] > div.panel > h2.landscape:after { content: ":  True"; }
+   body[orient="landscape"] > div.panel > h2.neither:after { content: ":  False"; }
+   body[orient="portrait"] > div.panel > h2.portrait:after { content: ":  True"; }
+   body[orient="portrait"] > div.panel > h2.neither:after { content: ":  False"; }
+</style>
+</head>
+
+<body>
+    <div class="toolbar">
+        <h1 id="pageTitle"></h1>
+    </div>
+    
+    <div id="main" title="Orient @orient" class="panel" selected="true">
+        <h2 class="portrait">Portrait</h2>
+        <h2 class="landscape">Landscape</h2>
+        <h2 class="neither">Unknown</h2>
+    </div>
+</body>
+</html>
