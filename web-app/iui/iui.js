@@ -13,6 +13,7 @@ var slideInterval = 0;
 var currentPage = null;
 var currentDialog = null;
 var currentWidth = 0;
+var currentHeight = 0;
 var currentHash = location.hash;
 var hashPrefix = "#_";
 var pageHistory = [];
@@ -382,10 +383,11 @@ function checkOrientAndLocation()
 {
 	if (!hasOrientationEvent)
 	{
-	  if (window.innerWidth != currentWidth)
+	  if ((window.innerWidth != currentWidth) || (window.innerHeight != currentHeight))
 	  {	  
 		  currentWidth = window.innerWidth;
-		  var orient = currentWidth == 320 ? portraitVal : landscapeVal;
+		  currentHeight = window.innerHeight;
+		  var orient = (currentWidth < currentHeight) ? portraitVal : landscapeVal;
 		  setOrientation(orient);
 	  }
 	}
@@ -400,6 +402,22 @@ function checkOrientAndLocation()
 function setOrientation(orient)
 {
 	document.body.setAttribute("orient", orient);
+//  Set class in addition to orient attribute:
+	if (orient == portraitVal)
+	{
+		iui.removeClass(document.body, landscapeVal);
+		iui.addClass(document.body, portraitVal);
+	}
+	else if (orient == landscapeVal)
+	{
+		iui.removeClass(document.body, portraitVal);
+		iui.addClass(document.body, landscapeVal);
+	}
+	else
+	{
+		iui.removeClass(document.body, portraitVal);
+		iui.removeClass(document.body, landscapeVal);
+	}
 	setTimeout(scrollTo, 100, 0, 1);
 }
 
