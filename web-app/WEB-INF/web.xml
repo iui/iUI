@@ -34,10 +34,10 @@
   to try to use files (e.g. iui/iui.css) as directories and append the
   welcome file name to it!  Disable for now and  use meta http-equiv to
   redirect from index.html to index.gtpl for the root.
+-->
     <welcome-file-list>
         <welcome-file>index.gtpl</welcome-file>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
--->
 
 </web-app>
