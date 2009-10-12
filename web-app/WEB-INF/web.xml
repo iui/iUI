@@ -12,6 +12,14 @@
     <servlet>
         <servlet-name>TemplateServlet</servlet-name>
         <servlet-class>groovyx.gaelyk.GaelykTemplateServlet</servlet-class>
+        <init-param>
+            <param-name>generated.by</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <init-param>
+            <param-name>verbose</param-name>
+            <param-value>false</param-value>
+        </init-param>
     </servlet>
 	
     <servlet-mapping>
