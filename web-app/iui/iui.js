@@ -432,23 +432,19 @@ function showDialog(page)
 
 function showForm(form)
 {
-//
-// Walking through this code on 9/28 shows that neither
-// submitForm or cancelDialog is called here, but 
-// submitForm seems to be called elsewhere and so does
-// removeAttribute("selected")
-//
 	form.onsubmit = function(event)
 	{
-//  submitForm and preventDefault seem to be called in the click handler
-//  so we don't need to call them again here
+//  submitForm and preventDefault are called in the click handler
+//  when the user clicks the submit a.button
 // 
-//		event.preventDefault();
-//		submitForm(form);
+		event.preventDefault();
+		submitForm(form);
 	};
 	
 	form.onclick = function(event)
 	{
+// Why is this code needed?  cancelDialog is called from
+// the click hander.  When will this be called?
 		if (event.target == form && hasClass(form, "dialog"))
 			cancelDialog(form);
 	};
