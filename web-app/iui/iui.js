@@ -70,7 +70,9 @@ window.iui =
 					setTimeout(slidePages, 0, fromPage, page, backwards);
 				}
 				else
+				{
 					updatePage(page, fromPage);
+				}
 					
 			}
 		}
@@ -83,11 +85,23 @@ window.iui =
 		{
 			var index = pageHistory.indexOf(pageId);
 			var backwards = index != -1;
-			if (backwards)	// we're going back, remove history after this point
-				pageHistory.splice(index, pageHistory.length);
+			if (backwards)
+			{
+				// we're going back, remove history from index on
+				// remember - pageId will be added again in updatePage
+				pageHistory.splice(index);
+			}
 
 			iui.showPage(page, backwards);
 		}
+	},
+	
+	goBack: function()
+	{
+		pageHistory.pop();	// pop current page
+		var pageID = pageHistory.pop();  // pop/get parent
+		var page = $(pageID);
+		iui.showPage(page, true);
 	},
 
 	showPageByHref: function(href, args, method, replace, cb)
@@ -282,7 +296,7 @@ addEventListener("click", function(event)
 		}
 		else if (link == $("backButton"))
 		{
-			history.back();
+			iui.goBack();
 		}
 		else if (link.getAttribute("type") == "submit")
 		{
