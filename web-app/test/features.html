@@ -24,6 +24,9 @@ function load()
   addLI(list, 'WebKitCSSTransformValue = ' + (typeof WebKitCSSTransformValue == "object"));
   addLI(list, 'WebKitCSSMatrix = ' + (typeof WebKitCSSMatrix == "object"));
   addLI(list, 'Touch = ' + (typeof Touch == "object"));
+  addLI(list, 'sessionStorage = ' + (typeof window.sessionStorage  == "object"));
+  addLI(list, 'localStorage = ' + (typeof window.localStorage  == "object"));
+  addLI(list, 'openDatabase = ' + (typeof window.openDatabase == "function"));
 }
   </script>
 </head>
