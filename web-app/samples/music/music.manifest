@@ -1,6 +1,7 @@
 CACHE MANIFEST
-# Date: Sun Oct 11 19:39:34 PDT 2009
+# Date Mon Dec 14 00:18:17 PST 2009
 # header goes here
+../../iui/iui-favicon.png
 ../../iui/iui-logo-touch-icon.png
 ../../iui/iui-moz.css
 ../../iui/iui.css
@@ -28,6 +29,7 @@ CACHE MANIFEST
 ../../iui/t/default/toolbar.png
 ../../iui/t/default/toolButton.png
 ../../iui/t/default/whiteButton.png
+../../iui/t/defaultgrad/defaultgrad-theme.css
 ../../iui/t/ipdc/backButton.png
 ../../iui/t/ipdc/beige.png
 ../../iui/t/ipdc/blueButton.png
@@ -41,7 +43,8 @@ CACHE MANIFEST
 ../../iui/t/ipdc/toolButton.png
 ../../iui/js/iui-theme-switcher.js
 NETWORK:
-*
+search.gtpl
+stats.gtpl
 FALLBACK:
 search.gtpl search.html
 stats.gtpl stats.html
