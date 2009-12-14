@@ -1,7 +1,8 @@
 <html>
 <head>
-	<title>iUI on Google App Engine</title>
+  <title>iUI on Google App Engine</title>
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+  <link rel="icon" type="image/png" href="iui/iui-favicon.png">
   <link rel="apple-touch-icon" href="iui/iui-logo-touch-icon.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <link rel="stylesheet" href="iui/iui.css" type="text/css" />
@@ -15,9 +16,9 @@
         <h1 id="pageTitle"></h1>
         <a id="backButton" class="button" href="#"></a>
     <%  if (user) {  %>
-      <a class="button" target="_self" href="<%= userService.createLogoutURL(request.requestURI) %>">Logout</a>
+      <a class="button" target="_self" href="<%= users.createLogoutURL(request.requestURI) %>">Logout</a>
     <%  } else {  %>
-      <a class="button" target="_self" href="<%= userService.createLoginURL(request.requestURI) %>">Login</a>
+      <a class="button" target="_self" href="<%= users.createLoginURL(request.requestURI) %>">Login</a>
     <%  }  %>
     </div>
 <ul id="home" title="iUI.GAE" selected="true">
