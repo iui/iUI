@@ -91,6 +91,6 @@ body > .panel {
 
 /************************************************************************************************/
 #preloader {
-    background-image: url(../default/loading.gif), url(../defalt/selection.png),
+    background-image: url(../default/loading.gif), url(../default/selection.png),
         url(blueButton.png), url(../default/listArrowSel.png), url(listGroup.png);
 }
