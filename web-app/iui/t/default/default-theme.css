@@ -19,29 +19,35 @@ body > .toolbar {
 
 .button {
     -webkit-border-image: url(toolButton.png) 0 5 0 5;
+    -moz-border-image: url(toolButton.png) 0 5 0 5;
 }
 
 .blueButton {
     -webkit-border-image: url(blueButton.png) 0 5 0 5;
+    -moz-border-image: url(blueButton.png) 0 5 0 5;
 }
 
 #backButton {
     -webkit-border-image: url(backButtonBrdr.png) 0 8 0 14;
+    -moz-border-image: url(backButtonBrdr.png) 0 8 0 14;
     background: url(backButtonBack.png) repeat-x;
 }
 
 
 .whiteButton {
     -webkit-border-image: url(whiteButton.png) 0 12 0 12;
+    -moz-border-image: url(whiteButton.png) 0 12 0 12;
     text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
 }
 
 .redButton {
     -webkit-border-image: url(redButton.png) 0 12 0 12;
+    -moz-border-image: url(redButton.png) 0 12 0 12;
 }
 
 .grayButton {
     -webkit-border-image: url(grayButton.png) 0 12 0 12;
+    -moz-border-image: url(grayButton.png) 0 12 0 12;
     color: #FFFFFF;
 }
 
