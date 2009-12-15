@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Date Mon Dec 14 00:18:17 PST 2009
+# Date Tue Dec 15 00:47:53 PST 2009
 # header goes here
 ../../iui/iui-favicon.png
 ../../iui/iui-logo-touch-icon.png
@@ -12,7 +12,6 @@ CACHE MANIFEST
 ../../iui/t/default/backButtonBrdr.png
 ../../iui/t/default/blueButton.png
 ../../iui/t/default/cancel.png
-../../iui/t/default/default-theme-moz.css
 ../../iui/t/default/default-theme.css
 ../../iui/t/default/grayButton.png
 ../../iui/t/default/listArrow.png
