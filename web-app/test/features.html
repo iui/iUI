@@ -5,7 +5,7 @@
   <title>Feature Testing</title>
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
   <link rel="stylesheet" href="../../iui/iui.css" type="text/css" />
-  <link rel="stylesheet" href="../../iui/iui-moz.css" type="text/css" />
+
   <link rel="stylesheet" title="Default" href="../../iui/t/default/default-theme.css"  type="text/css"/>
   <script type="application/x-javascript" src="../iui/iui.js"></script>
   <script language="JavaScript" type="text/javascript">
@@ -24,6 +24,9 @@ function load()
   addLI(list, 'WebKitCSSTransformValue = ' + (typeof WebKitCSSTransformValue == "object"));
   addLI(list, 'WebKitCSSMatrix = ' + (typeof WebKitCSSMatrix == "object"));
   addLI(list, 'Touch = ' + (typeof Touch == "object"));
+  addLI(list, 'sessionStorage = ' + (typeof window.sessionStorage  == "object"));
+  addLI(list, 'localStorage = ' + (typeof window.localStorage  == "object"));
+  addLI(list, 'openDatabase = ' + (typeof window.openDatabase == "function"));
 }
   </script>
 </head>
