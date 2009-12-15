@@ -21,13 +21,15 @@ body > *:not(.toolbar) {
     left: 0;
     top: 45px;
     width: 100%;
-    height: 100%;
+    height: auto;
+    min-height: 415px;
     -webkit-transition-duration: 300ms;
     -webkit-transition-property: -webkit-transform;
     -webkit-transform: translateX(0%);
 }
 
 body[orient="landscape"] > *:not(.toolbar) {
+    height: auto;
     min-height: 268px;
 }
 
