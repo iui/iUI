@@ -4,6 +4,10 @@
 <head>
   <title>Feature Testing</title>
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+  <link rel="icon" type="image/png" href="../iui/iui-favicon.png">
+  <link rel="apple-touch-icon" href="../iui/iui-logo-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <link rel="stylesheet" href="../iui/iui.css" type="text/css" />
 
   <link rel="stylesheet" title="Default" href="../iui/t/default/default-theme.css"  type="text/css"/>
@@ -27,6 +31,9 @@ function load()
   addLI(list, 'sessionStorage = ' + (typeof window.sessionStorage  == "object"));
   addLI(list, 'localStorage = ' + (typeof window.localStorage  == "object"));
   addLI(list, 'openDatabase = ' + (typeof window.openDatabase == "function"));
+  addLI(list, 'innerHeight = ' + window.innerHeight + " (may vary)");
+  addLI(list, 'innerWidth = ' + window.innerWidth);
+  addLI(list, 'window.navigator.standalone = ' + window.navigator.standalone);
 }
   </script>
 </head>
