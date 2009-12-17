@@ -38,11 +38,11 @@
     </mime-mapping>    
 
 <!--
-  Welcome file list causes GAE simulator (and  I'm assuming GAE itself)
-  to try to use files (e.g. iui/iui.css) as directories and append the
-  welcome file name to it!  Disable for now and  use meta http-equiv to
-  redirect from index.html to index.gtpl for the root.
+ GAE/Gaelyk handing of welcome-files sure is funky
+ There are a bunch of issues in the GAE Issues DB
+ I wish I understood how it really works...
 -->
+
     <welcome-file-list>
         <welcome-file>index.gtpl</welcome-file>
         <welcome-file>index.html</welcome-file>
