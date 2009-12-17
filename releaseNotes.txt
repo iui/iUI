@@ -1,4 +1,7 @@
-REL-0.40-prototype1
+REL-0.40-dev2 2009-12-1x???
+ * Release notes TBD
+
+REL-0.40-dev1 2009-10-06
 
  * Work in progress
  * Add events to iui/iui.js
