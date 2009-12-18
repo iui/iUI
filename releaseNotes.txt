@@ -1,4 +1,4 @@
-REL-0.40-dev2 2009-12-17
+REL-0.40-dev2 2009-12-18
  * Fix Issue #138 (orientation css not updating)
  * Fix Issue #184 (hardcoded width of 320 in "orientation event fallback")
  * Re-enable call to submitForm in onsubmit in showForm()
