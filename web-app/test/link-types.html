@@ -23,8 +23,9 @@
     
     <ul id="links" title="Link Types" selected="true">
       <li><a href="#panel">Internal Link (#id)</a></li>
+      <li><a href="#native">Native Link Samples</a></li>
       <li><a href="fragPanel.frag">Ajax Link (Fragment)</a></li>
-      <li><a target="_self" href="../samples/music/music.html">Ext Link (_self)</a></li>
+      <li><a target="_self" selected="true" href="../samples/music/music.html">Ext Link (_self)</a></li>
       <li><a target="_self" href="../samples/music/music.html#_artists">Ext Link w/Anchor</a></li>
       <li><a target="_webapp" href="webappBack.html">Ext Link (_webapp)</a></li>
       <li><a target="_replace" href="replacingFrag1.frag">Load 2 more (_replace)</a></li>
@@ -33,6 +34,17 @@
     <div id="panel" title="Int Panel" class="panel">
       <h2>Internal Panel</h2>
     </div>
+
+    <ul id="native" title="Native Links">
+      <li><a href="mailto:donotreply@googlecode.com">mailto:donotreply@googlecode.com</a></li>
+      <li><a href="tel:408-555-1212">tel:408-555-1212</a></li>
+      <li><a href="javascript:alert('Hello!')">javascript:alert('Hello!')</a></li>
+      <li>Non-native links below</li>
+      <li><a href="#panel">Internal Link (#id)</a></li>
+      <li><a href="fragPanel.frag">Ajax Link (Fragment)</a></li>
+      <li><a target="_self" href="../samples/music/music.html">Ext Link (_self)</a></li>
+    </ul>
+
 </body>
 
 </html>

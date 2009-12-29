@@ -287,12 +287,16 @@ addEventListener("click", function(event)
 	if (link)
 	{
 		function unselect() { link.removeAttribute("selected"); }
-		
+		ddd('link');
 		if (link.href && link.hash && link.hash != "#" && !link.target)
 		{
+			ddd('#');
 			link.setAttribute("selected", "true");
+			ddd('attr set');
 			iui.showPage($(link.hash.substr(1)));
+			ddd('back from showpage');
 			setTimeout(unselect, 500);
+			ddd('back from setTimeout');
 		}
 		else if (link == $("backButton"))
 		{

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article version="5.0" xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:svg="http://www.w3.org/2000/svg"
+         xmlns:m="http://www.w3.org/1998/Math/MathML"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:db="http://docbook.org/ns/docbook">
+  <info>
+    <title>iUI Guide</title>
+
+    <subtitle></subtitle>
+
+    <author>
+      <personname><firstname>Stan</firstname><surname>Bogdanov</surname></personname>
+      <personname><firstname>Sean</firstname><surname>Gilligan</surname></personname>
+
+      <affiliation>
+        <orgname>iUI Project</orgname>
+      </affiliation>
+    </author>
+
+    <pubdate>January 1, 2010</pubdate>
+
+    <revhistory>
+      <revision>
+        <date>January 1, 2010</date>
+
+        <revdescription>
+          <para>First draft</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+  </info>
+
+  <section>
+    <title>Overview</title>
+
+    <para>Placeholder Document - Maybe this should be a "book", not an article...</para>
+
+  </section>
+
+</article>

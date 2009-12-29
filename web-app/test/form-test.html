@@ -28,6 +28,27 @@
   </style>
   <script type="application/x-javascript" src="../iui/iui.js"></script>
   <script language="JavaScript" type="text/javascript">
+function myJSForm(form)
+{
+    iui.addClass(form, "progress");
+    iui.showPageByHref(form.action, encodeForm(form), form.method || "GET", null, clear);
+    iui.encodeForm
+    iui.ajax
+    
+    function clear() {   iui.removeClass(form, "progress"); }
+    return false;  // cancel the browser's submit
+}
+function formResultCB()
+{
+    if (xyz)
+    {
+        iui.replacePage
+    }
+    else
+    {
+        iui.replacePage
+    }
+}
   </script>
 </head>
 
@@ -46,9 +67,25 @@
       <li><a href="#post">post</a></li>
       <li><a href="#targ-self">POST to target="_self"</a></li>
       <li><a href="#delay">default w/delay</a></li>
+      <li><a href="#pop">default w/navstack pop</a></li>
     </ul>
     
     <form id="def" title="default" class="panel" action="form-echo.gtpl">
+        <fieldset>
+            <div class="row">
+                <label>Parm1:</label>
+                <input type="text" name="parm1" value="value 1"/>
+            </div>
+            <div class="row">
+                <label>Parm2:</label>
+                <input type="text" name="parm2" value="value 2"/>
+            </div>
+        </fieldset>
+        <a class="whiteButton" type="submit">Submit</a>
+        <div class="spinner"></div>
+    </form>
+
+    <form id="pop" title="NavStack Pop" class="panel" onsubmit="return myJSForm(this)" target="_ajax" action="form-echo.gtpl" method="POST">
         <fieldset>
             <div class="row">
                 <label>Parm1:</label>
@@ -161,7 +198,7 @@
         <fieldset>
             <h1>Dialog Form</h1>
             <a class="button leftButton" type="cancel">Cancel</a>
-            <a class="button blueButton" type="submit">Search</a>
+            <a class="button blueButton" type="submit">Submit</a>
             
             <label>Parm1:</label>
             <input type="text" name="parm1" value="value 1"/>
