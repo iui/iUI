@@ -39,6 +39,8 @@ try {
 
 <div id="user-error" class="panel" title="User Delete Error">
     <h2>User Not Found or Permission Denied</h2>
+    <p>You must be logged in to delete a user</p>
+    <p>Non-admin users can only delete their own user</p>
     <fieldset>
         <div class="row">
             <label>id parameter</label>

@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Gaelyk Login Demo</title>
+  <title>Gaelyk Demo</title>
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
   <link rel="icon" type="image/png" href="../../iui/iui-favicon.png">
   <link rel="apple-touch-icon" href="../../iui/iui-logo-touch-icon.png" />
@@ -23,7 +23,7 @@
     </div>
     
     
-<ul id="home" title="Login Demo" selected="true">
+<ul id="home" title="Gaelyk Demo" selected="true">
 	<li><a href="#usersMenu">Users</a></li>
 	<li><a href="#about">About Gaelyk Login Demo</a></li>
 	<li>
@@ -57,7 +57,7 @@
 
 
 <div id="about" class="panel">
-  <h2>Gaelyk Login Demo is powered by:</h2>
+  <h2>Gaelyk Demo is powered by:</h2>
   <ul>
 	<li><a target="_blank" href="http://code.google.com/p/iui/">iUI Project</a></li>
 	<li><a target="_blank" href="http://code.google.com/appengine/">Google App Engine</a></li>

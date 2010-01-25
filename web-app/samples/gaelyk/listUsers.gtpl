@@ -37,7 +37,7 @@ else
     <% } %>
     
     
-    <% if (peopsList.size() > 0) { %>
+    <% if ((peopsList.size() > 0) && (peopsList.getCursor() != null)) { %>
     <li><a href="listUsers.gtpl?next=${peopsList.getCursor().toWebSafeString()}" target="_replace">Get 10 More</a></li>
     <% } %>
 
