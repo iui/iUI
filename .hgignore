@@ -3,4 +3,5 @@ target
 local.build.properties
 web-app/WEB-INF/lib
 web-app/WEB-INF/classes
+web-app/WEB-INF/appengine-generated
 web-app/samples.copy

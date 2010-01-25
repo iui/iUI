@@ -21,7 +21,10 @@
       <a class="button" target="_self" href="<%= users.createLoginURL(request.requestURI) %>">Login</a>
     <%  }  %>
     </div>
+    
+    
 <ul id="home" title="Login Demo" selected="true">
+	<li><a href="#usersMenu">Users</a></li>
 	<li><a href="#about">About Gaelyk Login Demo</a></li>
 	<li>
     <%  if (user) {  %>
@@ -31,6 +34,26 @@
     <%  }  %>
    </li>
 </ul>
+
+<ul id="usersMenu" title="Users Menu">
+	<li><a href="#addUser">Add User...</a></li>
+	<li><a href="listUsers.gtpl">List Users</a></li>
+</ul>
+
+<form id="addUser" title="Add User" class="panel" action="addUser.gtpl" method="post" onclick="(function(event) {return true;})()">
+	<fieldset>
+		<div class="row">
+			<label>Name:</label>
+			<input type="text" name="name" value=""/>
+		</div>
+		<div class="row">
+			<label>Email:</label>
+			<input type="text" name="email" value=""/>
+		</div>
+	</fieldset>
+	<div class="spinner"></div>
+	<a class="whiteButton" type="submit">Submit</a>
+</form>
 
 
 <div id="about" class="panel">
