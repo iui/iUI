@@ -16,9 +16,9 @@
         <h1 id="pageTitle"></h1>
         <a id="backButton" class="button" href="#"></a>
     <%  if (user) {  %>
-      <a class="button" target="_self" href="<%= users.createLogoutURL(request.requestURI) %>">Logout</a>
+      <a class="button" target="_webapp" href="<%= users.createLogoutURL(request.requestURI) %>">Logout</a>
     <%  } else {  %>
-      <a class="button" target="_self" href="<%= users.createLoginURL(request.requestURI) %>">Login</a>
+      <a class="button" target="_webapp" href="<%= users.createLoginURL(request.requestURI) %>">Login</a>
     <%  }  %>
     </div>
     
