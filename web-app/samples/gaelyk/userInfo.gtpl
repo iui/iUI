@@ -40,7 +40,7 @@ try {
             <span>$peop.key.kind</span>
         </div>
     </fieldset>
-    <a class="whiteButton" type="button" href="deleteUser.gtpl?id=${peop.key.id}">Update (TBD)</a>
+    <a class="whiteButton" type="button" href="editUser.gtpl?id=${peop.key.id}">Update (TBD)</a>
     <a class="redButton" type="button" href="deleteUser.gtpl?id=${peop.key.id}">Delete</a>
 </div>
 
