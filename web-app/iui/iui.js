@@ -37,36 +37,35 @@ window.iui =
 	{
 		if (page)
 		{
-//			if (window.iui_ext)	window.iui_ext.injectEventMethods(page);	// TG
+//			if (window.iui_ext)	window.iui_ext.injectEventMethods(page);	// TG -- why was this comment left here??
 			
 			if (currentDialog)
 			{
 				currentDialog.removeAttribute("selected");
-				// EVENT blur->currentDialog
-				sendEvent("blur", currentDialog);
+				sendEvent("blur", currentDialog);					// EVENT: BLUR
 				currentDialog = null;
 			}
 
 			if (hasClass(page, "dialog"))
 			{
-			    // EVENT focus->page
-				sendEvent("focus", page);
+				// There's no LOAD/UNLOAD events for dialogs -- is that the way it should be??
+				// Should the view the dialog is going over get a BLUR??
+				sendEvent("focus", page);							// EVENT: FOCUS
 				showDialog(page);
 			}
 			else
 			{
-				sendEvent("load", page);    // 127(stylesheet), 128(script), 129(onload)
-			                                    // 130(onFocus), 133(loadActionButton)
+				sendEvent("load", page);    						// EVENT: LOAD
+													// 127(stylesheet), 128(script), 129(onload)
+													// 130(onFocus), 133(loadActionButton)
 				var fromPage = currentPage;
-				// EVENT blur->currentPage
-				sendEvent("blur", currentPage);
+				sendEvent("blur", currentPage);						// EVENT: BLUR
 				currentPage = page;
-				// EVENT focus->currentPage
-				sendEvent("focus", page);
+				sendEvent("focus", page);							// EVENT: FOCUS
 
 				if (fromPage)
 				{
-				    if (backwards) sendEvent("unload", fromPage);
+				    if (backwards) sendEvent("unload", fromPage);	// EVENT: UNLOAD
 					setTimeout(slidePages, 0, fromPage, page, backwards);
 				}
 				else
@@ -104,6 +103,28 @@ window.iui =
 		iui.showPage(page, true);
 	},
 
+
+	// Load a new page at the same level in the navStack
+	// Currently it will do a slide-in animation but replaces
+	// the current page in the navStack
+	// it should probably use a different animation (slide-up/slide-down)
+	replacePage: function(pageId)
+	{
+		// Should probably take either an ID or an Element
+		var page = $(pageId);
+		if (page)
+		{
+			var index = pageHistory.indexOf(pageId);
+			var backwards = index != -1;
+			if (backwards)	// we're going back, shouldn't happen on replacePage()
+				console.log("error: can't replace page with ancestor");
+				
+			pageHistory.pop();
+
+			iui.showPage(page, false);
+		}
+	},
+
 	showPageByHref: function(href, args, method, replace, cb)
 	{
 	  // I don't think we need onerror, because readstate will still go to 4 in that case
@@ -112,6 +133,7 @@ window.iui =
 		if (xhr.readyState == 4)
 		{
 		  // Add 'if (xhr.responseText)' to make sure we have something???
+		  // Can't use createDocumentFragment() here because firstChild is null and childNodes is empty
 		  var frag = document.createElement("div");
 		  frag.innerHTML = xhr.responseText;
           // EVENT beforeInsert->body
@@ -287,16 +309,11 @@ addEventListener("click", function(event)
 	if (link)
 	{
 		function unselect() { link.removeAttribute("selected"); }
-		ddd('link');
 		if (link.href && link.hash && link.hash != "#" && !link.target)
 		{
-			ddd('#');
 			link.setAttribute("selected", "true");
-			ddd('attr set');
 			iui.showPage($(link.hash.substr(1)));
-			ddd('back from showpage');
 			setTimeout(unselect, 500);
-			ddd('back from setTimeout');
 		}
 		else if (link == $("backButton"))
 		{
@@ -307,6 +324,7 @@ addEventListener("click", function(event)
 			var form = findParent(link, "form");
 			if (form.target == "_self")
 			{
+				// Note: this will not call any onsubmit handlers!
 			    form.submit();
 			    return;  // allow default
 			}

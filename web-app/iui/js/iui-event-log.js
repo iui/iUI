@@ -10,9 +10,12 @@
 
 var eventNames = ['blur', 'focus', 'load', 'unload', 'beforetransition', 'aftertransition' ];
 
-// Using DOMContentLoaded so this loads before the onload in iui.js -- need a better method
+// Using DOMContentLoaded so this loads before the onload in iui.js -- need a better method (Issue #204?)
 // We need to register before iui's main onload handler so we can get the 'load' and 'focus' events
 // for the default 'page' (view).
+//
+// The "better method" may be related to http://code.google.com/p/iui/issues/detail?id=204
+//  but there may need to be more than one hook for iUI loading...
 //
 addEventListener("DOMContentLoaded", function(event)
 {

@@ -34,6 +34,7 @@ function load()
   addLI(list, 'innerHeight = ' + window.innerHeight + " (may vary)");
   addLI(list, 'innerWidth = ' + window.innerWidth);
   addLI(list, 'window.navigator.standalone = ' + window.navigator.standalone);
+  addLI(list, 'has xhr.overrideMimeType = ' + (typeof XMLHttpRequest.prototype.overrideMimeType == "function"));
 }
   </script>
 </head>

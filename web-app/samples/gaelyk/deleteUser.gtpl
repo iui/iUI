@@ -13,14 +13,14 @@ def peop = null
 try { 
     peop = datastore.get(key)
 //
-// Must be logged in to add a "person"
-// If your admin you can add any user
+// Must be logged in to delete a "person"
+// If you're admin you can delete any user
 // otherwise the e-mail must match either user.email or user.nickname
 //
     if (users.isUserLoggedIn() && 
                   (users.isUserAdmin() ||
-                   user.email == person.email ||
-                   user.nickname == person.email ))
+                   user.email == peop.email ||
+                   user.nickname == peop.email ))
     {
         peop.delete()
         deleted = true
