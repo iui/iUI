@@ -217,13 +217,17 @@ window.iui =
 					
 				sendEvent("afterinsert", document.body, {insertedNode:docNode});   
 
-
+				// First child becomes selected page/view by default unless
+				// selected="true" is set
+				// BUG: selected="true" results in a visually incorrect transition
 				if (child.getAttribute("selected") == "true" || !targetPage)
 					targetPage = child;
 				
 				--i;
 			}
 		}
+		sendEvent("afterinsertend", document.body, {fragment:frag})
+
 		if (targetPage)
 			iui.showPage(targetPage);
 
@@ -677,6 +681,7 @@ function replaceElementWithFrag(replace, frag)
 		docNode = page.appendChild(frag.firstChild);
 		sendEvent("afterinsert", document.body, {insertedNode:docNode});
     }
+	sendEvent("afterinsertend", document.body, {fragment:frag})
 }
 
 function $(id) { return document.getElementById(id); }
