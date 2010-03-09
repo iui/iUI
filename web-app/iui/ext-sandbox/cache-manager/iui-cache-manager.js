@@ -48,9 +48,13 @@ function infoPanelFocus(e)
 function updateClicked()
 {
 	console.log("Update button clicked.");
-	if (window.applicationCache)
+	if (window.applicationCache.status != 0)
 	{
 		window.applicationCache.update();
+	}
+	else
+	{
+		console.log("App is not cached.");
 	}
 	return false;
 }
