@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html manifest="cache-demo.manifest">
+<head>
+<title>Cache Demo</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+<link rel="icon" type="image/png" href="../../iui-favicon.png">
+<link rel="apple-touch-icon" href="../../iui-logo-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" href="../../iui.css" type="text/css" />
+<link rel="stylesheet" title="Default" href="../../t/default/default-theme.css"  type="text/css"/>
+<script type="application/x-javascript" src="../../iui.js"></script>
+<script type="application/x-javascript" src="iui-cache-manager.js"></script>
+</head>
+
+<body>
+    <div class="toolbar">
+        <h1 id="pageTitle"></h1>
+        <a id="backButton" class="button" href="#"></a>
+    </div>
+    
+    <ul id="home" title="Demo" selected="true">
+        <li><a href="#iui-cache-panel">HTML5 WebApp Cache</a></li>
+        <li>Other Stuff Can Go Here</li>
+    </ul>
+
+    <div id="iui-cache-panel" class="panel" title="Cache">
+        <h2>Status</h2>
+        <fieldset>
+            <div class="row">
+                <label>On Line</label>
+                <span class="iui-online-status">?</span>
+            </div>
+            <div class="row">
+                <label>Cache</label>
+                <span class="iui-cache-status">?</span>
+            </div>
+        </fieldset>
+		<a class="whiteButton iui-cache-update-button" type="button" target="_noop">Update Cache</a>
+      	<a class="grayButton iui-cache-swap-button" type="button" target="_noop">Swap Cache</a>        
+    </div>
+</body>
+</html>
