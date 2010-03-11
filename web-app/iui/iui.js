@@ -1,9 +1,12 @@
 /*
-   Copyright (c) 2007-9, iUI Project Members
+   Copyright (c) 2007-10, iUI Project Members
    See LICENSE.txt for licensing terms
    Version @VERSION@
  */
 
+/* This version of iUI has a partial implementation of the "busy" flag for Issue #191
+   It will not work with webapps that call iui.showPage() or iui.showPageByHref() directly
+   This issue will be resolved in a later version */
 
 (function() {
 
@@ -27,17 +30,28 @@ var landscapeVal = "landscape";
 
 window.iui =
 {
+	busy: false,	// A touch/click that will result in a slide is in progress
 	animOn: true,	// Slide animation with CSS transition is now enabled by default where supported
 
 	httpHeaders: {
 	    "X-Requested-With" : "XMLHttpRequest"
 	},
 
+	// showPage() should probably be an internal function
+	// external callers should call showPageById()
+	// it doesn't check busy flag because it is called by other functions that have alread set it
+	//
 	showPage: function(page, backwards)
 	{
 		if (page)
 		{
 //			if (window.iui_ext)	window.iui_ext.injectEventMethods(page);	// TG -- why was this comment left here??
+			if (page == currentPage)
+			{
+				console.log("page = currentPage!");
+				iui.busy = false;	//  Don't do anything, just clear the busy flag and exit
+				return;
+			}
 			
 			if (currentDialog)
 			{
@@ -82,25 +96,33 @@ window.iui =
 		var page = $(pageId);
 		if (page)
 		{
-			var index = pageHistory.indexOf(pageId);
-			var backwards = index != -1;
-			if (backwards)
+			if (!iui.busy)
 			{
-				// we're going back, remove history from index on
-				// remember - pageId will be added again in updatePage
-				pageHistory.splice(index);
+				iui.busy = true;
+				var index = pageHistory.indexOf(pageId);
+				var backwards = index != -1;
+				if (backwards)
+				{
+					// we're going back, remove history from index on
+					// remember - pageId will be added again in updatePage
+					pageHistory.splice(index);
+				}
+	
+				iui.showPage(page, backwards);
 			}
-
-			iui.showPage(page, backwards);
 		}
 	},
 	
 	goBack: function()
 	{
-		pageHistory.pop();	// pop current page
-		var pageID = pageHistory.pop();  // pop/get parent
-		var page = $(pageID);
-		iui.showPage(page, true);
+		if (!iui.busy)
+		{
+			iui.busy = true;
+			pageHistory.pop();	// pop current page
+			var pageID = pageHistory.pop();  // pop/get parent
+			var page = $(pageID);
+			iui.showPage(page, true);
+		}
 	},
 
 
@@ -114,17 +136,36 @@ window.iui =
 		var page = $(pageId);
 		if (page)
 		{
-			var index = pageHistory.indexOf(pageId);
-			var backwards = index != -1;
-			if (backwards)	// we're going back, shouldn't happen on replacePage()
-				console.log("error: can't replace page with ancestor");
-				
-			pageHistory.pop();
-
-			iui.showPage(page, false);
+			if (!iui.busy)
+			{
+				iui.busy = true;
+				var index = pageHistory.indexOf(pageId);
+				var backwards = index != -1;
+				if (backwards)	// we're going back, shouldn't happen on replacePage()
+					console.log("error: can't replace page with ancestor");
+					
+				pageHistory.pop();
+	
+				iui.showPage(page, false);
+			}
 		}
 	},
 
+	// External version, for this release you'll have to use showPageByHrefExt()
+	// to do an ajax load programmatically from your webapp
+	// This should be renamed to showPageByHref() once the old method and  all 
+	// it's calls are renamed.
+	showPageByHrefExt: function(href, args, method, replace, cb)
+	{
+		if (!iui.busy)
+		{
+			iui.busy = true;
+			iui.showPageByHref(href, args, method, replace, cb);	
+		}
+	},
+
+	// This one should only be used by iUIinternally.  It should be renamed and possibly moved into
+	// the closure
 	showPageByHref: function(href, args, method, replace, cb)
 	{
 	  // I don't think we need onerror, because readstate will still go to 4 in that case
@@ -141,6 +182,7 @@ window.iui =
           if (replace)
 		  {
 			  replaceElementWithFrag(replace, frag);
+			  iui.busy = false;
 		  }
 		  else
 		  {
@@ -315,9 +357,7 @@ addEventListener("click", function(event)
 		function unselect() { link.removeAttribute("selected"); }
 		if (link.href && link.hash && link.hash != "#" && !link.target)
 		{
-			link.setAttribute("selected", "true");
-			iui.showPage($(link.hash.substr(1)));
-			setTimeout(unselect, 500);
+			followAnchor(link);
 		}
 		else if (link == $("backButton"))
 		{
@@ -340,8 +380,7 @@ addEventListener("click", function(event)
 		}
 		else if (link.target == "_replace")
 		{
-			link.setAttribute("selected", "progress");
-			iui.showPageByHref(link.href, null, "GET", link, unselect);
+			followAjax(link, link);
 		}
 		else if (iui.isNativeUrl(link.href))
 		{
@@ -353,8 +392,7 @@ addEventListener("click", function(event)
 		}
 		else if (!link.target)
 		{
-			link.setAttribute("selected", "progress");
-			iui.showPageByHref(link.href, null, "GET", null, unselect);
+			followAjax(link, null);
 		}
 		else
 			return;
@@ -373,6 +411,30 @@ addEventListener("click", function(event)
 	}
 }, true);
 
+function followAnchor(link)
+{
+	function unselect() { link.removeAttribute("selected"); }
+	
+	if (!iui.busy)
+	{
+		iui.busy = true;
+		link.setAttribute("selected", "true");
+		iui.showPage($(link.hash.substr(1)));
+		setTimeout(unselect, 500);
+	}
+}
+
+function followAjax(link, replaceLink)
+{
+	function unselect() { link.removeAttribute("selected"); }
+
+	if (!iui.busy)
+	{
+		iui.busy = true;
+		link.setAttribute("selected", "progress");
+		iui.showPageByHref(link.href, null, "GET", replaceLink, unselect);	
+	}
+}
 
 function sendEvent(type, node, props)
 {
@@ -525,7 +587,8 @@ function updatePage(page, fromPage)
 		}
 		else
 			backButton.style.display = "none";
-	}	 
+	}
+	iui.busy = false;
 }
 
 function slidePages(fromPage, toPage, backwards)
@@ -629,8 +692,12 @@ function preloadImages()
 
 function submitForm(form)
 {
-    iui.addClass(form, "progress");
-    iui.showPageByHref(form.action, encodeForm(form), form.method || "GET", null, clear);
+ 	if (!iui.busy)
+	{
+		iui.busy = true;
+		iui.addClass(form, "progress");
+		iui.showPageByHref(form.action, encodeForm(form), form.method || "GET", null, clear);
+	}
     function clear() {   iui.removeClass(form, "progress"); }
 }
 
