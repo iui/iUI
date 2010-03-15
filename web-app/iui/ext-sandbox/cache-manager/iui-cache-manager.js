@@ -1,4 +1,4 @@
-// iUI Cache Manager
+// iUI Cache Manager Extension
 //
 // Requires DOMContentLoaded event
 // Requires document.querySelector()

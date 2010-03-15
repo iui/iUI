@@ -1,9 +1,10 @@
 CACHE MANIFEST
-# Date Wed Dec 16 16:21:52 PST 2009
+# Date Thu Mar 11 08:43:10 PST 2010
 # header goes here
 ../../iui/iui-favicon.png
 ../../iui/iui-logo-touch-icon.png
 ../../iui/iui-moz.css
+../../iui/iui-post-to-self-hacks.js
 ../../iui/iui.css
 ../../iui/iui.js
 ../../iui/t/default/back-img.png

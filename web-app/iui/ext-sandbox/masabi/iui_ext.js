@@ -1,5 +1,5 @@
 /*
-   Copyright (c) 2007-9, iUI Project Members
+   Copyright (c) 2007-10, iUI Project Members
    See LICENSE.txt for licensing terms
  */
 
@@ -27,7 +27,6 @@ var sesh = new Array();
 
 window.iui_ext =
 {
-	
 	// replacements for HTML5 sessionStorage object, not implemented for iPhone Safari (<v4)
 	setItem: function(key,value) { sesh[key] = value; },
 	getItem: function(key) { return sesh[key]; },
@@ -89,7 +88,7 @@ function injectEventMethods(page)
 			if (page._onblur)	page._onblur(event);
 		};
 	}
-};
+}
 
 function afterInsert(e)
 {
@@ -283,6 +282,8 @@ function convertSelectToPanel(select)
 		n.value = o.value;
 		n.checked = (i==select.selectedIndex);
 		n.name = select.name;
+		// Call to storeFormTags() added by Victor Hudson as discussed in Issue #216 
+		// Is the call to storeFormTags necessary if onBlur is working properly?
 		m.onclick = n.onclick = function() { (this.lastChild ? this.lastChild : this).checked=true; storeFormTags(generated,"input"); back(); return false; }; // VH  storeFormTags(generated,"input"); 
 	}
 	
