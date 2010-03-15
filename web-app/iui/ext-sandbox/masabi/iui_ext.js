@@ -27,6 +27,7 @@ var sesh = new Array();
 
 window.iui_ext =
 {
+	
 	// replacements for HTML5 sessionStorage object, not implemented for iPhone Safari (<v4)
 	setItem: function(key,value) { sesh[key] = value; },
 	getItem: function(key) { return sesh[key]; },
@@ -88,7 +89,7 @@ function injectEventMethods(page)
 			if (page._onblur)	page._onblur(event);
 		};
 	}
-}
+};
 
 function afterInsert(e)
 {
@@ -282,7 +283,7 @@ function convertSelectToPanel(select)
 		n.value = o.value;
 		n.checked = (i==select.selectedIndex);
 		n.name = select.name;
-		m.onclick = n.onclick = function() { (this.lastChild ? this.lastChild : this).checked=true; back(); return false; };
+		m.onclick = n.onclick = function() { (this.lastChild ? this.lastChild : this).checked=true; storeFormTags(generated,"input"); back(); return false; }; // VH  storeFormTags(generated,"input"); 
 	}
 	
 	// replace select with link + hidden tag
