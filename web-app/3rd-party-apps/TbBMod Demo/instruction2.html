@@ -1,0 +1,24 @@
+<div id="intstructions" class="panel" title="TbBMod Instructions 2">
+<fieldset>
+	<p class="normalText">Of course when you get to the &quot;How&quot; page, it is just a static explanation of how the extension works and doesn't need the button up there at all, so on that page I hide it like this.</p>
+</fieldset>
+<fieldset>
+	<p class="code">&lt;form&gt;</p>
+	<p class="code">&lt;input type = &quot;hidden&quot; name = "TbBModHIDE_help" value = &quot;true&quot; /&gt;</p>
+	<p class="code">&lt;/form&gt;</p>
+</fieldset>
+<fieldset>
+	<p class="normalText">Things to remember!</p>
+	<p class="code">-Button must have unique id attribute!</p>
+	<p class="code">-Don't forget to link it to a generic page.</p>
+	<p class="code">-No extra form needed if page is, or already has form. Just add the hidden inputs to it.</p>
+	<p class="code">-Naming convention for inputs is "TbBModOPTION_buttonId"</p>
+	<p class="code">-Options are HIDE, TEXT, and HREF</p><p class="code">TbBMod can be used on internal(#link) or external AJAX pages</p>
+	<p class="code">-You can change the button link to internal(#link) or external AJAX pages</p>
+	<p class="code">-The ability to mod the Back Button is coming!!!!</p>
+	
+	<form>
+		<input type = "hidden" name = "TbBModTEXT_help" value = "How" />
+		<input type = "hidden" name = "TbBModHREF_help" value = "how.html" />
+	</form>
+</div>

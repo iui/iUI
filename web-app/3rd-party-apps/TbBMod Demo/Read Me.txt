@@ -1,0 +1,18 @@
+TbBMod version 0.1 ---- For Modding toolbar buttons on per page basis
+View Index for examples, instructions, and info on how it works
+
+Plans for the future--
+Turn right toolbar button into form submit on the fly
+
+On the fly control of back button 
+--- to enable things like form submission for more iPhone like preference setting
+--- Click back after adjusting settings will do form via ajax 
+--- then slide pageout to right returning to previous page
+--- also to better handle ajax list typ things like check book transactions
+--- Ex. you have a list. You click "+" button in upper right of toolbar 
+--- and get a form to add something to list from the usual right side. 
+--- When you submit form list slides back in from left with the list page reloaded via ajax showing new item.
+
+Feel free to contact me through iui-developergroup or iPhoneWebdevgroup to report bugs or suggest other features.
+
+Vic
