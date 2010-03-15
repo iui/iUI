@@ -1,5 +1,5 @@
 /*
-   Copyright (c) 2007-9, iUI Project Members
+   Copyright (c) 2007-10, iUI Project Members
    See LICENSE.txt for licensing terms
  */
 
@@ -282,7 +282,9 @@ function convertSelectToPanel(select)
 		n.value = o.value;
 		n.checked = (i==select.selectedIndex);
 		n.name = select.name;
-		m.onclick = n.onclick = function() { (this.lastChild ? this.lastChild : this).checked=true; back(); return false; };
+		// Call to storeFormTags() added by Victor Hudson as discussed in Issue #216 
+		// Is the call to storeFormTags necessary if onBlur is working properly?
+		m.onclick = n.onclick = function() { (this.lastChild ? this.lastChild : this).checked=true; storeFormTags(generated,"input"); back(); return false; }; // VH  storeFormTags(generated,"input"); 
 	}
 	
 	// replace select with link + hidden tag
