@@ -1,6 +1,7 @@
 CACHE MANIFEST
-# Date Thu Mar 11 08:43:10 PST 2010
+# Date Tue Mar 16 12:28:58 PDT 2010
 # header goes here
+music-app.js
 ../../iui/iui-favicon.png
 ../../iui/iui-logo-touch-icon.png
 ../../iui/iui-moz.css
@@ -42,6 +43,7 @@ CACHE MANIFEST
 ../../iui/t/ipdc/toolbar.png
 ../../iui/t/ipdc/toolButton.png
 ../../iui/js/iui-theme-switcher.js
+../../iui/ext-sandbox/cache-manager/iui-cache-manager.js
 NETWORK:
 search.gtpl
 stats.gtpl
