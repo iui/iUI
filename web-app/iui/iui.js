@@ -12,6 +12,7 @@
 
 var slideSpeed = 20;
 var slideInterval = 0;
+var ajaxTimeoutVal = 10000;
 
 var currentPage = null;
 var currentDialog = null;
@@ -32,6 +33,7 @@ window.iui =
 {
 	busy: false,	// A touch/click that will result in a slide is in progress
 	animOn: true,	// Slide animation with CSS transition is now enabled by default where supported
+	ajaxErrHandler : null,
 
 	httpHeaders: {
 	    "X-Requested-With" : "XMLHttpRequest"
@@ -171,8 +173,11 @@ window.iui =
 	  // I don't think we need onerror, because readstate will still go to 4 in that case
 	  function spbhCB(xhr) 
 	  {
+	  	console.log("xhr.readyState = " + xhr.readyState);
 		if (xhr.readyState == 4)
 		{
+		  if (xhr.status == 200 && !xhr.aborted)
+		  {
 		  // Add 'if (xhr.responseText)' to make sure we have something???
 		  // Can't use createDocumentFragment() here because firstChild is null and childNodes is empty
 		  var frag = document.createElement("div");
@@ -190,6 +195,15 @@ window.iui =
 		  }
 		  if (cb)
 			setTimeout(cb, 1000, true);
+		  }
+		  else
+		  {
+		  	if (iui.ajaxErrHandler)
+		  	{
+		  		iui.ajaxErrHandler("Error contacting server, please try again later");
+		  	}
+		  }
+		  
 		}
 	  };
 	  iui.ajax(href, args, method, spbhCB);
@@ -207,7 +221,7 @@ window.iui =
         xhr.open(method, url, true);
         if (cb)
         {
-        xhr.onreadystatechange = function() { cb(xhr); };
+			xhr.onreadystatechange = function() { cb(xhr); };
         }
         var data = null;
         if (args && method != "GET")
@@ -220,6 +234,19 @@ window.iui =
             xhr.setRequestHeader(header, iui.httpHeaders[header]);
         }
         xhr.send(data);
+        xhr.requestTimer = setTimeout( ajaxTimeout, ajaxTimeoutVal );
+		return xhr;
+        function ajaxTimeout()
+        {
+			try{
+		 		xhr.abort();
+		   		xhr.aborted = true;
+		   		xhr.onreadystatechange();
+			}
+		   	catch(err){
+				console.log(err);
+		 	}
+		}
 	},
 	
 	// Thanks, jQuery
