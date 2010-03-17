@@ -12,7 +12,7 @@
 
 var slideSpeed = 20;
 var slideInterval = 0;
-var ajaxTimeoutVal = 10000;
+var ajaxTimeoutVal = 30000;
 
 var currentPage = null;
 var currentDialog = null;
@@ -171,41 +171,44 @@ window.iui =
 	showPageByHref: function(href, args, method, replace, cb)
 	{
 	  // I don't think we need onerror, because readstate will still go to 4 in that case
-	  function spbhCB(xhr) 
-	  {
-	  	console.log("xhr.readyState = " + xhr.readyState);
-		if (xhr.readyState == 4)
+		function spbhCB(xhr) 
 		{
-		  if (xhr.status == 200 && !xhr.aborted)
-		  {
-		  // Add 'if (xhr.responseText)' to make sure we have something???
-		  // Can't use createDocumentFragment() here because firstChild is null and childNodes is empty
-		  var frag = document.createElement("div");
-		  frag.innerHTML = xhr.responseText;
-          // EVENT beforeInsert->body
-          sendEvent("beforeinsert", document.body, {fragment:frag})
-          if (replace)
-		  {
-			  replaceElementWithFrag(replace, frag);
-			  iui.busy = false;
-		  }
-		  else
-		  {
-			  iui.insertPages(frag);
-		  }
-		  if (cb)
-			setTimeout(cb, 1000, true);
-		  }
-		  else
-		  {
-		  	if (iui.ajaxErrHandler)
-		  	{
-		  		iui.ajaxErrHandler("Error contacting server, please try again later");
-		  	}
-		  }
+			console.log("xhr.readyState = " + xhr.readyState);
+			if (xhr.readyState == 4)
+			{
+				if (xhr.status == 200 && !xhr.aborted)
+				{
+				  // Add 'if (xhr.responseText)' to make sure we have something???
+				  // Can't use createDocumentFragment() here because firstChild is null and childNodes is empty
+				  var frag = document.createElement("div");
+				  frag.innerHTML = xhr.responseText;
+				  // EVENT beforeInsert->body
+				  sendEvent("beforeinsert", document.body, {fragment:frag})
+				  if (replace)
+				  {
+					  replaceElementWithFrag(replace, frag);
+					  iui.busy = false;
+				  }
+				  else
+				  {
+					  iui.insertPages(frag);
+				  }
+				}
+				else
+				{
+					iui.busy = false;
+					if (iui.ajaxErrHandler)
+					{
+						iui.ajaxErrHandler("Error contacting server, please try again later");
+					}
+				}
+				if (cb)
+				{
+					setTimeout(cb, 1000, true);
+				}
+			}
 		  
-		}
-	  };
+		};
 	  iui.ajax(href, args, method, spbhCB);
 	},
 	
