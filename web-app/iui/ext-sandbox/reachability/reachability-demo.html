@@ -55,29 +55,34 @@ form.progress div.spinner {
 //  iui-js.appspot.com because of cross-domain restrictions on Ajax
 //
 // The DOMContentLoaded event function sets things up so the demo will work in either case.
+(function() {
+
+var noCacheQuery = "?nocache=" + new Date().getTime();	// used to prevent caching
+var testImage = "t/default/pinstripes.png" + noCacheQuery  // Use small image from iUI
+var testURL;
+var ajaxURL;
+var formURL;
+var hostName = window.location.host;
+if (hostName != "")
+{	// Reference resources on our same server
+	testURL = '/iui/' + testImage;
+	ajaxURL = '/samples/music/stats.gtpl';
+	formURL = '/test/form-echo.gtpl';
+}
+else
+{
+	// assume we're running from a file URL, so no cross-domain worries
+	hostName = "iui-js.appspot.com";
+	testURL = "http://" + hostName + '/iui/' + testImage;
+	ajaxURL = "http://" + hostName + '/samples/music/stats.gtpl';
+	formURL = "http://" + hostName + '/test/form-echo.gtpl';
+}
+
+iui.reach.addURL(testURL, hostName);
+
+
 addEventListener("DOMContentLoaded", function(event)
 {
-	var noCacheQuery = "?nocache=" + new Date().getTime();	// used to prevent caching
-	var testImage = "t/default/pinstripes.png" + noCacheQuery  // Use small image from iUI
-	var iuiPath = "../../";
-	var testURL;
-	var ajaxURL;
-	var formURL;
-	hostName = window.location.host;
-	if (hostName != "")
-	{	// Reference resources on our same server
-		testURL = '/iui/' + testImage;
-		ajaxURL = '/samples/music/stats.gtpl';
-		formURL = '/test/form-echo.gtpl';
-	}
-	else
-	{
-		// assume we're running from a file URL, so no cross-domain worries
-		hostName = "iui-js.appspot.com";
-		testURL = "http://" + hostName + '/iui/' + testImage;
-		ajaxURL = "http://" + hostName + '/samples/music/stats.gtpl';
-		formURL = "http://" + hostName + '/test/form-echo.gtpl';
-	}
 	var ajaxLink = document.querySelector('a[href="stats.gtpl"]');
 	ajaxLink.setAttribute("href",ajaxURL);
 	var formLinks = document.querySelectorAll('form[action="form-echo.gtpl"]');
@@ -86,8 +91,11 @@ addEventListener("DOMContentLoaded", function(event)
 		formLinks[i].setAttribute("action",formURL);
 	}
 	ajaxLink.setAttribute("href",ajaxURL);
-	iui.reach.addURL(testURL, hostName);
 }, false);
+
+})();
+
+
 </script>
 </head>
 
