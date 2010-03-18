@@ -244,7 +244,6 @@ window.iui =
 			try{
 		 		xhr.abort();
 		   		xhr.aborted = true;
-		   		xhr.onreadystatechange();
 			}
 		   	catch(err){
 				console.log(err);
