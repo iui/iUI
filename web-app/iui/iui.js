@@ -50,7 +50,7 @@ window.iui =
 //			if (window.iui_ext)	window.iui_ext.injectEventMethods(page);	// TG -- why was this comment left here??
 			if (page == currentPage)
 			{
-				console.log("page = currentPage!");
+				console.log("page = currentPage = " + page.id);
 				iui.busy = false;	//  Don't do anything, just clear the busy flag and exit
 				return;
 			}
@@ -448,6 +448,8 @@ function followAnchor(link)
 	{
 		iui.busy = true;
 		link.setAttribute("selected", "true");
+		// We need to check for backlinks here like in showPageID()
+		// That backlink functionality needs to be in here somewhere
 		iui.showPage($(link.hash.substr(1)));
 		setTimeout(unselect, 500);
 	}
