@@ -31,18 +31,41 @@ var landscapeVal = "landscape";
 
 window.iui =
 {
-	busy: false,	// A touch/click that will result in a slide is in progress
+	/*
+	property: iui.busy
+	A touch/click that will result in a slide is in progress (defaults to false).
+	*/
+	busy: false,
+	
+	/*
+	property: iui.animOn
+	Slide animation with CSS transition is now enabled by default where supported.
+	*/
 	animOn: true,	// Slide animation with CSS transition is now enabled by default where supported
+	
+	/*
+	property: iui.ajaxErrHandler
+	*/
 	ajaxErrHandler : null,
-
+	
+	/*
+	property: iui.httpHeaders
+	Object of headers sent with Ajax requests. Defaults to
+	{ 'X-Requested-With': 'XMLHttpRequest' }
+	*/
 	httpHeaders: {
 	    "X-Requested-With" : "XMLHttpRequest"
 	},
 
-	// showPage() should probably be an internal function
-	// external callers should call showPageById()
-	// it doesn't check busy flag because it is called by other functions that have alread set it
-	//
+	/*
+	method: iui.showPage(page[, backwards=false])
+	`page` is the html element to show, if `backwards` is set to `true`, it will
+	display a right-to-left animation instead of the default left-to-right.
+	
+	showPage() should probably be an internal function. External callers should
+	call showPageById()	it doesn't check busy flag because it is called by other
+	functions that have alread set it.
+	*/	
 	showPage: function(page, backwards)
 	{
 		if (page)
