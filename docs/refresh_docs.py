@@ -3,6 +3,7 @@ import re
 # Refreshes the iUI HTML documentation (iui_docs.html), regenerating it from the
 # code comments in iui.js
 def refresh():
+  
   # read in the comments from iui.js
   iui_source = open('../web-app/iui/iui.js')
   comments_list = get_multiline_comments(iui_source.read())
@@ -25,11 +26,17 @@ def refresh():
     <body>
     <h1>iUI Documentation</h1>
     """)
+  
   docs_dest.write('\n'.join(comments_dict['copyright']))
   docs_dest.write('\n'.join(comments_dict['note']))
+  
+  docs_dest.write('<p><i>For a gentler introduction to iUI, check out the <a href="getting-started.html">Getting Started Tutorial</a>.</i></p>')
+  
   docs_dest.write('<h2>Event Handling</h2>')
   docs_dest.write('\n'.join(comments_dict['load']))
   docs_dest.write('\n'.join(comments_dict['click']))
+  docs_dest.write('<h2>iUI Custom Events</h2>')
+  docs_dest.write('\n'.join(comments_dict['events']))
   docs_dest.write('<h2>Properties</h2>')
   docs_dest.write('\n'.join(comments_dict['property']))
   docs_dest.write('<h2>Methods</h2>')
@@ -87,7 +94,7 @@ def convert_to_html(comment):
     section = hyperlink.sub('<a href="\\1">\\1</a>', section)
 
     if comment_type == 'copyright':
-      section = '<i>' + section + '</i>'
+      section = '<span class="copyright">' + section + '</copyright>'
     if section.lstrip().startswith('1.'):
       section = '<ol><li>' + numbers.sub('</li><li>', section.lstrip()[2:]) + '</li></ol>'
     

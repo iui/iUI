@@ -31,6 +31,13 @@ var landscapeVal = "landscape";
 
 // *************************************************************************************************
 
+/*
+events:
+iUI fires a number of custom events on your panel and dialog elements. Handling
+these events is the recommended way to do any just-in-time transformations or
+loading (besides the ajax pre-loading built into iUI).
+*/
+
 window.iui =
 {
 	/*
@@ -102,13 +109,22 @@ window.iui =
 				currentDialog = null;
 			}
 
+			/*
+			events:
+			Dialogs receive a `focus` event when they are shown and a `blur` event
+			when hidden. Currently they don't receive any `load` or `unload` events.
+			*/
 			if (hasClass(page, "dialog"))
 			{
-				// There's no LOAD/UNLOAD events for dialogs -- is that the way it should be??
 				// Should the view the dialog is going over get a BLUR??
 				sendEvent("focus", page);							// EVENT: FOCUS
 				showDialog(page);
 			}
+			/*
+			events:
+			Panels receive `focus` and `blur` events and also receive a `load` event
+			and (only when going backwards away from a panel) an `unload` event.
+			*/
 			else
 			{
 				sendEvent("load", page);    						// EVENT: LOAD
@@ -248,6 +264,12 @@ window.iui =
 				  var frag = document.createElement("div");
 				  frag.innerHTML = xhr.responseText;
 				  // EVENT beforeInsert->body
+					/*
+					events:
+					When new pages are inserted into the DOM after an AJAX load, the `body`
+					element receives a `beforeinsert` event with `{ fragment: frag }` parameters
+					and afterwards receives an `afterinsert` event with `{insertedNode: docNode}` parameters.
+					*/
 				  sendEvent("beforeinsert", document.body, {fragment:frag})
 				  if (replace)
 				  {
@@ -764,7 +786,12 @@ function updatePage(page, fromPage)
 	}
 	iui.busy = false;
 }
-
+/*
+events:
+Both panels involved in a slide animation receive `beforetransition` and
+`aftertransition` events. The panel being navigated from receives event
+parameters `{ out :true }`, the panel being navigated to receives `{ out: false }`.
+*/
 function slidePages(fromPage, toPage, backwards)
 {		 
 	var axis = (backwards ? fromPage : toPage).getAttribute("axis");

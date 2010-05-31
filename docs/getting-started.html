@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>iUI Getting Started Tutorial</title>
+      <link href="iui_docs.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+
+<h1>Getting Started Tutorial</h1>
+
+<i>For the nitty-gritty details of iUI, check out the <a href="iui_docs.html">documentation</a>.</i>
+
+<p>
+  As Joe Hewitt notes in the
+  <a href="http://www.joehewitt.com/blog/introducing_iui.php">iUI introductory blog post</a>,
+  iUI is intended to convert "ordinary standards-based HTML" into a polished UI
+  that looks like a native iPhone app. The first thing to learn about iUI is
+  what "ordinary HTML" it supports.
+</p>
+
+<p>
+  In order to start playing with iUI, you first need to create a basic HTML file that
+  pulls in iUI's CSS and Javascript, plus a couple of iPhone-specific meta tags.
+  Here's what it looks like (with the iUI repository in an "iui-tip" subfolder):
+</p>
+
+<textarea rows="17">
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="iui-tip/web-app/iui/iui.css" type="text/css" />
+    <link rel="stylesheet" title="Default" href="iui-tip/web-app/iui/t/default/default-theme.css" type="text/css"/>
+    <script type="application/x-javascript" src="iui-tip/web-app/iui/iui.js"></script>
+  </head>
+  <body>
+  </body>
+</html>
+</textarea>
+
+<p>
+  Everything else will be done inside the body tag. The basic type of view in
+  iUI is the panel-type view, which must be a top-level element (i.e. directly
+  under the body element) and must either be a ul element or a div or form with
+  a class of "panel". Let's start with a couple of divs to scroll between and
+  a toolbar (be sure to set selected="true" on the first one to display it by
+  default or you won't see anything):
+</p>
+
+<textarea rows="12">
+  <body>
+    <div class="toolbar">
+      <h1 id="pageTitle"></h1><a id="backButton" class="button" href="#"></a>
+    </div>
+    <div class="panel" title="First Page" selected="true">
+      My first iPhone screen.
+    </div>
+    <div class="panel" title="Second Page">
+      My second iPhone screen.
+    </div>
+  </body>
+</textarea>
+
+<p>
+  This should end up looking something like this:
+</p>
+
+<img src="getting-started-1.png">
+
+<p>
+  Of course, it doesn't do you a whole lot of good to have two screens without
+  a way to navigate between them, so let's add a link and a couple of IDs:
+</p>
+
+<textarea rows="12">
+  <body>
+    <div class="toolbar">
+      <h1 id="pageTitle"></h1><a id="backButton" class="button" href="#"></a>
+    </div>
+    <div class="panel" title="First Page" selected="true" id="first">
+      My first iPhone screen. <a href="#second">Go to second</a>
+    </div>
+    <div class="panel" title="Second Page" id="second">
+      My second iPhone screen.
+    </div>
+  </body>
+</textarea>
+
+<p>
+  Now you should have a link on your first screen that does a smooth sideways
+  animation to the second screen, which should look like this:
+</p>
+
+<img src="getting-started-2.png">
+
+<p>
+  While this technically works, the blue-styled link doesn't exactly look like a
+  native iPhone app, nor does it comply with the iPhone <a href="http://developer.apple.com/iphone/library/documentation/userexperience/conceptual/mobilehig/Introduction/Introduction.html">
+  Human Interface Guidelines</a>. For that, we should put the link in a <a href="http://developer.apple.com/iphone/library/documentation/userexperience/conceptual/TableView_iPhone/AboutTableViewsiPhone/AboutTableViewsiPhone.html">
+  table view</a>. In iUI, table views are created with an unordered list (ul)
+  like this:
+</p>
+
+<textarea rows="12">
+  <body>
+    <div class="toolbar">
+      <h1 id="pageTitle"></h1><a id="backButton" class="button" href="#"></a>
+    </div>
+    <ul title="First Page" selected="true" id="first">
+      <li class="arrow"><a href="#second">Go to second</a></li>
+    </ul>
+    <div class="panel" title="Second Page" id="second">
+      My second iPhone screen.
+    </div>
+  </body>
+</textarea>
+
+<p>
+  Now it should look like this:
+</p>
+
+<img src="getting-started-3.png">
+
+<p>
+  Congratulations! You've just created your first, working iUI application!
+</p>
+
+</body>
+</html>

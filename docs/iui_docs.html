@@ -7,17 +7,17 @@
     <body>
     <h1>iUI Documentation</h1>
     <p>
-<i><h3></h3>
+<span class="copyright"><h3></h3>
    Copyright (c) 2007-10, iUI Project Members.
    See LICENSE.txt for licensing terms.
    Version @VERSION@
- </i>
+ </copyright>
 </p><p>
 <div class="note">
    This version of iUI has a partial implementation of the <span class="code">busy</span> flag for Issue #191,
    it will not work with webapps that call <span class="code">iui.showPage()</span> or <span class="code">iui.showPageByHref()</span> directly.
    This issue will be resolved in a later version. </div>
-</p><h2>Event Handling</h2><p>
+</p><p><i>For a gentler introduction to iUI, check out the <a href="getting-started.html">Getting Started Tutorial</a>.</i></p><h2>Event Handling</h2><p>
 <h3> On Load</h3>
 On load, iUI will determine which page to display primarily based on
 the anchor part of the URL (everything after <span class="code">#_</span>) and secondarily based on the
@@ -55,6 +55,38 @@ determine what to do:
 <h3> Div.toggle Click Handling</h3>
 iUI also captures <span class="code">div.toggle</span> clicks and displays/hides the element via setting
 a <span class="code">toggled</span> attribute to true/false.
+
+</p><h2>iUI Custom Events</h2><p>
+<h3></h3>
+iUI fires a number of custom events on your panel and dialog elements. Handling
+these events is the recommended way to do any just-in-time transformations or
+loading (besides the ajax pre-loading built into iUI).
+
+</p>
+<p>
+<h3></h3>
+			Dialogs receive a <span class="code">focus</span> event when they are shown and a <span class="code">blur</span> event
+			when hidden. Currently they don't receive any <span class="code">load</span> or <span class="code">unload</span> events.
+			
+</p>
+<p>
+<h3></h3>
+			Panels receive <span class="code">focus</span> and <span class="code">blur</span> events and also receive a <span class="code">load</span> event
+			and (only when going backwards away from a panel) an <span class="code">unload</span> event.
+			
+</p>
+<p>
+<h3></h3>
+					When new pages are inserted into the DOM after an AJAX load, the <span class="code">body</span>
+					element receives a <span class="code">beforeinsert</span> event with <span class="code">{ fragment: frag }</span> parameters
+					and afterwards receives an <span class="code">afterinsert</span> event with <span class="code">{insertedNode: docNode}</span> parameters.
+					
+</p>
+<p>
+<h3></h3>
+Both panels involved in a slide animation receive <span class="code">beforetransition</span> and
+<span class="code">aftertransition</span> events. The panel being navigated from receives event
+parameters <span class="code">{ out :true }</span>, the panel being navigated to receives <span class="code">{ out: false }</span>.
 
 </p><h2>Properties</h2><p>
 <h3> iui.busy</h3>
