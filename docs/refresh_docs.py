@@ -27,9 +27,12 @@ def refresh():
     """)
   docs_dest.write('\n'.join(comments_dict['copyright']))
   docs_dest.write('\n'.join(comments_dict['note']))
+  docs_dest.write('<h2>Event Handling</h2>')
   docs_dest.write('\n'.join(comments_dict['load']))
   docs_dest.write('\n'.join(comments_dict['click']))
+  docs_dest.write('<h2>Properties</h2>')
   docs_dest.write('\n'.join(comments_dict['property']))
+  docs_dest.write('<h2>Methods</h2>')
   docs_dest.write('\n'.join(comments_dict['method']))
   docs_dest.write('\n</body>')
   docs_dest.close()
@@ -79,7 +82,7 @@ def convert_to_html(comment):
     section = note.sub('<div class="note">\\1</div>', section)
     if section.lstrip().startswith('example:'):
       section = '<pre>' + section.strip()[len('example:'):] + '</pre>'
-    section = heading.sub('<h2>\\2</h2>', section)
+    section = heading.sub('<h3>\\2</h3>', section)
     section = inline_code.sub('<span class="code">\\1</span>', section)
     section = hyperlink.sub('<a href="\\1">\\1</a>', section)
 
