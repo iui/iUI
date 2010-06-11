@@ -5,7 +5,7 @@ import re
 def refresh():
   
   # read in the comments from iui.js
-  iui_source = open('../web-app/iui/iui.js')
+  iui_source = open('web-app/iui/iui.js')
   comments_list = get_multiline_comments(iui_source.read())
   comments_list = [convert_to_html(comment) for comment in comments_list]
   comments_dict = {}
@@ -16,7 +16,7 @@ def refresh():
   iui_source.close()
   
   # write out the comments into a documentation html file
-  docs_dest = open('iui_docs.html', 'w')
+  docs_dest = open('web-app/docs/iui_docs.html', 'w')
   docs_dest.write("""<!DOCTYPE html>
   <html>
     <head>
