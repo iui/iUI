@@ -158,6 +158,13 @@
 			summary="${iui.release.summary}"/>
 	</target>
 
+
+	<target name="update-codedoc" description="r - update doc from in-code comments">
+        <exec executable="python">
+            <arg value="docs-src/refresh_docs.py"/>
+        </exec>
+    </target>
+
 <!--	
 	<target name="publish-samples" depends="releasedir" description="r - publish sample apps via SSH">
 		<scp verbose="true" todir="${sample-server.ssh.user}:${sample-server.ssh.password}@${sample-server.ssh.host}:${sample-server.ssh.path}">
