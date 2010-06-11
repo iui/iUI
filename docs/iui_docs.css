@@ -1,0 +1,12 @@
+body { background-color: #f6f6f6; color: #333; font-family: Palatino Linotype, Book Antiqua, Palatino, serif; margin: 0 4em }
+h1 { color: #c00; margin-bottom: 0; font-size: 45pt; font-weight: normal; margin: 0 }
+h2 { color: #999; font-size: 24pt; margin-bottom: 0 }
+h3 { color: #c00; margin-bottom: 0; font-family: Courier New, Courier, monospace; font-size: 13pt }
+pre { color: #c00; border: 1px solid #ddd; background-color: white; padding: 1em }
+textarea { width: 100%; border: 1px solid #ccc; padding: 20px }
+img { border: 1px solid #ccc }
+a { color: #c00 }
+a:visited { color: #c00 }
+.note { border: 1px solid #ddd; background-color: white; padding: 1em }
+.code { font-family: Courier New, Courier, monospace; color: #c00 }
+.copyright { font-style: italic; color: #999 }

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>iUI Documentation</title>
+      <link href="iui_docs.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+    <h1>iUI Documentation</h1>
+    <p>
+<span class="copyright"><h3></h3>
+   Copyright (c) 2007-10, iUI Project Members.
+   See LICENSE.txt for licensing terms.
+   Version @VERSION@
+ </copyright>
+</p><p>
+<div class="note">
+   This version of iUI has a partial implementation of the <span class="code">busy</span> flag for Issue #191,
+   it will not work with webapps that call <span class="code">iui.showPage()</span> or <span class="code">iui.showPageByHref()</span> directly.
+   This issue will be resolved in a later version. </div>
+</p><p><i>For a gentler introduction to iUI, check out the <a href="getting-started.html">Getting Started Tutorial</a>.</i></p><h2>Event Handling</h2><p>
+<h3> On Load</h3>
+On load, iUI will determine which page to display primarily based on
+the anchor part of the URL (everything after <span class="code">#_</span>) and secondarily based on the
+top-level (child of the <span class="code">body</span>) element with the <span class="code">selected</span> attribute set to
+<span class="code">true</span>. If these both exist, iui.showPage() will be called twice, but the
+anchor-based load will win because it is done second.
+
+</p><p>
+<h3> Link Click Handling</h3>
+iUI captures all clicks on <span class="code">a</span> elements and goes through a series of checks to
+determine what to do:
+</p>
+<p>
+<ol><li> If the link has a <span class="code">href="#..."</span>, iUI will navigate to the panel ID specified
+   after the # (no underscore).
+</li><li> If the link's ID is <span class="code">backButton</span>, iUI will navigate to the previous screen
+   (see <span class="code">iui.goBack()</span>).
+</li><li> If the link has a <span class="code">type="submit"</span>, iUI will find the parent <span class="code">form</span> element,
+   gather up all the input values and submit the form via AJAX (see
+   <span class="code">iui.showPageByHref()</span>).
+</li><li> If the link has a <span class="code">type="cancel"</span>, iUI will cancel the parent <span class="code">form</span> element
+   dialog.
+</li><li> If the link has a <span class="code">target="_replace"</span>, iUI will do an AJAX call based on the
+   href of the link and replace the panel that the link is in with the contents
+   of the AJAX response.
+</li><li> If the link is a native URL (see <span class="code">iui.isNativeURL()</span>), iUI will do nothing.
+</li><li> If the link has a <span class="code">target="_webapp"</span>, iUI will perform a normal link,
+   navigating completely away from the iUI app and pointing the browser to the
+   linked-to webapp instead.
+</li><li> If there is no <span class="code">target</span> attribute, iUI will perform a normal (non-replace)
+   AJAX slide (see <span class="code">iui.showPageByHref()</span>).
+</li></ol>
+</p>
+<p>
+<h3> Div.toggle Click Handling</h3>
+iUI also captures <span class="code">div.toggle</span> clicks and displays/hides the element via setting
+a <span class="code">toggled</span> attribute to true/false.
+
+</p><h2>iUI Custom Events</h2><p>
+<h3></h3>
+iUI fires a number of custom events on your panel and dialog elements. Handling
+these events is the recommended way to do any just-in-time transformations or
+loading (besides the ajax pre-loading built into iUI).
+
+</p>
+<p>
+<h3></h3>
+			Dialogs receive a <span class="code">focus</span> event when they are shown and a <span class="code">blur</span> event
+			when hidden. Currently they don't receive any <span class="code">load</span> or <span class="code">unload</span> events.
+			
+</p>
+<p>
+<h3></h3>
+			Panels receive <span class="code">focus</span> and <span class="code">blur</span> events and also receive a <span class="code">load</span> event
+			and (only when going backwards away from a panel) an <span class="code">unload</span> event.
+			
+</p>
+<p>
+<h3></h3>
+					When new pages are inserted into the DOM after an AJAX load, the <span class="code">body</span>
+					element receives a <span class="code">beforeinsert</span> event with <span class="code">{ fragment: frag }</span> parameters
+					and afterwards receives an <span class="code">afterinsert</span> event with <span class="code">{insertedNode: docNode}</span> parameters.
+					
+</p>
+<p>
+<h3></h3>
+Both panels involved in a slide animation receive <span class="code">beforetransition</span> and
+<span class="code">aftertransition</span> events. The panel being navigated from receives event
+parameters <span class="code">{ out :true }</span>, the panel being navigated to receives <span class="code">{ out: false }</span>.
+
+</p><h2>Properties</h2><p>
+<h3> iui.busy</h3>
+	This is set to <span class="code">true</span> if a slide animation is in progress.
+	
+</p>
+<p>
+<h3> iui.animOn</h3>
+	Determines whether to do horizontal slide animations with CSS transitions
+	(<a href="http://www.w3.org/TR/css3-2d-transforms/">http://www.w3.org/TR/css3-2d-transforms/</a>) where supported (defaults	to
+	<span class="code">true</span>). Otherwise, manual <span class="code">setInterval()</span> style animations are performed
+	(vertical slide animations are always done manually).
+	
+</p>
+<p>
+<h3> iui.ajaxErrHandler</h3>
+	If defined, this user-set function will be called when an AJAX call returns
+	with an HTTP status other than <span class="code">200</span> (currently all HTTP statuses other than
+	<span class="code">200</span>, even including 200-level statuses like <span class="code">201 Created</span>, are seen as
+	errors).
+	
+</p>
+<p>
+<h3> iui.httpHeaders</h3>
+	An object defining headers to be sent with Ajax requests. This defaults to:
+</p>
+<p>
+<pre>
+	  { 'X-Requested-With': 'XMLHttpRequest' }</pre>
+</p><h2>Methods</h2><p>
+<h3> iui.showPage(page[, backwards=false])</h3>
+	<span class="code">showPage()</span> should probably be an internal function, outside callers should
+	call <span class="code">showPageById()</span> instead. <span class="code">showPage()</span> doesn't set the busy flag because
+	it is already set by the public-facing functions.
+</p>
+<p>
+	<span class="code">page</span> is the html element to show. If <span class="code">backwards</span> is set to <span class="code">true</span>, it will
+	display a right-to-left animation instead of the default left-to-right.
+</p>
+<p>
+	If the currently-displayed page is passed, iui will do nothing. <span class="code">showPage()</span>
+	is used for both panel-type pages and dialog-type pages (dialogs float on top
+	of the panels, have a cancel button and do not participate in sliding
+	animations). Panel-type pages receive blur/focus events and load/unload events,
+	but dialog-type pages only receive blur/focus events.
+	
+</p>
+<p>
+<h3> iui.showPageById(pageId)</h3>
+	Looks up the page element by the id and checks the internal history to
+	determine if the page is on the stack -- if so, it will call <span class="code">showPage()</span> with
+	<span class="code">backwards</span> set to <span class="code">true</span>, reversing the direction of the animation. 
+	
+</p>
+<p>
+<h3> iui.goBack()</h3>
+	Navigates to the previous page in the history stack.
+	
+</p>
+<p>
+<h3> iui.replacePage(pageId)</h3>
+	Loads a new page at the same level in the history stack. 
+	Currently it will do a slide-in animation, but replaces
+	the current page in the navStack.
+	It should probably use a different animation (slide-up/slide-down).
+	
+</p>
+<p>
+<h3> iui.showPageByHrefExt(href, args, method, replace, cb)</h3>
+	Outside callers should use this version to do an ajax load programmatically
+	from your webapp. In a future version, this will be renamed to
+	<span class="code">showPageByHref()</span> (once the old method and  all its calls are renamed).
+</p>
+<p>
+	<span class="code">href</span> is a URL string, <span class="code">method</span> is the HTTP method (defaults to <span class="code">GET</span>),
+	<span class="code">args</span> is an Object of key-value pairs that are used to generate the querystring,
+	<span class="code">replace</span> is an existing element that either is the panel or is a child of the
+	panel that the incoming HTML will replace (if not supplied, iUI will append
+	the incoming HTML to the <span class="code">body</span>), and <span class="code">cb</span> is a user-supplied callback function.
+	
+</p>
+<p>
+<h3> iui.showPageByHref(href, args, method, replace, cb)</h3>
+	This one should only be used by iUI internally.  It should be renamed and
+	possibly moved into the closure.
+	
+</p>
+<p>
+<h3> iui.ajax(url, args, method, cb)</h3>
+	Handles ajax requests and also fires a <span class="code">setTimeout()</span> call
+	to abort the request if it takes longer than 30 seconds. See <span class="code">showPageByHrefExt()</span>
+	above for a description of the various arguments (<span class="code">url</span> is the same as <span class="code">href</span>).
+	
+</p>
+<p>
+<h3> iui.param(o)</h3>
+	Stripped-down, simplified object-only version of a jQuery function that
+	converts an object of keys/values into a URL-encoded querystring.
+	
+</p>
+<p>
+<h3> iui.insertPages(frag)</h3>
+	If an AJAX call (<span class="code">showPageByHref()</span>) is made without supplying a <span class="code">replace</span>
+	element, <span class="code">insertPages()</span> is called to insert the newly-created element
+	fragment into the page DOM. Each child-node of the HTML fragment is a panel
+	and if any of them are already in the DOM, they will be replaced by the
+	incoming elements.
+	
+</p>
+<p>
+<h3> iui.getSelectedPage()</h3>
+	Returns the panel element that is currently being viewed. Each panel must be a
+	direct child of the <span class="code">body</span> element. A panel is set as the selected panel by
+	setting the <span class="code">selected</span> attribute to <span class="code">true</span>.
+	
+</p>
+<p>
+<h3> iui.isNativeUrl(href)</h3>
+	Determines whether the supplied URL string launches a native iPhone app (maps,
+	YouTube, phone, email, etc). If so, iUI does nothing (doesn't attempt to load
+	a page or slide to it) and allows the phone to handle it the click natively.
+	
+</p>
+<p>
+<h3> iui.hasClass(self, name)</h3>
+	Convenience function to determine if the given element (<span class="code">self</span>) has the
+	class <span class="code">name</span>.
+	
+</p>
+<p>
+<h3> iui.addClass(self, name)</h3>
+	Convenience function to add the given class <span class="code">name</span> to element <span class="code">self</span>.
+	
+</p>
+<p>
+<h3> iui.removeClass(self, name)</h3>
+	Convenience function to remove the given class <span class="code">name</span> to element <span class="code">self</span>.
+	
+</p>
+</body>

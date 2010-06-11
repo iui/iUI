@@ -1,12 +1,14 @@
 /*
-   Copyright (c) 2007-10, iUI Project Members
-   See LICENSE.txt for licensing terms
+   copyright:
+   Copyright (c) 2007-10, iUI Project Members.
+   See LICENSE.txt for licensing terms.
    Version @VERSION@
  */
 
-/* This version of iUI has a partial implementation of the "busy" flag for Issue #191
-   It will not work with webapps that call iui.showPage() or iui.showPageByHref() directly
-   This issue will be resolved in a later version */
+/* note:
+   This version of iUI has a partial implementation of the `busy` flag for Issue #191,
+   it will not work with webapps that call `iui.showPage()` or `iui.showPageByHref()` directly.
+   This issue will be resolved in a later version. */
 
 (function() {
 
@@ -29,20 +31,65 @@ var landscapeVal = "landscape";
 
 // *************************************************************************************************
 
+/*
+events:
+iUI fires a number of custom events on your panel and dialog elements. Handling
+these events is the recommended way to do any just-in-time transformations or
+loading (besides the ajax pre-loading built into iUI).
+*/
+
 window.iui =
 {
-	busy: false,	// A touch/click that will result in a slide is in progress
-	animOn: true,	// Slide animation with CSS transition is now enabled by default where supported
+	/*
+	property: iui.busy
+	This is set to `true` if a slide animation is in progress.
+	*/
+	busy: false,
+	
+	/*
+	property: iui.animOn
+	Determines whether to do horizontal slide animations with CSS transitions
+	(http://www.w3.org/TR/css3-2d-transforms/) where supported (defaults	to
+	`true`). Otherwise, manual `setInterval()` style animations are performed
+	(vertical slide animations are always done manually).
+	*/
+	animOn: true,
+	
+	/*
+	property: iui.ajaxErrHandler
+	If defined, this user-set function will be called when an AJAX call returns
+	with an HTTP status other than `200` (currently all HTTP statuses other than
+	`200`, even including 200-level statuses like `201 Created`, are seen as
+	errors).
+	*/
 	ajaxErrHandler : null,
-
+	
+	/*
+	property: iui.httpHeaders
+	An object defining headers to be sent with Ajax requests. This defaults to:
+	
+	example:
+	  { 'X-Requested-With': 'XMLHttpRequest' }
+	*/
 	httpHeaders: {
 	    "X-Requested-With" : "XMLHttpRequest"
 	},
 
-	// showPage() should probably be an internal function
-	// external callers should call showPageById()
-	// it doesn't check busy flag because it is called by other functions that have alread set it
-	//
+	/*
+	method: iui.showPage(page[, backwards=false])
+	`showPage()` should probably be an internal function, outside callers should
+	call `showPageById()` instead. `showPage()` doesn't set the busy flag because
+	it is already set by the public-facing functions.
+	
+	`page` is the html element to show. If `backwards` is set to `true`, it will
+	display a right-to-left animation instead of the default left-to-right.
+	
+	If the currently-displayed page is passed, iui will do nothing. `showPage()`
+	is used for both panel-type pages and dialog-type pages (dialogs float on top
+	of the panels, have a cancel button and do not participate in sliding
+	animations). Panel-type pages receive blur/focus events and load/unload events,
+	but dialog-type pages only receive blur/focus events.
+	*/	
 	showPage: function(page, backwards)
 	{
 		if (page)
@@ -62,6 +109,11 @@ window.iui =
 				currentDialog = null;
 			}
 
+			/*
+			events:
+			Dialogs receive a `focus` event when they are shown and a `blur` event
+			when hidden. Currently they don't receive any `load` or `unload` events.
+			*/
 			if (hasClass(page, "dialog"))
 			{
 				// There's no LOAD/UNLOAD events for dialogs -- is that the way it should be??
@@ -69,6 +121,11 @@ window.iui =
 				sendEvent("focus", page);							// EVENT: FOCUS
 				showDialog(page);
 			}
+			/*
+			events:
+			Panels receive `focus` and `blur` events and also receive a `load` event
+			and (only when going backwards away from a panel) an `unload` event.
+			*/
 			else
 			{
 				sendEvent("load", page);    						// EVENT: LOAD
@@ -93,6 +150,13 @@ window.iui =
 		}
 	},
 
+
+	/*
+	method: iui.showPageById(pageId)
+	Looks up the page element by the id and checks the internal history to
+	determine if the page is on the stack -- if so, it will call `showPage()` with
+	`backwards` set to `true`, reversing the direction of the animation. 
+	*/
 	showPageById: function(pageId)
 	{
 		var page = $(pageId);
@@ -114,7 +178,11 @@ window.iui =
 			}
 		}
 	},
-	
+
+	/*
+	method: iui.goBack()
+	Navigates to the previous page in the history stack.
+	*/
 	goBack: function()
 	{
 		if (!iui.busy)
@@ -128,10 +196,13 @@ window.iui =
 	},
 
 
-	// Load a new page at the same level in the navStack
-	// Currently it will do a slide-in animation but replaces
-	// the current page in the navStack
-	// it should probably use a different animation (slide-up/slide-down)
+	/*
+	method: iui.replacePage(pageId)
+	Loads a new page at the same level in the history stack. 
+	Currently it will do a slide-in animation, but replaces
+	the current page in the navStack.
+	It should probably use a different animation (slide-up/slide-down).
+	*/
 	replacePage: function(pageId)
 	{
 		// Should probably take either an ID or an Element
@@ -153,10 +224,18 @@ window.iui =
 		}
 	},
 
-	// External version, for this release you'll have to use showPageByHrefExt()
-	// to do an ajax load programmatically from your webapp
-	// This should be renamed to showPageByHref() once the old method and  all 
-	// it's calls are renamed.
+	/*
+	method: iui.showPageByHrefExt(href, args, method, replace, cb)
+	Outside callers should use this version to do an ajax load programmatically
+	from your webapp. In a future version, this will be renamed to
+	`showPageByHref()` (once the old method and  all its calls are renamed).
+	
+	`href` is a URL string, `method` is the HTTP method (defaults to `GET`),
+	`args` is an Object of key-value pairs that are used to generate the querystring,
+	`replace` is an existing element that either is the panel or is a child of the
+	panel that the incoming HTML will replace (if not supplied, iUI will append
+	the incoming HTML to the `body`), and `cb` is a user-supplied callback function.
+	*/
 	showPageByHrefExt: function(href, args, method, replace, cb)
 	{
 		if (!iui.busy)
@@ -166,8 +245,11 @@ window.iui =
 		}
 	},
 
-	// This one should only be used by iUIinternally.  It should be renamed and possibly moved into
-	// the closure
+	/*
+	method: iui.showPageByHref(href, args, method, replace, cb)
+	This one should only be used by iUI internally.  It should be renamed and
+	possibly moved into the closure.
+	*/
 	showPageByHref: function(href, args, method, replace, cb)
 	{
 	  // I don't think we need onerror, because readstate will still go to 4 in that case
@@ -183,6 +265,12 @@ window.iui =
 				  var frag = document.createElement("div");
 				  frag.innerHTML = xhr.responseText;
 				  // EVENT beforeInsert->body
+					/*
+					events:
+					When new pages are inserted into the DOM after an AJAX load, the `body`
+					element receives a `beforeinsert` event with `{ fragment: frag }` parameters
+					and afterwards receives an `afterinsert` event with `{insertedNode: docNode}` parameters.
+					*/
 				  sendEvent("beforeinsert", document.body, {fragment:frag})
 				  if (replace)
 				  {
@@ -212,7 +300,12 @@ window.iui =
 	  iui.ajax(href, args, method, spbhCB);
 	},
 	
-	// Callback function gets a single argument, the XHR
+	/*
+	method: iui.ajax(url, args, method, cb)
+	Handles ajax requests and also fires a `setTimeout()` call
+	to abort the request if it takes longer than 30 seconds. See `showPageByHrefExt()`
+	above for a description of the various arguments (`url` is the same as `href`).
+	*/
 	ajax: function(url, args, method, cb)
 	{
         var xhr = new XMLHttpRequest();
@@ -251,8 +344,11 @@ window.iui =
 		}
 	},
 	
-	// Thanks, jQuery
-	//	stripped-down, simplified, object-only version
+	/*
+	method: iui.param(o)
+	Stripped-down, simplified object-only version of a jQuery function that
+	converts an object of keys/values into a URL-encoded querystring.
+	*/
 	param: function( o )
 	{
 	  var s = [ ];
@@ -265,6 +361,14 @@ window.iui =
 	  return s.join("&").replace(/%20/g, "+");
 	},
 
+	/*
+	method: iui.insertPages(frag)
+	If an AJAX call (`showPageByHref()`) is made without supplying a `replace`
+	element, `insertPages()` is called to insert the newly-created element
+	fragment into the page DOM. Each child-node of the HTML fragment is a panel
+	and if any of them are already in the DOM, they will be replaced by the
+	incoming elements.
+	*/
 	insertPages: function(frag)
 	{
 		var nodes = frag.childNodes;
@@ -304,6 +408,12 @@ window.iui =
 
 	},
 
+	/*
+	method: iui.getSelectedPage()
+	Returns the panel element that is currently being viewed. Each panel must be a
+	direct child of the `body` element. A panel is set as the selected panel by
+	setting the `selected` attribute to `true`.
+	*/
 	getSelectedPage: function()
 	{
 		for (var child = document.body.firstChild; child; child = child.nextSibling)
@@ -312,6 +422,12 @@ window.iui =
 				return child;
 		}	 
 	},
+	/*
+	method: iui.isNativeUrl(href)
+	Determines whether the supplied URL string launches a native iPhone app (maps,
+	YouTube, phone, email, etc). If so, iUI does nothing (doesn't attempt to load
+	a page or slide to it) and allows the phone to handle it the click natively.
+	*/
 	isNativeUrl: function(href)
 	{
 		for(var i = 0; i < iui.nativeUrlPatterns.length; i++)
@@ -329,17 +445,30 @@ window.iui =
 		new RegExp("^javascript:"),
 
 	],
+	/*
+	method: iui.hasClass(self, name)
+	Convenience function to determine if the given element (`self`) has the
+	class `name`.
+	*/
 	hasClass: function(self, name)
 	{
 		var re = new RegExp("(^|\\s)"+name+"($|\\s)");
 		return re.exec(self.getAttribute("class")) != null;
 	},
-		
+	
+	/*
+	method: iui.addClass(self, name)
+	Convenience function to add the given class `name` to element `self`.
+	*/	
 	addClass: function(self, name)
 	{
 	  if (!iui.hasClass(self,name)) self.className += " "+name;
 	},
 		
+	/*
+	method: iui.removeClass(self, name)
+	Convenience function to remove the given class `name` to element `self`.
+	*/
 	removeClass: function(self, name)
 	{
 	  if (iui.hasClass(self,name)) {
@@ -351,6 +480,14 @@ window.iui =
 
 // *************************************************************************************************
 
+/*
+load: On Load
+On load, iUI will determine which page to display primarily based on
+the anchor part of the URL (everything after `#_`) and secondarily based on the
+top-level (child of the `body`) element with the `selected` attribute set to
+`true`. If these both exist, iui.showPage() will be called twice, but the
+anchor-based load will win because it is done second.
+*/
 addEventListener("load", function(event)
 {
 	var page = iui.getSelectedPage();
@@ -378,6 +515,30 @@ addEventListener("unload", function(event)
 	return;
 }, false);
 	
+/*
+click: Link Click Handling
+iUI captures all clicks on `a` elements and goes through a series of checks to
+determine what to do:
+
+1. If the link has a `href="#..."`, iUI will navigate to the panel ID specified
+   after the # (no underscore).
+2. If the link's ID is `backButton`, iUI will navigate to the previous screen
+   (see `iui.goBack()`).
+3. If the link has a `type="submit"`, iUI will find the parent `form` element,
+   gather up all the input values and submit the form via AJAX (see
+   `iui.showPageByHref()`).
+4. If the link has a `type="cancel"`, iUI will cancel the parent `form` element
+   dialog.
+5. If the link has a `target="_replace"`, iUI will do an AJAX call based on the
+   href of the link and replace the panel that the link is in with the contents
+   of the AJAX response.
+6. If the link is a native URL (see `iui.isNativeURL()`), iUI will do nothing.
+7. If the link has a `target="_webapp"`, iUI will perform a normal link,
+   navigating completely away from the iUI app and pointing the browser to the
+   linked-to webapp instead.
+8. If there is no `target` attribute, iUI will perform a normal (non-replace)
+   AJAX slide (see `iui.showPageByHref()`).
+*/
 addEventListener("click", function(event)
 {
 	var link = findParent(event.target, "a");
@@ -430,6 +591,11 @@ addEventListener("click", function(event)
 	}
 }, true);
 
+/*
+click: Div.toggle Click Handling
+iUI also captures `div.toggle` clicks and displays/hides the element via setting
+a `toggled` attribute to true/false.
+*/
 addEventListener("click", function(event)
 {
 	var div = findParent(event.target, "div");
@@ -621,7 +787,12 @@ function updatePage(page, fromPage)
 	}
 	iui.busy = false;
 }
-
+/*
+events:
+Both panels involved in a slide animation receive `beforetransition` and
+`aftertransition` events. The panel being navigated from receives event
+parameters `{ out :true }`, the panel being navigated to receives `{ out: false }`.
+*/
 function slidePages(fromPage, toPage, backwards)
 {		 
 	var axis = (backwards ? fromPage : toPage).getAttribute("axis");
