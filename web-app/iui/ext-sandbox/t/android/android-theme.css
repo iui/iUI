@@ -1,0 +1,275 @@
+/* Theme created by Remi Grumeau http://www.remi-grumeau.com */
+
+@font-face {
+	font-family:	droid;
+	src:	local(DroidSans),
+			url(droidsans.ttf);
+}
+
+body {
+	font-family:	droid;
+	color: 			#f0f0f0;
+	background:		#181818;
+}
+body > *:not(.toolbar) {
+	top: 			35px;
+}
+
+li > a[selected], li > a:active {
+	color:			#000!important;
+	background-image:	url(blank.gif), -webkit-gradient(linear, left top, left bottom, 
+								from(#ad4500),
+								color-stop(0.1, #ff7500),
+								color-stop(0.5, #ff9200),
+								color-stop(0.8, #ff9200),
+                				to(#ff6900)
+                			) !important;
+}
+
+li > a[selected="progress"] {
+	background-image:	url(loading.gif), -webkit-gradient(linear, left top, left bottom, 
+								from(#ad4500),
+								color-stop(0.1, #ff7500),
+								color-stop(0.5, #ff9200),
+								color-stop(0.8, #ff9200),
+								color-stop(0.9, #ff6900),
+                				to(#fdab00)
+                			) !important;
+}
+
+/************************************************************************************************/
+
+body > .toolbar {
+	border: 			0px;
+	padding: 			0px 5px 10px 5px;
+	height: 			35px;
+	background-image:	-webkit-gradient(linear, left top, left bottom,
+							from(#000),
+							to(#181818)
+						);
+}
+.toolbar > h1 {
+	font-weight:	normal;
+	text-shadow:	none;
+	font-size:		16px;
+	padding-top:	7px!important;
+	padding-bottom:	5px;
+	height:			35px;
+}
+
+.button {
+	-moz-border-image:		url(toolButton.png) 0 5 0 5 round round;
+	-webkit-border-image:	url(toolButton.png) 0 5 0 5;
+}
+
+.blueButton {
+	-moz-border-image: 		url(blueButton.png) 0 5 0 5 round round;
+	-webkit-border-image:	url(blueButton.png) 0 5 0 5;
+}
+
+#backButton,
+.whiteButton[selected], 
+.whiteButton:active,
+.whiteButton,
+.redButton[selected], 
+.redButton:active,
+.redButton,
+.grayButton[selected], 
+.grayButton:active,
+.grayButton,
+.greenButton[selected], 
+.greenButton:active,
+.greenButton {
+	font-weight:			normal;
+	font-size:				16px;
+	-webkit-border-radius:	5px;
+	-moz-border-radius:		5px;
+	border:					1px solid #565756;
+	text-shadow:			none;
+	margin:					2px 0;
+}
+
+.whiteButton[selected], 
+.whiteButton:active,
+.redButton[selected], 
+.redButton:active,
+.grayButton[selected], 
+.grayButton:active,
+.greenButton[selected], 
+.greenButton:active {
+	background-image:		-webkit-gradient(linear, left top, left bottom, 
+								from(#ff6900),
+								color-stop(0.2, #ff9200),
+								color-stop(0.5, #ff9c00),
+								color-stop(0.8, #ff9200),
+                				to(#ff6900)
+                			) !important;
+}
+#backButton {
+	top:			2px;
+	left:			2px;
+	color:			#524d52;
+	font-size:		11px;
+	margin:			0;
+	padding:		0px 7px 10px 7px;
+	height:			20px;
+	border:			none;
+	border-width: 	0px;
+	background-image:		-webkit-gradient(linear, left top, left bottom, 
+								from(#f7f7f7),
+                				to(#bdbabd)
+                			) !important;
+}
+#backButton:active,
+#backButton[selected] {
+	color:					#fff;
+	background-image:		-webkit-gradient(linear, left top, left bottom, 
+								from(#fea94b),
+                				to(#ef7217)
+                			) !important;
+}
+
+
+.whiteButton {
+	color:					#424142;
+	background-image:		-webkit-gradient(linear, left top, left bottom, 
+								from(#f4f4f4),
+                				to(#c4c4c4)
+                			) !important;
+}
+
+.redButton {
+	color:					#fff;
+	border:					1px solid #524d52;
+	background-image:		-webkit-gradient(linear, left top, left bottom, 
+								from(#ff0000),
+								to(#be0000)
+                			) !important;
+}
+
+.grayButton {
+	background-image:		-webkit-gradient(linear, left top, left bottom, 
+								from(#797979),
+								to(#444444)
+                			) !important;
+}
+
+.greenButton {
+	display: 			block;
+	padding: 			10px;
+	text-align: 		center;
+	text-decoration:	none;
+	color:					#fff;
+	border:					1px solid #524d52;
+	background-image:		-webkit-gradient(linear, left top, left bottom, 
+								from(#01bf00),
+								to(#079600)
+                			) !important;
+}
+a.disable {
+	color: 			#333;
+}
+
+/* /ADDED */
+
+/************************************************************************************************/
+
+body > ul > li {
+	padding:		8px 0 8px 10px;
+	font-size: 		18px;
+	font-weight:	normal;
+	border:			0px;
+	background:		url(list.png) no-repeat bottom center, url(list.gif) repeat-x bottom center;
+}
+body > ul > li:first-child {
+	background:		url(list.png) no-repeat bottom center, url(list.png) no-repeat top center, url(list.gif) repeat-x bottom center, url(list.gif) repeat-x top center;	
+}
+
+body > ul > li.group {
+	padding:		2px 10px;
+	font-size:		14px;
+	font-weight:	normal;
+	text-shadow: 	rgba(0, 0, 0, 0.9) 1px 1px 3px;
+	border:			0px;
+	background:		url(list.png) no-repeat bottom center,		-webkit-gradient(linear, left top, left bottom, 
+								from(#9c9a9c),
+                				to(#848284)
+                			);
+}
+
+body > ul > li > a {
+	padding-top:	15px;
+	padding-bottom:	15px;
+    background: 	none;
+}
+
+/************************************************************************************************/
+    
+.dialog > fieldset {
+	background:				-webkit-gradient(linear, left top, left bottom, 
+								from(#cdd5df),
+								color-stop(0.05, #b0bccd),
+								color-stop(0.49, #8b9db5),
+								color-stop(0.5, #8195af),
+                				to(#6d84a2)
+                			);
+}
+
+/************************************************************************************************/
+
+body > .panel {
+	color:				#181818;
+    background: 		#FFF;
+    border:				4px solid #181818;
+    border-position:	inside;
+    -webkit-border-radius:	15px;
+    -moz-border-radius:		15px;
+}
+body > .panel > h2 {
+	font-size:		20px;
+	margin:			-7px -7px 10px -7px;
+	padding: 		12px 0 12px 50px;
+	font-weight: 	normal;
+	color: 			#fff;
+	text-shadow: 	none;
+	background:		#424542 url(panelTitle.png) no-repeat 10px 9px;
+	-webkit-border-top-left-radius:		10px;
+	-webkit-border-top-right-radius:	10px;
+	-moz-border-radius-topleft:			10px;
+	-moz-border-radius-topright:		10px;
+}
+
+.toggle {
+    border:			1px solid #888888;
+    background: 	#FFFFFF url(toggle.png) repeat-x;
+}
+
+.toggle[toggled="true"] {
+    background: 	#194fdb url(toggleOn.png) repeat-x;
+}
+
+.thumb {
+    background: 	#ffffff url(thumb.png) repeat-x;
+}
+
+/************************************************************************************************/
+#preloader {
+    display: 	none;
+    background-image: 	url(loading.gif),
+						url(selectionn.png),
+						url(blueButton.png),
+						url(listArrowSel.png),
+						url(listGroup.png);
+}
+
+.toolbar > h1.titleImg {
+	background:			url(title-img.png) no-repeat top center;
+	color:				rgba(0,0,0,0);
+}
+
+.backButtonImg {
+	width: 		50px;
+	background: url(back-img.png) no-repeat center left,
+	            url(backButtonBack.png) repeat-x top left !important;
+	color:		rgba(0,0,0,0);
+}

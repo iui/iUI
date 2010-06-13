@@ -1,0 +1,20 @@
+/*** EHANCEMENTS ***/
+
+body > * > a.halfsize /* Half sized buttons */
+{
+	float:		left;
+	width:		36%;
+}
+body > *.panel > a.halfsize {
+	width:		35%;
+}
+body > * > a.halfsize[orient="landscape"],
+body[orient="landscape"] > * > a.halfsize
+{
+	width:		45%;
+}
+body > *.panel > a.halfsize[orient="landscape"],
+body[orient="landscape"] > *.panel > a.halfsize
+{
+	width:		40%;
+}

@@ -1,0 +1,251 @@
+/* PalmOS theme for iUI framework
+/* Created by Remi Grumeau
+/* Dec 2009
+/* http://www.remi-grumeau.com
+*/
+body {
+	background:			#000;	
+}
+body > .homepage {
+	background:			#e4e4e2 url(mainBackground.jpg) no-repeat top center;
+}
+body > *:not(.toolbar) {
+    top: 					30px;
+	-moz-border-radius: 	15px;
+	-webkit-border-radius: 	15px;
+	background:				#e8e8e6;
+}
+
+li > a[selected],
+li > a {
+	font-family:		Helvetica, Bistream;
+	font-size:			18px;
+	color:				#000;
+	font-weight:		normal;
+	border-bottom:		1px solid #000;
+}
+li > a[selected], li > a:active {
+	color:		#fff;
+    background-image: url(listArrowSel.png), url(selection.png) !important;
+}
+
+li > a[selected="progress"] {
+	color:		#fff;
+	background-color: #727271;
+    background-image: url(../default/loading.gif), url(selection.png) !important;
+}
+
+/************************************************************************************************/
+
+body > .toolbar {
+	position:		absolute;
+	width:			100%;
+	margin:			0;
+	background:		#000;
+    border:			0px;
+}
+body > .toolbar > h1 {
+    left: 			50%;
+    margin: 		1px 0 0 -75px;
+    height: 		auto;
+    font-size:		14px;
+	padding:		5px 0 5px 0;
+    text-shadow: 	none;
+}
+
+
+.blueButton {
+    -moz-border-image: 		url(blueButton.png) 0 5 0 5;
+    -webkit-border-image:	url(blueButton.png) 0 5 0 5;
+}
+
+
+
+
+
+.button {
+    position: 		absolute;
+    overflow: 		hidden;
+    top:			0;
+    right: 			0;
+    margin: 		0;
+    border-width: 	0;
+    width: 			auto;
+    height: 		auto;
+    line-height: 	1em;
+    font-family: 	inherit;
+    font-size:		12px;
+    font-weight: 	bold;
+    color: 			#FFFFFF;
+    text-shadow: 	rgba(0, 0, 0, 0.6) 0px -1px 0;
+    text-overflow: 	ellipsis;
+    text-decoration: none;
+	text-align:		center;
+    white-space: 	nowrap;
+    background: 	none;
+	z-index:		99;
+	background: 	-webkit-gradient(linear, left top, left bottom, from(#4d4d4d), to(#000))!important;
+	background:		-moz-linear-gradient(-90deg, #4d4d4d, #272727, #000, #111, #1f1f1f);
+	-moz-border-top-left-radius: 		7px;
+	-webkit-border-top-left-radius: 	7px;
+	-moz-border-top-right-radius: 		7px;
+	-webkit-border-top-right-radius: 	7px;
+}
+
+#backButton {
+    display: 		none;
+    top:			0;
+    left: 			0;
+    right: 			0;
+    max-width:		55px;
+    margin-top:		1px;
+    padding: 		6px 6px 0 6px;
+    border-width:	0px;
+}
+
+
+
+
+.whiteButton {
+	-moz-border-image:		url(whiteButton.png) 0 12 0 12;
+	-webkit-border-image:	url(whiteButton.png) 0 12 0 12;
+	text-shadow:			rgba(255, 255, 255, 0.7) 0 1px 0;
+}
+
+.redButton {
+	-moz-border-image: 		url(redButton.png) 0 12 0 12;
+	-webkit-border-image: 	url(redButton.png) 0 12 0 12;
+}
+
+.grayButton {
+	-moz-border-image: 		url(grayButton.png) 0 12 0 12;
+	-webkit-border-image: 	url(grayButton.png) 0 12 0 12;
+	color: 		#FFFFFF;
+}
+
+
+/* ADDED */
+.greenButton {
+    display: 		block;
+    border-width: 	0 12px;
+    padding: 		10px;
+    text-align: 	center;
+    font-size: 		20px;
+    font-weight: 	bold;
+    text-decoration: inherit;
+    color: 			inherit;
+}
+.greenButton {
+	color: 	#fff;
+    -moz-border-image: 		url(greenButton.png) 0 12 0 12;
+    -webkit-border-image: 	url(greenButton.png) 0 12 0 12;
+}
+a.disable {
+	color: 	#666;
+	text-shadow: rgba(0, 0, 0, 0.7) 0 1px 0;
+}
+
+
+body > ul {
+	background:				#e8e8e6;
+}
+
+body > ul > li {
+	border-right:	0px;
+    border-bottom: 	none;
+    padding: 		8px 0 11px 10px;
+    font-weight: 	bold;
+    list-style: 	none;
+	background:		url(list.png) repeat-x bottom left;
+}
+body > ul > li.last 
+{
+	background:		none;	
+}
+
+body > ul > li.group 
+{
+	padding:		1px auto;
+	padding-left:	24px;
+    background:		url(listgroup.png) no-repeat top left, -webkit-gradient(linear, left top, left bottom, 
+    					from(#88afd0),
+    					to(#99c3e6),
+    					color-stop(0.3, #91bde1)
+       				)!important;
+    border:			0px;
+}
+
+body > ul > li > a 
+{
+	border-right:	0px!important;
+	border-bottom:	none;
+    background: 	url(listArrow.png) no-repeat right center;
+
+}
+
+.dialog > fieldset {
+    background: 	#7388a5 repeat-x;
+}
+.panel > h2 {
+    margin: 		0px auto 5px 0px;
+    padding:		10px 0px 10px 25px;
+    font-size:  	20px;
+    font-weight: 	normal;
+    color: 			#000;
+    text-shadow: 	none;
+    background:		-webkit-gradient(linear, left top, left bottom, 
+    					from(#babab8),
+    					to(#bdbdbb),
+    					color-stop(0.1, #a5a5a3),
+       					color-stop(0.5, #cdcdcb)
+       				)!important;
+	-moz-border-top-left-radius: 		15px;
+	-webkit-border-top-left-radius: 	15px;
+	-moz-border-top-right-radius: 		15px;
+	-webkit-border-top-right-radius: 	15px;
+
+}
+body > .panel {
+	padding:	0px 0px 10px 0px;
+    background: #e4e4e2;
+}
+body > .panel > *:not(h2) {
+	margin-left: 	10px;
+	margin-right:	10px;
+}
+body > .panel > fieldset {
+	border:			3px solid #7e7e7d;
+	background:		#e4e4e2;
+}
+.row > label {
+	font-weight:	normal;
+	text-align:		left;
+	color:			#1a7ed4;
+}
+
+.toggle {
+    border: 	1px solid #888888;
+    background: #FFFFFF url(toggle.png) repeat-x;
+}
+
+.toggle[toggled="true"] {
+    background: #194fdb url(toggleOn.png) repeat-x;
+}
+
+.thumb {
+    background: #ffffff url(thumb.png) repeat-x;
+}
+
+/************************************************************************************************/
+#preloader {
+    display: none;
+    background-image: 	url(loading.gif), url(selection.png), url(blueButton.png), url(listArrowSel.png), url(listGroup.png);
+}
+
+
+.backButtonImg {
+  width: 50px;
+  background: url(back-img.png) no-repeat center left,
+              url(backButtonBack.png) repeat-x top left !important;
+  color: rgba(0,0,0,0);
+}

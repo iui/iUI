@@ -1,0 +1,53 @@
+/**** BUG FIXES ***/
+body > *:not(.toolbar),
+body > .panel 
+{
+    height: 	auto;
+	min-height:	415px;
+}
+
+body[orient="landscape"] > *:not(.toolbar),
+body[orient="landscape"] > .panel 
+{
+    height: 	auto;
+    min-height: 255px;
+}
+body > .toolbar > h1 
+{
+    width: 			150px;
+    height: 		32px;
+    margin: 		1px 0 0 -75px;
+    padding-top: 	10px;
+}
+
+body[orient="landscape"] > .toolbar > h1 
+{
+    width: 			300px;
+    margin: 		1px 0 0 -150px;
+}
+body > *.panel > fieldset > div.row > label 
+{
+	width:		100px;
+}
+
+
+body > *.panel > fieldset > div.row > select
+{
+	margin:		12px 12px 12px 0;
+	width:		160px;
+}
+body[orient="landscape"] > *.panel > fieldset > div.row > select
+{
+	width:		270px;
+}
+
+body > *:not(.toolbar) > fieldset .text {
+	width:		auto;
+	height:		auto;
+	text-align:	left;
+	padding:	0 12px;
+}
+
+body > *:not(.toolbar) > fieldset .text p {
+	height:		auto;
+}

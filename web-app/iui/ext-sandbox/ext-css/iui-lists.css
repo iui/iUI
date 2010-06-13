@@ -1,0 +1,126 @@
+body > div.board /*sets up the "ul" class for board type arrangement*/
+{
+	float:			left;
+	margin:			0px;
+	padding: 		0px;
+    height: 		auto;
+   	background: 	#000;
+}
+body > div.board[orient="landscape"]
+{
+    min-height: 	255px;
+}
+body > div.board > ul
+{
+	float:			left;
+    min-height: 	255px;
+	margin:			0px;
+	padding:		0px;
+	background: 	#000;
+}
+body > div.board > ul > li
+{
+	float:				left;
+	list-style:			none;
+	list-style-position:inside;
+	width: 				auto;
+	margin:				0px;
+	padding:			0px;
+}
+
+body > div.board > ul > li > a
+{
+	display:			block;
+	float:				left;
+	width:				65px;
+	margin:				3px;
+	padding:			4px;
+	text-align:			center;
+	text-decoration:	none;
+}
+div.board > ul > li > a:active,
+div.board > ul > li > a[selected] /* to reset system sets */
+{
+    background-color: 	#000 !important;
+    background-image: 	none !important;
+}
+div.board > ul > li > a > img /* icon itself */
+{
+	display:			block;
+	width:				auto;
+	height:				auto;
+	border: 			none;
+	margin:				0px auto 2px auto;
+}
+div.board > ul > li > a > span /* icon label */
+{
+	display:			block;
+	width: 				100%;
+	height:				15px;
+	text-align:			center;
+	font-size:			11px;
+	color:				#fff;
+	overflow:			hidden;
+	text-overflow-mode:	ellipsis;
+	white-space : 		nowrap;
+}
+
+.tleft		{	text-align:	left;		}
+.tright		{	text-align:	right;		}
+.tcenter	{	text-align:	center;		}
+
+
+/**** EXTENDED LISTING ****/
+body > ul > li > span.caption {
+	color:		#444;
+	font-size:	12px;
+}
+/* icon in list */ 
+body > ul.iconL > li,
+body > ul.iconR > li {
+	display:		list-item;
+	float:			left;
+	width:			100%;
+	padding:		0px;
+}
+body > ul.iconL > li > img,
+body > ul.iconL > li > span,
+body > ul.iconR > li > img,
+body > ul.iconR > li > span {
+	display:		block;
+	float:			left;
+	margin:			0px;
+}
+body > ul.iconR > li > img {
+	float:			right;
+}
+body > ul.iconL > li > span,
+body > ul.iconR > li > span {
+	display:		block;
+	margin:			9px 0 0 10px;
+}
+
+/* icon on list title */
+body > ul > li.iconL > img,
+body > ul > li.iconL > span {
+	display:		block;
+}
+
+
+
+/* bubble */
+body > ul > li > a > span.bubble {
+	display:		block;
+	float:			right;
+	font-size:		12px;
+	margin-top:		1px;
+	padding:		4px 10px;
+	color:				#fff;
+	background-color:	#7389a6;
+	-moz-border-radius: 	10px;
+	-webkit-border-radius: 	10px;
+}
+body > ul > li > a.selected > span.bubble {
+	color:				#026deb;
+	background-color:	#fff;
+}
