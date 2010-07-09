@@ -1,0 +1,137 @@
+* {
+	margin:		0;
+	padding:	0;
+	border:		0;
+}
+
+.hide {		display:	none;	}
+h1 {	font-size:	32px;	}
+h2 {	font-size:	28px;	}
+h3 {	font-size:	22px;	}
+h4 {	font-size:	18px;	}
+h5 {	font-size:	16px;	}
+h6 {	font-size:	14px;	}
+
+.tleft	{	text-align:		left;	}
+.tright	{	text-align:		right;	}
+.tcenter{	text-align:		center;	}
+
+#main > hr {
+	display:		none;	
+}
+
+body {
+	font-family:	Arial, Helvetica, sans-serif;
+	font-size:		13px;
+	color:			#000;
+	background:		url(../images/body_bg.png) repeat-x top center;
+	text-align:		center;
+}
+
+#main {
+	display:		block;
+	width:			1010px;
+	height:			auto;
+	margin:			0 auto;
+	text-align:		left;
+}
+
+#header {
+	display:		block;
+	float:			left;
+	width:			1010px;
+	height:			48px;
+	background:		url(../images/header_logo.png) no-repeat 0px 6px;	
+}
+#header > ul {
+	display:		block;
+	float:			left;
+	height:			46px;
+	margin-left:	40px
+}
+#header > ul > li {
+	display:		inline;
+	list-style:		none;
+}
+#header > ul > li > a {
+	display:		block;
+	float:			left;
+	width:			85px;
+	height:			46px;
+	background-repeat:		no-repeat;
+	background-position:	top center;
+}
+#header > ul > li > a:hover,
+#header > ul > li > a.active {
+	background-position:	bottom center;	
+}
+#header > ul > li > a.home {
+	background-image:	url(../images/header_menu_home.png);
+}
+#header > ul > li > a.about {
+	background-image:	url(../images/header_menu_about.png);
+}
+#header > ul > li > a.demo {
+	background-image:	url(../images/header_menu_demo.png);
+}
+#header > ul > li > a.download {
+	width:				120px;
+	background-image:	url(../images/header_menu_download.png);
+}
+#header > ul > li > a.documentation {
+	width:				150px;
+	background-image:	url(../images/header_menu_documentation.png);
+}
+#header > ul > li > a.gallery {
+	width:				105px;
+	background-image:	url(../images/header_menu_gallery.png);
+}
+#header > ul > li > a.involved {
+	width:				125px;
+	background-image:	url(../images/header_menu_involved.png);
+}
+#header > ul > li > a > span {
+	display:		none;
+}
+#header > form {
+	display:		block;
+	float:			left;
+	width:			120px;
+	margin:			13px 0 0 40px;
+}
+#header > form > input.searchform {
+	display:		block;
+	width:			102px;
+	font-size:		11px;
+	padding:		2px 25px 6px 22px;
+	background:		url(../images/header_form.png) no-repeat top left;
+}
+#header > form > #emptysearch {
+	display:		block;
+	position:		absolute;
+	margin:			4px 0 0 126px;
+}
+
+
+#main > p.footer {
+	display:		block;
+	float:			left;
+	width:			1010px;
+	height:			auto;
+	margin:			15px auto;
+	text-align:		center;
+	line-height:	1.8em;
+}
+#main > p.footer,
+#main > p.footer > a {
+	color:			#666;
+	font-size:		12px;
+}
+#main > p.footer > a {
+	padding:			0 10px;
+	text-decoration:	none;
+}
+#main > p.footer > a:hover {
+	text-decoration:	underline;
+	
+}
