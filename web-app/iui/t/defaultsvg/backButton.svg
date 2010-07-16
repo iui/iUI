@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 43 30" preserveAspectRatio="none" id="back-button-svg" width="43" height="30" version="1.0" style="display:inline">
+<defs id="defs">
+<linearGradient y2="1" x2="0.5" y1="0" x1="0.5" id="backButton-grad">
+<stop id="stop000" offset="0" style="stop-color:#708090;stop-opacity:1"/>
+<stop id="stop050" offset="0.5" style="stop-color:#2f4f4f;stop-opacity:1"/>
+<stop id="stop100" offset="1" style="stop-color:#2f4f4f;stop-opacity:1"/>
+</linearGradient>
+</defs>
+<g id="vector-layer" style="display:inline">
+<path style="opacity:1;fill:url(#backButton-grad);fill-opacity:0.9;fill-rule:nonzero;stroke:#2f4f4f;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;display:inline" d="M 11,1 L 40,1 C 41.108,1 42,1.89201 42,3 L 42,27 C 42,28.108 41.108,29 40,29 L 13,29 C 11.86972,29 1.9895,16.70659 1,15 C 2.11184,13.45214 9.892,1 11,1 z" id="backButton-path"/>
+</g>
+</svg>
