@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="62px" height="32px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<defs id="defs">
+<linearGradient y2="1.0" x2="0.5" y1="0.0" x1="0.5" id="btnGradient">
+<stop offset="0.0" style="stop-color: #708090; stop-opacity: 1" />
+<stop offset="0.5" style="stop-color: #2F4F4F; stop-opacity: 1" />
+<stop offset="1.0" style="stop-color: #2F4F4F; stop-opacity: 1" />
+</linearGradient>
+</defs>
+<g id="vector-layer" style="display: inline">
+<path
+style="opacity: 1; fill: url(#btnGradient); stroke: #2F4F4F;"
+d="M61 1 L13 1 L1 16 L13 31 L61 31 Z"
+id="backButton"
+/>
+</g>
+</svg>
