@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>Unloader Demo</title>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+  <link rel="icon" type="image/png" href="../../iui-favicon.png">
+  <link rel="apple-touch-icon" href="../../iui-logo-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="stylesheet" href="../../iui.css" type="text/css" />
+  <link rel="stylesheet" title="Default" href="../../t/default/default-theme.css"  type="text/css"/>
+  <link rel="stylesheet" href="../../../css/iui-panel-list.css" type="text/css" />
+
+  <script type="application/x-javascript" src="../../iui.js"></script>	
+  <script type="application/x-javascript" src="iui-unloader.js"></script>
+  <link href="../TbBMod/xtra.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="toolbar" id="toolbar">
+	<h1 id="pageTitle"></h1>
+	<a id="backButton" class="button" href="#"></a>
+</div>
+
+<ul id="home" title="Video Ext" selected="true">
+	<li><a href="#about">About Unloader Ext</a></li>
+	<li><a href="#instructions">Instructions</a></li>
+	<li class="group">Tests</li>
+	<li><a href="#int">Internal View/Fragment (no unload)</a></li>
+	<li><a href="ajax.frag">Ajax View/Fragment (should unload)</a></li>
+</ul>
+
+
+
+
+
+<div id="about" class="panel" title="About">
+  <h2>About Video Extension</h2>
+	<fieldset>
+	<p class="normalText">iui-unlaoder.js is an extension for the iUI framework. It is currently EXPERIMENTAL</p>
+	<p class="normalText">For info on how to use this extension see Instructions.</p>
+	<p class="normalText">Sean Gilligan</p>
+	</fieldset>
+</div>
+
+
+<div id="instructions" class="panel" title="Instructions">
+  <h2>Unloader Ext - instructions for use.</h2>
+	<fieldset>
+	<p class="normalText">The Video Extension is easy to install into your iUI powered web app. It requires no changes to existing iUI components. Start by linking the iui-unloader.js to your main index file just like you would iui.js.</p>
+	<p class="normalText">All AJAX-loaded fragments will be unload when they receive the iUI 'unload' event when they  are navigated away from (back button).</p>
+  </fieldset>
+</div>
+
+<div id="int" title="Internal Frag">
+  <h2>Internal Fragment</h2>
+  <p>This should not be unloaded when you hit the back button</p>
+</div>  
+
+</body>
+</html>
