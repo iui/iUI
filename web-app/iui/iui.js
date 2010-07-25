@@ -138,7 +138,6 @@ window.iui =
 
 				if (fromPage)
 				{
-				    if (backwards) sendEvent("unload", fromPage);	// EVENT: UNLOAD
 					setTimeout(slidePages, 0, fromPage, page, backwards);
 				}
 				else
@@ -819,7 +818,7 @@ function slidePages(fromPage, toPage, backwards)
 	  fromPage.removeEventListener('webkitTransitionEnd', slideDone, false);
 	  sendEvent("aftertransition", fromPage, {out:true});
       sendEvent("aftertransition", toPage, {out:false});
-
+	  if (backwards) sendEvent("unload", fromPage);	// EVENT: UNLOAD
 	}
 }
 
