@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
   <link rel="icon" type="image/png" href="../../iui-favicon.png">
   <link rel="apple-touch-icon" href="../../iui-logo-touch-icon.png" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="no" />
   <link rel="stylesheet" href="../../iui.css" type="text/css" />
   <link rel="stylesheet" title="Default" href="../../t/default/default-theme.css"  type="text/css"/>
   <link rel="stylesheet" href="../../../css/iui-panel-list.css" type="text/css" />
@@ -12,6 +12,7 @@
 
   <script type="application/x-javascript" src="../../iui.js"></script>	
   <script type="application/x-javascript" src="iui-video.js"></script>
+  <script type="application/x-javascript" src="iui-video-logger.js"></script>
 	<link href="../TbBMod/xtra.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -26,8 +27,8 @@
 	<li class="group">Video Views ("Pages")</li>
 	<li><a href="#video1">Video 1</a></li>
 	<li><a href="#video2">Video 2</a></li>
-	<li><a href="#video3">Video 3</a></li>
-	<li><a href="#video4">Video 4</a></li>
+	<li><a href="#video3">Video 1 Dynamic</a></li>
+	<li><a href="#video4">Video 2 Dynamic</a></li>
 </ul>
 
 
@@ -64,24 +65,26 @@
 </div>
 
 <div id="video1" title="Video 1">
+  <video class="video-out" src="http://pb.vlogcentral.com/movies/27654.3gp" width="320" height="240" poster="http://pb.vlogcentral.com/movies/12061.jpg" ></video>
   <a href="http://pb.vlogcentral.com/movies/27654.3gp" target="_self" rel="iuiposter">
     <img src="http://pb.vlogcentral.com/movies/12061.jpg" width="320" height="240" />
   </a>
 </div>  
 
 <div id="video2" title="Video 2">
+  <video src="http://pb.vlogcentral.com/movies/73767.3gp" width="320" height="240" poster="http://pb.vlogcentral.com/movies/73610.jpg" ></video>
   <a href="http://pb.vlogcentral.com/movies/73767.3gp" target="_self" rel="iuiposter">
     <img src="http://pb.vlogcentral.com/movies/73610.jpg" width="320" height="240" />
   </a>
 </div>  
 
-<div id="video3" title="Video 3">
+<div id="video3" title="Video 1 Dynamic">
   <a href="http://pb.vlogcentral.com/movies/27654.3gp" target="_self" rel="iuiposter">
     <img src="http://pb.vlogcentral.com/movies/12061.jpg" width="320" height="240" />
   </a>
 </div>  
 
-<div id="video4" title="Video 4">
+<div id="video4" title="Video 2 Dynamic">
   <a href="http://pb.vlogcentral.com/movies/73767.3gp" target="_self" rel="iuiposter">
     <img src="http://pb.vlogcentral.com/movies/73610.jpg" width="320" height="240" />
   </a>

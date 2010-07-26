@@ -2,10 +2,38 @@ a[rel='iuiposter'] {
 	position: absolute;
 	top: 0px;
 	left: 0px;
+	z-index: 1;
 }
 
 video {
 	position: absolute;
 	top: 0px;
 	left: 0px;
+	z-index: 1;
+}
+
+video.video-out {
+//	display: none;
+	opacity: 0;
+//	z-index: -1;
+}
+
+.poster-out {
+	opacity: 0;
+	z-index: -1;
+}
+
+.poster-anim-out {
+	-webkit-animation-name: posterout;
+	-webkit-animation-duration: 500ms;
+}
+
+
+@-webkit-keyframes posterout {
+ 0% {
+   opacity: 1;
+ }
+ 100% {
+   opacity: 0;
+ }
 }
