@@ -671,10 +671,14 @@ if(!Array.indexOf){
 							this.styles[name] = new svg.Property(name, value);
 						}
 					}
+				}	
+
+				// add id
+				if (this.attribute('id').hasValue()) {
+					if (svg.Definitions[this.attribute('id').value] == null) {
+						svg.Definitions[this.attribute('id').value] = this;
+					}
 				}
-				
-				// set id
-				if (this.attribute('id').hasValue()) svg.Definitions[this.attribute('id').value] = this;				
 			}
 		}
 		
@@ -1382,7 +1386,7 @@ if(!Array.indexOf){
 		// definitions element
 		svg.Element.defs = function(node) {
 			this.base = svg.Element.ElementBase;
-			this.base(node);			
+			this.base(node);	
 			
 			this.render = function(ctx) {
 				// NOOP
@@ -1875,8 +1879,17 @@ if(!Array.indexOf){
 				if (this.attribute('y').hasValue()) ctx.translate(0, this.attribute('y').Length.toPixels('y'));
 			}
 			
+			this.getDefinition = function() {
+				return this.attribute('xlink:href').Definition.getDefinition();
+			}
+			
+			this.path = function(ctx) {
+				var element = this.getDefinition();
+				if (element != null) element.path(ctx);
+			}
+			
 			this.renderChildren = function(ctx) {
-				var element = this.attribute('xlink:href').Definition.getDefinition();
+				var element = this.getDefinition();
 				if (element != null) element.render(ctx);
 			}
 		}
