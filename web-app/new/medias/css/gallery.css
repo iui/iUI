@@ -1,0 +1,262 @@
+#content > div.row > div.gallery {
+	text-align:		center;
+}
+#content > div.row > div.gallery > a.pages {
+	text-decoration:none;
+	margin:			0 1px;
+	padding:		1px 5px;
+}
+#content > div.row > div.gallery > a.pages.active,
+#content > div.row > div.gallery > a.pages:hover {
+	color:			#fff;
+	background:		#0085cc;
+}
+#content > div.row > div.gallery > a.thumb {
+	display:		block;
+	float:			left;
+	width:			154px;
+	color:			#000;
+	margin:			0 26px 15px 0;
+	font-weight:	bold;
+	text-decoration:none;
+	text-align:		center;
+}
+#content > div.row > div.gallery > a.thumb > img {
+	display:		block;
+	padding:		2px;
+	margin-bottom:	4px;
+	border:			2px solid #d1c9c6;
+	background:		#fff;
+	opacity:		.8;
+	filter: 		alpha(opacity=80);
+}
+#content > div.row > div.gallery > a.thumb:hover {
+	text-decoration:underline;	
+}
+#content > div.row > div.gallery > a.thumb:hover > img {
+	border:			2px solid #b4aca9;
+	opacity:		1;
+	filter: 		alpha(opacity=100);
+}
+#content > div.row > div.gallery > a.thumb > span {
+	color:			#999;
+	font-size:		9px;
+	font-weight:	normal;
+}
+
+#content > div.row > div.view {
+	width:			400px;	
+}
+#content > div.row > div.view > h3,
+#content > div.row > div.view > ul,
+#content > div.row > div.view > p {
+	margin-bottom:		15px;
+	width:				inherit;
+}
+#content > div.row > div.view > ul > li > strong {
+	display:		block;
+	float:			left;
+	width:			150px;
+}
+#content > div.row > div.view a.btn {
+	display:		block;
+	width:			97px;
+	padding:		2px 0;
+	color:			#fff;
+	font-size:		13px;
+	text-align:		center;
+	text-decoration:none;
+	text-shadow:	0 1px 2px rgba(0,0,0,.7);
+	background:		url(../images/global_sprites.png) no-repeat -181px -30px;	
+}
+
+#content > div.row > div.gallery-preview {
+	display:		block;
+	float:			right;
+	width:			425px;
+	height:			465px;
+	margin-right:	30px;
+	background:		url(../images/gallery_previewer_bg.jpg) no-repeat top left;
+}
+#content > div.row > div.gallery-preview > div.light {
+	display:		block;
+	position:		absolute;
+	width:			425px;
+	height:			465px;
+	background:		url(../images/gallery_previewer_light.png) no-repeat top left;
+	z-index:		99;
+}
+#content > div.row > div.gallery-preview > div.screen1,
+#content > div.row > div.gallery-preview > div.screen2 {
+	display:		block;
+	float:			left;
+	width:			200px;
+	height:			261px;
+	margin:			88px 0 0 20px;
+	z-index:		80;
+}
+#content > div.row > div.gallery-preview > div.screen1 > img {
+	display:		block;
+	width:			200px;
+}
+#content > div.row > div.gallery-preview > div.screen2 {
+	width:			170px;
+	height:			242px;
+	margin:			99px 0 0 16px;
+	overflow:		hidden;
+}
+#content > div.row > div.gallery-preview > div.screen2 > img {
+	display:		block;
+	float:			right;
+	width:			185px;
+}
+
+
+#content > div.slider {
+	width:			940px;
+	height:			139px;
+	padding:		0;
+	border:			none;
+	background:		url(../images/slider_bg.png) repeat-x bottom center;
+}
+#content > div.slider > span.bleft,
+#content > div.slider > span.bright {
+	display:		block;
+	float:			left;
+	width:			11px;
+	height:			inherit;
+	background:		url(../images/global_sprites.png) no-repeat -322px -45px;
+}
+#content > div.slider > span.bright {
+	float:			right;
+	background:		url(../images/global_sprites.png) no-repeat -333px -45px;
+}
+
+#content > div.slider > a.bleft,
+#content > div.slider > a.bright {
+	display:		block;
+	float:			left;
+	width:			30px;
+	height:			30px;
+	margin:			55px 0 0 30px;
+	background:		url(../images/global_sprites.png) no-repeat -168px 0px;
+}
+#content > div.row.slider > a.bleft:hover {
+	background:		url(../images/global_sprites.png) no-repeat -258px 0px;
+}
+#content > div.row.slider > a.bright {
+	margin:			55px 0 0 20px;
+	background:		url(../images/global_sprites.png) no-repeat -198px 0px;
+}
+#content > div.row.slider > a.bright:hover {
+	background:		url(../images/global_sprites.png) no-repeat -228px 0px;
+}
+
+
+#content > div.slider > #gallery_slider {
+	display:		block;
+	float:			left;
+	width:			750px;
+	margin-left:	20px;
+	height:			138px;
+	overflow:		hidden;
+}
+#gallery_slider > span.mleft,
+#gallery_slider > span.mright {
+	display:		block;
+	position:		absolute;
+	width:			22px;
+	height:			inherit;
+	background:		url(../images/gallery_slider_border.png) no-repeat top right;
+	z-index:		20;
+}
+#gallery_slider > span.mright {
+	margin-left:	728px;
+	background:		url(../images/gallery_slider_border.png) no-repeat top left;
+}
+#gallery_slider > ul {
+	display:		block;
+	float:			left;
+	height:			110px;
+	margin-top:		17px;
+	list-style-type: none;
+}
+#gallery_slider > ul > li {
+	display:		block;
+	float:			left;
+}
+#gallery_slider > ul > li > a {
+	display:		block;
+	width:			170px;
+	height:			108px;
+	cursor:			pointer;
+	margin-left:	14px;
+	background:		url(../images/gallery_slider_box.png) no-repeat top left;
+}
+#gallery_slider > ul > li > a > img {
+	display:		block;
+	float:			left;
+	margin:			9px 0 0 9px;
+}
+
+
+#content > div.add {        
+	background:		#fff url(../images/gallery_add_bg.jpg) no-repeat 50px right;
+} 
+
+ 
+#content div.row > form.add {
+	display:		block;
+	float:			left;
+	width:			900px;
+	margin-left:	20px;
+}
+#content div.row > form.add > p {
+	display:		block;
+	float:			left;
+	width:			inherit;
+	padding:		0 0 15px 0;
+}
+#content div.row > form.add > p > input,
+#content div.row > form.add > p > textarea,
+#content div.row > form.add > p > select,
+#content div.row > form.add > p > span,
+#content div.row > form.add > p > label {
+	display:		block;	
+	float:			left;
+}
+#content div.row > form.add > p > label {
+	width:			200px;
+}
+#content div.row > form.add > p > textarea {
+	height:			250px;
+}
+#content div.row > form.add > p > span {
+	width:			600px;
+	font-size:		10px;
+	color:			#444;
+	margin-left:	200px;
+}
+
+
+#footer > div.footer1,
+#footer > div.footer2 {
+	display:		block;
+	float:			left;
+	width:			48%;
+	height:			inherit;
+}
+#footer > div.footer1 {
+	border-right:	1px solid #d1c9c6;
+}
+#footer > div > h5,
+#footer > div > p {
+	width:			430px;
+}
+#footer > div.footer1 > span.image {
+	height:			100px;
+	background:		url(../images/gallery_footer1.jpg) no-repeat center center;
+}
+#footer > div.footer2 > span.image {
+	background:		url(../images/gallery_footer2.jpg) no-repeat center center;
+}
