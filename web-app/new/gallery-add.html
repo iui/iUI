@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>iUI Touch - Add my webapp or website to the gallery</title>
+	<meta name="description" content="iUI is a framework consisting of a JavaScript library, CSS, and images for developing advanced mobile webapps for iPhone and comparable/compatible devices.">
+		<link href="medias/images/favicon.png" rel="icon" type="image/png" /> 
+	<link href="medias/images/favicon.ico" rel="shortcut icon" />
+	<link rel="image_src" type="image/jpeg" href="medias/images/thumb.jpg" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+	<link rel='stylesheet' type='text/css' media="screen" href='medias/css/globals.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='medias/css/gallery.css' />
+	<!--[if lt IE 7]><link rel="stylesheet" type="text/css" media="screen" href="medias/css/ie6.css"><![endif]-->
+	
+	<script type='text/javascript' src="medias/scripts/global.js"></script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<ul>
+				<li><a href="/iui-touch/site/" class="home"><span>Home</span></a></li>
+				<li><a href="/iui-touch/site/about.html" class="about"><span>About</span></a></li>
+				<li><a href="/iui-touch/site/demo.html" class="demo"><span>Demo</span></a></li>
+				<li><a href="/iui-touch/site/download.html" class="download"><span>Download</span></a></li>
+				<li><a href="/iui-touch/site/documentation/" class="documentation"><span>Documentation</span></a></li>
+				<li><a href="/iui-touch/site/gallery.html" class="gallery active"><span>Gallery</span></a></li>
+				<li><a href="/iui-touch/site/get-involved.html" class="involved"><span>Get Involved</span></a></li>
+			</ul>
+			<form method="GET" action="search" name="header_search">
+				<a href="#" id="emptysearch" onclick="empty('search_q');hide(this.id)"></a>
+				<input type="text" name="q" id="search_q" class="searchform" onFocus="checkHeaderSearch()" onKeyUp="checkHeaderSearch()" value="">
+				<input type="submit" value="search" class="hide">
+			</form>
+		</div>
+		
+		<hr>
+		
+		<div id="content">
+			<div id="intro">
+				<h1>iUI Touch Web Framework</h1>
+				<h2>for iPhone, iPad & high-end Touch devices</h2>
+			</div>
+			
+			<div id="breadcrumbs">
+				<span class="bleft"></span>
+				<p><strong>iUI Touch :: Gallery :: </strong>Add my webapp / website</p>
+				<span class="bright"></span>
+			</div>
+			
+			<div class="row add">
+				<div>
+					<p>
+						First, we would like to thank you for choosing and trust iUI Touch for your project!<br />
+						Now that your project is online, let's spread the world!
+					</p>
+				</div>
+				<form method="post" action="" enctype="multipart/form-data" class="add">
+					<p>
+						<label for="author_name">Author/Company Name <em>*</em></label>
+						<input class="text" type="text" name="author_name" id="author_name" value="">
+					</p>
+					<p>
+						<label for="author_website">Author/Company Website</label>
+						<input class="text" type="text" name="author_website" id="author_website" value="">
+					</p>
+					<p>
+						<label for="release_date">Release date<em>*</em></label>
+						<select name="release_month" id="release_date" size="1">
+							<option value="01">January</option>
+							<option value="02">February</option>
+							<option value="03">March</option>
+							<option value="04">April</option>
+							<option value="05">May</option>
+							<option value="06">June</option>
+							<option value="07">July</option>
+							<option value="08">August</option>
+							<option value="09">September</option>
+							<option value="10">October</option>
+							<option value="11">November</option>
+							<option value="12">December</option>
+						</select>
+						<select name="release_year" size="1">
+							<option value="2011">2011</option>
+							<option value="2010" selected>2010</option>
+							<option value="2009">2009</option>
+							<option value="2008">2008</option>
+							<option value="2007">2007</option>
+						</select>
+					</p>
+					<p>
+						<label for="url">Project URL <em>*</em></label>
+						<input class="text" type="text" name="url" id="url" value="">
+						<span>Please, provide public URL only or put login infos in the following description</span>
+					</p>
+					<p>
+						<label for="description">Description <em>*</em></label>
+						<textarea class="text" name="description" id="description"></textarea>
+					</p>
+					<p>
+						<label for="screen1">Screenshot 1<em>*</em></label>
+						<input type="file" name="screen1" id="screen1">
+						<span>FYI, to make a screenshot on iPhone/iPad, just press top and home button in the same time</span>
+					</p>
+					<p>
+						<label for="screen2">Screenshot 2</label>
+						<input type="file" name="screen2" id="screen2">
+						<span>If empty, the first one will be used twice</span>
+					</p>
+					<p>
+						<input type="submit" class="submit" value="submit">
+					</p>
+				</form>
+
+			</div>
+
+		</div>
+		
+		<hr>
+		
+		<div id="footer">
+			<span class="bleft"></span>
+			<span class="bright"></span>
+			<div class="footer1">
+				<h5>Submit your webapp or website to the gallery!</h5>
+				<span class="image"></span>
+				<p>
+					You create a webapp or website using iUI Touch and would like to see it in this gallery? You're more than welcome, it just take a few minutes!<br />
+				</p>
+				<p>
+					<a href="gallery-add.html">Add my webapp or website to the gallery</a>					
+				</p>
+			</div>
+			<div class="footer2">
+				<h5>Explore dozens of themes for iUI</h5>
+				<span class="image"></span>
+				<p>
+					<a href="themes.html">explore the gallery</a>
+				</p>
+			</div>
+		</div>
+		
+		<hr>
+		
+		<p class="footer">
+			Copyright &copy; since 2007 iUI - iUI Touch is an opensource framwork released under LGPL license.<br />
+			<a href="">sitemap</a> I <a href="">press</a> I <a href="">donate</a>
+		</p>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>iUI Touch - Gallery</title>
+	<meta name="description" content="iUI is a framework consisting of a JavaScript library, CSS, and images for developing advanced mobile webapps for iPhone and comparable/compatible devices.">
+		<link href="medias/images/favicon.png" rel="icon" type="image/png" /> 
+	<link href="medias/images/favicon.ico" rel="shortcut icon" />
+	<link rel="image_src" type="image/jpeg" href="medias/images/thumb.jpg" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+	<link rel='stylesheet' type='text/css' media="screen" href='medias/css/globals.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='medias/css/gallery.css' />
+	<!--[if lt IE 7]><link rel="stylesheet" type="text/css" media="screen" href="medias/css/ie6.css"><![endif]-->
+	
+	<script type='text/javascript' src="medias/scripts/global.js"></script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<ul>
+				<li><a href="/iui-touch/site/" class="home"><span>Home</span></a></li>
+				<li><a href="/iui-touch/site/about.html" class="about"><span>About</span></a></li>
+				<li><a href="/iui-touch/site/demo.html" class="demo"><span>Demo</span></a></li>
+				<li><a href="/iui-touch/site/download.html" class="download"><span>Download</span></a></li>
+				<li><a href="/iui-touch/site/documentation/" class="documentation"><span>Documentation</span></a></li>
+				<li><a href="/iui-touch/site/gallery.html" class="gallery active"><span>Gallery</span></a></li>
+				<li><a href="/iui-touch/site/get-involved.html" class="involved"><span>Get Involved</span></a></li>
+			</ul>
+			<form method="GET" action="search" name="header_search">
+				<a href="#" id="emptysearch" onclick="empty('search_q');hide(this.id)"></a>
+				<input type="text" name="q" id="search_q" class="searchform" onFocus="checkHeaderSearch()" onKeyUp="checkHeaderSearch()" value="">
+				<input type="submit" value="search" class="hide">
+			</form>
+		</div>
+		
+		<hr>
+		
+		<div id="content">
+			<div id="intro">
+				<h1>iUI Touch Web Framework</h1>
+				<h2>for iPhone, iPad & high-end Touch devices</h2>
+			</div>
+			
+			<div id="breadcrumbs">
+				<span class="bleft"></span>
+				<p>iUI Touch :: <strong>Gallery</strong></p>
+				<span class="bright"></span>
+			</div>
+			
+			<div class="row">
+				<div>
+					<p>
+						Here is a gallery of some webapps & websites powered by iUI.<br />
+						Don't see yours? <a href="gallery-add.html">Submit it!</a> 
+					</p>
+				</div>
+				<div class="gallery">
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/bonjourmadame-thumb.jpg" />BonjourMadame<br /><span>March 2010</span></a>
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/au2go-thumb.jpg" />Au2Go<br /><span>January 2010</span></a>
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/decathlonneige-thumb.jpg" />Decathlon Neige<br /><span>September 2009</span></a>
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/miestacion-thumb.jpg" />MiEstacion<br /><span>April 2010</span></a>
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/osteosoin-thumb.jpg" />OsteoSoin<br /><span>February 2010</span></a>
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/beosfrance-thumb.jpg" />BeosFrance<br /><span>Sept 2009</span></a>
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/iui-thumb.jpg" />iUI Touch<br /><span>august 2009</span></a>
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/applejuicr-thumb.jpg" />AppleJuicr<br /><span>xxx</span></a>
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/esododku-thumb.jpg" />eSudoku<br /><span>xxx</span></a>
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/ilounge-thumb.jpg" />iLounge<br /><span>xxx</span></a>
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/iphlickr-thumb.jpg" />iPhlickr<br /><span>xxx</span></a>
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/medicopedia-thumb.jpg" />MedicoPedia<br /><span>xxx</span></a>
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/pacificpresbytery-thumb.jpg" />Pacific Presbitary<br /><span>xxx</span></a>
+					<a href="gallery-view.html" class="thumb"><img src="medias/gallery/pocketvidz-thumb.jpg" />PocketVidz<br /><span>xxx</span></a>
+					
+				</div>
+				<div class="gallery">
+					<a class="pages" href=""><<</a>
+					<a class="pages active" href="">1</a>
+					<a class="pages" href="">2</a>
+					<a class="pages" href="">3</a>
+					<a class="pages" href="">4</a>
+					<a class="pages" href="">5</a>
+					<a class="pages" href="">6</a>
+					<a class="pages" href="">7</a>
+					<a class="pages" href="">8</a>
+					<a class="pages" href="">>></a>
+				</div>
+			</div>
+
+		</div>
+		
+		<hr>
+		
+		<div id="footer">
+			<span class="bleft"></span>
+			<span class="bright"></span>
+			<div class="footer1">
+				<h5>Submit your webapp or website to the gallery!</h5>
+				<span class="image"></span>
+				<p>
+					You create a webapp or website using iUI Touch and would like to see it in this gallery? You're more than welcome, it just take a few minutes!<br />
+				</p>
+				<p>
+					<a href="gallery-add.html">Add my webapp or website to the gallery</a>					
+				</p>
+			</div>
+			<div class="footer2">
+				<h5>Explore dozens of themes for iUI</h5>
+				<span class="image"></span>
+				<p>
+					<a href="themes.html">explore the gallery</a>
+				</p>
+			</div>
+		</div>
+		
+		<hr>
+		
+		<p class="footer">
+			Copyright &copy; since 2007 iUI - iUI Touch is an opensource framwork released under LGPL license.<br />
+			<a href="">sitemap</a> I <a href="">press</a> I <a href="">donate</a>
+		</p>
+
+	</div>
+</body>
+</html>
