@@ -421,6 +421,16 @@ window.iui =
 				return child;
 		}	 
 	},
+	
+	/*
+	method: iui.getAllViews()
+	Returns all panels -- currently requires querySelectorAll() will be fixed
+	*/
+	getAllViews: function()
+	{
+		return document.querySelectorAll("body > *:not(.toolbar)");
+	},
+	
 	/*
 	method: iui.isNativeUrl(href)
 	Determines whether the supplied URL string launches a native iPhone app (maps,
