@@ -116,6 +116,7 @@ window.iui =
 			*/
 			if (hasClass(page, "dialog"))
 			{
+				iui.busy = false;	// There's no slide transition, so clear busy flag
 				// There's no LOAD/UNLOAD events for dialogs -- is that the way it should be??
 				// Should the view the dialog is going over get a BLUR??
 				sendEvent("focus", page);							// EVENT: FOCUS
