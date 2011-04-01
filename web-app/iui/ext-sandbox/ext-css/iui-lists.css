@@ -65,10 +65,6 @@ div.board > ul > li > a > span /* icon label */
 	white-space : 		nowrap;
 }
 
-.tleft		{	text-align:	left;		}
-.tright		{	text-align:	right;		}
-.tcenter	{	text-align:	center;		}
-
 
 /**** EXTENDED LISTING ****/
 body > ul > li > span.caption {
@@ -119,7 +115,11 @@ body > ul > li > a > span.bubble {
 	background-color:	#7389a6;
 	-moz-border-radius: 	10px;
 	-webkit-border-radius: 	10px;
+	border-radius: 	10px;
 }
+body > ul > li > a[selected="progress"] > span.bubble,
+body > ul > li > a[selected] > span.bubble,
+body > ul > li > a:active > span.bubble,
 body > ul > li > a.selected > span.bubble {
 	color:				#026deb;
 	background-color:	#fff;

@@ -2,19 +2,47 @@
 
 body > * > a.halfsize /* Half sized buttons */
 {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
 	float:		left;
-	width:		36%;
+	width:		50%;
+	margin:		0px;
 }
 body > *.panel > a.halfsize {
-	width:		35%;
+	width:		50%;
 }
-body > * > a.halfsize[orient="landscape"],
-body[orient="landscape"] > * > a.halfsize
-{
-	width:		45%;
+
+.whiteButton {
+    -webkit-border-image: url(images/whiteButton.png) 0 12 0 12;
+    -moz-border-image: url(images/whiteButton.png) 0 12 0 12;
+    text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
 }
-body > *.panel > a.halfsize[orient="landscape"],
-body[orient="landscape"] > *.panel > a.halfsize
-{
-	width:		40%;
+.redButton {
+	-moz-border-image:		url(images/redButton.png) 0 12 0 12;
+	-webkit-border-image:	url(images/redButton.png) 0 12 0 12;
+}
+
+.grayButton {
+	-moz-border-image: 		url(images/grayButton.png) 0 12 0 12;
+	-webkit-border-image: 	url(images/grayButton.png) 0 12 0 12;
+	color: 		#fff;
+}
+.greenButton {
+	display: 			block;
+	border-width: 		0 12px;
+	padding: 			10px;
+	text-align: 		center;
+	font-size: 			20px;
+	font-weight: 		bold;
+	text-decoration: 	inherit;
+	color: 				#fff;
+	-moz-border-image:		url(images/greenButton.png) 0 12 0 12;
+	-webkit-border-image:	url(images/greenButton.png) 0 12 0 12;
+}
+
+a.disable {
+	color: 			#666;
+	text-shadow: 	rgba(0, 0, 0, 0.7) 0 1px 0;
 }
