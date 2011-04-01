@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Theme Switcher Demo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<link rel="icon" type="image/png" href="../../iui-favicon.png">
+	<link rel="apple-touch-icon" href="../../iui-logo-touch-icon-hd.png" />
+	<link rel="apple-touch-startup-image" href="../../iui-startup.png">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<link rel="stylesheet" href="../../iui.css" type="text/css" />
+	<link rel="stylesheet" title="default" href="../../t/default/default-theme.css"  type="text/css"/>
+	<script type="application/x-javascript" src="../../iui.js"></script>
+
+	<link rel="alternate stylesheet" title="defaultgrad" href="../../t/defaultgrad/defaultgrad-theme.css"  type="text/css"/>
+	<link rel="alternate stylesheet" title="ipdc" href="../../t/ipdc/ipdc-theme.css"  type="text/css"/>
+	<link rel="alternate stylesheet" title="android" href="../t/android/android-theme.css"  type="text/css"/>
+	<link rel="alternate stylesheet" title="webos" href="../t/webos/webos-theme.css"  type="text/css"/>
+	
+	<script type="application/x-javascript" src="iui-theme-switcher.js"></script>
+</head>
+
+<body>
+    <div class="toolbar">
+        <h1 id="pageTitle"></h1>
+        <a id="backButton" class="button" href="#"></a>
+        <a class="button button" href="#searchForm">Search</a>
+    </div>
+
+	<ul id="home" title="Theme Switcher" selected="true">
+		<li><a href="#about">About Theme Switcher</a></li>
+		<li class="group">Theme Switcher</li>
+		<li><a href="#select">Select a theme</a></li>
+		<li><a href="#form">form</a></li>
+	</ul>
+
+
+    <form id="searchForm" class="dialog" action="search.gtpl" method="GET">
+        <div class="toolbar">
+            <h1>Theme switcher</h1>
+            <a class="button leftButton" type="cancel">Cancel</a>
+            <a class="button blueButton" type="submit">Search</a>
+        </div>
+		<fieldset>
+			<div class="row">
+				<label>Artist:</label>
+				<input id="artist" type="text" name="artist"/>
+			</div>
+			<div class="row">
+				<label>Song:</label>
+				<input type="text" name="song"/>
+			</div>
+		</fieldset>
+    </form>
+    
+    <div id="form" title="Form test" class="panel">
+        <h2>Playback</h2>
+        <fieldset>
+            <div class="row">
+                <label>Repeat</label>
+                <div class="toggle" onclick=""><span class="thumb"></span><span class="toggleOn">ON</span><span class="toggleOff">OFF</span></div>
+            </div>
+            <div class="row">
+                <label>Shuffle</label>
+                <div class="toggle" onclick="" toggled="true"><span class="thumb"></span><span class="toggleOn">ON</span><span class="toggleOff">OFF</span></div>
+            </div>
+        </fieldset>
+        
+        <h2>User</h2>
+        <fieldset>
+            <div class="row">
+                <label>Name</label>
+                <input type="text" name="userName" value="johnappleseed"/>
+            </div>
+            <div class="row">
+                <label>Password</label>
+                <input type="password" name="password" value="delicious"/>
+            </div>
+            <div class="row">
+                <label>Date</label>
+                <input type="date" name="date" value="2011-01-23"/>
+            </div>
+        </fieldset>
+    </div>
+
+
+
+	<form id="select" title="Theme switcher" class="panel" onsubmit="return iui.ts.setTheme(this.value)">
+        <h2>Select a theme</h2>
+        <fieldset>
+        	<div class="row">
+        		<label>Choose a theme</label>
+	            <select onchange="return iui.ts.setTheme(this.value)" name="themeSelect" size="1">
+	                <option value="default">Default</option>
+	                <option value="defaultgrad">Default using Gradients</option>
+	                <option value="ipdc">iPhoneDevCamp</option>
+	                <option value="android">Android</option>
+	                <option value="webos">Web OS (Palm)</option>
+	            </select>
+	            <script>
+	            function updateSelect() {
+		            // auto select option update needed if you use remember
+		            for(var i=0;i<select.themeSelect.options.length;i++) {
+		            	if(select.themeSelect[i].value == iui.ts.currentTheme)
+		            		select.themeSelect[i].selected=1;
+		            }
+	            }
+	            updateSelect();
+	            </script>
+	        </div>
+	    </fieldset>
+
+		<a class="whiteButton" href="javascript:iui.ts.rememberTheme();">Remember current theme</a>
+		<a class="grayButton" href="javascript:iui.ts.setDefaultTheme();updateSelect()">Restore default theme</a>
+    </form>
+
+	<div id="about" title="About" class="panel">
+		<h2>About Theme Switcher Extension</h2>
+		<fieldset>
+			<div class="row">
+				<p><b>iui-theme-switcher.js</b> is an extension for the iUI framework. Its intend is to help you change which iUI theme you want to be used on-the-fly.</p>
+				<p>It comes as a JS object, "iui.ts".</p>
+				<p>Note: this is a replacement of the post 0.4dev3 iUI release theme switcher code, that used to be in iui/js/theme-switcher.js (which is now to consider as obsolete, but can still be used).</p>
+				<p>Remi Grumeau</p>
+			</div>
+		</fieldset>
+		<h2>Variables</h2>
+		<ul>
+			<li><a href="#about-currenttheme">currentTheme</a></li>
+			<li><a href="#about-defaulttheme">defaultTheme</a></li>
+			<li><a href="#about-themes">themes</a></li>
+		</ul>
+		<h2>functions</h2>
+		<ul>
+			<li><a href="#about-init">init()</a></li>
+			<li><a href="#about-set">setTheme()</a></li>
+			<li><a href="#about-setdefault">setDefaultTheme()</a></li>
+			<li><a href="#about-remember">rememberTheme()</a></li>
+			<li><a href="#about-add">addTheme()</a></li>
+			<li><a href="#about-remove">removeTheme()</a></li>
+		</ul>
+	</div>	
+
+	<div id="about-defaulttheme" class="panel" title="defaultTheme">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.ts.defaultTheme</strong> (String)<br />
+					<br />
+					It is set once on load by iui.ts.init().
+				</p>
+				<p>
+					First link element in the header with a "title" attribute and "rel" attribute equals to "stylesheet". 
+				</p>
+				<p>
+					Ex: "iphone"
+				</p>
+			</div>
+		</fieldset>
+	</div>
+
+	<div id="about-currenttheme" class="panel" title="currentTheme">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.ts.currentTheme</strong> (String)<br />
+					<br />
+					It is set by iui.ts.init(), updated by iui.ts.setTheme().
+				</p>
+				<p>
+					This is the theme currently in use. By default, same as iui.ts.defaultTheme.
+				</p>
+				<p>
+					Ex: "iphone"
+				</p>
+			</div>
+		</fieldset>
+	</div>
+
+	<div id="about-themes" class="panel" title="themes">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.ts.themes</strong> (Array)<br />
+					<br />
+					It will be set by iui.ts.init() and updated by iui.ts.addTheme() and iui.ts.removeTheme().
+				</p>
+				<p>
+					Selecting in the header all link elements with "rel" attribute value containing "stylesheet" and an existing title attribute.
+				</p>
+				<p>
+					Ex: ["iphone", "android", "webos"]
+				</p>
+			</div>
+		</fieldset>
+	</div>
+	
+	<div id="about-init" class="panel" title="init()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.ts.init</strong> (function)<br />
+					<br />
+					Initialized on load.<br />
+					<i>no parameter</i>
+				</p>
+				<p>
+					Selecting in the header all link elements with both a "rel" attribute value containing "stylesheet" and an existing title attribute and store their title attribute value in iui.ts.themes array. If "stylesheet" attribute doesn't contain "alternate", both iui.ts.defaultTheme and iui.ts.currentTheme are defined.
+				</p>
+			</div>
+		</fieldset>
+	</div>
+	
+	<div id="about-set" class="panel" title="setTheme()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.ts.setTheme</strong> (function)<br />
+					<br />
+					Set a theme by its title.<br />
+					- title (string)
+				</p>
+				<p>
+					It disables all link elements with a "rel" attribute that contains "stylesheet" and a "title" attribute, and enable the one with the "title" attribute value equal to the title name given as a parameter.<br />
+					It will also update iui.ts.currentTheme value to title name given as a parameter.
+				</p>
+				<p>
+					Ex: iui.ts.setTheme('android');
+				</p>
+			</div>
+		</fieldset>
+	</div>
+	
+	<div id="about-setdefault" class="panel" title="setDefaultTheme()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.ts.setDefaultTheme</strong> (function)<br />
+					<br />
+					Alias to iui.ts.setTheme(iui.ts.defaultTheme)<br />
+					<i>no parameter</i>
+				</p>
+				<p>
+					Ex: iui.ts.setDefaultTheme();
+				</p>
+			</div>
+		</fieldset>
+	</div>
+	
+	<div id="about-remember" class="panel" title="rememberTheme()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.ts.rememberTheme</strong> (function)<br />
+					<br />
+					Remember theme currently in use.<br />
+					<i>no parameter</i>
+				</p>
+				<p>
+					It stores iui.ts.currentTheme value in a cookie called 'iui-theme'. The cookie will live a year.<br />
+					Note that iui.ts.init() will activate the theme title value of this cookie over the default one. 
+				</p>
+				<p>
+					Ex: iui.ts.rememberTheme();
+				</p>
+			</div>
+		</fieldset>
+	</div>
+	
+	<div id="about-add" class="panel" title="addTheme()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.ts.addTheme</strong> (function)<br />
+					<br />
+					Add a theme in the DOM.<br />
+					- title (string)<br />
+					- link (string)<br />
+					- setIt (true/false - optional, default is false)
+				</p>
+				<p>
+					It adds a new link element in the header with 'title' parameter value as "title" attribute value, and 'link' parameter value as "href" attribute value. It also adds/pushes 'title' parameter value to <i>iui.ts.themes</i> array. If setIt is defined as <i>true</i>, <i>iui.ts.setTheme()</i> will be activated with it using this new theme.
+					You can use absolute url as "link" value, theme doesn't have to be in iui/t folder (but it would be cleaner).
+				</p>
+				<p>
+					Ex: iui.ts.addTheme('nokia', 'nokia-theme.css');
+				</p>
+			</div>
+		</fieldset>
+	</div>
+	
+	<div id="about-remove" class="panel" title="removeTheme()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.ts.removeTheme</strong> (function)<br />
+					<br />
+					Remove a theme from the DOM.<br />
+					- title (string)
+				</p>
+				<p>
+					It removes the link element in the header with 'title' parameter value equal to "title" attribute value. It also removes it from  <i>iui.ts.themes</i> array.<br />
+					If you remove the theme currently in use, iui.ts.setDefaultTheme will be used. 
+				</p>
+				<p>
+					Ex: iui.ts.addTheme('nokia', 'nokia-theme.css');
+				</p>
+			</div>
+		</fieldset>
+	</div>
+
+</body>
+</html>
