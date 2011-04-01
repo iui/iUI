@@ -1,67 +1,66 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <title>Link Types</title>
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-  <link rel="apple-touch-icon-precomposed" href="../iui/iui-logo-touch-icon.png" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <link rel="stylesheet" href="../iui/iui.css" type="text/css" />
+	<title>Link Types</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="icon" type="image/png" href="../iui/iui-favicon.png">
+	<link rel="apple-touch-startup-image" href="../iui/iui-startup.png">
+	<link rel="apple-touch-icon" href="../iui/iui-logo-touch-icon-hd.png" />
 
-  <link rel="stylesheet" title="Default" href="../iui/t/default/default-theme.css"  type="text/css"/>
-  <script type="application/x-javascript" src="../iui/iui.js"></script>
-  <script type="application/x-javascript" src="../iui/js/iui-event-log.js"></script>
-  <script language="JavaScript" type="text/javascript">
-  </script>
+	<link rel="stylesheet" href="../iui/iui.css" type="text/css" />
+	<link rel="stylesheet" href="../iui/t/default/default-theme.css"  type="text/css"/>
+	<script type="application/x-javascript" src="../iui/iui.js"></script>
+	<script type="application/x-javascript" src="../iui/js/iui-event-log.js"></script>
 </head>
 
 <body>
-    <div class="toolbar">
-        <h1 id="pageTitle"></h1>
-        <a id="backButton" class="button" href="#"></a>
-    </div>
-    
-    <ul id="main" title="TBD" selected="true">
-      <li><a href="#buttons">Buttons</a></li>
-      <li><a href="#links">Links</a></li>
-      <li><a href="#panel">Panel</a></li>
-    </ul>
 
-    <div id="panel" title="Panel(r/o)" class="panel">
-      <h2>Panel (read/only)</h2>
-      <fieldset>
-        <div class="row">
-            <label>Label</label>
-            <span>Text in a span</span>
-        </div>
-        <div class="row">
-            <label>Label 2</label>
-            <span>More text</span>
-        </div>
-      </fieldset>
-    </div>
+	<div class="toolbar">
+		<h1 id="pageTitle"></h1>
+		<a id="backButton" class="button" href="#"></a>
+	</div>
 
-    <div id="buttons" title="Buttons" class="panel">
-      <h2>Big Buttons</h2>
-      <a class="whiteButton" type="button" href="">White Button</a>
-      <a class="grayButton" type="button" href="">Gray Button</a>
-      <a class="redButton" type="button" href="">Red Button</a>
+	<ul id="main" title="TBD" selected="true">
+		<li><a href="#buttons">Buttons</a></li>
+		<li><a href="#links">Links</a></li>
+		<li><a href="#panel">Panel</a></li>
+	</ul>
 
-    </div>
+	<div id="panel" title="Panel(r/o)" class="panel">
+		<h2>Panel (read/only)</h2>
+		<fieldset>
+			<div class="row">
+				<label>Label</label>
+				<span>Text in a span</span>
+			</div>
+			<div class="row">
+				<label>Label 2</label>
+				<span>More text</span>
+			</div>
+		</fieldset>
+	</div>
 
-    <ul id="links" title="Link Types">
-      <li><a href="#panel">Internal Link (#id)</a></li>
-      <li><a href="fragPanel.frag">Ajax Link (Fragment)</a></li>
-      <li><a target="_self" href="../samples/music/music.html">Ext Link (_self)</a></li>
-      <li><a target="_self" href="../samples/music/music.html#_artists">Ext Link w/Anchor</a></li>
-      <li><a target="_webapp" href="../test/webappBack.html">Ext Link (_webapp)</a></li>
-      <li><a target="_replace" href="replacingFrag1.frag">Load 2 more (_replace)</a></li>
-    </ul>
-    
-    <div id="panel2" title="Int Panel" class="panel">
-      <h2>Internal Panel</h2>
-    </div>
+	<div id="buttons" title="Buttons" class="panel">
+		<h2>Big Buttons</h2>
+		<a href="#buttons" class="whiteButton" type="button" href="">White Button</a>
+		<a href="#buttons" class="grayButton" type="button" href="">Gray Button</a>
+		<a href="#buttons" class="redButton" type="button" href="">Red Button</a>
+	</div>
+
+	<ul id="links" title="Link Types">
+		<li><a href="#panel">Internal Link (#id)</a></li>
+		<li><a href="fragPanel.frag">Ajax Link (Fragment)</a></li>
+		<li><a target="_self" href="../samples/music/music.html">Ext Link (_self)</a></li>
+		<li><a target="_self" href="../samples/music/music.html#_artists">Ext Link w/Anchor</a></li>
+		<li><a target="_webapp" href="../test/webappBack.html">Ext Link (_webapp)</a></li>
+		<li><a target="_replace" href="replacingFrag1.frag">Load 2 more (_replace)</a></li>
+	</ul>
+
+	<div id="panel2" title="Int Panel" class="panel">
+		<h2>Internal Panel</h2>
+	</div>
+
 </body>
-
 </html>

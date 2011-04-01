@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Startup Image</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="icon" type="image/png" href="../iui/iui-favicon.png">
+	<script type="application/x-javascript">
+	if(navigator.userAgent.match(/iPad/i) != null)
+		document.write('<link rel="apple-touch-startup-image" href="../iui/iui-startup-ipad.jpg">');
+	else
+		document.write('<link rel="apple-touch-startup-image" href="../iui/iui-startup.jpg">');
+	</script>
+	<link rel="apple-touch-icon" href="../iui/iui-logo-touch-icon-hd.png" />
+
+	<link rel="stylesheet" href="../iui/iui.css" type="text/css" />
+	<link rel="stylesheet" href="../iui/t/default/default-theme.css"  type="text/css"/>
+	<script type="application/x-javascript" src="../iui/iui.js"></script>
+	<link rel="stylesheet" href="../iui/ext-sandbox/ext-css/iui-ext.css"  type="text/css"/>
+</head>
+
+<body>
+
+    <div class="toolbar">
+        <h1 id="pageTitle"></h1>
+    </div>
+    
+    <div id="test" title="Test" class="panel" selected="true">
+		<h2>Startup Image</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					This script in the header switches between 'iui-startup-ipad.jpg' for iPad, or uses 'iui-startup.jpg' for others.
+				</p>
+				<ul class="code">
+					<li>&lt;script type="application/x-javascript"></li>
+					<li>if(navigator.userAgent.match(/iPad/i) != null)</li>
+					<li>&nbsp;&nbsp;document.write('&lt;link rel="apple-touch-startup-image" href="iui/iui-startup-ipad.jpg">');</li>
+					<li>else</li>
+					<li>&nbsp;&nbsp;document.write('&lt;link rel="apple-touch-startup-image" href="iui/iui-startup.jpg">');</li>
+					<li>&lt;/script></li>
+				</ul>
+				<br />
+			</div>
+		</fieldset>
+    </div>
+
+</body>
+</html>

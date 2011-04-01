@@ -1,50 +1,48 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <title>Link Types</title>
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-  <link rel="apple-touch-icon-precomposed" href="../iui/iui-logo-touch-icon.png" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <link rel="stylesheet" href="../iui/iui.css" type="text/css" />
+	<title>Link Types</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="icon" type="image/png" href="../iui/iui-favicon.png">
+	<link rel="apple-touch-startup-image" href="../iui/iui-startup.jpg">
+	<link rel="apple-touch-icon" href="../iui/iui-logo-touch-icon-hd.png" />
 
-  <link rel="stylesheet" title="Default" href="../iui/t/default/default-theme.css"  type="text/css"/>
-  <script type="application/x-javascript" src="../iui/iui.js"></script>
-  <script language="JavaScript" type="text/javascript">
-  </script>
+	<link rel="stylesheet" href="../iui/iui.css" type="text/css" />
+	<link rel="stylesheet" href="../iui/t/default/default-theme.css"  type="text/css"/>
+	<script type="application/x-javascript" src="../iui/iui.js"></script>
 </head>
 
 <body>
-    <div class="toolbar">
-        <h1 id="pageTitle"></h1>
-        <a id="backButton" class="button" href="#"></a>
-    </div>
-    
-    <ul id="links" title="Link Types" selected="true">
-      <li><a href="#panel">Internal Link (#id)</a></li>
-      <li><a href="#native">Native Link Samples</a></li>
-      <li><a href="fragPanel.frag">Ajax Link (Fragment)</a></li>
-      <li><a target="_self" href="../samples/music/music.html">Ext Link (_self)</a></li>
-      <li><a target="_self" href="../samples/music/music.html#_artists">Ext Link w/Anchor</a></li>
-      <li><a target="_webapp" href="webappBack.html">Ext Link (_webapp)</a></li>
-      <li><a target="_replace" href="replacingFrag1.frag">Load 2 more (_replace)</a></li>
-    </ul>
-    
-    <div id="panel" title="Int Panel" class="panel">
-      <h2>Internal Panel</h2>
-    </div>
 
-    <ul id="native" title="Native Links">
-      <li><a href="mailto:donotreply@googlecode.com">mailto:donotreply@googlecode.com</a></li>
-      <li><a href="tel:408-555-1212">tel:408-555-1212</a></li>
-      <li><a href="javascript:alert('Hello!')">javascript:alert('Hello!')</a></li>
-      <li>Non-native links below</li>
-      <li><a href="#panel">Internal Link (#id)</a></li>
-      <li><a href="fragPanel.frag">Ajax Link (Fragment)</a></li>
-      <li><a target="_self" href="../samples/music/music.html">Ext Link (_self)</a></li>
-    </ul>
+	<div class="toolbar">
+		<h1 id="pageTitle"></h1>
+		<a id="backButton" class="button" href="#"></a>
+	</div>
+
+	<ul id="links" title="Link Types" selected="true">
+		<li><a href="#panel">Internal Link (#id)</a></li>
+		<li><a href="fragPanel.frag">Ajax Link (Fragment)</a></li>
+		<li><a target="_self" href="../samples/music/music.html">External Link (_self)</a></li>
+		<li><a target="_self" href="../samples/music/music.html#_artists">External Link w/Anchor</a></li>
+		<li><a target="_webapp" href="webappBack.html">External Link (_webapp)</a></li>
+		<li><a target="_replace" href="replacingFrag1.frag">Load 2 more (_replace)</a></li>
+	</ul>
+
+	<div id="panel" title="Int Panel" class="panel">
+		<h2>Internal Panel</h2>
+	</div>
+
+	<ul id="native" title="Native Links">
+		<li><a href="mailto:donotreply@googlecode.com">mailto:donotreply@googlecode.com</a></li>
+		<li><a href="tel:408-555-1212">tel:408-555-1212</a></li>
+		<li><a href="javascript:alert('Hello!')">javascript:alert('Hello!')</a></li>
+		<li>Non-native links below</li>
+		<li><a href="#panel">Internal Link (#id)</a></li>
+		<li><a href="fragPanel.frag">Ajax Link (Fragment)</a></li>
+		<li><a target="_self" href="../samples/music/music.html">Ext Link (_self)</a></li>
+	</ul>
 
 </body>
-
 </html>

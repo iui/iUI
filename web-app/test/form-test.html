@@ -1,54 +1,55 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-  <title>Form Tests</title>
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-  <link rel="apple-touch-icon-precomposed" href="../iui/iui-logo-touch-icon.png" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <link rel="stylesheet" href="../iui/iui.css" type="text/css" />
+	<title>Form test</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="icon" type="image/png" href="../iui/iui-favicon.png">
+	<link rel="apple-touch-startup-image" href="../iui/iui-startup.png">
+	<link rel="apple-touch-icon" href="../iui/iui-logo-touch-icon-hd.png" />
 
-  <link rel="stylesheet" title="Default" href="../iui/t/default/default-theme.css"  type="text/css"/>
-  <style type="text/css">
-    div.spinner {
-       visibility: hidden;
-       background: black url(../iui/t/default/loading.gif) no-repeat center center;
-       position: absolute;
-       top: 0px;
-       left: 0px;
-       height: 100%;
-       width: 100%;
-       opacity: 0.5;
-    }
-    
-    form.progress div.spinner {
-        visibility: visible;  // need better styling here, placeholder
-    }
-  </style>
-  <script type="application/x-javascript" src="../iui/iui.js"></script>
-  <script language="JavaScript" type="text/javascript">
-function myJSForm(form)
-{
-    iui.addClass(form, "progress");
-    iui.showPageByHref(form.action, encodeForm(form), form.method || "GET", null, clear);
-    iui.encodeForm
-    iui.ajax
-    
-    function clear() {   iui.removeClass(form, "progress"); }
-    return false;  // cancel the browser's submit
-}
-function formResultCB()
-{
-    if (xyz)
-    {
-        iui.replacePage
-    }
-    else
-    {
-        iui.replacePage
-    }
-}
+	<link rel="stylesheet" href="../iui/iui.css" type="text/css" />
+	<link rel="stylesheet" href="../iui/t/default/default-theme.css"  type="text/css"/>
+	<script type="application/x-javascript" src="../iui/iui.js"></script>
+	<style type="text/css">
+	  div.spinner {
+	     visibility: hidden;
+	     background: black url(../iui/t/default/loading.gif) no-repeat center center;
+	     position: absolute;
+	     top: 0px;
+	     left: 0px;
+	     height: 100%;
+	     width: 100%;
+	     opacity: 0.5;
+	  }
+	  form.progress div.spinner {
+	      visibility: visible;  // need better styling here, placeholder
+	  }
+	</style>
+	<script type="application/x-javascript" src="../iui/iui.js"></script>
+	<script language="JavaScript" type="text/javascript">
+		function myJSForm(form)
+		{
+		    iui.addClass(form, "progress");
+		    iui.showPageByHref(form.action, encodeForm(form), form.method || "GET", null, clear);
+		    iui.encodeForm
+		    iui.ajax
+		    
+		    function clear() {   iui.removeClass(form, "progress"); }
+		    return false;  // cancel the browser's submit
+		}
+		function formResultCB()
+		{
+		    if (xyz)
+		    {
+		        iui.replacePage
+		    }
+		    else
+		    {
+		        iui.replacePage
+		    }
+		}
   </script>
 </head>
 

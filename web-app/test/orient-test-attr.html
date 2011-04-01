@@ -1,26 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<title>Orientation Test using orient attribute</title>
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-<link rel="stylesheet" href="../iui/iui.css" type="text/css" />
+    <title>Orientation test using orientation attribute</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="icon" type="image/png" href="../iui/iui-favicon.png">
+	<link rel="apple-touch-startup-image" href="../iui/iui-startup.png">
+	<link rel="apple-touch-icon" href="../iui/iui-logo-touch-icon-hd.png" />
 
-<link rel="stylesheet" title="Default" href="../iui/t/default/default-theme.css"  type="text/css"/>
-<script type="application/x-javascript" src="../iui/iui.js"></script>
-<style type="text/css">
-   /* CSS to add ": True" or ": False" after headings to indicate orientation */
-   /* These rules use the body/@orient attribute */
-   div.panel > h2:after { content: ":  False"; }
-   div.panel > h2.neither:after { content: ":  True"; }
-   body[orient="landscape"] > div.panel > h2.landscape:after { content: ":  True"; }
-   body[orient="landscape"] > div.panel > h2.neither:after { content: ":  False"; }
-   body[orient="portrait"] > div.panel > h2.portrait:after { content: ":  True"; }
-   body[orient="portrait"] > div.panel > h2.neither:after { content: ":  False"; }
-</style>
+	<link rel="stylesheet" href="../iui/iui.css" type="text/css" />
+	<link rel="stylesheet" href="../iui/t/default/default-theme.css"  type="text/css"/>
+	<script type="application/x-javascript" src="../iui/iui.js"></script>
+	<style type="text/css">
+	   /* CSS to add ": True" or ": False" after headings to indicate orientation */
+	   /* These rules use the body/@orient attribute */
+	   div.panel > h2:after { content: ":  False"; }
+	   div.panel > h2.neither:after { content: ":  True"; }
+	   body[orient="landscape"] > div.panel > h2.landscape:after { content: ":  True"; }
+	   body[orient="landscape"] > div.panel > h2.neither:after { content: ":  False"; }
+	   body[orient="portrait"] > div.panel > h2.portrait:after { content: ":  True"; }
+	   body[orient="portrait"] > div.panel > h2.neither:after { content: ":  False"; }
+	</style>
 </head>
 
 <body>
+
     <div class="toolbar">
         <h1 id="pageTitle"></h1>
     </div>
@@ -30,5 +35,6 @@
         <h2 class="landscape">Landscape</h2>
         <h2 class="neither">Unknown</h2>
     </div>
+
 </body>
 </html>
