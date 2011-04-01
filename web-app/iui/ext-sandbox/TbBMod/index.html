@@ -1,23 +1,28 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <title>TbBMod Demo</title>
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-  <link rel="icon" type="image/png" href="../../iui-favicon.png">
-  <link rel="apple-touch-icon" href="../../iui-logo-touch-icon.png" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <link rel="stylesheet" href="../../iui.css" type="text/css" />
-  <link rel="stylesheet" title="Default" href="../../t/default/default-theme.css"  type="text/css"/>
-  <link rel="stylesheet" href="../../../css/iui-panel-list.css" type="text/css" />
-  <script type="application/x-javascript" src="../../iui.js"></script>	
-  <script type="application/x-javascript" src="TbBMod.js"></script>
+	<title>TbBMod Demo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<link rel="icon" type="image/png" href="../../iui-favicon.png">
+	<link rel="apple-touch-icon" href="../../iui-logo-touch-icon-hd.png" />
+	<link rel="apple-touch-startup-image" href="../../iui-startup.png">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="stylesheet" href="../../iui.css" type="text/css" />
+	<link rel="stylesheet" title="Default" href="../../t/default/default-theme.css"  type="text/css"/>
+	<script type="application/x-javascript" src="../../iui.js"></script>	
+
+	<script type="application/x-javascript" src="TbBMod.js"></script>
 	<link href="xtra.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-<div class="toolbar" id="toolbar">
-	<h1 id="pageTitle"></h1>
+	<div class="toolbar" id="toolbar">
+		<h1 id="pageTitle"></h1>
 		<a id="backButton" class="button" href="#"></a>
-	<!--<a class="button" href="" id="help2">2</a>-->
-	<a class="button" href="#about" id="help">?</a>	</div>
+		<a class="button" href="#about" id="help">?</a>
+	</div>
+
 	<ul id="home" title="TbBMod Demo" selected="true">
 		<li><a href="#about">About TbBmod</a></li>
 		<li><a href="#instructions">Instructions</a></li>
@@ -28,7 +33,7 @@
 		<li><a href="formyes.html">AJAX Form with TbBmods</a></li>
 		<li><a href="formno.html">AJAX Form with no TbBMods</a></li>
 		<form>
-		<input type = "hidden" name = "TbBMod" value = "true" />
+			<input type = "hidden" name = "TbBMod" value = "true" />
 		</form>
 	</ul>
 
@@ -36,70 +41,83 @@
 
 
 
-<div id="about" class="panel" title="TbBMod Nfo">
-  <h2>About TbBMod Extension</h2>
-	<fieldset>
-	<p class="normalText">TbBMod.js is an extension for the iUI framework. It was designed to offer some flexibility to some of the default behaviors of iUI, namely page context controlling of toolbar button behavior. In short it gives you the flexibility to control what the toolbar buttons do on a per page basis. </p>
-	<p class="normalText">If your previewing this app, you're already seeing it in action. Just click the "?" button at the top of each page to see info about that page, (the extension is hiding it on this page now!). This button is a static link, but the url changes for each page. About and Instruction Page 1 are an internal (#link) page Demo, and Instruction Page 2 is external(AJAX) page Demo. Pages where the button is not modded will default back here.</p>
-	<p class="normalText">For info on how to use this extension see Instructions. For info on how it works click the "How" button on instruction page 2. Thanks for using TbBMod. I hope it helps your web-app development needs.</p><p class="normalText">Special Thanks to all in the iUI dev community. Without you this extension may not exist. It is my pleasure to share freely with everyone. Stay tuned to the iphonewebdev and iui-developers googlegroups for updates as I am currently working to add the ability to mod the back button on demand.</p>
-	<p class="normalText">Vic Hudson</p>
-	</fieldset>
-	<form>
-		<input type = "hidden" name = "TbBModHIDE_help" value = "how" />
+	<div id="about" class="panel" title="TbBMod Nfo">
+		<h2>About TbBMod Extension</h2>
+		<fieldset>
+			<div class="row">
+				<p>TbBMod.js is an extension for the iUI framework. It was designed to offer some flexibility to some of the default behaviors of iUI, namely page context controlling of toolbar button behavior. In short it gives you the flexibility to control what the toolbar buttons do on a per page basis. </p>
+				<p>If your previewing this app, you're already seeing it in action. Just click the "?" button at the top of each page to see info about that page, (the extension is hiding it on this page now!). This button is a static link, but the url changes for each page. About and Instruction Page 1 are an internal (#link) page Demo, and Instruction Page 2 is external(AJAX) page Demo. Pages where the button is not modded will default back here.</p>
+				<p>For info on how to use this extension see Instructions. For info on how it works click the "How" button on instruction page 2. Thanks for using TbBMod. I hope it helps your web-app development needs.</p><p>Special Thanks to all in the iUI dev community. Without you this extension may not exist. It is my pleasure to share freely with everyone. Stay tuned to the iphonewebdev and iui-developers googlegroups for updates as I am currently working to add the ability to mod the back button on demand.</p>
+				<p>Vic Hudson</p>
+			</div>
+		</fieldset>
+		<form>
+			<input type = "hidden" name = "TbBModHIDE_help" value = "how" />
+		</form>
+	</div>
+
+	<div class="panel" id="static_help" title="Static Help">
+		<fieldset>
+			<p>This is help for internal pages</p>
+		</fieldset>
+		<form>
+			<input type = "hidden" name = "TbBModHIDE_help" value = "true" />
+		</form>
+	</div>
+
+
+	<form class = "panel" title = "TbBMods" id = "TbBMods_Form">
+		<fieldset>
+			<div class="row"><label>Label</label><input type = "text" id = "one" value = "Click ?" /></div>
+			<div class="row"><label>Label</label><input type = "text" id = "two" value = "Click ?" /></div>
+			<input type = "hidden" name = "TbBModHREF_help" value = "#static_help" />
+		</fieldset>
 	</form>
-</div>
 
-<div class="panel" id="static_help" title"Static Help">
-	<fieldset>
-		<p class="normalText">This is help for internal pages</p>
-	</fieldset>
-	<form>
-		<input type = "hidden" name = "TbBModHIDE_help" value = "true" />
+	<form class = "panel" title = "No TbBMods" id = "No_TbBMods">
+		<fieldset>
+			<div class="row"><label>Label</label><input type = "text" id = "one" value = "Click ?" /></div>
+			<div class="row"><label>Label</label><input type = "text" id = "two" value = "Click ?" /></div>
+		</fieldset>
 	</form>
-</div>
 
-
-<form class = "panel" title = "TbBMods" id = "TbBMods_Form">
-	<fieldset>
-		<div class="row"><label>Label</label><input type = "text" id = "one" value = "Click ?" /></div>
-		<div class="row"><label>Label</label><input type = "text" id = "two" value = "Click ?" /></div>
-		<input type = "hidden" name = "TbBModHREF_help" value = "#static_help" />
-	</fieldset>
-</form>
-
-<form class = "panel" title = "No TbBMods" id = "No_TbBMods">
-	<fieldset>
-		<div class="row"><label>Label</label><input type = "text" id = "one" value = "Click ?" /></div>
-		<div class="row"><label>Label</label><input type = "text" id = "two" value = "Click ?" /></div>
-	</fieldset>
-</form>
-
-<div id="instructions" class="panel" title="Instructions">
-  <h2>TbBMod - instructions for use.</h2>
-	<fieldset>
-	<p class="normalText">TbBMod is easy to install on your iUI powered web app. It requires no changes to existing iUI components. Start by linking the TbBMod.js to your main index file just like the you would iui.js. Next make sure your right toolbar button has a unique id attribute, and links to some generic page for the pages you don't mod it on. Installation is now done!</p>
-	<p class="normalText">The rest is done by setting some flags in the pages you want to mod buttons for. The flags are pretty simple to use and there are currently three different options to use on your button. You may hide the button, change the buttons text, and change the buttons link address all on a per page basis. The flags used are hidden form fields on your page. If the page you need to mod the button on is, or already has, a form just add the hidden inputs to it. If it is a list or static panel just add a form with the hidden inputs to the end of your page(just before your closing ul or div tag).</p>
-	<p class="normalText">The key is in the naming of the form inputs and their value. The standard naming convention is TbBMod followed by the mod option you want then an underscore followed by the id of the button to mod. This example changes the link of a button with id = "help" to page2help.html </p>
-</fieldset>
-<fieldset>
-	<p class="code">&lt;form&gt;</p>
-	<p class="code">&lt;input type = &quot;hidden&quot; name = "TbBModHREF_help" value = &quot;help2.html&quot; /&gt; </p>
-	<p class="code">&lt;/form&gt;</p>
-</fieldset>
-<fieldset>
-	<p class="normalText">Since it is my &quot;?&quot; button above and would serve to deliver help info about the current page I don't really want to change it's text label most of the time, but on the current page for example it changes to a &quot;How&quot; button linking to explanation of how the extension works. It is done like this.</p>
-</fieldset>
-<fieldset>
-	<p class="code">&lt;form&gt;</p>
-	<p class="code">	&lt;input type = &quot;hidden&quot; name = "TbBModTEXT_help" value = &quot;How&quot; /&gt;</p>
-	<p class="code"> 	&lt;input type = &quot;hidden&quot; name = "TbBModHREF_help" value = &quot;how.html&quot; /&gt; </p>
-	<p class="code">&lt;/form&gt; </p>
-</fieldset>
-	<form>
-		<input type = "hidden" name = "TbBModTEXT_help" value = "Page 2" />
-		<input type = "hidden" name = "TbBModHREF_help" value = "instruction2.html" />
-	</form>
-</div>
+	<div id="instructions" class="panel" title="Instructions">
+		<h2>TbBMod - instructions for use.</h2>
+		<fieldset>
+			<div class="row">
+				<p>TbBMod is easy to install on your iUI powered web app. It requires no changes to existing iUI components. Start by linking the TbBMod.js to your main index file just like the you would iui.js. Next make sure your right toolbar button has a unique id attribute, and links to some generic page for the pages you don't mod it on. Installation is now done!</p>
+				<p>The rest is done by setting some flags in the pages you want to mod buttons for. The flags are pretty simple to use and there are currently three different options to use on your button. You may hide the button, change the buttons text, and change the buttons link address all on a per page basis. The flags used are hidden form fields on your page. If the page you need to mod the button on is, or already has, a form just add the hidden inputs to it. If it is a list or static panel just add a form with the hidden inputs to the end of your page(just before your closing ul or div tag).</p>
+				<p>The key is in the naming of the form inputs and their value. The standard naming convention is TbBMod followed by the mod option you want then an underscore followed by the id of the button to mod. This example changes the link of a button with id = "help" to page2help.html </p>
+	
+				<p>
+					<ul class="code">
+						<li>&lt;form&gt;</li>
+						<li>&nbsp;&nbsp;&lt;input type = &quot;hidden&quot; name = "TbBModHREF_help" value = &quot;help2.html&quot; /&gt; </li>
+						<li>&lt;/form&gt;</li>
+					</ul>
+				</p>
+			</div>
+		</fieldset>
+		<fieldset>
+			<div class="row">
+				<p>Since it is my &quot;?&quot; button above and would serve to deliver help info about the current page I don't really want to change it's text label most of the time, but on the current page for example it changes to a &quot;How&quot; button linking to explanation of how the extension works. It is done like this.</p>
+				<p>
+					<ul class="code">
+						<li>&lt;form&gt;</li>
+						<li>&nbsp;&nbsp;&lt;input type = &quot;hidden&quot; name = "TbBModTEXT_help" value = &quot;How&quot; /&gt;</li>
+						<li>&nbsp;&nbsp;&lt;input type = &quot;hidden&quot; name = "TbBModHREF_help" value = &quot;how.html&quot; /&gt; </li>
+						<li>&lt;/form&gt; </li>
+					</ul>
+				</p>
+			</div>
+		</fieldset>
+	
+		<form>
+			<input type = "hidden" name = "TbBModTEXT_help" value = "Page 2" />
+			<input type = "hidden" name = "TbBModHREF_help" value = "instruction2.html" />
+		</form>
+	
+	</div>
 
 
 </body>
