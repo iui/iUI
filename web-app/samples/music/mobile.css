@@ -1,0 +1,44 @@
+#songs > li:nth-child(2n) {
+	background-color:	#f3f3f3;
+}
+#player {
+	background:	#000;
+}
+#player > img {
+	margin:	0px;
+}
+#player > div.player {
+	margin-top:	0px;
+	height:		80px;
+	text-align:	center;
+	background: 	-webkit-gradient(linear, left top, left bottom, from(#5e5f60), color-stop(.5,#2b2c2d), color-stop(.5,#000), to(#000));
+	background:		-moz-linear-gradient(-90deg, #5e5f60 0%, #2b2c2d 50%, #000 50%, #000 100%);
+}
+#player > div.player > p {
+	width:	210px;
+	height:	50px;
+	margin:	0 auto;
+}
+#player > div.player > p > a {
+	display:	block;
+	float:		left;
+	width:		50px;
+	height:		40px;
+	margin:		0 10px;
+	background-repeat: 		no-repeat;
+	background-position:	center center;
+}
+#player > div.player > p > a.prevButton {
+	background-image: url(prevButton.png);
+}
+#player > div.player > p > a.pauseButton {
+	background-image: url(pauseButton.png);
+}
+#player > div.player > p > a.nextButton {
+	background-image: url(nextButton.png);
+}
+#player > div.player > span {
+	width:		320px;
+	color:		#fff;
+	font-size:	11px;
+}
