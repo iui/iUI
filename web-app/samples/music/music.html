@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html manifest="music.manifest">
 <head>
-<title>iUI Music Demo</title>
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-<link rel="icon" type="image/png" href="../../iui/iui-favicon.png">
-<link rel="apple-touch-icon" href="../../iui/iui-logo-touch-icon.png" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<link rel="stylesheet" href="../../iui/iui.css" type="text/css" />
+    <title>Music Demo</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="icon" type="image/png" href="../../iui/iui-favicon.png">
+	<link rel="apple-touch-startup-image" href="../../iui/iui-startup.png">
+	<link rel="apple-touch-icon" href="../../iui/iui-logo-touch-icon-hd.png" />
+	
+	<link rel="stylesheet" href="../../iui/iui.css" type="text/css" />
+	<link rel="stylesheet" title="Default" href="../../iui/t/default/default-theme.css"  type="text/css"/>
+	<link rel="alternate stylesheet" title="Default using Gradients" href="../../iui/t/defaultgrad/defaultgrad-theme.css"  type="text/css"/>
+	<link rel="alternate stylesheet" title="iPhoneDevCamp" href="../../iui/t/ipdc/ipdc-theme.css"  type="text/css"/>
+	<link rel="alternate stylesheet" title="Android" href="../../iui/ext-sandbox/t/android/android-theme.css"  type="text/css"/>
+	<link rel="alternate stylesheet" title="Web OS (Palm)" href="../../iui/ext-sandbox/t/webos/webos-theme.css"  type="text/css"/>
 
-<link rel="stylesheet" title="Default" href="../../iui/t/default/default-theme.css"  type="text/css"/>
-<link rel="alternate stylesheet" title="Default using Gradients" href="../../iui/t/defaultgrad/defaultgrad-theme.css"  type="text/css"/>
-<link rel="alternate stylesheet" title="iPhoneDevCamp" href="../../iui/t/ipdc/ipdc-theme.css"  type="text/css"/>
-<link rel="alternate stylesheet" title="Android" href="../../iui/ext-sandbox/t/android/android-theme.css"  type="text/css"/>
-<link rel="alternate stylesheet" title="Web OS (Palm)" href="../../iui/ext-sandbox/t/webos/webos-theme.css"  type="text/css"/>
-<script type="application/x-javascript" src="../../iui/iui.js"></script>
-<script type="application/x-javascript" src="../../iui/js/iui-theme-switcher.js"></script>
-<script type="application/x-javascript" src="../../iui/ext-sandbox/cache-manager/iui-cache-manager.js"></script>
-<script type="application/x-javascript" src="music-app.js"></script>
-<!--
-<script type="application/x-javascript" src="http://10.0.1.2:1840/ibug.js"></script>
--->
+	<script type="application/x-javascript" src="../../iui/iui.js"></script>
+	<script type="application/x-javascript" src="../../iui/ext-sandbox/theme-switcher/iui-theme-switcher.js"></script>
+	<script type="application/x-javascript" src="../../iui/ext-sandbox/cache-manager/iui-cache-manager.js"></script>
+	<script type="application/x-javascript" src="music-app.js"></script>
+	<link rel="stylesheet" href="mobile.css" type="text/css" />
 </head>
 
 <body>
@@ -29,14 +30,11 @@
         <a class="button" href="#searchForm">Search</a>
     </div>
     
-    <ul id="home" title="Music" selected="true">
+    <ul id="home" title="Music demo" selected="true">
         <li><a href="#artists">Artists</a></li>
         <li><a href="#settings">Settings</a></li>
         <li><a href="stats.gtpl">Stats</a></li>
-        <li><a href="#themes">Theme Switcher</a></li>
         <li><a href="#iui-cache-panel">HTML5 WebApp Cache</a></li>
-        <li><a href="http://code.google.com/p/iui/" target="_self">About</a></li>
-        <li>Nothing</li>
     </ul>
     <ul id="artists" title="Artists">
         <li class="group">B</li>
@@ -96,35 +94,38 @@
         <li><a href="#player">Song 11</a></li>
     </ul>
     
-    <div id="player" class="panel" title="Now Playing">
-        <h2>If this weren't just a demo, you might be hearing a song...</h2>
-    </div>
-    
-    <div id="themes" class="panel" title="Theme Switcher">
-        <h2>Theme Switcher</h2>
-        <form id="theme-form" onsubmit="return iui.ts.themeSubmit(this)" method="">
-            <select onchange="return iui.ts.themeSelect(this)" name="themeSelect" size="1">
-                <option>Default</option>
-                <option>Default using Gradients</option>
-                <option>iPhoneDevCamp</option>
-                <option>Android</option>
-                <option>Web OS (Palm)</option>
-            </select>
-           <!-- <input type="submit" name="submit" value="Set"/> -->
-        </form>
+    <div id="player" title="Now Playing">
+		<img src="cover.jpg" width="100%" />
+		<div class="player">
+			<p>
+				<a href="" class="prevButton"></a>
+				<a href="" class="pauseButton"></a>
+				<a href="" class="nextButton"></a>
+			</p>
+			<span>
+				If this weren't just a demo, you might be hearing a song...
+			</span>
+		</div>
     </div>
 
+
     <form id="searchForm" class="dialog" action="search.gtpl" method="GET">
-        <fieldset>
+        <div class="toolbar">
             <h1>Music Search</h1>
             <a class="button leftButton" type="cancel">Cancel</a>
             <a class="button blueButton" type="submit">Search</a>
+        </div>
             
-            <label>Artist:</label>
-            <input id="artist" type="text" name="artist"/>
-            <label>Song:</label>
-            <input type="text" name="song"/>
-        </fieldset>
+		<fieldset>
+			<div class="row">
+				<label>Artist:</label>
+				<input id="artist" type="text" name="artist"/>
+			</div>
+			<div class="row">
+				<label>Song:</label>
+				<input type="text" name="song"/>
+			</div>
+		</fieldset>
     </form>
 
     <div id="settings" title="Settings" class="panel">
