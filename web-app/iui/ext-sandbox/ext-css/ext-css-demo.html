@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>iUI Extended Styles Demo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<link rel="icon" type="image/png" href="../../iui-favicon.png">
+	<link rel="apple-touch-icon" href="../../iui-logo-touch-icon-hd.png" />
+	<link rel="apple-touch-startup-image" href="../../iui-startup.png">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="stylesheet" href="../../iui.css" type="text/css" />
+	<link rel="stylesheet" title="Default" href="../../t/default/default-theme.css"  type="text/css"/>
+	<script type="application/x-javascript" src="../../iui.js"></script>
+
+
+	<!-- MUST BE PLACED AFTER THE SKINS HREFS -->
+	<link rel="stylesheet" href="../ext-css/iui-ext.css"  type="text/css"/> <!-- only to use code class in about page -->
+	<link rel="stylesheet" href="iui-buttons.css" type="text/css" />
+	<link rel="stylesheet" href="iui-lists.css" type="text/css" />
+	<link rel="stylesheet" href="iui-photoalbum.css" type="text/css" />
+</head>
+
+<body>
+    <div class="toolbar">
+        <h1 id="pageTitle">Ext-CSS demo</h1>
+        <a id="backButton" class="button" href="#"></a>
+    </div>
+    
+    <ul id="home" title="Ext-CSS demo" selected="true">
+        <li><a href="#about">About Ext-CSS</a></li>
+        <li class="group">Buttons</li>
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#buttons-panel">Buttons in a panel</a></li>
+        <li class="group">Lists</li>
+		<li><a href="#listing-iconL">Icon on the left</a></li>
+		<li><a href="#listing-iconR">Icon on the right</a></li>
+		<li><a href="#listing-iconGL">Icon on left in group title</a></li>
+		<li><a href="#listing-iconGR">Icon on right in group title</a></li>
+        <li><a href="#iconboard">Icon board</a></li>
+		<li><a href="#listing-caption">Caption</a></li>
+		<li><a href="#listing-bubble">Number in a bubble</a></li>
+        <li><a href="#photo-gallery">Photos Gallery</a></li>
+		<li class="group">Text</li>
+		<li><a href="#text-align">Text alignement</a></li>
+		<li><a href="#html-code">HTML code</a></li>
+    </ul>
+
+	<div id="about" title="About Ext-CSS" class="panel">
+		<h2>About Extended Styles</h2>
+		<fieldset>
+			<div class="row">
+				<p><b>Extended styles</b> is an extension for the iUI framework. It contains new CSS classes for buttons, lists, forms, texts and photos.<br />It has been developped and fully tested with iUI 0.4x.</p>
+				<p>Remi Grumeau</p>
+			</div>
+		</fieldset>
+		<fieldset>
+			<div class="row">
+				<p>
+					<b>Ext-CSS v2</b> (2011-01-20)
+				</p>
+				<p>
+					iui-ext.css<br />
+					- <s>min-height for stripped background auto</s> (now part of iUI)<br />
+					- <s>new text class for fieldset div</s> (please use row class again, it has been fixed in iUI)<br />
+					- new "code" UL class
+				</p>
+				<p>
+					iui-buttons.css<br />
+					- half-size buttons bugfix to be 50%
+				</p>
+				<p>
+					iui-photoalbum.css<br />
+					- list number now turns white on selection too
+				</p>
+			</div>
+			<div class="row">
+				<p>
+					<b>Initial release</b> (2010-06-16)
+				</p>
+				<p>
+					iui-ext.css<br />
+					- min-height for stripped background auto<br />
+					- text alignment (left, right, center)<br />
+					- toolbar height reducing on landscape<br />
+					- new text class for fieldset div
+				</p>
+				<p>
+					iui-buttons.css<br />
+					- half-size buttons<br />
+					- red button<br />
+					- green button<br />
+					- grey button<br />
+					- disable button state				
+				</p>
+				<p>
+					iui-list.css<br />
+					- board list (like the iPhone homescreen)<br />
+					- Icon on left<br />
+					- Icon on right<br />
+					- Icon in group list left<br />
+					- Icon in group list left<br />
+					- Caption<br />
+					- Numbers in a bubble
+				</p>
+			</div>
+		</fieldset>
+		<fieldset>
+			<div class="row">
+				<p>
+					If you have any questions or valuable suggestions, please post them on <a href="http://groups.google.com/group/iui-developers?hl=en" target="_blank">iUI-developers</a> Google mailing-list.
+				</p>
+			</div>
+		</fieldset>
+	</div>
+	
+
+	<div id="lorem" title="Lorem Ipsum" class="panel">
+		<h2>Lorem ipsum dolor sit amet</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer adipiscing dolor in ipsum mattis a accumsan ligula dapibus. Praesent porta, diam at sagittis pulvinar, ipsum erat dignissim diam, non suscipit dolor leo sit amet metus.
+				</p>
+			</div>
+		</fieldset>
+	</div>
+
+
+	<ul id="buttons-panel" title="Buttons (panel)" class="panel">
+
+		<a href="#_buttons" class="redButton">redButton</a>
+		<a href="#_buttons" class="whiteButton">whiteButton</a>
+		<a href="#_buttons" class="greenButton">greenButton</a>
+		<br />
+		<a href="#_buttons" class="grayButton">greyButton</a>
+		<a href="#_buttons" class="grayButton disable">Disable greyButton</a>
+		<br />
+		<a href="#_buttons" class="whiteButton halfsize">Halfsize</a>
+		<a href="#_buttons" class="grayButton halfsize">Halfsize</a>
+	</ul>
+
+	<ul id="buttons" title="Buttons">
+		<a href="#_buttons" class="redButton">redButton</a>
+		<a href="#_buttons" class="whiteButton">whiteButton</a>
+		<a href="#_buttons" class="greenButton">greenButton</a>
+		<br />
+		<a href="#_buttons" class="grayButton">greyButton</a>
+		<a href="#_buttons" class="grayButton disable">Disable greyButton</a>
+		<br />
+		<a href="#_buttons" class="whiteButton halfsize">Halfsize</a>
+		<a href="#_buttons" class="grayButton halfsize">Halfsize</a>
+	</ul>
+
+
+	<ul id="listing-iconL" title="Icon on left" class="iconL">
+		<li><img src="images/listIcon.png" align="left"><span>List 1</span></li>
+		<li><img src="images/listIcon.png" align="left"><span>List 2</span></li>
+		<li><img src="images/listIcon.png" align="left"><span>List 3</span></li>
+		<li><img src="images/listIcon.png" align="left"><span>List 4</span></li>
+		<li><img src="images/listIcon.png" align="left"><span>List 5</span></li>
+		<li><img src="images/listIcon.png" align="left"><span>List 6</span></li>
+		<li><img src="images/listIcon.png" align="left"><span>List 7</span></li>
+		<li><img src="images/listIcon.png" align="left"><span>List 8</span></li>
+		<li><img src="images/listIcon.png" align="left"><span>List 9</span></li>
+	</ul>
+	
+	<ul id="listing-iconR" title="Icon on right" class="iconR">
+		<li><img src="images/listIcon.png" align="right"><span>List 1</span></li>
+		<li><img src="images/listIcon.png" align="right"><span>List 2</span></li>
+		<li><img src="images/listIcon.png" align="right"><span>List 3</span></li>
+		<li><img src="images/listIcon.png" align="right"><span>List 4</span></li>
+		<li><img src="images/listIcon.png" align="right"><span>List 5</span></li>
+		<li><img src="images/listIcon.png" align="right"><span>List 6</span></li>
+		<li><img src="images/listIcon.png" align="right"><span>List 7</span></li>
+		<li><img src="images/listIcon.png" align="right"><span>List 8</span></li>
+		<li><img src="images/listIcon.png" align="right"><span>List 9</span></li>
+	</ul>
+	
+	<ul id="listing-iconGL" title="Title icon left">
+		<li class="group iconL"><img src="images/groupListIcon.png" align="left" /><span>Account 1</span></li>
+		<li><a href="#lorem">Email 1</a></li>
+		<li><a href="#lorem">Email 2</a></li>
+		<li><a href="#lorem">Email 3</a></li>
+		<li><a href="#lorem">Email 4</a></li>
+		<li class="group iconL"><img src="images/groupListIcon.png" align="left" /><span>Account 2</span></li>
+		<li><a href="#lorem">Email 1</a></li>
+		<li><a href="#lorem">Email 2</a></li>
+	</ul>
+	
+	<ul id="listing-iconGR" title="Title icon right">
+		<li class="group iconL"><img src="images/groupListIcon.png" align="right" /><span>Account 1</span></li>
+		<li><a href="#lorem">Email 1</a></li>
+		<li><a href="#lorem">Email 2</a></li>
+		<li><a href="#lorem">Email 3</a></li>
+		<li><a href="#lorem">Email 4</a></li>
+		<li class="group iconL"><img src="images/groupListIcon.png" align="right" /><span>Account 2</span></li>
+		<li><a href="#lorem">Email 1</a></li>
+		<li><a href="#lorem">Email 2</a></li>
+		<li><a href="#lorem">Email 3</a></li>
+	</ul>
+	
+	<ul id="listing-caption" title="Caption">
+		<li><span>Item 1</span><br /><span class="caption">Caption text for item 1</span></li>
+		<li><span>Item 2</span><br /><span class="caption">Caption 1 text for item 2</span><br /><span class="caption">Caption 2 text for item 2</span></li>
+	</ul>
+
+	<ul id="listing-bubble" title="Bubble">
+		<li><a href="#lorem"><span>Item 1</span><span class="bubble">4</span></a></li>
+		<li><a href="#lorem"><span>Item 2</span><span class="bubble">8</span></a></li>
+		<li><a href="#lorem"><span>Item 3</span><span class="bubble">15</span></a></li>
+		<li><a href="#lorem"><span>Item 4</span><span class="bubble">16</span></a></li>
+		<li><a href="#lorem"><span>Item 5</span><span class="bubble">23</span></a></li>
+		<li><a href="#lorem"><span>Item 6</span><span class="bubble">42</span></a></li>
+	</ul>
+
+
+	<div id="iconboard" title="Board" class="board">
+		<ul>
+			<li><a href="#lorem"><img src="images/iconboard.png" /><span>Icon 1</span></a></li>
+			<li><a href="#lorem"><img src="images/iconboard.png" /><span>Icon 2</span></a></li>
+			<li><a href="#lorem"><img src="images/iconboard.png" /><span>Icon 3</span></a></li>
+			<li><a href="#lorem"><img src="images/iconboard.png" /><span>Icon 4</span></a></li>
+			<li><a href="#lorem"><img src="images/iconboard.png" /><span>Icon 5</span></a></li>
+			<li><a href="#lorem"><img src="images/iconboard.png" /><span>Icon 6</span></a></li>
+			<li><a href="#lorem"><img src="images/iconboard.png" /><span>Icon 7</span></a></li>
+			<li><a href="#lorem"><img src="images/iconboard.png" /><span>Icon 8</span></a></li>
+			<li><a href="#lorem"><img src="images/iconboard.png" /><span>Icon 9</span></a></li>
+		</ul>
+	</div>
+	
+
+	<ul id="photo-gallery" title="Photos Gallery" class="photoalbum">
+		<li><a href="#photo-album1"><img src="images/photo_thumb1.jpg" align="left" /><span>Photo Library</span><span class="number">(5)</span></a></li>
+	</ul>
+
+	<ul id="photo-album1" title="Photo Library" class="photoalbum">
+		<li class="album"><a href="#listing-photo1-1"><img src="images/photo_thumb1-1.jpg"></a></li>
+		<li class="album"><a href="#listing-photo1-2"><img src="images/photo_thumb1-2.jpg"></a></li>
+		<li class="album"><a href="#listing-photo1-3"><img src="images/photo_thumb1-3.jpg"></a></li>
+		<li class="album"><a href="#listing-photo1-4"><img src="images/photo_thumb1-4.jpg"></a></li>
+		<li class="album"><a href="#listing-photo1-5"><img src="images/photo_thumb1-5.jpg"></a></li>
+	</ul>
+	
+	<ul id="listing-photo1-1" title="1 of 5" class="photoalbum" hideBackButton="true">
+		<div class="photo">
+			<a class="next" href="#listing-photo1-2"></a>
+			<img src="images/photo1-1.jpg" />
+			<a class="grayButton backToAlbum" href="#photo-album1">Back to the album</a>
+		</div>
+	</ul>
+	<ul id="listing-photo1-2" title="2 of 5" class="photoalbum" hideBackButton="true">
+		<div class="photo">
+			<a class="prev" href="#listing-photo1-1"></a>
+			<a class="next" href="#listing-photo1-3"></a>
+			<img src="images/photo1-2.jpg" />
+			<a class="grayButton backToAlbum" href="#photo-album1">Back to the album</a>
+		</div>
+	</ul>
+	<ul id="listing-photo1-3" title="3 of 5" class="photoalbum" hideBackButton="true">
+		<div class="photo">
+			<a class="prev" href="#listing-photo1-2"></a>
+			<a class="next" href="#listing-photo1-4"></a>
+			<img src="images/photo1-3.jpg" />
+			<a class="grayButton backToAlbum" href="#photo-album1">Back to the album</a>
+		</div>
+	</ul>
+	<ul id="listing-photo1-4" title="4 of 5" class="photoalbum" hideBackButton="true">
+		<div class="photo">
+			<a class="prev" href="#listing-photo1-3"></a>
+			<a class="next" href="#listing-photo1-5"></a>
+			<img src="images/photo1-4.jpg" />
+			<a class="grayButton backToAlbum" href="#photo-album1">Back to the album</a>
+		</div>
+	</ul>
+	<ul id="listing-photo1-5" title="5 of 5" class="photoalbum" hideBackButton="true">
+		<div class="photo">
+			<a class="prev" href="#listing-photo1-4"></a>
+			<img src="images/photo1-5.jpg" />
+			<a class="grayButton backToAlbum" href="#photo-album1">Back to the album</a>
+		</div>
+	</ul>
+
+	<div id="text-align" title="Text align" class="panel">
+		<h2>Text alignement</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer adipiscing dolor in ipsum mattis a accumsan ligula dapibus. Praesent porta, diam at sagittis pulvinar, ipsum erat dignissim diam, non suscipit dolor leo sit amet metus.
+				</p>
+				<ul class="code">
+					<li>&lt;div class="row"&gt;</li>
+					<li>&nbsp;&nbsp;&lt;p class="tleft"&gt;text alignement on left&lt;/p&gt;</li>
+					<li>&lt;/div&gt;</li>
+				</ul>
+				<br>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<div class="row">
+				<p class="tcenter">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer adipiscing dolor in ipsum mattis a accumsan ligula dapibus. Praesent porta, diam at sagittis pulvinar, ipsum erat dignissim diam, non suscipit dolor leo sit amet metus.
+				</p>
+				<ul class="code">
+					<li>&lt;div class="row"&gt;</li>
+					<li>&nbsp;&nbsp;&lt;p class="tcenter"&gt;text centered&lt;/p&gt;</li>
+					<li>&lt;/div&gt;</li>
+				</ul>
+				<br>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<div class="row">
+				<p class="tright">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer adipiscing dolor in ipsum mattis a accumsan ligula dapibus. Praesent porta, diam at sagittis pulvinar, ipsum erat dignissim diam, non suscipit dolor leo sit amet metus.
+				</p>
+				<ul class="code">
+					<li>&lt;div class="row"&gt;</li>
+					<li>&nbsp;&nbsp;&lt;p class="tright"&gt;text alignement on right&lt;/p&gt;</li>
+					<li>&lt;/div&gt;</li>
+				</ul>
+				<br>
+			</div>
+		</fieldset>
+	</div>
+
+	<div id="html-code" title="HTML code" class="panel">
+		<h2>HTML code</h2>
+		<fieldset>
+			<div class="row">
+				<br>
+				<ul class="code">
+					<li>&lt;a href="#page1"&gt;Page 1&lt;/a&gt;</li>
+				</ul>
+				<p>
+					Here is how you could show a link HTML code with the following look'n'feel
+				</p>
+				<ul class="code">
+					<li>&lt;div class="row"&gt;</li>
+					<li>&nbsp;&nbsp;&lt;p&gt;</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul class="code"&gt;</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#page1"&gt;Page 1&lt;/a&gt;&lt;/li&gt;</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;</li>
+					<li>&nbsp;&nbsp;&lt;/p&gt;</li>
+					<li>&lt;/div&gt;</li>
+				</ul>
+				<p>
+					We use ul and li so the line number renders well on multiple line.
+				</p>
+				<p> 
+					Please use ' &&#108;t; ' for ' < ' and ' &&#103;t; ' for ' > ' so browser doesn't see it as an HTML element
+				</p>
+			</div>
+		</fieldset>
+	</div>
+
+</body>
+</html>
