@@ -1,0 +1,103 @@
+/* photo albums */
+body > ul.photoalbum > li {
+	padding: 	8px 0 8px 10px;
+}
+body > ul.photoalbum > li > a {
+	height:		55px;
+	padding:	0px;
+}
+body > ul.photoalbum > li > a > img {
+	border:	0;
+}
+body > ul.photoalbum > li > a > span {
+	display:	block;
+	float:		left;
+	margin:		15px 0px 0px 10px;	
+}
+body > ul.photoalbum > li > a > span.number {
+	color:		#a5a5a5;
+	font-weight:normal;
+	font-size:	0.9em;
+}
+body > ul.photoalbum > li > a:active > span.number,
+body > ul.photoalbum > li > a[selected] > span.number,
+body > ul.photoalbum > li > a[selected="progress"] > span.number {
+	color:		#fff;
+}
+
+
+
+/* photo album - list of photos */
+body > ul.photoalbum > li.album {
+	float:		left;
+	border:		0px;
+	padding:	0px;
+	background-image:	none !important;
+}
+body > ul.photoalbum > li.album > a {
+	width:		75px;
+	height:		75px;
+	margin:		4px 0px 0px 4px;
+	padding:	0px;
+	background-position:	center center;
+	background-repeat:		no-repeat;
+	-webkit-tap-highlight-color: rgba(0,0,0,.3);
+}
+body > ul.photoalbum > li.album > a[selected="progress"],
+body > ul.photoalbum > li.album > a[selected],
+body > ul.photoalbum > li.album > a:active {
+	background-color: transparent!important;
+	background-image: none!important;
+}
+
+
+/* photo album - photo in fullscreen */
+body > ul.photoalbum > div.photo {
+    height: 	auto;
+	top:		0px;
+	background:	rgb(0,0,0);
+	min-height:	415px;
+	text-align:	center;
+}
+body[orient="landscape"] > ul.photoalbum > div.photo {
+	min-height: 255px;
+}
+body > ul.photoalbum > div.photo > img {
+	height:		370px;
+}
+body[orient="landscape"] > ul.photoalbum > div.photo > img {
+	height:		225px;
+}
+body > ul.photoalbum > div.photo > a.prev,
+body > ul.photoalbum > div.photo > a.next {
+	position:	absolute;
+	top:		0px;
+	width:		50%;
+	height:		100%;
+	min-height:	100px;
+	z-index:	10;
+}
+body > ul.photoalbum > div.photo > a {
+	-webkit-tap-highlight-color: rgba(0,0,0,.3);
+}
+body > ul.photoalbum > div.photo > a.prev {
+	left:		0%;
+	background:	url(images/bigArrowLeft.png) no-repeat center left;
+}
+body > ul.photoalbum > div.photo > a.next {
+	right:			0%;
+	background:		url(images/bigArrowRight.png) no-repeat center right;
+}
+body > ul.photoalbum > div.photo > a.backToAlbum {
+	position:		absolute;
+	top:			320px;
+	font-size:		0.9em;
+	width:			92%;
+	padding:		10px 0px;
+	z-index:		20;
+	opacity:		.9;
+}
+body[orient="landscape"] > ul.photoalbum > div.photo > a.backToAlbum {
+	top:			185px;
+	width:			95%;
+}
