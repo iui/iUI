@@ -1,8 +1,8 @@
 /*
    copyright:
-   Copyright (c) 2007-10, iUI Project Members.
+   Copyright (c) 2007-11, iUI Project Members.
    See LICENSE.txt for licensing terms.
-   Version @VERSION@
+   Version 0.4dev3
  */
 
 /* note:
@@ -28,6 +28,7 @@ var checkTimer;
 var hasOrientationEvent = false;
 var portraitVal = "portrait";
 var landscapeVal = "landscape";
+var hasTitle = true;
 
 // *************************************************************************************************
 
@@ -116,9 +117,9 @@ window.iui =
 			*/
 			if (hasClass(page, "dialog"))
 			{
-				iui.busy = false;	// There's no slide transition, so clear busy flag
 				// There's no LOAD/UNLOAD events for dialogs -- is that the way it should be??
 				// Should the view the dialog is going over get a BLUR??
+				iui.busy = false;	// There's no slide transition, so clear busy flag
 				sendEvent("focus", page);							// EVENT: FOCUS
 				showDialog(page);
 			}
@@ -139,6 +140,7 @@ window.iui =
 
 				if (fromPage)
 				{
+				    if (backwards) sendEvent("unload", fromPage);	// EVENT: UNLOAD
 					setTimeout(slidePages, 0, fromPage, page, backwards);
 				}
 				else
@@ -260,27 +262,29 @@ window.iui =
 			{
 				if (xhr.status == 200 && !xhr.aborted)
 				{
-				  // Add 'if (xhr.responseText)' to make sure we have something???
-				  // Can't use createDocumentFragment() here because firstChild is null and childNodes is empty
-				  var frag = document.createElement("div");
-				  frag.innerHTML = xhr.responseText;
-				  // EVENT beforeInsert->body
+					// Add 'if (xhr.responseText)' to make sure we have something???
+					// Can't use createDocumentFragment() here because firstChild is null and childNodes is empty
+					
+					var frag = document.createElement("div");
+					frag.innerHTML = xhr.responseText;
+
 					/*
 					events:
 					When new pages are inserted into the DOM after an AJAX load, the `body`
 					element receives a `beforeinsert` event with `{ fragment: frag }` parameters
 					and afterwards receives an `afterinsert` event with `{insertedNode: docNode}` parameters.
 					*/
-				  sendEvent("beforeinsert", document.body, {fragment:frag})
-				  if (replace)
-				  {
-					  replaceElementWithFrag(replace, frag);
-					  iui.busy = false;
-				  }
-				  else
-				  {
-					  iui.insertPages(frag);
-				  }
+					sendEvent("beforeinsert", document.body, {fragment:frag})
+					if (replace)
+					{
+						replaceElementWithFrag(replace, frag);
+						iui.busy = false;
+					}
+					else
+					{
+						iui.insertPages(frag);
+					}
+					fitToScreen(); // Apply fitToScreen to added pages in the DOM
 				}
 				else
 				{
@@ -295,7 +299,6 @@ window.iui =
 					setTimeout(cb, 1000, true);
 				}
 			}
-		  
 		};
 	  iui.ajax(href, args, method, spbhCB);
 	},
@@ -395,9 +398,10 @@ window.iui =
 				// First child becomes selected page/view by default unless
 				// selected="true" is set
 				// BUG: selected="true" results in a visually incorrect transition
-				if (child.getAttribute("selected") == "true" || !targetPage)
+				if (child.getAttribute("selected") == "true" || !targetPage) {
 					targetPage = child;
-				
+					child.removeAttribute("selected");
+				}
 				--i;
 			}
 		}
@@ -422,16 +426,22 @@ window.iui =
 				return child;
 		}	 
 	},
-	
 	/*
 	method: iui.getAllViews()
 	Returns all panels -- currently requires querySelectorAll() will be fixed
 	*/
 	getAllViews: function()
 	{
-		return document.querySelectorAll("body > *:not(.toolbar)");
-	},
-	
+		if((typeof document.querySelectorAll == "function"))
+			return document.querySelectorAll("body > *:not(.toolbar):not(#preloader)");
+		else
+		{
+			var screens = document.getElementsByTagName('body')[0].childNodes;
+			var screensReturn = new Array();			for (var i=0; i<=(screens.length-1); i++) {
+				if ((screens[i].id) && (screens[i].title) && (typeof screens[i] === 'object')) 					screensReturn.push(screens[i]);			}
+			return screensReturn;
+		}
+	},	
 	/*
 	method: iui.isNativeUrl(href)
 	Determines whether the supplied URL string launches a native iPhone app (maps,
@@ -561,6 +571,7 @@ addEventListener("click", function(event)
 		}
 		else if (link == $("backButton"))
 		{
+			link.setAttribute("selected", "true");
 			iui.goBack();
 		}
 		else if (link.getAttribute("type") == "submit")
@@ -596,24 +607,22 @@ addEventListener("click", function(event)
 		}
 		else
 			return;
-		
+			
 		event.preventDefault();		   
 	}
-}, true);
-
-/*
-click: Div.toggle Click Handling
-iUI also captures `div.toggle` clicks and displays/hides the element via setting
-a `toggled` attribute to true/false.
-*/
-addEventListener("click", function(event)
-{
+	
+	/*
+	click: Div.toggle Click Handling
+	iUI also captures `div.toggle` clicks and displays/hides the element via setting
+	a `toggled` attribute to true/false.
+	*/
 	var div = findParent(event.target, "div");
 	if (div && hasClass(div, "toggle"))
 	{
 		div.setAttribute("toggled", div.getAttribute("toggled") != "true");
 		event.preventDefault();		   
 	}
+	
 }, true);
 
 function followAnchor(link)
@@ -711,7 +720,7 @@ function checkOrientAndLocation()
 function setOrientation(orient)
 {
 	document.body.setAttribute("orient", orient);
-//  Set class in addition to orient attribute:
+	//  Set class in addition to orient attribute:
 	if (orient == portraitVal)
 	{
 		iui.removeClass(document.body, landscapeVal);
@@ -728,12 +737,13 @@ function setOrientation(orient)
 		iui.removeClass(document.body, landscapeVal);
 	}
 	setTimeout(scrollTo, 100, 0, 1);
+	fitToScreen();
 }
 
 function showDialog(page)
 {
 	currentDialog = page;
-	page.setAttribute("selected", "true");
+	iui.addClass(page, "show");
 	
 	if (hasClass(page, "dialog"))
 		showForm(page);
@@ -743,17 +753,15 @@ function showForm(form)
 {
 	form.onsubmit = function(event)
 	{
-//  submitForm and preventDefault are called in the click handler
-//  when the user clicks the submit a.button
-// 
+		//  submitForm and preventDefault are called in the click handler
+		//  when the user clicks the submit a.button
 		event.preventDefault();
 		submitForm(form);
 	};
 	
 	form.onclick = function(event)
 	{
-// Why is this code needed?  cancelDialog is called from
-// the click hander.  When will this be called?
+		// this is used to cancel the form when clicking outside of it
 		if (event.target == form && hasClass(form, "dialog"))
 			cancelDialog(form);
 	};
@@ -761,7 +769,7 @@ function showForm(form)
 
 function cancelDialog(form)
 {
-	form.removeAttribute("selected");
+	return iui.removeClass(form, "show");
 }
 
 function updatePage(page, fromPage)
@@ -772,11 +780,13 @@ function updatePage(page, fromPage)
 	location.hash = currentHash = hashPrefix + page.id;
 	pageHistory.push(page.id);
 
-	var pageTitle = $("pageTitle");
-	if (page.title)
-		pageTitle.innerHTML = page.title;
-	var ttlClass = page.getAttribute("ttlclass");
-	pageTitle.className = ttlClass ? ttlClass : "";
+	if(hasTitle) {
+		var pageTitle = $("pageTitle");
+		if (page.title)
+			pageTitle.innerHTML = page.title;
+		var ttlClass = page.getAttribute("ttlclass");
+		pageTitle.className = ttlClass ? ttlClass : "";
+	}
 
 	if (page.localName.toLowerCase() == "form" && !page.target)
 		showForm(page);
@@ -829,7 +839,10 @@ function slidePages(fromPage, toPage, backwards)
 	  fromPage.removeEventListener('webkitTransitionEnd', slideDone, false);
 	  sendEvent("aftertransition", fromPage, {out:true});
       sendEvent("aftertransition", toPage, {out:false});
-	  if (backwards) sendEvent("unload", fromPage);	// EVENT: UNLOAD
+	  var linkObj = document.getElementsByTagName('a');
+	  for (var i = 0; i <= (linkObj.length-1); i++) {
+	  	linkObj[i].removeAttribute('selected');
+	  }
 	}
 }
 
@@ -961,6 +974,39 @@ function replaceElementWithFrag(replace, frag)
 		sendEvent("afterinsert", document.body, {insertedNode:docNode});
     }
 	sendEvent("afterinsertend", document.body, {fragment:frag})
+}
+
+function fitToScreen() 
+{
+	var heightVal;
+	var toolbarHeight = document.getElementsByClassName('toolbar')[0].clientHeight;
+	var sc = document.getElementsByTagName('body')[0].childNodes;
+	for(var i=1; i<=(sc.length-1); i++) 
+	{
+		if((sc[i].id != '') && (sc[i].id != undefined) && (typeof sc[i] === 'object')) 
+		{
+			if(window.navigator.standalone===false)
+			{	// for iphone
+				if(hasClass(sc[i], 'dialog'))
+					heightVal = (window.innerHeight+60)+'px';
+				else
+					heightVal = ((window.innerHeight-toolbarHeight)+60)+'px';
+			}
+			else
+			{
+				if(hasClass(sc[i], 'dialog'))
+					heightVal = (window.innerHeight)+'px';
+				else 
+				{
+					if(navigator.userAgent.toLowerCase().search('android') > -1)
+						heightVal = (window.innerHeight+10)+'px';
+					else
+						heightVal = (window.innerHeight-toolbarHeight)+'px';
+				}
+			}
+			sc[i].style.minHeight = heightVal;
+		}
+	}
 }
 
 function $(id) { return document.getElementById(id); }
