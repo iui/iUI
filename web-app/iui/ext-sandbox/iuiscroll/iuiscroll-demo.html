@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>iUIScroll</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<link rel="icon" type="image/png" href="../../iui-favicon.png">
+	<link rel="apple-touch-icon" href="../../iui-logo-touch-icon-hd.png" />
+	<link rel="apple-touch-startup-image" href="../../iui-startup.png">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+
+	<link rel="stylesheet" type="text/css" href="../../iui.css" />
+	<link rel="stylesheet" href="../../t/default/default-theme.css"  type="text/css"/>
+	<link rel="stylesheet" href="../ext-css/iui-ext.css"  type="text/css"/> <!-- only to use code class in about page -->
+
+	<script type="application/x-javascript" src="../../iui.js"></script>
+	<script type="text/javascript" src="iscroll-min.js?v3.7.1"></script>
+	<script type="text/javascript" src="iuiscroll.js"></script>
+
+	<style type="text/css">
+		.iuiscroll {
+			z-index:	1;
+			overflow:	hidden;
+		}
+		.panel .scroller {
+			padding-bottom: 20px;
+		}
+
+		/* ALL THE FOLLOWING IN JUST FOR EYE CANDY */
+		/* THEY ARE NOT NEEDED FOR IUISCROLL TO WORK */
+		.scroller {
+		    box-sizing: 		border-box;
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing: 	border-box;
+		    -o-box-sizing: 		border-box;
+			-webkit-tap-highlight-color:rgba(0,0,0,0);
+			float:				left;
+			width:				100%;
+			padding:			0 10px;
+			background-color:	rgb(255,255,255);
+		}
+
+		#color,
+		#shadow {
+			background:	rgb(152,152,152);
+		}
+		#shadow_scroller {
+			-webkit-box-shadow: 0 0 50px #000;
+		}
+		
+		#footer_footer {
+		    box-sizing: 		border-box;
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing: 	border-box;
+		    -o-box-sizing: 		border-box;
+			height:		48px;
+			margin:		0px;
+			padding:	0px;
+			background-image:-webkit-gradient(linear, 0 0, 0 100%, 
+								from(rgb(0,0,0)), 
+									color-stop(.03, rgb(90,90,90)), 
+									color-stop(.07, rgb(46,46,46)), 
+									color-stop(.5, rgb(20,20,20)),
+									color-stop(.5, rgb(0,0,0)), 
+								to(rgb(0,0,0))
+							);
+			overflow:	hidden;
+		}
+		#footer_footer > li {
+		    box-sizing: 		border-box;
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing: 	border-box;
+		    -o-box-sizing: 		border-box;
+			display:		inline;
+			float:			left;
+			list-style-type:none;
+			width:			25%;
+			height:			inherit;
+			padding-top:	2px;
+			text-align:		center;
+		}
+		#footer_footer > li > a {
+		    box-sizing: 		border-box;
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing: 	border-box;
+		    -o-box-sizing: 		border-box;
+			display:	block;
+			width:		90%;
+			margin:		0 auto;
+			padding:	0;
+			line-height:7em;
+			font-size:	11px;
+			color:		rgba(255,255,255,.8);
+			-webkit-border-radius:	8px;
+			text-overflow: 		ellipsis;
+			-webkit-text-shadow: 0 1px 0 #000;
+			background:			transparent url(footer-img.png) no-repeat center 0px;
+			-webkit-tap-highlight-color:rgba(0,0,0,0);
+		}
+		#footer_footer > li > a:hover,
+		#footer_footer > li > a.active {
+			background-position:	center -44px;
+			background-color:	rgba(255,255,255,.1);
+		}
+	</style>
+</head>
+
+<body>
+
+    <div class="toolbar" style="border:0">
+        <h1 id="pageTitle"></h1>
+        <a id="backButton" class="button" href="#"></a>
+    </div>
+    
+    <ul id="home" title="iScroll" selected="true">
+    	<li><a href="#about">About iUIScroll</a></li>
+    	<li class="group">Examples</li>
+    	<li><a href="#default">Default</a></li>
+    	<li><a href="#color">with a dark background</a></li>
+    	<li><a href="#shadow">with a box shadow</a></li>
+    	<li><a href="#footer">With a footer bar</a></li>
+    	<li><a href="#panel">In a panel</a></li>
+    	<li><a href="external.frag">External load</a></li>
+    </ul>
+    
+
+    <div id="about" title="About iUIScroll" class="panel">
+    	<h2>About iUIScroll</h2>
+    	<fieldset>
+    		<div class="row">
+    			<p>iUIScroll is an implementation of iScroll library for iUI.</p>
+   				<p>Just add a classname "iuiscroll" to the main div/ul/form of the page, and an id value to '_scroller' prefixed by the main id name</p>
+   				<p>Remi Grumeau</p>
+   			</div>
+   		</fieldset>
+   		<fieldset>
+   			<div class="row">
+   				<br />
+   				<ul class="code">
+   					<li>&lt;div id="default" title="Default" class="iuiscroll"&gt;</li>
+					<li>&nbsp;&nbsp;&lt;div id="default_scroller"&gt;</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;This text is scrollable</li>
+					<li>&nbsp;&nbsp;&lt;/div&gt;</li>
+					<li>&lt;/div&gt;</li>
+   				</ul>
+   				<br>
+       		</div>    	
+    	</fieldset>
+    </div>
+
+	
+	<div id="default" title="Default" class="iuiscroll">
+		<div id="default_scroller" class="scroller">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tortor risus, aliquam vitae congue id, ultrices eget turpis. Ut imperdiet mattis dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis magna quis massa sagittis ultricies. Nunc adipiscing elit a tellus consectetur ac faucibus nibh ultrices. Sed vitae quam non metus porta sagittis. Donec nec quam metus. Aliquam suscipit libero lorem. Curabitur fringilla est id nisl dapibus a tincidunt nunc hendrerit. Proin accumsan tempus fermentum. Nunc at felis turpis, ac fringilla ligula. Morbi iaculis nulla sem, vestibulum pulvinar odio. Fusce eget nunc turpis. Aliquam vel libero vitae tortor faucibus posuere ut a nulla. Nunc blandit, lectus sed viverra hendrerit, libero nisi mattis lorem, non consectetur tellus urna vitae diam.
+			</p>
+			<p>
+				Pellentesque consequat vehicula faucibus. Proin venenatis luctus augue, a cursus ligula luctus non. Sed feugiat felis porttitor ligula cursus quis aliquam dolor placerat. Donec consequat dui et nisi vehicula sit amet imperdiet augue consectetur. Donec pellentesque turpis ut quam iaculis consequat. Cras vitae nisi risus, convallis laoreet ipsum. Etiam sagittis accumsan dignissim. Fusce quam diam, luctus gravida placerat vel, dapibus id nunc. Donec pulvinar elementum massa, nec hendrerit orci tristique eu. Sed nulla ante, ultricies eget imperdiet non, ornare in erat. Duis sed dui magna, sed iaculis elit. In in lectus eu sapien aliquam auctor dignissim vitae diam. Aenean tincidunt molestie augue ac congue. Nunc adipiscing, enim vel venenatis aliquet, mauris sem rhoncus sem, vel hendrerit mi turpis eu tellus. Etiam rutrum, neque in porttitor luctus, ipsum metus commodo nibh, et tempus augue neque vitae nisi. Vivamus convallis sodales magna a rutrum.
+			</p>
+		</div>
+	</div>
+	
+	<div id="color" title="Dark back" class="iuiscroll">
+		<div id="color_scroller" class="scroller">
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tortor risus, aliquam vitae congue id, ultrices eget turpis. Ut imperdiet mattis dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis magna quis massa sagittis ultricies. Nunc adipiscing elit a tellus consectetur ac faucibus nibh ultrices. Sed vitae quam non metus porta sagittis. Donec nec quam metus. Aliquam suscipit libero lorem. Curabitur fringilla est id nisl dapibus a tincidunt nunc hendrerit. Proin accumsan tempus fermentum. Nunc at felis turpis, ac fringilla ligula. Morbi iaculis nulla sem, vestibulum pulvinar odio. Fusce eget nunc turpis. Aliquam vel libero vitae tortor faucibus posuere ut a nulla. Nunc blandit, lectus sed viverra hendrerit, libero nisi mattis lorem, non consectetur tellus urna vitae diam.
+			</p>
+			<p>
+				Pellentesque consequat vehicula faucibus. Proin venenatis luctus augue, a cursus ligula luctus non. Sed feugiat felis porttitor ligula cursus quis aliquam dolor placerat. Donec consequat dui et nisi vehicula sit amet imperdiet augue consectetur. Donec pellentesque turpis ut quam iaculis consequat. Cras vitae nisi risus, convallis laoreet ipsum. Etiam sagittis accumsan dignissim. Fusce quam diam, luctus gravida placerat vel, dapibus id nunc. Donec pulvinar elementum massa, nec hendrerit orci tristique eu. Sed nulla ante, ultricies eget imperdiet non, ornare in erat. Duis sed dui magna, sed iaculis elit. In in lectus eu sapien aliquam auctor dignissim vitae diam. Aenean tincidunt molestie augue ac congue. Nunc adipiscing, enim vel venenatis aliquet, mauris sem rhoncus sem, vel hendrerit mi turpis eu tellus. Etiam rutrum, neque in porttitor luctus, ipsum metus commodo nibh, et tempus augue neque vitae nisi. Vivamus convallis sodales magna a rutrum.
+			</p>
+		</div>
+	</div>
+	
+	<div id="shadow" title="Box shadow" class="iuiscroll">
+		<div>
+			<div id="shadow_scroller" class="scroller">
+				<p>
+					<strong>Just to show how bad it performs compare to Dark black (box-shadow is the only difference)</strong>
+				</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tortor risus, aliquam vitae congue id, ultrices eget turpis. Ut imperdiet mattis dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis magna quis massa sagittis ultricies. Nunc adipiscing elit a tellus consectetur ac faucibus nibh ultrices. Sed vitae quam non metus porta sagittis. Donec nec quam metus. Aliquam suscipit libero lorem. Curabitur fringilla est id nisl dapibus a tincidunt nunc hendrerit. Proin accumsan tempus fermentum. Nunc at felis turpis, ac fringilla ligula. Morbi iaculis nulla sem, vestibulum pulvinar odio. Fusce eget nunc turpis. Aliquam vel libero vitae tortor faucibus posuere ut a nulla. Nunc blandit, lectus sed viverra hendrerit, libero nisi mattis lorem, non consectetur tellus urna vitae diam.
+				</p>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tortor risus, aliquam vitae congue id, ultrices eget turpis. Ut imperdiet mattis dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis magna quis massa sagittis ultricies. Nunc adipiscing elit a tellus consectetur ac faucibus nibh ultrices. Sed vitae quam non metus porta sagittis. Donec nec quam metus. Aliquam suscipit libero lorem. Curabitur fringilla est id nisl dapibus a tincidunt nunc hendrerit. Proin accumsan tempus fermentum. Nunc at felis turpis, ac fringilla ligula. Morbi iaculis nulla sem, vestibulum pulvinar odio. Fusce eget nunc turpis. Aliquam vel libero vitae tortor faucibus posuere ut a nulla. Nunc blandit, lectus sed viverra hendrerit, libero nisi mattis lorem, non consectetur tellus urna vitae diam.
+				</p>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="footer" title="Footer bar" class="iuiscroll">
+		<div>
+			<div id="footer_scroller" class="scroller">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tortor risus, aliquam vitae congue id, ultrices eget turpis. Ut imperdiet mattis dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis magna quis massa sagittis ultricies. Nunc adipiscing elit a tellus consectetur ac faucibus nibh ultrices. Sed vitae quam non metus porta sagittis. Donec nec quam metus. Aliquam suscipit libero lorem. Curabitur fringilla est id nisl dapibus a tincidunt nunc hendrerit. Proin accumsan tempus fermentum. Nunc at felis turpis, ac fringilla ligula. Morbi iaculis nulla sem, vestibulum pulvinar odio. Fusce eget nunc turpis. Aliquam vel libero vitae tortor faucibus posuere ut a nulla. Nunc blandit, lectus sed viverra hendrerit, libero nisi mattis lorem, non consectetur tellus urna vitae diam.
+				</p>
+				<p>
+					Pellentesque consequat vehicula faucibus. Proin venenatis luctus augue, a cursus ligula luctus non. Sed feugiat felis porttitor ligula cursus quis aliquam dolor placerat. Donec consequat dui et nisi vehicula sit amet imperdiet augue consectetur. Donec pellentesque turpis ut quam iaculis consequat. Cras vitae nisi risus, convallis laoreet ipsum. Etiam sagittis accumsan dignissim. Fusce quam diam, luctus gravida placerat vel, dapibus id nunc. Donec pulvinar elementum massa, nec hendrerit orci tristique eu. Sed nulla ante, ultricies eget imperdiet non, ornare in erat. Duis sed dui magna, sed iaculis elit. In in lectus eu sapien aliquam auctor dignissim vitae diam. Aenean tincidunt molestie augue ac congue. Nunc adipiscing, enim vel venenatis aliquet, mauris sem rhoncus sem, vel hendrerit mi turpis eu tellus. Etiam rutrum, neque in porttitor luctus, ipsum metus commodo nibh, et tempus augue neque vitae nisi. Vivamus convallis sodales magna a rutrum.
+				</p>
+			</div>
+		</div>
+		
+		<ul id="footer_footer">
+			<li><a class="link1 active">label</a></li>
+			<li><a class="link2">label</a></li>
+			<li><a class="link3">label</a></li>
+			<li><a class="link4">label</a></li>
+		</ul>
+
+	</div>
+
+	<div id="panel" title="with panel" class="iuiscroll panel">
+		<fieldset id="panel_scroller" class="scroller">
+			<div class="row">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tortor risus, aliquam vitae congue id, ultrices eget turpis. Ut imperdiet mattis dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis magna quis massa sagittis ultricies. Nunc adipiscing elit a tellus consectetur ac faucibus nibh ultrices. Sed vitae quam non metus porta sagittis. Donec nec quam metus. Aliquam suscipit libero lorem. Curabitur fringilla est id nisl dapibus a tincidunt nunc hendrerit. Proin accumsan tempus fermentum. Nunc at felis turpis, ac fringilla ligula. Morbi iaculis nulla sem, vestibulum pulvinar odio. Fusce eget nunc turpis. Aliquam vel libero vitae tortor faucibus posuere ut a nulla. Nunc blandit, lectus sed viverra hendrerit, libero nisi mattis lorem, non consectetur tellus urna vitae diam.
+				</p>
+				<p>
+					Pellentesque consequat vehicula faucibus. Proin venenatis luctus augue, a cursus ligula luctus non. Sed feugiat felis porttitor ligula cursus quis aliquam dolor placerat. Donec consequat dui et nisi vehicula sit amet imperdiet augue consectetur. Donec pellentesque turpis ut quam iaculis consequat. Cras vitae nisi risus, convallis laoreet ipsum. Etiam sagittis accumsan dignissim. Fusce quam diam, luctus gravida placerat vel, dapibus id nunc. Donec pulvinar elementum massa, nec hendrerit orci tristique eu. Sed nulla ante, ultricies eget imperdiet non, ornare in erat. Duis sed dui magna, sed iaculis elit. In in lectus eu sapien aliquam auctor dignissim vitae diam. Aenean tincidunt molestie augue ac congue. Nunc adipiscing, enim vel venenatis aliquet, mauris sem rhoncus sem, vel hendrerit mi turpis eu tellus. Etiam rutrum, neque in porttitor luctus, ipsum metus commodo nibh, et tempus augue neque vitae nisi. Vivamus convallis sodales magna a rutrum.
+				</p>
+			</div>
+		</fieldset>
+	</div>
+
+</body>
+
+</html>
