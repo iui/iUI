@@ -5,271 +5,481 @@
 	src:	local(DroidSans),
 			url(droidsans.ttf);
 }
-
 body {
 	font-family:	droid;
+    margin: 		0;
 	color: 			#f0f0f0;
 	background:		#181818;
 }
 body > *:not(.toolbar) {
-	top: 			35px;
-}
-
-li > a[selected], li > a:active {
-	color:			#000!important;
-	background-image:	url(blank.gif), -webkit-gradient(linear, left top, left bottom, 
-								from(#ad4500),
-								color-stop(0.1, #ff7500),
-								color-stop(0.5, #ff9200),
-								color-stop(0.8, #ff9200),
-                				to(#ff6900)
-                			) !important;
-}
-
-li > a[selected="progress"] {
-	background-image:	url(loading.gif), -webkit-gradient(linear, left top, left bottom, 
-								from(#ad4500),
-								color-stop(0.1, #ff7500),
-								color-stop(0.5, #ff9200),
-								color-stop(0.8, #ff9200),
-								color-stop(0.9, #ff6900),
-                				to(#fdab00)
-                			) !important;
+	margin: 	0;
+	padding:	0;
+	left:		0;
+	top:		25px;
 }
 
 /************************************************************************************************/
 
-body > .toolbar {
-	border: 			0px;
-	padding: 			0px 5px 10px 5px;
-	height: 			35px;
-	background-image:	-webkit-gradient(linear, left top, left bottom,
-							from(#000),
-							to(#181818)
-						);
+.toolbar {
+    height: 	25px;
+	background: 	-webkit-gradient(linear, left top, left bottom, from(#9a9a9a), to(#7b7d7b));
+	background: 	-moz-linear-gradient(270deg, #9a9a9a 0%, #7b7d7b 100%);
+
 }
+
 .toolbar > h1 {
-	font-weight:	normal;
-	text-shadow:	none;
-	font-size:		16px;
-	padding-top:	7px!important;
-	padding-bottom:	5px;
-	height:			35px;
+	position:		absolute;
+    left: 			50%;
+    margin: 		3px 0 0 -75px;
+    font-size: 		16px;
+    width: 			150px;
+    color: 			#FFF;
+    text-align:		center;
+	text-shadow:	rgba(0,0,0,.7) 0 1px 4px;
 }
 
-.button {
-	-moz-border-image:		url(toolButton.png) 0 5 0 5 round round;
-	-webkit-border-image:	url(toolButton.png) 0 5 0 5;
-}
-
-.blueButton {
-	-moz-border-image: 		url(blueButton.png) 0 5 0 5 round round;
-	-webkit-border-image:	url(blueButton.png) 0 5 0 5;
-}
-
-#backButton,
-.whiteButton[selected], 
-.whiteButton:active,
-.whiteButton,
-.redButton[selected], 
-.redButton:active,
-.redButton,
-.grayButton[selected], 
-.grayButton:active,
-.grayButton,
-.greenButton[selected], 
-.greenButton:active,
-.greenButton {
-	font-weight:			normal;
-	font-size:				16px;
-	-webkit-border-radius:	5px;
-	-moz-border-radius:		5px;
-	border:					1px solid #565756;
-	text-shadow:			none;
-	margin:					2px 0;
-}
-
-.whiteButton[selected], 
-.whiteButton:active,
-.redButton[selected], 
-.redButton:active,
-.grayButton[selected], 
-.grayButton:active,
-.greenButton[selected], 
-.greenButton:active {
-	background-image:		-webkit-gradient(linear, left top, left bottom, 
-								from(#ff6900),
-								color-stop(0.2, #ff9200),
-								color-stop(0.5, #ff9c00),
-								color-stop(0.8, #ff9200),
-                				to(#ff6900)
-                			) !important;
-}
-#backButton {
-	top:			2px;
-	left:			2px;
-	color:			#524d52;
-	font-size:		11px;
+.button,
+.toolbar > .redButton {
+	position:		absolute;
+	top: 			3px;
+	right:			2px;
+	width:			auto;
 	margin:			0;
-	padding:		0px 7px 10px 7px;
-	height:			20px;
-	border:			none;
-	border-width: 	0px;
-	background-image:		-webkit-gradient(linear, left top, left bottom, 
-								from(#f7f7f7),
-                				to(#bdbabd)
-                			) !important;
+	padding:		3px 8px;
+	color:			#000;
+	font-size:		12px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#d9d9d9));
+    background-image: -moz-linear-gradient(270deg, #ebebeb 0%, #d9d9d9 100%);
+    -moz-border-radius:	2px;
+    border-radius:		2px;
 }
-#backButton:active,
-#backButton[selected] {
-	color:					#fff;
-	background-image:		-webkit-gradient(linear, left top, left bottom, 
-								from(#fea94b),
-                				to(#ef7217)
-                			) !important;
+.leftButton {
+    left: 	2px;
+	right:	auto;	/* needed to avoid full width */
 }
-
-
-.whiteButton {
-	color:					#424142;
-	background-image:		-webkit-gradient(linear, left top, left bottom, 
-								from(#f4f4f4),
-                				to(#c4c4c4)
-                			) !important;
+.blueButton {
+	color:		#d5d4d4;
+	background-image: 	-webkit-gradient(linear, left top, left bottom, from(#757575), to(#363636));
+	background-image: 	-moz-linear-gradient(270deg, #757575 0%, #363636 100%);
 }
 
+#backButton {
+    left: 			2px;
+    right: 			auto;
+    max-width:		55px;
+}
+#backButton[selected],#backButton:active {
+	background-image:	-webkit-gradient(radial, 50% 50%, 0, 50% 0, 40, from(#f89a40), to(#ee7c2b));
+	background-image:	-moz-linear-gradient(270deg, #f89a40 0%, #ee7c2b 100%);
+}
+
+.whiteButton,
+.grayButton,
 .redButton {
-	color:					#fff;
-	border:					1px solid #524d52;
-	background-image:		-webkit-gradient(linear, left top, left bottom, 
-								from(#ff0000),
-								to(#be0000)
-                			) !important;
+    padding:		10px;
+    color: 			inherit;
+    text-align:		center;
+    font-size: 		16px;
+    text-decoration: inherit;
+	margin-bottom:	2px;
+	border:			1px solid rgba(0,0,0,.6);
+	border-top:		1px solid rgba(0,0,0,.1);
+	color:			#000;
+	background:		-webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#d9d9d9));
+	background:		-moz-linear-gradient(270deg, #f4f4f4 0%, #d9d9d9 100%);
 }
-
 .grayButton {
-	background-image:		-webkit-gradient(linear, left top, left bottom, 
-								from(#797979),
-								to(#444444)
-                			) !important;
+    color:		#fff;
+	background-image: 	-webkit-gradient(linear, left top, left bottom, from(#757575), to(#363636));
+	background-image: 	-moz-linear-gradient(270deg, #757575 0%, #363636 100%);
 }
-
-.greenButton {
-	display: 			block;
-	padding: 			10px;
-	text-align: 		center;
-	text-decoration:	none;
-	color:					#fff;
-	border:					1px solid #524d52;
-	background-image:		-webkit-gradient(linear, left top, left bottom, 
-								from(#01bf00),
-								to(#079600)
-                			) !important;
+.grayButton[selected], .grayButton:active,
+.whiteButton[selected], .whiteButton:active {
+	background-image: 	-webkit-gradient(linear, left top, left bottom, from(#f89a40), to(#ee7c2b));
+	background-image: 	-moz-linear-gradient(270deg, #f89a40 0%, #ee7c2b 100%);
 }
-a.disable {
-	color: 			#333;
+.grayButton[selected], .grayButton:active {
+    color:		rgba(255,255,255,.8);
 }
-
-/* /ADDED */
+.redButton,
+.toolbar > .redButton {
+	color:		#fff;
+	background-image:	-webkit-gradient(linear, left top, left bottom, from(#ff0000), to(#db0000));
+	background-image:	-moz-linear-gradient(27deg, #ff0000 0%, #db0000 100%);
+}
+.redButton[selected], .redButton:active {
+    color:		rgba(255,255,255,.8);	
+	background-image:	-webkit-gradient(linear, left top, left bottom, from(#de0000), to(#b00000));
+	background-image:	-moz-linear-gradient(27deg, #de0000 0%, #b00000 100%);
+}
+.toolbar > .redButton {
+	border:	0px;
+}
 
 /************************************************************************************************/
 
 body > ul > li {
-	padding:		8px 0 8px 10px;
-	font-size: 		18px;
-	font-weight:	normal;
-	border:			0px;
-	background:		url(list.png) no-repeat bottom center, url(list.gif) repeat-x bottom center;
-}
-body > ul > li:first-child {
-	background:		url(list.png) no-repeat bottom center, url(list.png) no-repeat top center, url(list.gif) repeat-x bottom center, url(list.gif) repeat-x top center;	
+	color:			#fff;
+    margin: 		0;
+    border-bottom:	1px solid rgba(255,255,255,.3);
+    padding:		14px 0 16px 10px;
+    font-size:		18px;
+    list-style-type:none;
 }
 
 body > ul > li.group {
-	padding:		2px 10px;
-	font-size:		14px;
-	font-weight:	normal;
-	text-shadow: 	rgba(0, 0, 0, 0.9) 1px 1px 3px;
-	border:			0px;
-	background:		url(list.png) no-repeat bottom center,		-webkit-gradient(linear, left top, left bottom, 
-								from(#9c9a9c),
-                				to(#848284)
-                			);
+    top: 			-1px;
+    margin-bottom: 	-2px;
+    padding: 		2px 5px;
+    font-size:		16px;
+    color:			#c2c2c2;
+    background:		#242424;
+    border-bottom: 	1px solid #404040;
 }
 
 body > ul > li > a {
-	padding-top:	15px;
-	padding-bottom:	15px;
-    background: 	none;
+    margin:			-14px 0 -16px -10px;
+    padding:		14px 0 16px 10px;
+    color: 			inherit;
+    background: 	url(listArrow.png) no-repeat right center;
+    text-decoration:	none;
+}
+body > ul > li > a[selected], 
+body > ul > li > a:active,
+body > .panel > ul > li > a[selected], 
+body > .panel > ul > li > a:active {
+	color:	#000;
+    background-image:	url(listArrow.png),
+    					-webkit-gradient(linear, left top, left bottom, 
+							from(#ad4500),
+							color-stop(0.1, #ff7500),
+							color-stop(0.5, #ff9200),
+							color-stop(0.8, #ff9200),
+               				to(#ff6900)
+               			);
+    background-image: 	url(listArrow.png),
+    					-moz-linear-gradient(270deg, 
+    						#ad4500 0%, 
+    						#ff7500 10%,
+    						#ff9200 50%,
+    						#ff9200 50%,
+    						#ff6900 100%
+    					);
+}
+
+body > ul > li > a[selected="progress"],
+body > .panel > ul > li > a[selected="progress"] 
+	color:	#000;
+    background-image: 	url(loading.gif),
+    					-webkit-gradient(linear, left top, left bottom, 
+							from(#ad4500),
+							color-stop(0.1, #ff7500),
+							color-stop(0.5, #ff9200),
+							color-stop(0.8, #ff9200),
+               				to(#ff6900)
+               			);
+    background-image: 	url(loading.gif),
+    					-moz-linear-gradient(270deg, 
+    						#ad4500 0%, 
+    						#ff7500 10%,
+    						#ff9200 50%,
+    						#ff9200 50%,
+    						#ff6900 100%
+    					);
+}
+
+body > ul > li > a[target="_replace"] {
+    padding-top: 	25px;
+    padding-bottom: 25px;
+    font-size: 		18px;
+    color: 			#6495ed;
+    background-color: #fff;
+    background-image: none;
 }
 
 /************************************************************************************************/
-    
-.dialog > fieldset {
-	background:				-webkit-gradient(linear, left top, left bottom, 
-								from(#cdd5df),
-								color-stop(0.05, #b0bccd),
-								color-stop(0.49, #8b9db5),
-								color-stop(0.5, #8195af),
-                				to(#6d84a2)
-                			);
+
+body > .dialog,
+body[orient="landscape"] > .dialog {
+	top:		0px;
+    z-index: 	2;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 	0;
 }
+body > .dialog > div.toolbar {
+	width:		100%;
+}
+
+body > .dialog > fieldset {
+    margin: 		0;
+    border: 		none;
+    padding: 		10px 0 0 0;
+    border-top: 	1px solid #444;
+    background: 	#767676;
+}
+
+body > .dialog > fieldset > div.row {
+    padding: 		0 10px;
+    border:			0px;
+    background-color:	transparent;
+    -webkit-border-radius:	0;
+}
+body > .dialog > fieldset > div.row > label {
+    position: 		absolute;
+	margin:			0;
+	padding:		10px 8px 10px 12px;
+	font-weight:	normal;
+	line-height: 	1em;
+    font-size:		12px;
+    color: 			#666;
+}
+body > .dialog > fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
+    font-size:		12px;
+	padding:		8px 0 6px 60px;
+	border:			1px solid #5a5a5a;
+	-webkit-border-radius:	0px;
+	background-color:		#fff;
+}
+
 
 /************************************************************************************************/
 
 body > .panel {
-	color:				#181818;
-    background: 		#FFF;
-    border:				4px solid #181818;
-    border-position:	inside;
-    -webkit-border-radius:	15px;
-    -moz-border-radius:		15px;
+	color:			#181818;
+	padding:		4px;
 }
 body > .panel > h2 {
 	font-size:		20px;
-	margin:			-7px -7px 10px -7px;
+    margin:			0;
 	padding: 		12px 0 12px 50px;
 	font-weight: 	normal;
 	color: 			#fff;
-	text-shadow: 	none;
-	background:		#424542 url(panelTitle.png) no-repeat 10px 9px;
-	-webkit-border-top-left-radius:		10px;
-	-webkit-border-top-right-radius:	10px;
-	-moz-border-radius-topleft:			10px;
-	-moz-border-radius-topright:		10px;
+	text-shadow: 	0px;
+	background:		#080806 url(panelTitle.png) no-repeat 10px 9px;
+	border:			2px solid #fff;
+}
+body > .panel > fieldset {
+	background:		#fff;
+	margin:			0 0 10px 0;
 }
 
-.toggle {
-    border:			1px solid #888888;
-    background: 	#FFFFFF url(toggle.png) repeat-x;
+body > .panel > ul > li {
+	list-style:		none;
+	padding:		12px;
 }
 
-.toggle[toggled="true"] {
-    background: 	#194fdb url(toggleOn.png) repeat-x;
+fieldset > .row {
+    min-height: 	42px;
+}
+fieldset > .row > p {
+	width:			auto;
+	height:			auto;
+	padding:		12px;
+	margin:			0;
+	text-align:		left;
 }
 
-.thumb {
-    background: 	#ffffff url(thumb.png) repeat-x;
+/************************************************************************************************/
+
+body > .panel > ul,
+body > .panel > fieldset {
+	margin:			0 0 10px 0;
+    padding: 		0;
+    border:			0;
+    font-size: 		16px;
+}
+
+body > .panel > ul > li {
+	color:			#000;
+    background:		#fff;
+}
+body > .panel > ul > li > a {
+	display:		block;
+    margin:			-12px;
+    padding:		12px;
+    color: 			inherit;
+    background: 	url(listArrow.png) no-repeat right center;
+    text-decoration:	none;
+}
+
+body > .panel > ul > li,
+fieldset > .row  {
+    -webkit-border-radius:	0;
+    -moz-border-radius: 	0;
+}
+
+fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
+	width: 			100%;
+	margin: 		8px 0 0 0;
+	padding: 		6px 6px 6px 44px;
+	font-size: 		16px;
+	font-weight:	normal;
+	background-color: transparent;
+}
+body > .panel > ul li:last-child,
+fieldset > .row:last-child {
+    border-bottom: 	none !important;
+}
+
+/************************************************************************************************/
+
+fieldset > .row > input,
+fieldset > .row > select {
+    width:				100%;
+    margin: 			0;
+    height: 			inherit;
+	font-size:			.8em;
+	background:			transparent;
+	-webkit-appearance: none;
+	-moz-appearance:	none;
+}
+fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
+    border-radius: 		0px;
+    -moz-border-radius: 0px;
+	margin-top:		0;
+    padding: 		10px 10px 14px 110px;
+	border:			0;
+}
+fieldset > .row > select {
+	float:			right;
+	width:			auto;
+	height:			2.3em;
+	color:			#000;
+	margin:			7px;
+	padding:		0 25px 0 10px;
+	border:			1px solid #bbb;
+    background: url(select-arrow.png) no-repeat center right, -webkit-gradient(linear, left top, left bottom, from(#e5e5e5), to(#cbcbcb));
+    background: url(select-arrow.png) no-repeat center right, -moz-linear-gradient(270deg, #e5e5e5 0%, #cbcbcb 100%);
+    border-radius: 		0px;
+    -moz-border-radius: 0px;
+}
+fieldset > .row > input[type|=radio], 
+fieldset > .row > input[type|=checkbox] {
+	padding:		0;
+	margin:			7px 7px 0 0;
+	height:			25px;
+	width:			25px;
+	-webkit-appearance: 	radio;
+	-moz-appearance: 		radio;
+	-webkit-border-radius: 	1em;
+}
+fieldset > .row > input[type|=checkbox] {
+	-webkit-border-radius: 	.5em;
+	-webkit-appearance: 	checkbox;
+	-moz-appearance: 		checkbox;
+}
+fieldset > .row > label {
+    margin: 		0 0 0 6px;
+    line-height: 	42px;
+}
+fieldset > .row > span {
+    padding: 		12px 10px 0 110px;
+    margin: 		0;
+}
+
+fieldset > .row > .toggle {
+    top: 			6px;
+    right: 			6px;
+    width: 			100px;
+    height: 		28px;
+    border: 		1px solid #888;
+    font-size: 		19px;
+    font-weight:	bold;
+    line-height:	30px;
+    -webkit-border-radius: 	6px;
+	-moz-border-radius: 	6px;
+}
+fieldset > .row > .toggle[toggled="true"] {
+    border: 		1px solid #000;
+}
+fieldset > .row > .toggle > .toggleOn {
+    width: 			62px;
+    text-align: 	center;
+    left: 			-62px;
+    top: 			0;
+    color: 			#fff;
+    text-shadow:	rgba(0, 0, 0, 0.4) 0px -1px 0;
+    background-image:	-webkit-gradient(linear, left top, left bottom, 
+							from(#ad4500),
+							color-stop(0.2, #ff7500),
+							color-stop(0.5, #ff9200),
+							color-stop(0.8, #ff9200),
+               				to(#ff6900)
+               			);
+    background-image: 	-moz-linear-gradient(270deg, 
+    						#ad4500 0%, 
+    						#ff7500 20%,
+    						#ff9200 50%,
+    						#ff9200 80%,
+    						#ff6900 100%
+    					);
+    -webkit-border-top-left-radius: 	6px;
+    -webkit-border-bottom-left-radius:	6px;
+    -moz-border-radius-topleft: 		6px;
+    -moz-border-radius-bottomleft: 		6px;
+}
+fieldset > .row > .toggle[toggled="true"] > .toggleOn {
+    left: 			0px;
+}
+
+fieldset > .row > .toggle > .toggleOff {
+    width: 			62px;
+    text-align: 	center;
+    left: 			38px;
+    top: 			0;
+    color: 			#666;
+	background-image: 	-webkit-gradient(linear, left top, left bottom, 
+							from(rgb(160,160,160)), 
+							to(rgb(255,255,255)));
+	background-image: 	-moz-linear-gradient(270deg, 
+	    					rgb(160,160,160) 0%, 
+	    					rgb(255,255,255) 100%);
+    -webkit-border-top-right-radius: 	6px;
+    -webkit-border-bottom-right-radius:	6px;
+    -moz-border-radius-topright: 		6px;
+    -moz-border-radius-bottomright: 	6px;
+}
+fieldset > .row > .toggle[toggled="true"] > .toggleOff {
+    left: 			100px;
+}
+
+fieldset > .row > .toggle > .thumb {
+    top: 			-1px;
+    left: 			-1px;
+    width: 			40px;
+    height: 		28px;    
+    border: 		1px solid #888888;
+	z-index:		10;
+	background: 	-webkit-gradient(linear, left top, left bottom, 
+							from(rgb(218,218,218)), 
+								color-stop(0.03,rgb(207,207,207)),
+							to(rgb(255,255,255)));
+	background: 	-moz-linear-gradient(270deg, 
+	    					rgb(218,218,218) 0%,
+	    						rgb(207,207,207) 3%, 
+	    					rgb(255,255,255) 100%);
+    -webkit-border-radius:	6px;
+    -moz-border-radius:		6px;
+}
+fieldset > .row > .toggle[toggled="true"] > .thumb {
+    left: 			60px;
+    border: 		1px solid #143fae;
+}
+
+fieldset > .row > .toggle > .toggleOn,
+fieldset > .row > .toggle > .toggleOff,
+fieldset > .row > .toggle > .thumb {
+	-webkit-transition-timing-function:	linear;
+	-moz-transition-timing-function:	linear;
+	-webkit-transition-duration:	50ms;
+	-moz-transition-duration:		50ms;
+	-webkit-transition-property:	left;
+	-moz-transition-property:		left;
 }
 
 /************************************************************************************************/
 #preloader {
-    display: 	none;
-    background-image: 	url(loading.gif),
-						url(selectionn.png),
-						url(blueButton.png),
-						url(listArrowSel.png),
-						url(listGroup.png);
-}
-
-.toolbar > h1.titleImg {
-	background:			url(title-img.png) no-repeat top center;
-	color:				rgba(0,0,0,0);
-}
-
-.backButtonImg {
-	width: 		50px;
-	background: url(back-img.png) no-repeat center left,
-	            url(backButtonBack.png) repeat-x top left !important;
-	color:		rgba(0,0,0,0);
+    background-image: 	url(loading.gif), 
+        				url(listArrow.png),
+        				url(panelTitle.png);
 }
