@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>System info Demo - iUI</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<link rel="icon" type="image/png" href="../../iui-favicon.png">
+	<link rel="apple-touch-icon" href="../../iui-logo-touch-icon-hd.png" />
+	<link rel="apple-touch-startup-image" href="../../iui-startup.png">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="stylesheet" href="../../iui.css" type="text/css" />
+	<link rel="stylesheet" title="Default" href="../../t/default/default-theme.css"  type="text/css"/>
+	<script type="application/x-javascript" src="../../iui.js"></script>
+	
+	<script type="application/x-javascript" src="iui-system-info.js"></script>
+	<script type="application/x-javascript">iui.sysinfo.init();</script>
+
+</head>
+
+<body>
+    <div class="toolbar">
+        <h1 id="pageTitle">System info Demo</h1>
+        <a id="backButton" class="button" href="#"></a>
+    </div>
+    
+    <ul id="home" title="System info Demo" selected="true">
+        <li><a href="#about">About System Info</a></li>
+        <li><a href="#system">System infos</a></li>
+        <li><a href="#device">Device infos</a></li>
+        <li><a href="#browser">Browser infos</a></li>
+        <li><a href="#screen">Screen infos</a></li>
+        <li><a href="#storage">Storage infos</a></li>
+        <li><a href="#webkit">Webkit infos</a></li>
+    </ul>
+
+	<ul id="system" title="System infos">
+		<li>OS name: <script>document.write(iui.sysinfo.os.name)</script></li>
+		<li>OS version: <script>document.write(iui.sysinfo.os.version)</script></li>
+		<li>OS language: <script>document.write(iui.sysinfo.os.lang)</script></li>
+	</ul>
+	
+	<ul id="device" title="Device infos">
+		<li>Vendor: <script>document.write(iui.sysinfo.device.vendor)</script></li>
+		<li>Type: <script>document.write(iui.sysinfo.device.type)</script></li>
+		<li>Touch: <script>document.write(iui.sysinfo.device.touch)</script></li>
+		<li>GPS: <script>document.write(iui.sysinfo.device.gps)</script></li>
+		<li>Orientation: <script>document.write(iui.sysinfo.device.orientation)</script></li>
+	</ul>
+
+	<ul id="browser" title="Browser infos">
+		<li>Name: <script>document.write(iui.sysinfo.browser.name)</script></li>
+		<li>Version: <script>document.write(iui.sysinfo.browser.version)</script></li>
+		<li>Engine: <script>document.write(iui.sysinfo.browser.engine)</script></li>
+		<li>Webapp capable: <script>document.write(iui.sysinfo.browser.webapp)</script></li>
+		<li>Standalone: <script>document.write(iui.sysinfo.browser.standalone)</script></li>
+	</ul>
+
+	<ul id="screen" title="Screen infos">
+		<li>Width: <script>document.write(iui.sysinfo.screen.width)</script></li>
+		<li>Height: <script>document.write(iui.sysinfo.screen.height)</script></li>
+	</ul>
+
+	<ul id="storage" title="Storage infos">
+		<li>Cookie: <script>document.write(iui.sysinfo.storage.cookie)</script></li>
+		<li>Session: <script>document.write(iui.sysinfo.storage.session)</script></li>
+		<li>LocalStorage: <script>document.write(iui.sysinfo.storage.local)</script></li>
+		<li>LocalDatabase: <script>document.write(iui.sysinfo.storage.database)</script></li>
+	</ul>
+
+	<ul id="webkit" title="Webkit Infos">
+		<li>Transition: <script>document.write(iui.sysinfo.webkit.transition)</script></li>
+		<li>Point: <script>document.write(iui.sysinfo.webkit.point)</script></li>
+		<li>Transform: <script>document.write(iui.sysinfo.webkit.transform)</script></li>
+		<li>Matrix: <script>document.write(iui.sysinfo.webkit.matrix)</script></li>
+	</ul>
+
+
+
+	<div id="about" class="panel" title="About">
+	  <h2>About System info Extension</h2>
+		<fieldset>
+			<div class="row">
+				<p><b>iui-system-info.js</b> is an extension for the iUI framework. It gives system information in order to perform device detection. It may also be useful for the webapp developer you are to detect screen resolution, navigation mode, device capabilites & browser version.</p>
+				<p>Remi Grumeau</p>
+			</div>
+		</fieldset>
+	  <h2>Documentation</h2>
+		<ul>
+			<li><a href="#about-system">System infos</a></li>
+			<li><a href="#about-device">Device infos</a></li>
+			<li><a href="#about-browser">Browser infos</a></li>
+			<li><a href="#about-screen">Screen infos</a></li>
+			<li><a href="#about-storage">Storage infos</a></li>
+			<li><a href="#about-webkit">Webkit infos</a></li>
+		</ul>
+	</div>	
+
+	<div id="about-system" class="panel" title="System Infos">
+	  	<h2>OS Name</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.os.name</strong><br>
+					- iphoneos<br>
+					- android<br>
+					- maemo<br>
+					- webos<br>
+					- macos<br>
+					- windows<br>
+				</p>
+			</div>
+		</fieldset>
+
+		<h2>OS Version</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.os.version</strong><br>
+					- returns the OS version from the user-agent<br>
+					- xp / vista / seven (for windows)
+				</p>
+			</div>
+		</fieldset>
+
+	  	<h2>OS language</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.os.lang</strong><br>
+					- returns the 2 first letters from navigator.language
+				</p>
+			</div>
+		</fieldset>
+	</div>
+	
+	<div id="about-device" class="panel" title="Device Infos">
+
+	  	<h2>Device company</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.device.vendor</strong><br>
+					- apple<br>
+					- htc<br>
+					- samsung<br>
+					- google<br>
+					- motorola<br>
+					- nokia<br>
+					- unknow
+				</p>
+			</div>
+		</fieldset>
+
+	  	<h2>Device type</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.device.type</strong><br>
+					- phone<br>
+					- pod<br>
+					- tablet<br>
+					- desktop
+				</p>
+			</div>
+		</fieldset>
+
+	  	<h2>Touch-screen device</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.device.touch</strong><br>
+					- true / false
+				</p>
+			</div>
+		</fieldset>
+
+	  	<h2>GPS capable</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.device.gps</strong><br>
+					- true / false
+				</p>
+			</div>
+		</fieldset>
+
+	  	<h2>Orientation</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.device.orientation</strong><br>
+					- true / false
+				</p>
+			</div>
+		</fieldset>
+	</div>
+	
+	
+	<div id="about-browser" class="panel" title="Browser Infos">
+	  	<h2>Browser name</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.browser.name</strong><br>
+					- chrome<br>
+					- safari<br>
+					- firefox<br>
+					- fennec<br>
+					- opera<br>
+					- opera_mobile
+					- ie<br>
+					- unknow
+				</p>
+			</div>
+		</fieldset>
+
+	  	<h2>Browser version</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.browser.version</strong><br>
+					- 4 / 5 (Chrome)<br>
+					- 3 / 4 / 4.1 / 5 (Safari)<br>
+					- 2 / 3 / 3.5 / 3.6 (Firefox)<br>
+					- 1 (Fennec)
+					- 8 / 9 / 10 (Opera)
+					- 6 / 7 / 8 / 9 (IE)
+					- unknow
+				</p>
+			</div>
+		</fieldset>
+
+	  	<h2>Webapp capable</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.browser.webapp</strong><br>
+					- true / false
+				</p>
+			</div>
+		</fieldset>
+
+	  	<h2>Webapp mode (avail on iOS only for now)</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.browser.standalone</strong><br>
+					- true / false
+				</p>
+			</div>
+		</fieldset>
+	</div>
+
+	<div id="about-screen" class="panel" title="Screen Infos">
+	  	<h2>Viewport width</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.screen.width</strong><br>
+					- returns the value, in pixels
+				</p>
+			</div>
+		</fieldset>
+
+	  	<h2>Viewport height</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.screen.height</strong><br>
+					- returns the value, in pixels
+				</p>
+			</div>
+		</fieldset>
+	</div>
+
+	<div id="about-storage" class="panel" title="Storage Infos">
+	  	<h2>Cookies enable</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.storage.cookie</strong><br>
+					- true / false
+				</p>
+			</div>
+		</fieldset>
+
+	  	<h2>Session Storage</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.storage.session</strong><br>
+					- true / false
+				</p>
+			</div>
+		</fieldset>
+
+	  	<h2>Local Storage</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.storage.local</strong><br>
+					- true / false
+				</p>
+			</div>
+		</fieldset>
+
+	  	<h2>LocalDatabase</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.storage.database</strong><br>
+					- true / false
+				</p>
+			</div>
+		</fieldset>
+	</div>
+
+	<div id="about-webkit" class="panel" title="Webkit Infos">
+		<h2>WebKitTransitionEvent</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.webkit.transition</strong><br>
+					- true / false
+				</p>
+			</div>
+		</fieldset>
+
+		<h2>WebKitPoint</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.webkit.points</strong><br>
+					- true / false
+				</p>
+			</div>
+		</fieldset>
+
+		<h2>WebKitCSSTransformValue</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.webkit.transform</strong><br>
+					- true / false
+				</p>
+			</div>
+		</fieldset>
+
+		<h2>WebKitCSSMatrix</h2>
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.sysinfo.webkit.matrix</strong><br>
+					- true / false
+				</p>
+			</div>
+		</fieldset>
+	</div>
+
+</body>
+</html>
