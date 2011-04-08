@@ -1,0 +1,339 @@
+* {
+	margin:		0;
+	padding:	0;
+	border:		0;
+}
+
+.hide {		display:	none;	}
+h1 {	font-size:	28px;	color:	#416790;	}
+h2 {	font-size:	23px;	color:	#416790;	}
+h3 {	font-size:	20px;	}
+h4 {	font-size:	18px;	}
+h5 {	font-size:	16px;	}
+h6 {	font-size:	14px;	}
+
+.tleft	{	text-align:		left;	}
+.tright	{	text-align:		right;	}
+.tcenter{	text-align:		center;	}
+
+a {
+	color:	#1678bd;
+}
+
+
+a.btn,
+a.btnBig {
+	display:		block;
+	width:			265px;
+	padding-top:	12px;
+	padding-bottom:	15px;
+	color:			#fff;
+	font-size:		18px;
+	font-weight:	bold;
+	text-decoration:none;
+	text-shadow:	0 1px 2px rgba(0,0,0,.7);
+	text-align:		center;
+	background:		#788da2 url(../images/global_sprites.png) no-repeat 0px -324px;
+}
+a.btnBig {	
+	width:			336px;
+	padding-top:	20px;
+	padding-bottom:	23px;
+	font-size:		26px;
+	background-position: 0px -184px; 
+}
+a.btn:hover { background-position: 0px -380px; }
+a.btnBig:hover { background-position: 0px -253px; }
+
+input.text,
+textarea.text {
+	width:			350px;
+	padding:		2px;
+	border:			1px solid #d1c9c6;
+	background:		#fff;
+}
+textarea.text {
+	height:			150px;
+}
+
+label {
+	padding-top:	2px;
+	font-size:		12px;
+	color:			#7b7b7b;
+}
+label > em {
+	color:			red;
+}
+
+#main > hr {
+	display:		none;	
+}
+
+body {
+	font-family:	Helvetica, Arial, sans-serif;
+	font-size:		14px;
+	color:			#000;
+	background:		#fff url(../images/body-bg.png) repeat-x top center;
+	text-align:		center;
+}
+
+#main {
+	display:		block;
+	width:			1000px;
+	height:			auto;
+	padding:		0 10px;
+	margin:			0 auto;
+	text-align:		left;
+}
+
+#menu {
+	display:		block;
+	float:			left;
+	width:			100%;
+	height:			45px;
+	background:		#fff;
+	text-align:		center;
+}
+#menu > ul {
+	width:			980px;
+	height:			45px;
+}
+#menu > ul > li {
+	display:		inline;
+	list-style:		none;
+}
+#menu > ul > li > span.logo {
+	display:		block;
+	float:			left;
+	width:			34px;
+	height:			34px;
+	margin-top:		6px;
+	margin-right:	10px;
+	background-repeat:		no-repeat;
+	background-image:		url(../images/global_sprites.png);
+	background-position:	-169px -22px;
+}
+#menu > ul > li > a {
+	display:		block;
+	float:			left;
+	height:			46px;
+	margin:			0 20px;
+	background-repeat:		no-repeat;
+	background-image:		url(../images/global_sprites.png);
+}
+#menu > ul > li > a.home {
+	width:					46px;
+	background-position:	0px -92px;
+}
+#menu > ul > li > a.home:hover,
+#menu > ul > li > a.home.active {
+	background-position:	0 -138px;
+}
+
+#menu > ul > li > a.about {
+	width:					45px;
+	background-position:	-47px -92px;
+}
+#menu > ul > li > a.about:hover,
+#menu > ul > li > a.about.active {
+	background-position:	-47px -138px;
+}
+
+#menu > ul > li > a.demo {
+	width:					46px;
+	background-position:	0px 0px;
+}
+#menu > ul > li > a.demo:hover,
+#menu > ul > li > a.demo.active {
+	background-position:	0px -46px;
+}
+
+#menu > ul > li > a.download {
+	width:					79px;
+	background-position:	-91px -92px;
+}
+#menu > ul > li > a.download:hover,
+#menu > ul > li > a.download.active {
+	background-position:	-91px -138px;
+}
+#menu > ul > li > a.documentation {
+	width:					120px;
+	background-position:	-48px 0px;
+}
+#menu > ul > li > a.documentation:hover,
+#menu > ul > li > a.documentation.active {
+	background-position:	-48px -46px;
+}
+
+#menu > ul > li > a.gallery {
+	width:					52px;
+	background-position:	-170px -92px;
+}
+#menu > ul > li > a.gallery:hover,
+#menu > ul > li > a.gallery.active {
+	background-position:	-170px -138px;
+}
+
+#menu > ul > li > a.involved {
+	width:					96px;
+	background-position:	-223px -92px;
+}
+#menu > ul > li > a.involved:hover,
+#menu > ul > li > a.involved.active {
+	background-position:	-223px -138px;
+}
+
+#menu > ul > li > a > span {
+	display:		none;
+}
+
+#menu > ul > li > form {
+	display:		block;
+	float:			left;
+	width:			120px;
+	height:			auto;
+	margin:			13px 0 0 23px;
+}
+#menu > ul > li > form > input.searchform {
+	display:		block;
+	width:			100px;
+	font-size:		11px;
+	padding:		2px 20px 6px 22px;
+	background:		url(../images/global_sprites.png) no-repeat -168px 0px;
+}
+#menu > ul > li > form > #emptysearch {
+	display:		none;
+	position:		absolute;
+	width:			12px;
+	height:			12px;
+	margin:			4px 0 0 126px;
+	background:		url(../images/global_sprites.png) no-repeat -313px 0px;
+}
+
+
+
+#header {
+	display:				block;
+	float:					left;
+	width:					1010px;
+	height:					106px;
+	margin-top:				1px;
+	background-repeat:		no-repeat;
+	background-position:	bottom center;
+	border-bottom:			1px solid #bab3b0;
+}
+#header h1 { display:	none;	}
+
+
+
+#content {
+	display:		block;
+	float:			left;
+	width:			100%;
+	line-height:	1.8em;
+	padding-top:	10px;
+	padding-bottom:	30px;
+}
+
+
+#content > div {
+	display:		block;
+	float:			left;
+	width:			980px;
+	margin:			10px;
+}
+#content > div.col-left {
+	width:			720px;
+}
+#content > div.col-right {
+	float:			right;
+	width:			220px;
+	margin:			0px;
+}
+#content > div.col-right > div {
+	font-size:		12px;
+	line-height:	1.5em;
+	margin-top:		20px;
+	margin-bottom:	10px;
+	padding:		15px;
+	border:			1px solid #cdc5c2;
+	background:		#f7f7f7;
+}
+#content > div.col-right > div > strong {
+	font-size:		14px;	
+}
+
+
+#content > div > h2 {
+	margin-top:		15px;
+	margin-bottom:	10px;
+}
+#content > div > p {
+	padding:		10px 0;
+}
+#content > div > ul {
+	padding:		10px 0;
+}
+#content > div > ul > li {
+	display:		list-item;
+	list-style:		square inside url(../images/list-dot.png);
+	line-height:	2em;
+}
+#content > div > p img.thumb {
+	padding:		1px;
+	border:			1px solid #cdcdcd;
+}
+
+
+#content > div.page_footer {
+	display:		block;
+	float:			left;
+	width:			980px;
+	margin-top:		20px;
+}
+#content > div.page_footer > div {
+	display:		block;
+	float:			left;
+	width:			320px;
+	margin-left:	10px;
+	background-repeat:		no-repeat;
+	background-position:	bottom left;
+}
+#content > div.page_footer > div.col1 {
+	margin-left:	0;	
+}
+#content > div.page_footer > div > p {
+	display:		block;
+	float:			left;
+	width:			190px;
+	height:			90px;
+	margin-top:		25px;
+	margin-left:	120px;
+	font-size:		12px;
+	color:			#666;
+	line-height:	1.8em;
+}
+
+
+
+
+#footer {
+	display:		block;
+	float:			left;
+	width:			100%;
+	margin:			10px 0;
+	padding-top:	10px;
+	padding-bottom:	20px;
+	font-size:		11px;
+	color:			#999;
+	text-align:		center;
+	background:		url(../images/footer-bg.png) no-repeat top center;
+}
+#footer a {
+	color:				#999;
+	text-decoration:	none;
+}
+#footer a:hover {
+	text-decoration:	underline;
+	
+}

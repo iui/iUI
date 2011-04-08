@@ -1,0 +1,104 @@
+body {
+	background:		#fff url(../images/index-bg.png) repeat-x top center;
+}
+
+#header {
+	height:					495px;
+	border-bottom:			0px;
+}
+
+
+#header h1,
+#header h2 {
+	display:		block;
+	position:		absolute;
+	top:			40px;
+	width:			520px;
+	color:			#fff;
+	font-size:		86px;
+	font-weight:	normal;
+	margin-top:		50px;
+	margin-left:	10px;
+	line-height:	1em;
+	text-shadow:	1px 2px 5px rgba(0,0,0,.4);
+	z-index:		10;
+}
+#header h2 {
+	top:			120px;
+	font-size:		22px;
+	text-shadow:	1px 1px 3px rgba(0,0,0,.5);
+}
+#home1,
+#home2,
+#home3 {
+	display:		none;
+	position:		absolute;
+	top:			46px;
+	width:			1010px;
+	height:			495px;
+	margin-top:		1px;
+	z-index:		1;
+}
+#home1 {
+	display:		block;
+	background:		url(../images/index-img1.jpg) no-repeat top right;
+}
+#home2 {
+	background:		url(../images/index-img2.jpg) no-repeat top right;
+}
+#home3 {
+	background:		url(../images/index-img3.jpg) no-repeat top right;
+}
+
+#home1 p,
+#home2 p,
+#home3 p {
+	position:		absolute;
+	top:			190px;
+	width:			450px;
+	color:			#575656;
+	font-size:		20px;
+	margin-left:	10px;
+	line-height:	1.5em;
+}
+#home2 p img {
+	margin:			20px 0 20px 25px;
+}
+
+
+a.btnBig {
+	position:		absolute;
+	top:			424px;
+	width:			300px;
+	text-align:		left;
+	padding:		25px 0px 28px 30px;
+	background:		transparent url(../images/index-btnBig.png) no-repeat 0px 0px;
+	z-index:		10;
+}
+a.btnBig:hover {
+	background:		transparent url(../images/index-btnBig.png) no-repeat 0px -83px;
+}
+
+#content > div.page_footer {
+	margin-bottom:	10px;
+}
+
+#content > div.page_footer > div {
+	width:			320px;
+	height:			125px;
+	margin-left:	10px;
+}
+#content > div.page_footer > div > p {
+	width:			175px;
+	margin-left:	135px;
+}
+#content > div.page_footer > div.col1 {
+	margin-left:		0px;
+	background-image:	url(../images/index-footer-img1.jpg);
+}
+#content > div.page_footer > div.col2 {
+	background-image:	url(../images/index-footer-img2.jpg);
+}
+#content > div.page_footer > div.col3 {
+	background-image:	url(../images/index-footer-img3.jpg);
+}

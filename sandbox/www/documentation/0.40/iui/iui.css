@@ -1,0 +1,146 @@
+/*
+   Copyright (c) 2007-2011, iUI Project Members
+   See LICENSE.txt for licensing terms
+   Version 0.4dev3
+ */
+body {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: none;
+}
+
+body > *:not(.toolbar) {
+    display: 	none;
+    position: 	absolute;
+    width: 		100%;
+    height: 	auto;
+    -webkit-transition-duration: 300ms;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transform: translateX(0%);
+}
+
+body > *[selected] {
+    display: 	block;
+}
+
+/************************************************************************************************/
+
+.toolbar {
+    box-sizing: 		border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: 	border-box;
+    -o-box-sizing: 		border-box;
+}
+
+.toolbar > h1,
+.button {
+    overflow: 			hidden;
+    white-space: 		nowrap;
+    text-overflow: 		ellipsis;
+    -o-text-overflow: 	ellipsis;
+    -ms-text-overflow: 	ellipsis;
+}
+
+.button {
+    text-decoration:	none;
+    white-space:		nowrap;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.leftButton {
+    left: 			6px;
+    right:			none;
+}
+
+#backButton {
+    display: 		none;
+}
+
+.whiteButton,
+.redButton,
+.bigredButton,
+.grayButton {
+    display: 		block;
+   	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/************************************************************************************************/
+
+body > ul > li,
+body > ul > li.group {
+    position: 	relative;
+}
+
+body > ul > li.group:first-child,
+body > .panel > ul > li.group:first-child {
+    top: 0;
+    border-top: none;
+}
+
+body > ul > li > a,
+body > .panel > ul > li > a {
+    display: block;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/************************************************************************************************/
+/* STILL BUGGY - NEED SOME WORK */
+body > .dialog,
+body > .dialog > * {
+    box-sizing: 		border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: 	border-box;
+    -o-box-sizing: 		border-box;
+    width: 100%;
+}
+body > .show {	display:	block;	}
+
+/************************************************************************************************/
+
+input, textarea, select {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+textarea,
+input:not([type|=radio]):not([type|=checkbox]) {
+    box-sizing: 		border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: 	border-box;
+    -o-box-sizing: 		border-box;
+}
+
+/************************************************************************************************/
+
+body > .panel {
+    box-sizing: 		border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: 	border-box;
+    -o-box-sizing: 		border-box;
+}
+body > .panel > h2 {
+    font-size:		inherit;
+}
+body > .panel > ul,
+body > .panel > fieldset,
+body > .panel > ul > li,
+fieldset > .row  {
+    position: 		relative;
+}
+
+fieldset > .row > label,
+fieldset > .row > span,
+fieldset > .row > .toggle,
+fieldset > .row > .toggle > .thumb,
+fieldset > .row > .toggle > .toggleOn,
+fieldset > .row > .toggle > .toggleOff {
+    position: 		absolute;
+}
+
+fieldset > .row > .toggle {
+    overflow:		hidden;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/************************************************************************************************/
+
+#preloader {
+    display: none;
+}

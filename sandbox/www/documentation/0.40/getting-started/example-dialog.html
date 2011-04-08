@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<title>Buttons</title>
+	<link rel="stylesheet" href="../iui/iui.css" type="text/css" />
+	<link rel="stylesheet" href="../iui/t/default/default-theme.css"  type="text/css"/>
+	<script type="application/x-javascript" src="../iui/iui.js"></script>
+</head>
+
+<body>
+
+	<div class="toolbar">
+		<h1 id="pageTitle"></h1>
+		<a class="button" href="#search">search</a>
+	</div>
+	
+	<div id="screen1" title="Screen 1" class="panel" selected="true">
+		<a class="whiteButton" href="#search">Show Search dialog</a>
+	</div>
+	
+    <form id="search" title="Search" class="dialog" name="formname" action="" method="GET">
+        <div class="toolbar">
+            <h1>Search</h1>
+            <a class="button leftButton" type="cancel">Cancel</a>
+            <a class="button blueButton" href="javascript:formname.submit()">Search</a>
+        </div>
+		<fieldset>
+			<div class="row">
+				<label for="keyword">Search:</label>
+				<input type="text" name="q" id="keyword" placeholder="Type your keywords">
+			</div>
+		</fieldset>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+#header {
+	background-image:	url(../images/download-header.jpg);
+}
+a.btnBig {
+	margin:			10px 0;
+	margin-left:	100px;
+}
+
+#content {
+	background:		url(../images/download-img1.jpg) no-repeat right 20px;
+}
+#content p {
+	width:			600px;
+}
+
+
+#content > div.page_footer {
+	margin-top:		60px;
+}
+
+#content > div.page_footer > div.col1 {
+	background-image:	url(../images/download-footer-img1.jpg);
+}
+#content > div.page_footer > div.col2 {
+	background-image:	url(../images/download-footer-img2.jpg);
+}
+#content > div.page_footer > div.col3 {
+	background-image:	url(../images/download-footer-img3.jpg);
+}

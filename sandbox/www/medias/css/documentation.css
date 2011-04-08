@@ -1,0 +1,44 @@
+#header {
+	background-image:	url(../images/documentation-header.jpg);
+}
+
+#content h5 {
+	color:		#1678bd;
+}
+#content strong {
+	color:		#416790;
+}
+#content img.bordered {	padding: 1px; border: 1px solid #ccc; }
+
+#content ul.codesample {
+	display:		block;
+	padding-left:	35px;
+	font-size:		1em;
+	background:		#fff url(../images/codesample_bg.gif) repeat-y;
+	border:			1px solid #ccc;
+	text-align:		right;
+}
+#content ul.codesample > li {
+	display:		list-item;
+	width:			auto;
+	list-style:		decimal outside;
+	font-size:		.85em;
+	line-height:	2.2em;
+	padding-left:	10px;
+	border-bottom:	1px solid #eee;
+	text-align:		left;
+}
+
+#content ul.codesample > li > * em {
+	font-style:	normal;
+}
+#content ul.codesample > li > * em.elmt {	color:	#00f;	}
+#content ul.codesample > li > * em.quote {	color:	#f00;	}
+
+#content div *.col1 {	float: 	left;	width:	330px;	}
+#content div *.col2 {	float: 	left;	width:	640px; margin-right: 10px	}
+
+#content span.code {
+	font-style:		italic;
+	color:			#F00;
+}

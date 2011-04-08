@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <item>
+	<author><![CDATA[We Are Gurus]]></author>
+	<website>http://www.we-are-gurus.com</website>
+	<appname><![CDATA[Bonjour Madame]]></appname>
+	<appdate>January 2010</appdate>
+	<appurl>http://www.jardinsecret.info/bmmobile/?lg=en</appurl>
+	<appdesc><![CDATA[BonjourMadame is one of the first french blog to introduce the "daily pic" concept in France. Everyday at 10am, a new picture is published. It has lounched a real underground trend with now more than 80 clones, publishing a picture a day and using the 'bonjour' prefix (BonjourGeek, BonjourChatroulette, BonjourPanda, ...).<br><br>Since it's Tumblr-based, we use iUI for front-end and a server-side Tumblr API parser to get all contents.]]></appdesc>
+</item>
