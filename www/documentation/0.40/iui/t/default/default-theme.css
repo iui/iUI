@@ -1,0 +1,532 @@
+/* default-theme.css (c) 2007-9 by iUI Project Members, see LICENSE.txt for license */
+body {
+    font-family: 	Helvetica, Arial, Sans-serif;
+    margin: 		0;
+    color: 			#000000;
+    background: 	#FFFFFF;
+}
+body > *:not(.toolbar) {
+	margin: 	0;
+	padding:	0;
+	left:		0;
+	top:		45px;
+}
+body[orient="landscape"] > *:not(.toolbar) {
+	top:		32px;	
+}
+
+/************************************************************************************************/
+
+.toolbar {
+    padding: 		0 10px 10px 10px;
+    height: 		45px;
+    background: 	url(toolbar.png) #6d84a2 repeat-x;
+    background-size:auto 100%;
+}
+body[orient="landscape"] .toolbar {
+	height:			32px;
+}
+
+.toolbar > h1 {
+    position: 		absolute;
+    left: 			50%;
+    width: 			150px;
+    margin: 		1px 0 0 -75px;
+    padding: 		10px 0;
+    height: 		auto;
+    font-size: 		20px;
+    color: 			#FFFFFF;
+    font-weight: 	bold;
+    text-shadow: 	rgba(0,0,0,.6) 0 -1px 0;
+    text-align: 	center;
+}
+body[orient="landscape"] .toolbar > h1 {
+	width: 			300px;
+    margin: 		1px 0 0 -150px;
+    padding: 		6px 0;
+    font-size: 		16px;
+}
+
+.button {
+    position: 		absolute;
+	top: 			8px;
+	right:			6px;
+	width:			auto;
+	margin:			0;
+	padding:		0 3px;
+	color:			#FFFFFF;
+	line-height:	30px;
+	font-family:	inherit;
+	font-size:		12px;
+	font-weight:	bold;
+    text-shadow:	rgba(0,0,0,.6) 0px -1px 0;
+	border-width:	0 5px;
+    background: 	none;
+	-webkit-border-image:	url(toolButton.png) 0 5 0 5;
+	-moz-border-image:		url(toolButton.png) 0 5 0 5;
+	border-image:			url(toolButton.png) 0 5 0 5;
+}
+body[orient="landscape"] .button {
+	top: 			3px;
+	right:			3px;
+	line-height:	26px;
+}
+.leftButton, 
+body[orient="landscape"] .leftButton {
+	right:	auto;	/* needed to avoid full width */
+}
+
+.blueButton {
+	border-width: 0 5px;
+    -webkit-border-image: 	url(blueButton.png) 0 5 0 5;
+    -moz-border-image: 		url(blueButton.png) 0 5 0 5;
+}
+
+
+#backButton {
+    left: 			6px;
+    right: 			auto;
+    padding:		0;
+    max-width:		55px;
+    border-width:	0 8px 0 14px;
+    -webkit-border-image:	url(backButton.png) 0 8 0 14;
+    -moz-border-image:		url(backButton.png) 0 8 0 14;
+    background: 			url(backButton.png) repeat-x;
+}
+#backButton[selected],#backButton:active {
+    -webkit-border-image: 	url(backButtonSel.png) 0 8 0 14;
+    -moz-border-image:		url(backButtonSel.png) 0 8 0 14;
+    background:				url(backButtonSel.png) repeat-x;
+}
+
+.whiteButton,
+.redButton,
+.grayButton {
+    padding:			10px;
+    color: 				inherit;
+    text-align:			center;
+    font-size: 			20px;
+    font-weight: 		bold;
+    border-width:		0 12px;
+    text-decoration:	inherit;
+}
+.whiteButton {
+    -webkit-border-image: 	url(whiteButton.png) 0 12 0 12;
+    -moz-border-image: 		url(whiteButton.png) 0 12 0 12;
+    text-shadow: 			rgba(255, 255, 255, 0.7) 0 1px 0;
+}
+.grayButton {
+    -webkit-border-image: 	url(grayButton.png) 0 12 0 12;
+    -moz-border-image: 		url(grayButton.png) 0 12 0 12;
+    color: #FFFFFF;
+}
+.redButton {
+    -webkit-border-image: 	url(bigredButton.png) 0 12 0 12;
+    -moz-border-image: 		url(bigredButton.png) 0 12 0 12;
+    color: #FFFFFF;
+}
+.whiteButton[selected], .whiteButton:active {
+    -webkit-border-image:	url(whiteButtonSel.png) 0 12 0 12;
+    -moz-border-image:		url(whiteButtonSel.png) 0 12 0 12;
+    text-shadow: 			rgba(0, 0, 0, 0.7) 0 -1px 0;
+    color:			#fff;
+}
+.grayButton[selected], 
+.grayButton:active {
+    color:			rgba(255,255,255,.6);
+}
+.toolbar > .redButton {
+	padding:		0 3px;
+    color: 			#fff;
+    font-size: 		12px;
+    font-weight: 	bold;
+    text-shadow:	rgba(0,0,0,.6) 0px -1px 0;
+	border-width:	0 7px;
+    background: 	none;
+	-webkit-border-image:	url(redButton.png) 0 7 0 7;
+	-moz-border-image:		url(redButton.png) 0 7 0 7;
+	border-image:			url(redButton.png) 0 7 0 7;
+}
+.redButton[selected], .redButton:active,
+.toolbar > .redButton[selected], .toolbar > .redButton:active {
+    -webkit-border-image: 	url(bigredButtonSel.png) 0 12 0 12;
+    -moz-border-image: 		url(bigredButtonSel.png) 0 12 0 12;
+    text-shadow: 			0;
+    color:			#fff;
+}
+
+/************************************************************************************************/
+
+body > ul > li {
+    margin: 		0;
+    border-bottom:	1px solid #E0E0E0;
+    padding:		8px 0 8px 10px;
+    font-size:		20px;
+    font-weight:	bold;
+    list-style-type:none;
+}
+body[orient="landscape"] > ul > li {
+    font-size:		18px;
+}
+
+body > ul > li.group,
+body > .panel > ul > li.group {
+    top: 			-1px;
+    padding: 		0 10px;
+    font-size:		17px;
+    font-weight: 	bold;
+    text-shadow:	rgba(0,0,0,.8) 0 1px 1px;
+    color:			#fff;
+	opacity:		0.8;
+    background: 	url(listGroup.png) repeat-x;
+    border-top: 	1px solid #6e7c85;
+    border-bottom: 	1px solid #909da7;
+}
+body[orient="landscape"] > ul > li.group {
+    font-size:		15px;
+}
+body > .panel > ul > li.group {
+    font-size:		14px;
+    padding: 		2px 10px;
+}
+
+body > ul > li > a {
+    margin:		-8px 0 -8px -10px;
+    padding:	8px 32px 8px 10px;
+    color: 		inherit;
+    background: url(listArrow.png) no-repeat right center;
+    text-decoration:	none;
+}
+ul > li > a[selected], 
+ul > li > a:active,
+.panel > ul > li > a[selected], 
+.panel > ul > li > a:active {
+    color: 		#fff;
+    background-color:		#194fdb;
+    background-repeat:		no-repeat, repeat-x;
+    background-position:	right center, left top;
+    background-image: 		url(listArrowSel.png), url(selection.png);
+}
+
+ul > li > a[selected="progress"] {
+    background-image: url(loading.gif), url(selection.png);
+}
+
+
+body > ul > li > a[target="_replace"] {
+    padding-top: 	25px;
+    padding-bottom: 25px;
+    font-size: 		18px;
+    color: 			#6495ed;
+    background-color: #fff;
+    background-image: none;
+}
+
+/************************************************************************************************/
+
+body > .dialog,
+body[orient="landscape"] > .dialog {
+	top:		0px;
+    z-index: 	2;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 	0;
+}
+body > .dialog > div.toolbar {
+	float:		left;
+	width:		100%;
+}
+
+body > .dialog > fieldset {
+    margin: 		0;
+    border: 		none;
+    padding: 		10px 0 0 0;
+    border-top: 	1px solid #b3becd;
+    background: 	#7388a5 repeat-x;
+}
+
+body > .dialog > fieldset > div.row {
+    padding: 		0 10px;
+    border:			0px;
+    background-color:	transparent;
+    -webkit-border-radius:	0;
+}
+body > .dialog > fieldset > div.row > label {
+    position: 		absolute;
+	margin:			0;
+	padding:		10px 8px 10px 12px;
+	font-weight:	normal;
+	line-height: 	1em;
+    font-size:		12px;
+    color: 			#666;
+}
+body > .dialog > fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
+    font-size:		12px;
+	padding:		8px 0 6px 60px;
+	border:			1px solid #47607c;
+	-webkit-border-radius:	0px;
+	background-color:		#fff;
+}
+
+/************************************************************************************************/
+
+body > .panel {
+    padding: 	10px;
+    background: #c8c8c8 url(pinstripes.png);
+}
+body > .panel > h2 {
+    margin: 		0 0 8px 14px;
+    font-size: 		inherit;
+    font-weight:	bold;
+    color: 			#4d4d70;
+    text-shadow:	rgba(255,255,255,.75) 2px 2px 0;
+}
+
+body > .panel > ul > li {
+	list-style:		none;
+	padding:		12px;
+}
+
+fieldset > .row {
+    min-height: 	42px;
+}
+fieldset > .row > p {
+	width:			auto;
+	height:			auto;
+	padding:		12px;
+	margin:			0;
+	text-align:		left;
+}
+
+/************************************************************************************************/
+
+body > .panel > ul,
+body > .panel > fieldset {
+    margin: 		10px 0;
+    padding: 		0;
+    border: 		1px solid #999999;
+    font-size: 		16px;
+    -webkit-border-radius: 	10px;
+    -moz-border-radius: 	10px;
+    border-radius: 	10px;
+}
+body > .panel > fieldset {
+    background:		#fff;
+}
+body > .panel > ul > li {
+	font-weight:	bold;
+	color:			#000;
+    background:		#fff;
+}
+body > .panel > ul > li,
+fieldset > .row  {
+    border-bottom: 	1px solid #999999;
+    -webkit-border-radius:	0;
+    -moz-border-radius: 	0;
+}
+body > .panel > ul > li:first-child > a,
+body > .panel > ul > li:first-child,
+fieldset > .row:first-child {
+    -webkit-border-top-left-radius: 	10px;
+    -webkit-border-top-right-radius: 	10px;
+    -moz-border-radius-topleft: 		10px;
+    -moz-border-radius-topright: 		10px;
+    border-top-left-radius: 			10px;
+    border-top-right-radius: 			10px;
+}
+body > .panel > ul > li:last-child > a,
+body > .panel > ul > li:last-child,
+fieldset > .row:last-child {
+    -webkit-border-bottom-left-radius: 	10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-radius-bottomleft: 		10px;
+    -moz-border-radius-bottomright: 	10px;
+    border-bottom-left-radius: 			10px;
+    border-bottom-right-radius: 		10px;
+    border-bottom:	0;
+}
+body > .panel > ul > li > a {
+	display:		block;
+    margin:			-12px;
+    padding:		12px;
+    color: 			inherit;
+    background: 	url(listArrow.png) no-repeat right center;
+    text-decoration:	none;
+}
+body > .panel > ul > li > a[selected],
+body > .panel > ul > li > a:active {
+	color:			#fff;
+}
+
+/************************************************************************************************/
+
+fieldset > .row > input,
+fieldset > .row > textarea,
+fieldset > .row > select {
+    width:				100%;
+    margin: 			0;
+    height: 			inherit;
+	font-size:			.8em;
+	background:			transparent;
+	-webkit-appearance: none;
+	-moz-appearance:	none;
+}
+fieldset > .row > textarea,
+fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
+	-webkit-border-radius: 	0px;
+    padding: 		10px 10px 14px 110px;
+	border:			0;
+	margin-bottom:	-4px;
+	resize: 		none;
+}
+fieldset > .row > select {
+	float:			right;
+	width:			auto;
+	height:			42px;
+	color:			#425c8d;
+	font-size:		.8em;
+	padding-right:	10px;
+	border:			0;
+}
+fieldset > .row > input[type|=radio], 
+fieldset > .row > input[type|=checkbox] {
+	float:			right;
+	padding:		0;
+	margin:			7px 7px 0 0;
+	height:			25px;
+	width:			25px;
+	-webkit-appearance: 	radio;
+	-moz-appearance: 		radio;
+	-webkit-border-radius: 	1em;
+}
+fieldset > .row > input[type|=checkbox] {
+	-webkit-border-radius: 	.5em;
+	-webkit-appearance: 	checkbox;
+	-moz-appearance: 		checkbox;
+}
+
+fieldset > .row > label {
+    margin:			0 0 0 14px;
+    line-height: 	42px;
+    font-weight: 	bold;
+}
+fieldset > .row > span {
+    padding: 		12px 10px 0 110px;
+    margin: 		0;
+}
+
+
+
+
+fieldset > .row > .toggle {
+    top: 			6px;
+    right: 			6px;
+    width: 			100px;
+    height: 		28px;
+    border: 		1px solid #888;
+    font-size: 		19px;
+    font-weight:	bold;
+    line-height:	30px;
+    -webkit-border-radius: 	6px;
+	-moz-border-radius: 	6px;
+    border-radius:			6px;
+}
+fieldset > .row > .toggle[toggled="true"] {
+    border: 	1px solid #143fae;
+}
+fieldset > .row > .toggle > .toggleOn {
+    width: 			65px;
+    text-align: 	center;
+    left: 			-62px;
+    top: 			0;
+    color: 			#fff;
+    text-shadow: 	rgba(0, 0, 0, 0.4) 0px -1px 0;
+    background:		url(toggleOn.png) repeat-x top center;
+    -webkit-border-top-left-radius: 	6px;
+    -webkit-border-bottom-left-radius:	6px;
+    -moz-border-radius-topleft: 		6px;
+    -moz-border-radius-bottomleft: 		6px;
+    border-top-left-radius: 			6px;
+    border-bottom-left-radius:			6px;
+}
+fieldset > .row > .toggle[toggled="true"] > .toggleOn {
+    left: 			0px;
+}
+
+fieldset > .row > .toggle > .toggleOff {
+    width: 			62px;
+    text-align: 	center;
+    left: 			38px;
+    top: 			0;
+    color: 			#666;
+    text-shadow:	rgba(0,0,0,.7) 0 -1 0;
+    background:		url(toggle.png) repeat-x top center;
+    -webkit-border-top-right-radius: 	6px;
+    -webkit-border-bottom-right-radius:	6px;
+    -moz-border-radius-topright: 		6px;
+    -moz-border-radius-bottomright: 	6px;
+    border-top-right-radius: 			6px;
+    border-bottom-right-radius: 		6px;
+}
+fieldset > .row > .toggle[toggled="true"] > .toggleOff {
+    left: 			100px;
+}
+
+fieldset > .row > .toggle > .thumb {
+    top: 			-1px;
+    left: 			-1px;
+    width: 			40px;
+    height: 		28px;    
+    border: 		1px solid #888;
+	z-index:		10;
+    background:		url(thumb.png) repeat-x top center;
+    -webkit-border-radius:	6px;
+    -moz-border-radius:		6px;
+    border-radius: 			6px;
+}
+fieldset > .row > .toggle[toggled="true"] > .thumb {
+    left: 			60px;
+}
+
+fieldset > .row > .toggle > .toggleOn,
+fieldset > .row > .toggle > .toggleOff,
+fieldset > .row > .toggle > .thumb {
+	-webkit-transition-timing-function:	linear;
+	-moz-transition-timing-function:	linear;
+	-webkit-transition-duration:	150ms;
+	-moz-transition-duration:		150ms;
+	-webkit-transition-property:	left;
+	-moz-transition-property:		left;
+}
+
+/************************************************************************************************/
+#preloader {
+    background-image:	url(loading.gif), 
+    					url(selection.png),
+        				url(blueButton.png),
+        				url(backButton.png),
+        				url(backButtonSel.png),
+        				url(whiteButton.png),
+        				url(whiteButtonSel.png),
+        				url(grayButton.png),
+        				url(bigredButton.png),
+        				url(listArrow.png),
+        				url(listArrowSel.png),
+        				url(listGroup.png);
+}
+
+.toolbar > h1.titleImg {
+	height:			inherit;
+	background: 	url(title-img.png) no-repeat top center;
+	color: 			rgba(0,0,0,0);
+}
+
+.toolbar > a.backButtonImg {
+	width: 50px;
+	background: url(back-img.png) no-repeat center left,
+              	url(backButtonBack.png) repeat-x top left !important;
+	color: rgba(0,0,0,0);
+}
+
+
+/******* SLM ANDROID SPECIFICS ********/
+

@@ -1,0 +1,10 @@
+#header {
+	background-image:	url(../images/documentation-header.jpg);
+}
+
+#content h5 {
+	color:		#1678bd;
+}
+#content strong {
+	color:		#416790;
+}

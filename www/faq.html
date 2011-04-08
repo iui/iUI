@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>iUI-JS - About iUI</title>
+	<meta name="description" content="iUI is a framework consisting of a JavaScript library, CSS, and images for developing advanced mobile webapps for smartphones & mobile devices.">
+	<link href="medias/images/favicon.png" rel="icon" type="image/png" /> 
+	<link href="medias/images/favicon.ico" rel="shortcut icon" />
+	<link rel="image_src" type="image/jpeg" href="medias/images/thumb.jpg" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+	<link rel='stylesheet' type='text/css' media="screen" href='medias/css/globals.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='medias/css/faq.css' />
+	<!--[if lt IE 7]><link rel="stylesheet" type="text/css" media="screen" href="medias/css/ie6.css"><![endif]-->
+
+	<script type='text/javascript' src="medias/scripts/global.js"></script>
+</head>
+
+<body>
+
+	<div id="main">
+
+		<div id="menu">
+			<ul>
+				<li><span class="logo"></span></li>
+				<li><a href="index.html" class="home"><span>Home</span></a></li>
+				<li><a href="about.html" class="about"><span>About</span></a></li>
+				<li><a href="demo.html" class="demo"><span>Demo</span></a></li>
+				<li><a href="download.html" class="download"><span>Download</span></a></li>
+				<li><a href="documentation.html" class="documentation active"><span>Documentation</span></a></li>
+				<li><a href="gallery.html" class="gallery"><span>Gallery</span></a></li>
+				<li><a href="get-involved.html" class="involved"><span>Get Involved</span></a></li>
+				<li><form method="GET" action="search" name="header_search">
+					<a href="#" id="emptysearch" onclick="empty('search_q');hide(this.id)"></a>
+					<input type="text" name="q" id="search_q" class="searchform" onFocus="checkHeaderSearch()" onKeyUp="checkHeaderSearch()" value="">
+					<input type="submit" value="search" class="hide">
+				</form></li>
+			</ul>
+
+		</div>
+
+		<hr>
+
+		<div id="header">
+			<h1>FAQ - Frequently Asked Questions</h1>
+		</div>
+
+
+		<div id="content">
+
+			<div class="col-left">
+				<h2>Frequently Asked Questions</h2> 
+				<ul>
+					<li><strong><a href="#q1">What is iUI?</a></strong></li>
+					<li><strong><a href="#q2">Can i use it for free, even for commercial projects?</a></strong></li>
+					<li><strong><a href="#q3">Can i use other Javascript framework or tools on top of iUI?</a></strong></li>
+					<li><strong><a href="#q4">I only see the top bar, all the rest seems hidden</a></strong></li>
+					<li><strong><a href="#q5">I'm still stuck, where can i get some help?</a></strong></li>
+				</ul>
+			</div>
+
+
+			<div class="col-right">
+				<div>
+					<strong>See also</strong><br />
+					- <a href="documentation.html">Getting Started</a><br />
+					- <a href="documentation.html">iUI code documentation</a><br />
+					- <a href="documentation.html">Extentions, sandbox & plugins</a><br />
+					- <a href="documentation.html">Advanced styling & themes</a><br />
+				</div>
+			</div>
+
+
+			<div class="col-left">
+				<a name="q1"></a>
+				<h5>What is iUI?</h5>
+				<p>
+					iUI is a javascript and CSS framework that makes WebApps & Mobile Websites Development for TouchScreen devices as seamless as possible
+				</p>
+			</div>
+
+			<div class="col-left">
+				<a name="q2"></a>
+				<h5>Can i use it for free, even for commercial projects?</h5>
+				<p>
+					iUI is a free and opensource project available under the <a href="http://www.opensource.org/licenses/bsd-license.php" target="_blank">New BSD License</a>.
+				</p>
+				<p style="padding-left: 10px; font-style: italic">
+					Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:<br />
+					1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.<br />
+					2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.<br />
+					3. Neither the name of iUI nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+				</p>
+			</div>
+
+			<div>
+				<a name="q3"></a>
+				<h5>Can i use other Javascript framework or tools on top of iUI?</h5>
+				<p>
+					Depends of what you do with it, but no conflict has been reported between iUI and majors JS libraries like JQuery, MooTools.<br />
+					Javascript based tools like Google Maps, HighCharts, or Facebook like buttons are ok too.
+				</p>
+			</div>
+
+			<div>
+				<a name="q4"></a>
+				<h5>I only see the top bar, all the rest seems hidden</h5>
+				<p>
+					Make sure you set the "selected" attribute to "true" in your div.<br />
+					ex: &lt;div id="home" title="HomePage" class="panel" selected="true">
+				</p>
+			</div>
+
+			<div>
+				<a name="q5"></a>
+				<h5>I'm still stuck, where can i get some help?</h5>
+				<p>
+					You will find some helful people on our Google Groups:<br />
+					<a href="http://groups.google.com/group/iPhoneWebDev" target="_blank">iPhoneWebDev: iUI Support and General Questions</a> or <a href="http://groups.google.com/group/iui-developers" target="_blank">iUI Developers Group</a>.<br />
+					(make sure to put your script online and provide an URL people can test)
+.
+				</p>
+			</div>
+
+
+		</div>
+
+		<hr>
+
+		<p id="footer">
+			iUI-JS &copy; 2007 - iUI-JS is an opensource framwork released under LGPL license - <a href="sitempa.html">sitemap</a> - <a href="donate.html">DONATE</a>
+		</p>
+
+	</div>
+</body>
+</html>

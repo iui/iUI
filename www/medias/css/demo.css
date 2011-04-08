@@ -1,0 +1,26 @@
+#header {
+	background-image:	url(../images/demo-header.jpg);
+}
+
+#content > div > div.demo-video {
+	display:		block;
+	float:			left;
+	width:			430px;
+}
+
+#content > div > div.demo-video > div {
+	position:		absolute;
+	width:			320px;
+	height:			480px;
+	margin:			121px 0 0 34px;
+}
+
+#content > div.page_footer > div.col1 {
+	background-image:	url(../images/about-footer-img1.jpg);
+}
+#content > div.page_footer > div.col2 {
+	background-image:	url(../images/about-footer-img2.jpg);
+}
+#content > div.page_footer > div.col3 {
+	background-image:	url(../images/about-footer-img3.jpg);
+}

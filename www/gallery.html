@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>iUI-JS - Gallery</title>
+	<meta name="description" content="iUI is a framework consisting of a JavaScript library, CSS, and images for developing advanced mobile webapps for smartphones & mobile devices.">
+	<link href="medias/images/favicon.png" rel="icon" type="image/png" /> 
+	<link href="medias/images/favicon.ico" rel="shortcut icon" />
+	<link rel="image_src" type="image/jpeg" href="medias/images/thumb.jpg" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+	<link rel='stylesheet' type='text/css' media="screen" href='medias/css/globals.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='medias/css/gallery.css' />
+	<!--[if lt IE 7]><link rel="stylesheet" type="text/css" media="screen" href="medias/css/ie6.css"><![endif]-->
+
+	<script type='text/javascript' src="medias/scripts/global.js"></script>
+
+	<script type='text/javascript'>
+	var gallery = [];
+	gallery.push(["MoMA", "Fev 2011", "moma"]);
+	gallery.push(["Pocket-Locator", "Dec 2010", "pocketlocator"]);
+	gallery.push(["Concert Plus", "Nov 2010", "concertplus"]);
+	gallery.push(["mRef", "Nov 2010", "mref"]);
+	gallery.push(["Osteosoin", "Fev 2010", "osteosoin"]);
+	gallery.push(["BonjourMadame", "Jan 2010", "bonjourmadame"]);
+	gallery.push(["Au2Go", "Nov 2009", "au2go"]);
+	gallery.push(["Decathlon Snow", "Nov 2009", "decathlonneige"]);
+	gallery.push(["eSudoku", "Nov 2009", "esudoku"]);
+	gallery.push(["iLounge", "Nov 2009", "ilounge"]);
+	gallery.push(["IphlickR", "Nov 2009", "iphlickr"]);
+	gallery.push(["MedicoPedia", "Nov 2009", "medicopedia"]);
+	gallery.push(["Pacific Presbytery", "Nov 2009", "pacificpresbytery"]);
+	gallery.push(["Pocket Vidz", "Nov 2009", "pocketvidz"]);
+	gallery.push(["iUI Music Demo", "Dec 2007", "iui"]);
+	gallery.push(["iLogros 360", "jun 2008", "ilogros"]);
+	</script>
+</head>
+
+<body>
+
+	<div id="main">
+
+		<div id="menu">
+			<ul>
+				<li><span class="logo"></span></li>
+				<li><a href="index.html" class="home"><span>Home</span></a></li>
+				<li><a href="about.html" class="about"><span>About</span></a></li>
+				<li><a href="demo.html" class="demo"><span>Demo</span></a></li>
+				<li><a href="download.html" class="download"><span>Download</span></a></li>
+				<li><a href="documentation.html" class="documentation"><span>Documentation</span></a></li>
+				<li><a href="gallery.html" class="gallery active"><span>Gallery</span></a></li>
+				<li><a href="get-involved.html" class="involved"><span>Get Involved</span></a></li>
+				<li><form method="GET" action="search" name="header_search">
+					<a href="#" id="emptysearch" onclick="empty('search_q');hide(this.id)"></a>
+					<input type="text" name="q" id="search_q" class="searchform" onFocus="checkHeaderSearch()" onKeyUp="checkHeaderSearch()" value="">
+					<input type="submit" value="search" class="hide">
+				</form></li>
+			</ul>
+	
+		</div>
+	
+		<hr>
+
+		<div id="header">
+			<h1>Powered by iUI-JS</h1>
+		</div>
+
+
+		<div id="content">
+
+			<div>
+				<h2>Powered by iUI-JS</h2> 
+				<p>
+					This page is a gallery of submitted websites / webapps powered by iUI-JS<br />
+					Yours is not here? <a href="">Submit it</a>!
+				</p>
+			</div>
+			
+			<div class="gallery">
+
+				<script type='text/javascript'>
+				for(var i=0;i<(gallery.length);i++) {
+					document.write('<a href="powered-by/?id='+gallery[i][2]+'"><img src="powered-by/images/'+gallery[i][2]+'-thumb.jpg"><strong>'+gallery[i][0]+'</strong><span>'+gallery[i][1]+'</span></a>\n');
+				}
+				</script>
+
+			</div>
+			
+			<div class="page_footer">
+			
+				<div class="col1">
+					<h5>Publish yours here</h5>
+					<p>
+						You've created a website/webapp using iUI-Touch?<br>We'd love to see it here<br />							<a href="extensions.html">Submit yours</a>
+					</p>
+				</div>
+				
+				
+				<div class="col2">
+					<h5>Looking for a theme?</h5>
+					<p>
+						Want to give your website a different look than default iOS look-a-like?<br />							<a href="themes.html">Browse theme gallery</a>
+					</p>
+				</div>
+				
+				<div class="col3">
+					<h5>You like iUI? We love coffee!</h5>
+					<p>
+						No better coding monkey gazoline than a large hot Latte or a juicy pizza! It always helps...<br />
+						<a href="keep-on-the-good-work.html">Donation page</a>
+					</p>
+				</div>
+			
+			</div>
+
+		</div>
+
+		<hr>
+
+		<p id="footer">
+			iUI-JS &copy; 2007 - iUI-JS is an opensource framwork released under LGPL license - <a href="sitempa.html">sitemap</a> - <a href="donate.html">DONATE</a>
+		</p>
+
+	</div>
+</body>
+</html>
