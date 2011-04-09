@@ -10,10 +10,22 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
 
 	<link rel='stylesheet' type='text/css' media="screen" href='medias/css/globals.css' />
-	<link rel='stylesheet' type='text/css' media="screen" href='medias/css/gallery.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='medias/css/themes.css' />
 	<!--[if lt IE 7]><link rel="stylesheet" type="text/css" media="screen" href="medias/css/ie6.css"><![endif]-->
 
 	<script type='text/javascript' src="medias/scripts/global.js"></script>
+	
+	<script type='text/javascript'>
+	var gallery = [];
+	gallery.push(["Default red", "Apr 2011", "defaultred"]);
+	gallery.push(["Default dark", "Apr 2011", "defaultdark"]);
+	gallery.push(["Android", "Mar 2011", "android"]);
+	gallery.push(["WebOS", "Mar 2011", "webos"]);
+	gallery.push(["IPhoneDevCamp", "Mar 2011", "ipdc"]);
+	gallery.push(["Default", "Mar 2011", "default"]);
+	gallery.push(["Default using gradients", "Mar 2011", "defaultgrad"]);
+	</script>
+	
 </head>
 
 <body>
@@ -51,15 +63,18 @@
 			<div>
 				<h2>Themes</h2> 
 				<p>
-					This page is a gallery of themes for iUI-JS<br />
-					Yours is not here? <a href="">Submit it</a>!
+					This page is a gallery of themes for iUI-JS.
 				</p>
 			</div>
 			
 			<div class="gallery">
-				<p>
-					WIP...
-				</p>
+
+				<script type='text/javascript'>
+				for(var i=0;i<(gallery.length);i++) {
+					document.write('<a href="themes/?id='+gallery[i][2]+'"><img src="themes/images/'+gallery[i][2]+'-thumb.jpg"><strong>'+gallery[i][0]+'</strong><span>'+gallery[i][1]+'</span></a>\n');
+				}
+				</script>
+
 			</div>
 			
 			<div class="page_footer">
@@ -73,9 +88,9 @@
 				
 				
 				<div class="col2">
-					<h5>Looking for a theme?</h5>
+					<h5>Create yours in a few minutes</h5>
 					<p>
-						Want to give your website a different look than default iOS look-a-like?<br />							<a href="themes.html">Browse theme gallery</a>
+						Take a look are our "Advanced Styling & Themes" documentation & create your own theme<br />							<a href="documentation.html">Advanced Styling & Themes</a>
 					</p>
 				</div>
 				
@@ -83,7 +98,7 @@
 					<h5>You like iUI? We love coffee!</h5>
 					<p>
 						No better coding monkey gazoline than a large hot Latte or a juicy pizza! It always helps...<br />
-						<a href="keep-on-the-good-work.html">Donation page</a>
+						<a href="donate.html">Donation page</a>
 					</p>
 				</div>
 			
@@ -94,7 +109,7 @@
 		<hr>
 
 		<p id="footer">
-			iUI-JS &copy; 2007 - iUI-JS is an opensource framwork released under LGPL license - <a href="sitempa.html">sitemap</a> - <a href="donate.html">DONATE</a>
+			iUI-JS &copy; 2007 - iUI-JS is an opensource framwork released under LGPL license - <a href="sitemap.html">sitemap</a> - <a href="donate.html">DONATE</a>
 		</p>
 
 	</div>

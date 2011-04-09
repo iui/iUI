@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>iUI Touch - Getting Started</title>
+	<meta name="description" content="iUI is a framework consisting of a JavaScript library, CSS, and images for developing advanced mobile webapps for smartphones & mobile devices.">
+	<link href="../../medias/images/favicon.png" rel="icon" type="image/png" /> 
+	<link href="../../medias/images/favicon.ico" rel="shortcut icon" />
+	<link rel="image_src" type="image/jpeg" href="../../medias/images/thumb.jpg" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+	<link rel='stylesheet' type='text/css' media="screen" href='../../medias/css/globals.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='../../medias/css/documentation.css' />
+	<!--[if lt IE 7]><link rel="stylesheet" type="text/css" media="screen" href="../../medias/css/ie6.css"><![endif]-->
+
+	<script type='text/javascript' src="../../medias/scripts/global.js"></script>
+	<script type='text/javascript' src="../../medias/scripts/documentation.js"></script>
+
+</head>
+
+<body>
+
+	<div id="main">
+
+		<div id="menu">
+			<ul>
+				<li><span class="logo"></span></li>
+				<li><a href="../../index.html" class="home"><span>Home</span></a></li>
+				<li><a href="../../about.html" class="about"><span>About</span></a></li>
+				<li><a href="../../demo.html" class="demo"><span>Demo</span></a></li>
+				<li><a href="../../download.html" class="download"><span>Download</span></a></li>
+				<li><a href="../../documentation.html" class="documentation active"><span>Documentation</span></a></li>
+				<li><a href="../../gallery.html" class="gallery"><span>Gallery</span></a></li>
+				<li><a href="../../get-involved.html" class="involved"><span>Get Involved</span></a></li>
+				<li><form method="GET" action="../../search" name="header_search">
+					<a href="#" id="emptysearch" onclick="empty('search_q');hide(this.id)"></a>
+					<input type="text" name="q" id="search_q" class="searchform" onFocus="checkHeaderSearch()" onKeyUp="checkHeaderSearch()" value="">
+					<input type="submit" value="search" class="hide">
+				</form></li>
+			</ul>
+	
+		</div>
+	
+		<hr>
+
+		<div id="header">
+			<h1>iUI Getting Started</h1>
+		</div>
+
+
+		<div id="content" class="gs">
+
+			<div class="col-left">
+				<h2>Getting started</h2> 
+				<p>
+					Thank you for your interest in iUI. This guide is meant for anybody trying out the iUI framework for the first time. It will walk you step by step through the basics of working with iUI and help you create your first app. Before we get started, it is important to point out that no prior knowledge of any programming language is required.
+				</p>
+				<p>
+					However, this guide currently assumes you are familiar with the basics of HTML coding. As we expand the iUI documentation, more code basics will be included. Until then, with the use of a visual HTML editor (also know as WYSIWYG editor), you should be able to create most of your app, if not all.
+				</p>
+				<p>
+					In fact, iUI’s purpose is to minimize the need for manual code entry and provide the user with all the basics so they can concentrate on what matters most - making a great idea turn into a great app!				</p>
+			</div>
+			
+			<div class="col-right">
+				<div>
+					<strong>Summary</strong><br />
+					- <a href="#start">Downloading and Installing</a><br />
+					- <a href="#single">First screen using iUI</a><br />
+					- <a href="#multiple">Multiple screens navigation</a><br />
+				</div>
+
+				<div>
+					<strong>See also</strong><br />
+					- <a href="../../faq.html">Frequently Asked Questions</a><br />
+					- <a href="iui-documentation.html">iUI code documentation</a><br />
+					- <a href="extensions.html">Extentions, sandbox & plugins</a><br />
+					- <a href="styles-themes.html">Advanced styling & themes</a><br />
+				</div>
+			</div>
+
+			<div>
+				<a name="start"></a>
+				<h5>1. Downloading and Installing iUI</h5>
+				<p>
+					There is no installation for the iUI framework. The framework consists of a combination of html, css, js and image files, organized in regular folders and zipped for your convenience. All you will need to do is <a href="../../download.html">download that archive</a> and unpack/extract it in the location you want.
+				</p>
+				<p>
+					Once downloaded, "iui" folder tree should look like the following screen: (in /web-app/iui)
+				</p>
+				<p class="tcenter">
+					<img class="thumb" src="images/iui-getting-started-img1.jpg" />
+				</p>
+			</div>
+			
+			<div>
+				<p>
+					Once done, here is what your HTML documents should have in their <i>&lt;head></i>. Of course you can add more than that but those are needed.
+				</p>
+				<p>
+<code>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;title>Page Title&lt;/title>
+	&lt;meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	&lt;link rel="stylesheet" href="iui/iui.css" type="text/css" />
+	&lt;link rel="stylesheet" href="iui/t/default/default-theme.css"  type="text/css"/>
+	&lt;script type="application/x-javascript" src="iui/iui.js">&lt;/script>
+&lt;/head>
+</code>
+				</p>
+				<p>
+					Line 1 is needed to scale the browser viewport to the content width, and disable pinch/zoom<br />					Line 2 and 3 are the CSS styles. First one is iUI defining all globals, second is iOS default theme.<br />					Line 4 contains the link to the javascript file, which is responsible for the native looking transitions and governs the behavior of links, buttons, etc.<br />
+					<br />
+					<em>Note that iUI Javascript code doesn't interact with other major frameworks. You can mix it with some JQuery, MooTools, ...</em>				</p>
+				<p>					Ok that’s pretty much it, let’s make our first <a href="http://en.wikipedia.org/wiki/Hello_world_program" target="_blank">Hello World</a> :)
+				</p>
+			</div>
+			
+			<div>
+				<a name="single"></a>
+				<h5>2. First screen using iUI</h5>
+				<p>
+					Let's start simple: one screen, no link. The main goal here is to show you basic elements that you will see on every single screen that uses iUI.
+				</p>
+				<p>
+					<strong>The Toolbar and Navigation</strong><br />
+					The main difference between iUI and other mobile web frameworks is the way the toolbar is managed. The toolbar sits at the top of your app’s screen and serves as the main menu for navigation and content titles.<br />
+					Where other frameworks require you to redefine a toolbar for every individual page/screen, iUI keeps the toolbar “static” and changes its title automatically (based on the value of the “title” attribute of the active screen).
+				</p>
+				<p>
+					Here is an example of a single screen showing a toolbar + the text "Hello World":
+				</p>
+			</div>
+			
+			<div>
+				<p class="col2">
+<code>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	&lt;meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	&lt;link rel="stylesheet" href="iui/iui.css" type="text/css" />
+	&lt;link rel="stylesheet" href="iui/t/default/default-theme.css"  type="text/css"/>
+	&lt;script type="application/x-javascript" src="iui/iui.js">&lt;/script>
+&lt;/head>
+
+&lt;body>
+	&lt;div class="toolbar">
+		&lt;h1 id="pageTitle">&lt;/h1>
+		&lt;a id="backButton" class="button" href="#">&lt;/a>
+	&lt;/div>
+	&lt;div id="index" title="Index" selected="true">
+		Hello World
+	&lt;/div>
+&lt;/body>
+&lt;/html>
+</code>
+<a href="getting-started/example-simple.html" target="_blank">see live demo</a>
+				</p>
+				<p class="col1">
+					<img class="bordered" src="images/iui-getting-started-img2.jpg">
+				</p>
+			</div>
+
+			<div>
+				<p>
+					You may have noticed there is a piece of code in there for a "backButton"but no back button appears in this page. Just like the toolbar itself,  iUI takes care of the back button and shows it only when needed. If there is no previous screen in your navigation history, the back button is hidden. It shows up automatiquely and is titled using previous screen title value.
+				</p>
+				<p>
+					<strong>Pages, screens, and app content</strong><br />
+					The concept of a page in website is usually very clear - every new page is literally a new physical file that gets loaded. iUI operates on a slightly different principle. To make load times and transitions faster over a basic mobile phone network, iUI puts all the content it can in one physical page. That page (in our case the index.html file) contains all the screens that the user can navigate to. This is why, throughout this guide, we will refer to separate “pages” within your app as separate “screens” - literally what the user sees on their screen at the moment. Of course, you can have external content and additional pages and most apps do. In this case, iUI will load this external page content inside the current page, and then perform a sliding transition to it.
+				</p>
+				<p class="tcenter">
+					<img src="images/iui-getting-started-img3.jpg">
+				</p>
+				<p>
+					Each individual page can be any HTML element: &lt;div>, &lt;ul>, &lt;form>, ... Each element should come with an 'id' and a 'title' attribute. 'id' is used as the screen reference and link, and should be unique. This is how a new screen is “requested” once a button or a link is clicked. 'title' is used as a screen title, which shows up in the toolbar and further as the back button label.<br />
+				</p>
+				<p>
+					On load, iUI hides all screens except the one with the attribute "selected" set to "true". This pretty much tells iUI that this screen is your main screen and should appear first. (if no body children elements have that attribute, only the toolbar will be displayed). Here is an example of a 
+				</p>
+				<p>
+<code>
+	&lt;div id="index" title="Index" selected="true">
+		Hello World
+	&lt;/div>
+</code>
+				</p>
+				<p>
+<code>
+	&lt;ul id="contacts" title="My Contacts">
+		&lt;li>List item&lt;/li>
+	&lt;/ul>
+</code>
+				</p>
+				<p>
+<code>
+	&lt;form id="" title="Index" name="formname" action="" method="GET">
+		&lt;input type="text" name="inputname">
+		&lt;input type="submit">
+	&lt;/form>
+</code>
+				</p>
+			</div>
+			
+			<div>
+				<a name="multiple"></a>
+				<h5>3. Multiple screens navigation</h5>
+				<p>
+					As we saw, in an iUI document, you have a toolbar div, and all the rest are pages/screens. Let's make a sliding link between two screens:
+				</p>
+				<p class="col2">
+<code>
+&lt;body>
+	&lt;div class="toolbar">
+		&lt;h1 id="pageTitle">&lt;/h1>
+		&lt;a id="backButton" class="button" href="#">&lt;/a>
+	&lt;/div>
+
+	&lt;ul id="screen1" title="Screen 1" selected="true">
+		&lt;li>&lt;a href="#screen2">Go to Screen #2&lt;/a>&lt;/li>
+	&lt;/ul>
+	
+	&lt;div id="screen2" title="Screen 2">
+		Hello World
+	&lt;/div>
+&lt;/body>
+</code>
+					<a href="getting-started/example-link1.html" target="_blank">see live demo</a>
+				</p>
+				<p class="col1">
+					<img class="bordered" src="images/iui-getting-started-img4.jpg"><br />
+					<img class="bordered" src="images/iui-getting-started-img5.jpg">
+				</p>
+			</div>
+			<div>
+				<p>
+					Of course, you're not limited to two screens, neither to use a list element for links. Here is a second example with 3 screens.
+				</p>
+				<p class="col2">
+<code>
+&lt;body>
+	&lt;div class="toolbar">
+		&lt;h1 id="pageTitle">&lt;/h1>
+		&lt;a id="backButton" class="button" href="#">&lt;/a>
+	&lt;/div>
+
+	&lt;ul id="screen1" title="Screen 1" selected="true">
+		&lt;li>&lt;a href="#screen2">Go to Screen #2&lt;/a>&lt;/li>
+	&lt;/ul>
+	
+	&lt;div id="screen2" title="Screen 2">
+		&lt;a href="#screen3">Go to screen #3&lt;/a>
+	&lt;/div>
+	
+	&lt;div id="screen3" title="Screen 3" class="panel">
+		Hello World
+	&lt;/div>
+&lt;/body>
+</code>
+					<a href="getting-started/example-link2.html" target="_blank">see live demo</a>
+				</p>
+				<p class="col1">
+					<img class="bordered" src="images/iui-getting-started-img4.jpg"><br />
+					<img class="bordered" src="images/iui-getting-started-img6.jpg"><br />
+					<img class="bordered" src="images/iui-getting-started-img7.jpg">
+				</p>
+			</div>
+			
+			<div>
+				<p>
+					If you want to learn more about all predefined graphical styles & elements in iUI, please go to our <a href="styles-themes.html">Advanced styling & themes</a> documentation page.
+				</p>
+			</div>
+			
+		</div>
+
+		<hr>
+
+		<p id="footer">
+			iUI-JS &copy; 2007 - iUI-JS is an opensource framwork released under LGPL license - <a href="../../sitemap.html">sitemap</a> - <a href="../../donate.html">DONATE</a>
+		</p>
+
+	</div>
+</body>
+</html>

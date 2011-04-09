@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>iUI Documentation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="iUI is a framework consisting of a JavaScript library, CSS, and images for developing advanced mobile webapps for smartphones & mobile devices.">
+	<link href="../../medias/images/favicon.png" rel="icon" type="image/png" /> 
+	<link href="../../medias/images/favicon.ico" rel="shortcut icon" />
+	<link rel="image_src" type="image/jpeg" href="../../medias/images/thumb.jpg" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+	<link rel='stylesheet' type='text/css' media="screen" href='../../medias/css/globals.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='../../medias/css/documentation.css' />
+	<!--[if lt IE 7]><link rel="stylesheet" type="text/css" media="screen" href="../../medias/css/ie6.css"><![endif]-->
+	<link href="iui_docs.css" rel="stylesheet" type="text/css">
+
+	<script type='text/javascript' src="../../medias/scripts/global.js"></script>
+	<script type='text/javascript' src="../../medias/scripts/documentation.js"></script>
+</head>
+
+<body>
+
+	<div id="main">
+
+		<div id="menu">
+			<ul>
+				<li><span class="logo"></span></li>
+				<li><a href="../../index.html" class="home"><span>Home</span></a></li>
+				<li><a href="../../about.html" class="about"><span>About</span></a></li>
+				<li><a href="../../demo.html" class="demo"><span>Demo</span></a></li>
+				<li><a href="../../download.html" class="download"><span>Download</span></a></li>
+				<li><a href="../../documentation.html" class="documentation active"><span>Documentation</span></a></li>
+				<li><a href="../../gallery.html" class="gallery"><span>Gallery</span></a></li>
+				<li><a href="../../get-involved.html" class="involved"><span>Get Involved</span></a></li>
+				<li><form method="GET" action="../../search" name="header_search">
+					<a href="#" id="emptysearch" onclick="empty('search_q');hide(this.id)"></a>
+					<input type="text" name="q" id="search_q" class="searchform" onFocus="checkHeaderSearch()" onKeyUp="checkHeaderSearch()" value="">
+					<input type="submit" value="search" class="hide">
+				</form></li>
+			</ul>
+	
+		</div>
+	
+		<hr>
+
+		<div id="header">
+			<h1>iUI Documentation</h1>
+		</div>
+
+
+		<div id="content" class="gs">
+
+			<div class="col-left">
+				<h2>iUI Documentation</h2>
+				<p>
+					<em>For a gentler introduction to iUI, check out the <a href="getting-started.html">Getting Started Tutorial</a>.</em><br />
+					This version of iUI has a partial implementation of the <span class="code">busy</span> flag for Issue #191, it will not work with webapps that call <span class="code">iui.showPage()</span> or <span class="code">iui.showPageByHref()</span> directly. This issue will be resolved in a later version.
+				</p>
+			</div>
+
+			<div class="col-right">
+				<div>
+					<strong>Summary</strong><br />
+					- <a href="#event">Event Handling</a><br />
+					- <a href="#customevents">iUI Custom Events</a><br />
+					- <a href="#properties">Properties</a><br />
+					- <a href="#methods">Methods</a><br />
+				</div>
+
+				<div>
+					<strong>See also</strong><br />
+					- <a href="getting-started.html">Getting started</a><br />
+					- <a href="../../faq.html">Frequently Asked Questions</a><br />
+					- <a href="extensions.html">Extentions, sandbox & plugins</a><br />
+					- <a href="styles-themes.html">Advanced styling & themes</a><br />
+				</div>
+			</div>
+
+			<div class="col-left">
+				<a name="event"></a>
+				<h5>1. Event Handling</h5>
+				<p>
+					<strong> On Load</strong><br />
+					On load, iUI will determine which page to display primarily based on the anchor part of the URL (everything after <span class="code">#_</span>) and secondarily based on the top-level (child of the <span class="code">body</span>) element with the <span class="code">selected</span> attribute set to <span class="code">true</span>. If these both exist, iui.showPage() will be called twice, but the anchor-based load will win because it is done second.
+				</p>
+			</div>
+
+			<div>
+				<p>
+					<strong>Link Click Handling</strong><br />
+					iUI captures all clicks on <span class="code">a</span> elements and goes through a series of checks to determine what to do:
+				</p>
+
+				<p>
+					- If the link has a <span class="code">href="#..."</span>, iUI will navigate to the panel ID specified after the # (no underscore).
+					<br />
+					- If the link's ID is <span class="code">backButton</span>, iUI will navigate to the previous screen (see <span class="code">iui.goBack()</span>).
+					<br />
+					- If the link has a <span class="code">type="submit"</span>, iUI will find the parent <span class="code">form</span> element, gather up all the input values and submit the form via AJAX (see <span class="code">iui.showPageByHref()</span>).
+					<br />
+					- If the link has a <span class="code">type="cancel"</span>, iUI will cancel the parent <span class="code">form</span> element dialog.
+					<br />
+					- If the link has a <span class="code">target="_replace"</span>, iUI will do an AJAX call based on the href of the link and replace the panel that the link is in with the contents of the AJAX response.
+					<br />
+					- If the link is a native URL (see <span class="code">iui.isNativeURL()</span>), iUI will do nothing.
+					<br />
+					- If the link has a <span class="code">target="_webapp"</span>, iUI will perform a normal link, navigating completely away from the iUI app and pointing the browser to the linked-to webapp instead.
+					<br />
+					- If there is no <span class="code">target</span> attribute, iUI will perform a normal (non-replace) AJAX slide (see <span class="code">iui.showPageByHref()</span>).
+				</p>
+
+				<p>
+					<strong>Div.toggle Click Handling</strong><br />
+					iUI also captures <span class="code">div.toggle</span> clicks and displays/hides the element via setting a <span class="code">toggled</span> attribute to true/false.
+				</p>
+			</div>
+
+
+			<div>
+				<a name="customevents"></a>
+				<h5>2. iUI Custom Events</h5>
+				<p>
+					<strong> On Load</strong><br />
+					iUI fires a number of custom events on your panel and dialog elements. Handling these events is the recommended way to do any just-in-time transformations or loading (besides the ajax pre-loading built into iUI).
+				</p>
+				<p>
+					Dialogs receive a <span class="code">focus</span> event when they are shown and a <span class="code">blur</span> event when hidden. Currently they don't receive any <span class="code">load</span> or <span class="code">unload</span> events.
+				</p>
+				<p>
+					Panels receive <span class="code">focus</span> and <span class="code">blur</span> events and also receive a <span class="code">load</span> event and (only when going backwards away from a panel) an <span class="code">unload</span> event.
+				</p>
+				<p>
+					When new pages are inserted into the DOM after an AJAX load, the <span class="code">body</span> element receives a <span class="code">beforeinsert</span> event with <span class="code">{ fragment: frag }</span> parameters and afterwards receives an <span class="code">afterinsert</span> event with <span class="code">{insertedNode: docNode}</span> parameters.
+				</p>
+				<p>
+					Both panels involved in a slide animation receive <span class="code">beforetransition</span> and <span class="code">aftertransition</span> events. The panel being navigated from receives event parameters <span class="code">{ out :true }</span>, the panel being navigated to receives <span class="code">{ out: false }</span>.
+				</p>
+			</div>
+
+
+			<div>
+				<a name="properties"></a>
+				<h5>3. Properties</h5>
+				<p>
+					<strong>iui.busy</strong><br />
+					This is set to <span class="code">true</span> if a slide animation is in progress.
+				</p>
+				<p>
+					<strong> iui.animOn</strong><br />
+					Determines whether to do horizontal slide animations with CSS transitions (<a href="http://www.w3.org/TR/css3-2d-transforms/">http://www.w3.org/TR/css3-2d-transforms/</a>) where supported (defaults to <span class="code">true</span>). Otherwise, manual <span class="code">setInterval()</span> style animations are performed (vertical slide animations are always done manually).
+				</p>
+				<p>
+					<strong> iui.ajaxErrHandler</strong><br />
+					If defined, this user-set function will be called when an AJAX call returns with an HTTP status other than <span class="code">200</span> (currently all HTTP statuses other than <span class="code">200</span>, even including 200-level statuses like <span class="code">201 Created</span>, are seen as errors).
+				</p>
+				<p>
+					<strong> iui.httpHeaders</strong><br />
+					An object defining headers to be sent with Ajax requests. This defaults to: <pre>{ 'X-Requested-With': 'XMLHttpRequest' }</pre>
+				</p>
+			</div>
+
+
+			<div>
+				<a name="properties"></a>
+				<h5>4. Methods</h5>
+				<p>
+					<strong>iui.showPage(page[, backwards=false])</strong><br />
+					<span class="code">showPage()</span> should probably be an internal function, outside callers should call <span class="code">showPageById()</span> instead. <span class="code">showPage()</span> doesn't set the busy flag because it is already set by the public-facing functions.
+				</p>
+				<p>
+					<span class="code">page</span> is the html element to show. If <span class="code">backwards</span> is set to <span class="code">true</span>, it will display a right-to-left animation instead of the default left-to-right.
+				</p>
+				<p>
+					If the currently-displayed page is passed, iui will do nothing. <span class="code">showPage()</span> is used for both panel-type pages and dialog-type pages (dialogs float on top of the panels, have a cancel button and do not participate in sliding animations). Panel-type pages receive blur/focus events and load/unload events, but dialog-type pages only receive blur/focus events.					
+				</p>
+				<p>
+					<strong>iui.showPageById(pageId)</strong><br />
+					Looks up the page element by the id and checks the internal history to determine if the page is on the stack -- if so, it will call <span class="code">showPage()</span> with <span class="code">backwards</span> set to <span class="code">true</span>, reversing the direction of the animation.
+				</p>
+				<p>
+					<strong>iui.goBack()</strong><br />
+					Navigates to the previous page in the history stack.
+				</p>
+				<p>
+					<strong>iui.replacePage(pageId)</strong><br />
+					Loads a new page at the same level in the history stack. Currently it will do a slide-in animation, but replaces the current page in the navStack. It should probably use a different animation (slide-up/slide-down).
+				</p>
+				<p>
+					<strong>iui.showPageByHrefExt(href, args, method, replace, cb)</strong><br />
+					Outside callers should use this version to do an ajax load programmatically from your webapp. In a future version, this will be renamed to <span class="code">showPageByHref()</span> (once the old method and  all its calls are renamed).
+				</p>
+				<p>
+					<span class="code">href</span> is a URL string, <span class="code">method</span> is the HTTP method (defaults to <span class="code">GET</span>), <span class="code">args</span> is an Object of key-value pairs that are used to generate the querystring, <span class="code">replace</span> is an existing element that either is the panel or is a child of the panel that the incoming HTML will replace (if not supplied, iUI will append the incoming HTML to the <span class="code">body</span>), and <span class="code">cb</span> is a user-supplied callback function.
+				</p>
+				<p>
+					<strong>iui.showPageByHref(href, args, method, replace, cb)</strong><br />
+					This one should only be used by iUI internally.  It should be renamed and possibly moved into the closure.
+				</p>
+				<p>
+					<strong>iui.ajax(url, args, method, cb)</strong><br />
+					Handles ajax requests and also fires a <span class="code">setTimeout()</span> call to abort the request if it takes longer than 30 seconds. See <span class="code">showPageByHrefExt()</span> above for a description of the various arguments (<span class="code">url</span> is the same as <span class="code">href</span>).
+				</p>
+				<p>
+					<strong>iui.param(o)</strong><br />
+					Stripped-down, simplified object-only version of a jQuery function that converts an object of keys/values into a URL-encoded querystring.
+				</p>
+				<p>
+					<strong>iui.insertPages(frag)</strong><br />
+					If an AJAX call (<span class="code">showPageByHref()</span>) is made without supplying a <span class="code">replace</span> element, <span class="code">insertPages()</span> is called to insert the newly-created element fragment into the page DOM. Each child-node of the HTML fragment is a panel and if any of them are already in the DOM, they will be replaced by the incoming elements.
+				</p>
+				<p>
+					<strong>iui.getSelectedPage()</strong><br />
+					Returns the panel element that is currently being viewed. Each panel must be a direct child of the <span class="code">body</span> element. A panel is set as the selected panel by setting the <span class="code">selected</span> attribute to <span class="code">true</span>.
+				</p>
+				<p>
+					<strong>iui.isNativeUrl(href)</strong><br />
+					Determines whether the supplied URL string launches a native iPhone app (maps, YouTube, phone, email, etc). If so, iUI does nothing (doesn't attempt to load a page or slide to it) and allows the phone to handle it the click natively.
+				</p>
+				<p>
+					<strong>iui.hasClass(self, name)</strong><br />
+					Convenience function to determine if the given element (<span class="code">self</span>) has the class <span class="code">name</span>.
+					
+				</p>
+				<p>
+					<strong>iui.addClass(self, name)</strong><br />
+					Convenience function to add the given class <span class="code">name</span> to element <span class="code">self</span>.
+					
+				</p>
+				<p>
+					<strong>iui.removeClass(self, name)</strong><br />
+					Convenience function to remove the given class <span class="code">name</span> to element <span class="code">self</span>.
+					
+				</p>
+
+		</div>
+
+		<hr>
+
+		<p id="footer">
+			iUI-JS &copy; 2007 - iUI-JS is an opensource framwork released under LGPL license - <a href="../../sitemap.html">sitemap</a> - <a href="../../donate.html">DONATE</a>
+		</p>
+
+	</div>
+</body>
+</html>

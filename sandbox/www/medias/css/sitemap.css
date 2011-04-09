@@ -1,0 +1,12 @@
+#header {
+	background-image:	url(../images/sitemap-header.jpg);
+}
+
+#content > div > div.mid-col {
+	display:		block;
+	float:			left;
+	width:			430px;
+}
+#content > div > div > ul {
+	padding-left:	20px;
+}

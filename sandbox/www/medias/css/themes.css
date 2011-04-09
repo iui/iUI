@@ -1,0 +1,117 @@
+#header {
+	background-image:	url(../images/themes-header.jpg);
+}
+
+a.btn {
+	margin-left:	100px;
+}
+
+#content div {
+	margin-bottom: 0px;
+}
+#content div.gallery {
+	margin-bottom: 30px;	
+}
+
+#content div.gallery a {
+	float:			left;
+	width:			195px;
+	color:			#000;
+	margin-bottom:	20px;
+	text-align:		center;
+	line-height:		1.2em;
+	text-decoration:	none;
+}
+#content div.gallery a img {
+	padding:		2px;
+	margin-bottom:	5px;
+	border:			1px solid #ccc;
+}
+#content div.gallery a:hover img {
+	border:			1px solid #444;	
+}
+#content div.gallery a strong,
+#content div.gallery a span {
+	display:		block;
+	width:			195px;
+	font-size:		13px;
+	color: 			#000;
+	white-space:	nowrap;
+	text-overflow:	ellipsis;
+	overflow:		hidden;
+}
+#content div.gallery a span {
+	color:			#bbb;
+	font-size:		11px;
+}
+
+
+
+#content div.preview {
+	float:	left;
+	width:	500px;
+}
+#content div.preview p strong,
+#content div.preview p span {
+	float:	left;
+	width:	300px;	
+}
+#content div.preview p em {
+	display:	block;
+	text-align: center;
+	width:		500px;
+	font-style:	normal;
+	font-size:	.8em;
+}
+#content div.preview p strong {
+	width:	200px;	
+}
+#appdesc ul li {
+	list-style-position: inside;
+}
+#content div.previewer {
+	float:	right;
+	width:	425px;
+	height:	460px;
+	background:	#fff url(../images/gallery_previewer_bg.jpg) no-repeat top left;
+}
+#content div.previewer #preview1 {
+	position:	absolute;
+	margin-top:		88px;
+	margin-left:	20px;
+	width:		200px;
+	height:		262px;
+	z-index:	99;
+	background-position: top left;
+	background-repeat: no-repeat;
+}
+#content div.previewer #preview2 {
+	position:	absolute;
+	margin-top:		99px;
+	margin-left:	236px;
+	width:		170px;
+	height:		242px;
+	z-index:	99;
+	background-position: top right;
+	background-repeat: no-repeat;
+}
+#content div.previewer div.light {
+	position:	absolute;
+	width:		inherit;
+	height:		inherit;
+	background:	url(../images/gallery_previewer_light.png) no-repeat top left;
+}
+
+
+#content > div.page_footer {
+	margin-top:		60px;
+}
+#content > div.page_footer > div.col1 {
+	background-image:	url(../images/powered-by-footer-img1.jpg);
+}
+#content > div.page_footer > div.col2 {
+	background-image:	url(../images/powered-by-footer-img2.jpg);
+}
+#content > div.page_footer > div.col3 {
+	background-image:	url(../images/powered-by-footer-img3.jpg);
+}

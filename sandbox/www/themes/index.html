@@ -56,7 +56,7 @@
 			</div>
 
 			<div class="preview">
-				<h2 id="appname">&nbsp;</h2> 
+				<h2 id="themename">&nbsp;</h2> 
 			</div>
 
 			<div class="preview">
@@ -67,15 +67,18 @@
 					<strong>Author website:</strong><span id="website"></span>
 				</p>
 				<p>
-					<strong>Posted:</strong><span id="appdate"></span>
+					<strong>Created:</strong><span id="themedate"></span>
+				</p>
+				<p>
+					<strong>Last update:</strong><span id="themeupdate"></span>
 				</p>
 			</div>
 
 			<div class="preview">
-				<p id="appdesc"></p>
-				<p id="appurl"></p>
+				<p id="themedesc"></p>
+				<p id="themeurl"></p>
 				<p>
-					<a href="../gallery.html">Back to the gallery</a>
+					<a href="../themes.html">Back to the gallery</a>
 			</div>
 
 			
@@ -90,9 +93,9 @@
 				
 				
 				<div class="col2">
-					<h5>Looking for a theme?</h5>
+					<h5>Create yours in a few minutes</h5>
 					<p>
-						Want to give your website a different look than default iOS look-a-like?<br />							<a href="themes.html">Browse theme gallery</a>
+						Take a look are our "Advanced Styling & Themes" documentation & create your own theme<br />							<a href="documentation.html">Advanced Styling & Themes</a>
 					</p>
 				</div>
 				
@@ -111,7 +114,7 @@
 		<hr>
 
 		<p id="footer">
-			iUI Touch &copy; 2007 - iUI Touch is an opensource framwork released under LGPL license - <a href="">sitemap</a> - <a href="">press</a> - <a href="">DONATE</a>
+			iUI-JS &copy; 2007 - iUI-JS is an opensource framwork released under LGPL license - <a href="../sitemap.html">sitemap</a> - <a href="../donate.html">DONATE</a>
 		</p>
 
 	</div>
@@ -130,12 +133,13 @@
 				success: function(xml) {
 					$('#author').html($(xml).find('author').text());
 					($(xml).find('website').text()!='null')?$('#website').html('<a href="'+$(xml).find('website').text()+'" target="_blank">'+$(xml).find('website').text()+'</a>'):$('#website').html('none');
-					$('#appname').html($(xml).find('appname').text());
-					$('#appdate').html($(xml).find('appdate').text());
-					$('#appdesc').html($(xml).find('appdesc').text());
+					$('#themename').html($(xml).find('themename').text());
+					$('#themedate').html($(xml).find('themedate').text());
+					$('#themeupdate').html($(xml).find('themeupdate').text());
+					$('#themedesc').html($(xml).find('themedesc').text());
 					$('#preview1').css('background-image', 'url("images/'+appId+'-screen1.jpg")');
 					$('#preview2').css('background-image', 'url("images/'+appId+'-screen2.jpg")');
-					($(xml).find('appurl').text()!='null')?$('#appurl').html('<a href="'+$(xml).find('appurl').text()+'" target="_blank" class="btn">Visit this website</a>'):$('#appurl').html('-- not online anymore --');
+					($(xml).find('themeurl').text()!='null')?$('#themeurl').html('<a href="'+$(xml).find('themeurl').text()+'" target="_blank" class="btn">Download the theme</a>'):$('#themeurl').html('-- not available --');
 				}
 			});
 		});

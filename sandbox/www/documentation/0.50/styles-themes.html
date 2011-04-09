@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>iUI Touch - Styles & Themes</title>
+	<meta name="description" content="iUI is a framework consisting of a JavaScript library, CSS, and images for developing advanced mobile webapps for smartphones & mobile devices.">
+	<link href="../../medias/images/favicon.png" rel="icon" type="image/png" /> 
+	<link href="../../medias/images/favicon.ico" rel="shortcut icon" />
+	<link rel="image_src" type="image/jpeg" href="../../medias/images/thumb.jpg" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+	<link rel='stylesheet' type='text/css' media="screen" href='../../medias/css/globals.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='../../medias/css/documentation.css' />
+	<!--[if lt IE 7]><link rel="stylesheet" type="text/css" media="screen" href="../../medias/css/ie6.css"><![endif]-->
+
+	<script type='text/javascript' src="../../medias/scripts/global.js"></script>
+	<script type='text/javascript' src="../../medias/scripts/documentation.js"></script>
+
+</head>
+
+<body>
+
+	<div id="main">
+
+		<div id="menu">
+			<ul>
+				<li><span class="logo"></span></li>
+				<li><a href="../../index.html" class="home"><span>Home</span></a></li>
+				<li><a href="../../about.html" class="about"><span>About</span></a></li>
+				<li><a href="../../demo.html" class="demo"><span>Demo</span></a></li>
+				<li><a href="../../download.html" class="download"><span>Download</span></a></li>
+				<li><a href="../../documentation.html" class="documentation active"><span>Documentation</span></a></li>
+				<li><a href="../../gallery.html" class="gallery"><span>Gallery</span></a></li>
+				<li><a href="../../get-involved.html" class="involved"><span>Get Involved</span></a></li>
+				<li><form method="GET" action="../../search" name="header_search">
+					<a href="#" id="emptysearch" onclick="empty('search_q');hide(this.id)"></a>
+					<input type="text" name="q" id="search_q" class="searchform" onFocus="checkHeaderSearch()" onKeyUp="checkHeaderSearch()" value="">
+					<input type="submit" value="search" class="hide">
+				</form></li>
+			</ul>
+	
+		</div>
+	
+		<hr>
+
+		<div id="header">
+			<h1>Advanced styling & themes</h1>
+		</div>
+
+
+		<div id="content" class="gs">
+
+			<div class="col-left">
+				<h2>Advanced styling & themes</h2> 
+				<p>
+					This documentation better fits to people that have already created some pages using iUI. If it's the first time or if you don't have any iUI experience for now, please read our <a href="getting-started.html#styles">Getting Started Guide</a>. This will give you all the basics you need to understand easily the followings.
+				</p>
+				<p>
+					If you have an iUI-related problem with your code (you're probably not the first), go check our <a href="http://groups.google.com/group/iPhoneWebDev" target="_blank">Google Group</a>. The answser you're looking for is certainly waiting for you there. 
+				</p>
+			</div>
+			
+			<div class="col-right">
+				<div>
+					<strong>Summary</strong><br />
+					- <a href="#styles">Basic/predefined styles</a><br />
+					- <a href="#standalone">Fullscreen/Webapp mode</a><br />
+					- <a href="#themes">Themes</a><br />
+				</div>
+
+				<div>
+					<strong>See also</strong><br />
+					- <a href="getting-started.html">Getting Started</a><br />
+					- <a href="iui-documentation.html">iUI code documentation</a><br />
+					- <a href="../../faq.html">Frequently Asked Questions</a><br />
+					- <a href="extensions.html">Extentions, sandbox & plugins</a><br />
+				</div>
+			</div>
+
+
+			<div>
+				<a name="styles"></a>
+				<h5>1. Basic / predefined styles</h5>
+				<p>
+					iUI comes with some  predefined styles for lists, texts, background colors or form elements. Here is what you can easily create.
+				</p>
+				<p>
+					<strong>Grouped lists</strong>
+				</p>
+				<p class="col2">
+<code>
+&lt;ul id="screen1" title="Screen 1">
+	&lt;li class="group">Links&lt;/li>
+	&lt;li>&lt;a href="#screen2">Go to Screen #2&lt;/a>&lt;/li>
+	&lt;li>&lt;a href="#screen3">Go to Screen #3&lt;/a>&lt;/li>
+
+	&lt;li class="group">No links&lt;/li>
+	&lt;li>Just a list item&lt;/li>
+	&lt;li>Just a list item&lt;/li>
+&lt;/ul>
+</code>
+					<a href="getting-started/example-list1.html" target="_blank">see live demo</a>
+				</p>
+				<p class="col1">
+					<img class="bordered" src="images/iui-getting-started-img8.jpg">
+				</p>
+			</div>
+
+			<div>
+				<p>
+					<strong>Rounded lists</strong>
+				</p>
+				<p class="col2">
+<code>
+&lt;div id="screen1" title="Screen 1" class="panel">
+	&lt;h2>List title&lt;/h2>
+	&lt;ul>
+		&lt;li class="group">Links&lt;/li>
+		&lt;li>&lt;a href="#screen2">Go to Screen #2&lt;/a>&lt;/li>
+		&lt;li>&lt;a href="#screen3">Go to Screen #3&lt;/a>&lt;/li>
+
+		&lt;li class="group">No links&lt;/li>
+		&lt;li>Just a list item&lt;/li>
+		&lt;li>Just a list item&lt;/li>
+	&lt;/ul>
+&lt;/div>
+</code>
+					<a href="getting-started/example-list2.html" target="_blank">see live demo</a>
+				</p>
+				<p class="col1">
+					<img class="bordered" src="images/iui-getting-started-img9.jpg">
+				</p>
+			</div>
+
+			<div>
+				<p>
+					<strong>Panel fieldset</strong>
+				</p>
+				<p class="col2">
+<code>
+&lt;div id="screen1" title="Screen 1" class="panel">
+	&lt;fieldset>
+		&lt;div class="row">
+			&lt;p>Hello&lt;/p>
+		&lt;/div>
+		&lt;div class="row">
+			&lt;p>World!&lt;/p>
+		&lt;/div>
+	&lt;/fieldset>
+	&lt;fieldset>
+		&lt;div class="row">
+			&lt;p>Hello World! Hello World! Hello World! Hello World! Hello World!&lt;/p>
+		&lt;/div>
+	&lt;/fieldset>
+&lt;/div>
+</code>
+					<a href="getting-started/example-panel.html" target="_blank">see live demo</a>
+				</p>
+				<p class="col1">
+					<img class="bordered" src="images/iui-getting-started-img10.jpg">
+				</p>
+			</div>
+
+			<div>
+				<p>
+					<strong>Forms 1</strong>
+				</p>
+				<p class="col2">
+<code>
+&lt;form id="screen1" title="Screen 1" class="panel" name="formname" action="" method="get">
+	&lt;fieldset>
+		&lt;div class="row">
+			&lt;label>Login&lt;/label>
+			&lt;input type="text" name="ident" placeholder="Your login">
+		&lt;/div>
+		&lt;div class="row">
+			&lt;label>Password&lt;/label>
+			&lt;input type="password" name="password" placeholder="Your password">
+		&lt;/div>
+	&lt;/fieldset>
+	&lt;a class="whiteButton" href="javascript:formname.submit()">Login me in!&lt;/a>
+&lt;/form>
+</code>
+					<a href="getting-started/example-form1.html" target="_blank">see live demo</a>
+				</p>
+				<p class="col1">
+					<img class="bordered" src="images/iui-getting-started-img11.jpg">
+				</p>
+			</div>
+
+			<div>
+				<p>
+					<strong>Forms 2</strong>
+				</p>
+				<p class="col2">
+<code>
+&lt;form id="screen1" title="Screen 1" class="panel" selected="true">
+	&lt;fieldset>
+		&lt;div class="row">
+			&lt;label for="login">Login&lt;/label>
+			&lt;input type="text" id="login" name="ident" placeholder="Your login">
+		&lt;/div>
+		&lt;div class="row">
+			&lt;label>Remember me&lt;/label>
+			&lt;div class="toggle" onclick="">&lt;span class="thumb">&lt;/span>&lt;span class="toggleOn">ON&lt;/span>&lt;span class="toggleOff">OFF&lt;/span>&lt;/div>
+		&lt;/div>
+		&lt;div class="row">
+			&lt;label for="select">Choose&lt;/label>
+			&lt;select id="select" name="selectname" size="1">
+				&lt;option value="item1">Item 1&lt;/option>
+				&lt;option value="item2">Item 2&lt;/option>
+				&lt;option value="item3">Item 3&lt;/option>
+			&lt;/select>
+		&lt;/div>
+		&lt;div class="row">
+			&lt;label>Checkbox&lt;/label>
+			&lt;input type="checkbox" name="cb" value="1">
+		&lt;/div>
+		&lt;div class="row">
+			&lt;label>Radio&lt;/label>
+			&lt;input type="radio" name="radio" value="1">
+			&lt;input type="radio" name="radio" value="2">
+			&lt;input type="radio" name="radio" value="3">
+		&lt;/div>
+	&lt;/fieldset>
+&lt;/form>
+</code>
+					<a href="getting-started/example-form2.html" target="_blank">see live demo</a>
+				</p>
+				<p class="col1">
+					<img class="bordered" src="images/iui-getting-started-img12.jpg">
+				</p>
+			</div>
+
+			<div>
+				<p>
+					<strong>Buttons</strong>
+				</p>
+				<p class="col2">
+<code>
+&lt;div id="screen1" title="Screen 1" class="panel">
+	&lt;a class="whiteButton" href="#screen1">whiteButton&lt;/a>
+	&lt;a class="grayButton" href="#screen1">grayButton&lt;/a>
+	&lt;a class="redButton" href="#screen1">redButton&lt;/a>
+&lt;/div>
+</code>
+					<a href="getting-started/example-buttons.html" target="_blank">see live demo</a>
+				</p>
+				<p class="col1">
+					<img class="bordered" src="images/iui-getting-started-img13.jpg">
+				</p>
+			</div>
+
+			<div>
+				<p>
+					<strong>Toolbar buttons</strong>
+				</p>
+				<p class="col2">
+<code>
+&lt;div class="toolbar">
+	&lt;h1 id="pageTitle">&lt;/h1>
+	&lt;a id="backButton" class="button" href="#">&lt;/a>
+	&lt;a class="button" href="#">Button&lt;/a>
+&lt;/div>
+
+&lt;div class="toolbar">
+	&lt;h1 id="pageTitle">&lt;/h1>
+	&lt;a id="backButton" class="button" href="#">&lt;/a>
+	&lt;a class="button redButton" href="#">Button&lt;/a>
+&lt;/div>
+
+&lt;div class="toolbar">
+	&lt;h1 id="pageTitle">&lt;/h1>
+	&lt;a id="backButton" class="button" href="#">&lt;/a>
+	&lt;a class="button blueButton" href="#">Button&lt;/a>
+&lt;/div>
+</code>
+					<a href="getting-started/example-toolbar-buttons.html" target="_blank">see live demo</a>
+				</p>
+				<p class="col1">
+					<img class="bordered" src="images/iui-getting-started-img14.jpg"><br />
+					<img class="bordered" src="images/iui-getting-started-img15.jpg"><br />
+					<img class="bordered" src="images/iui-getting-started-img16.jpg">
+				</p>
+			</div>
+
+			<div>
+				<p>
+					<strong>Dialog box</strong>
+				</p>
+				<p class="col2">
+<code>
+&lt;div class="toolbar">
+	&lt;h1 id="pageTitle">&lt;/h1>
+	&lt;a id="backButton" class="button" href="#">&lt;/a>
+	&lt;a class="button" href="#search">Search&lt;/a>
+&lt;/div>
+
+&lt;div id="screen1" title="Screen 1" class="panel" selected="true">
+	&lt;a class="whiteButton" href="#search">Show Search dialog&lt;/a>
+&lt;/div>
+
+&lt;form id="search" title="Search" class="dialog" name="formname" action="" method="GET">
+	&lt;div class="toolbar">
+		&lt;h1>Search&lt;/h1>
+		&lt;a class="button leftButton" type="cancel">Cancel&lt;/a>
+		&lt;a class="button blueButton" href="javascript:formname.submit()">Search&lt;/a>
+	&lt;/div>
+	&lt;fieldset>
+		&lt;div class="row">
+			&lt;label for="keyword">Search:&lt;/label>
+		&lt;input type="text" name="q" id="keyword" placeholder="Type your keywords">
+		&lt;/div>
+	&lt;/fieldset>
+&lt;/form>
+</code>
+					<a href="getting-started/example-dialog.html" target="_blank">see live demo</a>
+				</p>
+				<p class="col1">
+					<img class="bordered" src="images/iui-getting-started-img17.jpg"><br />
+					<img class="bordered" src="images/iui-getting-started-img18.jpg">
+				</p>
+			</div>
+
+
+			<div>
+				<br />
+				<a name="standalone"></a>
+				<h5>2. Fullscreen/Webapp mode</h5>
+				<p>
+					Specific feature of Apple iOS devices (iPhone, iPod Touch & iPad), a mobile website can be run as a standalone application. Users can press the third icon of Safari bottom bar and choose "Add to homescreen". As a result, a bookmark to your website is added to homescreen icons.
+				</p>
+				<p>
+					<strong>Application icon</strong><br />
+					By default, a preview of the webpage is used as an icon, and this bookmark behaves like a bookmark: it opens Safari. But this can be changed and customized. First, you can use a PNG file as an icon (114x114 - <a href="iui/iui-logo-touch-icon-hd.png" target="_blank">see iUI one as an example</a>).<br />
+					To do so, here is the code to add between <em>&lt;head></em> and <em>&lt;/head></em>.
+				</p>
+				<p>
+<code>
+&lt;link rel="apple-touch-icon" href="icon.png">
+</code>
+				</p>
+				<p>
+					<em>Note: this code is supported by all iOS devices and also on BlackBerry OS6 favorites bars.</em>
+				</p>
+				<p>
+					<strong>Fullscreen mode</strong><br />
+					This code only put an icon, but your webapp will still be used in the browser. To enable standalone mode, just add the following line too
+				</p>
+				<p>
+<code>
+&lt;meta name="apple-mobile-web-app-capable" content="yes">
+</code>
+				</p>
+				<p>
+					<strong>Fullscreen startup image</strong><br />
+					Just like a native application, you can startup image on app loading. This image remains until the webapp is fully downloaded. If signal is bad, this can be long so if you choose to active this, you'd better design it like a boss :)<br />
+					This image can be a JPG or a PNG (320x460 for iPhone/iPod, 1004x768 for iPad - see iUI <a href="iui/iui-startup.png" target="_blank">iPhone/iPod</a> or <a href="iui/iui-startup-hd.png" target="_blank">iPad one</a> as an example</a>).
+				</p>
+				<p>
+<code>
+&lt;link rel="apple-touch-startup-image" href="startup.png"> 
+</code>
+				</p>
+				<p>
+					Full code would look like that:
+				</p>
+				<p>
+<code>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;title>Page Title&lt;/title>
+	&lt;meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+
+	&lt;link rel="apple-touch-icon" href="icon.png">
+	&lt;meta name="apple-mobile-web-app-capable" content="yes">
+	&lt;link rel="apple-touch-startup-image" href="startup.png">
+
+	&lt;link rel="stylesheet" href="iui/iui.css" type="text/css" />
+	&lt;link rel="stylesheet" href="iui/t/default/default-theme.css"  type="text/css"/>
+	&lt;script type="application/x-javascript" src="iui/iui.js">&lt;/script>
+&lt;/head>
+</code>
+				</p>
+				<p>
+					For more informations, please <a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html" target="_blank">check the Safari Web Content Guide</a>.
+				</p>
+			</div>
+			
+			
+			<div>
+				<br />
+				<a name="themes"></a>
+				<h5>3. Themes</h5>
+				<p>
+					(this part of the documentation will come later)
+				</p>
+			</div>
+
+		</div>
+
+		<hr>
+
+		<p id="footer">
+			iUI-JS &copy; 2007 - iUI-JS is an opensource framwork released under LGPL license - <a href="../../sitemap.html">sitemap</a> - <a href="../../donate.html">DONATE</a>
+		</p>
+
+	</div>
+</body>
+</html>

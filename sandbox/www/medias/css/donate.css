@@ -1,0 +1,19 @@
+#header {
+	margin-top:	0;
+	height:			106px;
+	background:		url(../images/donate-header.jpg) no-repeat top center;
+}
+#menu {
+	height:			46px;
+	background:		url(../images/donate-header2.jpg) no-repeat bottom right;
+}
+
+
+#content > div > div.mid-col {
+	display:		block;
+	float:			left;
+	width:			430px;
+}
+#content > div > div > ul {
+	padding-left:	20px;
+}
