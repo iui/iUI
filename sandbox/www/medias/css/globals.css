@@ -17,7 +17,8 @@ h6 {	font-size:	14px;	}
 .tcenter{	text-align:		center;	}
 
 a {
-	color:	#1678bd;
+	outline:	0;
+	color:		#1678bd;
 }
 
 
@@ -200,6 +201,7 @@ body {
 	font-size:		11px;
 	padding:		2px 20px 6px 22px;
 	background:		url(../images/global_sprites.png) no-repeat -168px 0px;
+	outline:		0;
 }
 #menu > ul > li > form > #emptysearch {
 	display:		none;
