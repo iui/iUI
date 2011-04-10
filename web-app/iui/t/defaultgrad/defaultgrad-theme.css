@@ -1,109 +1,650 @@
-/* defaultgrad-theme.css (c) 2007-9 by iUI Project Members, see LICENSE.txt for license */
+/* defaultgrad-theme.css (c) 2010-11 by iUI Project Members, see LICENSE.txt for license */
 body {
-    color: #000000;
+    font-family: 	Helvetica, Arial, Sans-serif;
+    margin: 		0;
+    color: 			#000000;
+    background: 	#FFFFFF;
 }
-
-li > a[selected], li > a:active {
-    background-image: url(../default/listArrowSel.png), url(../default/selection.png) !important;
+body > *:not(.toolbar) {
+	margin: 	0;
+	padding:	45px 0 0 0;
+	left:		0;
+	top:		0;
+	z-index:	-1;
 }
-
-li > a[selected="progress"] {
-    background-image: url(../default/loading.gif), url(../default/selection.png) !important;
+body[orient="landscape"] > *:not(.toolbar) {
+	padding-top:32px;	
 }
 
 /************************************************************************************************/
 
-body > .toolbar {
-    background: -webkit-gradient(linear, left top, left bottom, from(#CDD5DF), to(#6D84A2)) ;
-//    background: url(../default/toolbar.png) #6d84a2 repeat-x;
+.toolbar {
+    padding: 	0 10px 10px 10px;
+    height: 	45px;
+    background-image: -webkit-gradient(linear, left top, left bottom, 
+    					from(rgb(204,210,218)), 
+	    					color-stop(0.03, rgb(181,192,206)), 
+	    					color-stop(0.5, rgb(136,155,179)),
+	    					color-stop(0.5, rgb(126,148,176)), 
+	    					color-stop(0.97, rgb(109,131,161)), 
+	    				to(rgb(45,54,66)));
+    background-image: -moz-linear-gradient(270deg, 
+    					rgb(204,210,218) 0%, 
+    						rgb(181,192,206) 3%, 
+    						rgb(136,155,179) 50%, 
+    						rgb(126,148,176) 51%,
+    						rgb(109,131,161) 97%, 
+    					rgb(45,54,66) 100%);
+    background-size:auto 100%;
+}
+body[orient="landscape"] .toolbar {
+	height:			32px;
+}
+
+.toolbar > h1 {
+    position: 		absolute;
+    left: 			50%;
+    margin: 		1px 0 0 -75px;
+    padding-top: 	10px;
+    height: 		45px;
+    font-size: 		20px;
+    width: 			150px;
+    color: 			#FFFFFF;
+    font-weight: 	bold;
+    text-shadow: 	rgba(0,0,0,.6) 0 -1px 0;
+    text-align: 	center;
+}
+body[orient="landscape"] .toolbar > h1 {
+	width: 			300px;
+    margin: 		1px 0 0 -150px;
+    padding: 		6px 0;
+    font-size: 		16px;
 }
 
 .button {
-    -webkit-border-image: url(../default/toolButton.png) 0 5 0 5;
-    -moz-border-image: url(../default/toolButton.png) 0 5 0 5;
+    position: 		absolute;
+	top: 			8px;
+	right:			6px;
+	width:			auto;
+	margin:			0;
+	padding:		0 8px;
+	color:			#FFFFFF;
+	line-height:	28px;
+	font-family:	inherit;
+	font-size:		12px;
+	font-weight:	bold;
+    text-shadow:	rgba(0,0,0,.6) 0px -1px 0;
+    background: 	none;
+    background-image: -webkit-gradient(linear, left top, left bottom, 
+    					from(#485461), 
+	    					color-stop(0.03, #8aa1bf), 
+	    					color-stop(0.5,#5877a2),
+	    					color-stop(0.5,#476999),
+	    				to(#4a6c9b));
+    background-image: -moz-linear-gradient(270deg, 
+    					#7e8fa7 0%, 
+    						#8ea4c1 3%, 
+    						#5877a2 50%, 
+    						#476999 50%,
+    					#4a6c9b 100%);
+    -moz-border-radius:	5px;
+    border-radius:	5px;
+    border:			1px solid #354e71;
+    border-top:		1px solid #30363e;
+	-moz-box-shadow: 	0 1px 1px rgba(255,255,255,.3);
+	-webkit-box-shadow: 0 1px 1px rgba(255,255,255,.3);
+	box-shadow: 		0 1px 1px rgba(255,255,255,.3);
+}
+body[orient="landscape"] .button {
+	top: 			3px;
+	right:			3px;
+	line-height:	23px;
+}
+.leftButton, 
+body[orient="landscape"] .leftButton {
+	right:	auto;	/* needed to avoid full width */
 }
 
 .blueButton {
-    -webkit-border-image: url(../default/blueButton.png) 0 5 0 5;
-    -moz-border-image: url(../default/blueButton.png) 0 5 0 5;
+    background-image: -webkit-gradient(linear, left top, left bottom, 
+    					from(#3e5177), 
+	    					color-stop(0.03, #779be9), 
+	    					color-stop(0.5,#376fe0),
+	    					color-stop(0.5,#2260dd),
+	    				to(#2463de));
+    background-image: -moz-linear-gradient(270deg, 
+    					#3e5177 0%, 
+    						#779be9 3%, 
+    						#376fe0 50%, 
+    						#2260dd 50%,
+    					#2463de 100%);
+    border-radius:	5px;
+    border:			1px solid #163d8d;
+    border-top:		1px solid #29354e;
+}
+.redButton {
+    background-image: -webkit-gradient(linear, left top, left bottom, 
+    					from(#c6686e), 
+	    					color-stop(0.03, #ef7c84), 
+	    					color-stop(0.5,#e73643),
+	    					color-stop(0.5,#e10a1b),
+	    				to(#ec1013));
+    background-image: -moz-linear-gradient(270deg, 
+    					#c6686e 0%, 
+    						#ef7c84 3%, 
+    						#e73643 50%, 
+    						#e10a1b 50%,
+    					#ec1013 100%);
+    border-radius:	5px;
+    border:			1px solid #872627;
 }
 
 #backButton {
-    -webkit-border-image: url(../default/backButtonBrdr.png) 0 8 0 14;
-    -moz-border-image: url(../default/backButtonBrdr.png) 0 8 0 14;
-    background: url(../default/backButtonBack.png) repeat-x;
+    left: 			6px;
+    right: 			auto;
+    padding:		0;
+    max-width:		55px;
+    border-width:	0 8px 0 14px;
+    -webkit-border-image:	url(backButton.png) 0 8 0 14;
+    -moz-border-image: 		url(backButton.png) 0 8 0 14;
+    background: 			url(backButton.png) repeat-x;
+	-moz-box-shadow: 		none;
+	-webkit-box-shadow: 	none;
+	box-shadow: 			none;
+}
+#backButton[selected],#backButton:active {
+    -webkit-border-image: 	url(backButtonSel.png) 0 8 0 14;
+    -moz-border-image: 		url(backButtonSel.png) 0 8 0 14;
+    background: 			url(backButtonSel.png) repeat-x;
 }
 
-
-.whiteButton {
-    -webkit-border-image: url(../default/whiteButton.png) 0 12 0 12;
-    -moz-border-image: url(../default/whiteButton.png) 0 12 0 12;
-    text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
-}
-
+.whiteButton,
+.grayButton,
 .redButton {
-    -webkit-border-image: url(../default/redButton.png) 0 12 0 12;
-    -moz-border-image: url(../default/redButton.png) 0 12 0 12;
+    padding:		10px;
+    color: 			inherit;
+    text-align:		center;
+    font-size: 		20px;
+    font-weight: 	bold;
+    text-decoration: inherit;
+	line-height:		15px;
+	margin-bottom:		2px;
+	text-shadow: 		rgba(255, 255, 255, 0.7) 0 1px 0;
+	-moz-border-radius:	12px;
+	border-radius:		12px;
+	border:				3px solid rgb(115,115,115);
+	background-image: 	-webkit-gradient(linear, left top, left bottom, 
+	    					from(rgb(255,255,225)), 
+		    					color-stop(0.05,rgba(235,235,235,.95)),
+		    					color-stop(0.5,rgba(190,190,190,.9)),
+		    					color-stop(0.5,rgba(160,160,160,.66)),
+		    				to(rgba(167,167,167,.6)));
+	background-image: 	-moz-linear-gradient(270deg, 
+	    					rgb(255,255,225) 0%, 
+	    						rgba(235,235,235,.95) 5%, 
+	    						rgba(190,190,190,.9) 50%,
+	    						rgba(160,160,160,.66) 50%, 
+	    					rgba(167,167,167,.6) 100%);
+	-moz-box-shadow: 	0 1px 1px rgba(0,0,0,.3);
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.3);
+	box-shadow: 		0 1px 1px rgba(0,0,0,.3);
+}
+.grayButton {
+	background-image: 	-webkit-gradient(linear, left top, left bottom, 
+	    					from(rgba(230,230,250,.7)), 
+		    					color-stop(0.03, rgba(150,150,150,.7)),
+		    					color-stop(0.5, rgba(30,30,30,.7)),
+		    					color-stop(0.5, rgba(0,0,0,.7)),
+		    				to(rgba(0,0,0,.7)));
+	background-image: 	-moz-linear-gradient(270deg, 
+	    					rgba(230,230,230, .7) 0%, 
+	    						rgba(150,150,150,.7) 3%, 
+	    						rgba(30,30,30,.7) 50%,
+	    						rgba(0,0,0,.7) 50%, 
+	    					rgba(0,0,0,.7) 100%);
+    text-shadow: none;
+    color:		rgb(255,255,255);
+}
+.redButton {
+	color:		#fff;
+    background-image: -webkit-gradient(linear, left top, left bottom, 
+    					from(#c6686e), 
+	    					color-stop(0.03, #ef7c84), 
+	    					color-stop(0.5,#e73643),
+	    					color-stop(0.5,#e10a1b),
+	    				to(#ec1013));
+    background-image: -moz-linear-gradient(270deg, 
+    					#c6686e 0%, 
+    						#ef7c84 3%, 
+    						#e73643 50%, 
+    						#e10a1b 50%,
+    					#ec1013 100%);
+    text-shadow: rgba(0, 0, 0, 0.7) 0 -1px 0;
 }
 
-.grayButton {
-    -webkit-border-image: url(../default/grayButton.png) 0 12 0 12;
-    -moz-border-image: url(../default/grayButton.png) 0 12 0 12;
-    color: #FFFFFF;
+.grayButton[selected], .grayButton:active,
+.whiteButton[selected], .whiteButton:active {
+	background-image: 	-webkit-gradient(linear, left top, left bottom, 
+	    					from(#92bfff), 
+		    					color-stop(0.03, #4a8bf4),
+		    					color-stop(0.5, #2e6be6),
+		    					color-stop(0.5, #2863e2),
+		    				to(#1a50db));
+	background-image: 	-moz-linear-gradient(270deg, 
+	    					#92bfff 0%, 
+	    						#4a8bf4 3%, 
+	    						#2e6be6 50%,
+	    						#2863e2 50%, 
+	    					#1a50db 100%);
+    text-shadow: rgba(0, 0, 0, 0.7) 0 -1px 0;
+    color:		rgb(255,255,255);
 }
+.grayButton[selected], .grayButton:active {
+    color:		rgba(255,255,255,.8);
+}
+.toolbar > .redButton {
+	padding:		0 8px;
+	line-height:	26px;
+	font-size:		12px;
+	font-weight:	bold;
+    text-shadow:	rgba(0,0,0,.6) 0px -1px 0;
+    text-decoration: inherit;
+	-moz-border-radius:	5px;
+	border-radius:		5px;
+	border:				1px solid #7d2627;
+}
+
 
 /************************************************************************************************/
 
-body > ul > li.group {
-	opacity:0.7;
-    background: url(../default/listGroup.png) repeat-x;
+body > ul > li {
+    margin: 		0;
+    border-bottom:	1px solid #E0E0E0;
+    padding:		8px 0 8px 10px;
+    font-size:		20px;
+    font-weight:	bold;
+    list-style-type:none;
+}
+body[orient="landscape"] > ul > li {
+    font-size:		18px;
+}
+
+body > ul > li.group,
+body > .panel > ul > li.group {
+    top: 			-1px;
+    margin-bottom: 	-2px;
+    padding: 		0px 10px;
+    font-size:		17px;
+    font-weight: 	bold;
+    text-shadow:	rgba(0,0,0,.6) 0 1px 1px;
+    color:			#FFFFFF;
+	opacity:		0.8;
+	background: 	-webkit-gradient(linear, left top, left bottom, 
+	    					from(#c6ced4), 
+		    					color-stop(0.05, #82919c),
+		    					color-stop(0.7, #a8b1b9),
+		    				to(#a8b1b9));
+	background: 	-moz-linear-gradient(270deg, 
+	    					#c6ced4 0%, 
+	    						#82919c 5%, 
+	    						#a8b1b9 70%,
+	    					#a8b1b9 100%);
+    border-top: 	1px solid #6e7c85;
+    border-bottom: 	1px solid #778590;
+}
+body[orient="landscape"] > ul > li.group {
+    font-size:		15px;
+}
+body > .panel > ul > li.group {
+    font-size:		14px;
+    padding: 		2px 10px;
 }
 
 body > ul > li > a {
-    background: url(../default/listArrow.png) no-repeat right center;
+    margin:			-8px 0 -8px -10px;
+    padding:		8px 32px 8px 10px;
+    color: 			inherit;
+    background: 	url(listArrow.png) no-repeat right center;
+    text-decoration:	none;
+}
+body > ul > li > a[selected], 
+body > ul > li > a:active,
+body > .panel > ul > li > a[selected], 
+body > .panel > ul > li > a:active {
+	color:				rgb(255,255,255);
+    background-image:	url(listArrowSel.png),
+    					-webkit-gradient(linear, left top, left bottom, from(#4286f5), to(#194fdb));
+}
+
+body > ul > li > a[selected="progress"],
+body > .panel > ul > li > a[selected="progress"] 
+    background-image: 	url(loading.gif),
+    					-webkit-gradient(linear, left top, left bottom, from(#4286f5), to(#194fdb));
+}
+
+body > ul > li > a[target="_replace"] {
+    padding-top: 	25px;
+    padding-bottom: 25px;
+    font-size: 		18px;
+    color: 			#6495ed;
+    background-color: #fff;
+    background-image: none;
 }
 
 /************************************************************************************************/
-    
-.dialog > fieldset {
-    background: -webkit-gradient(linear, left top, left bottom, from(#CDD5DF), to(#6D84A2)) ;
-//    background: url(../default/toolbar.png) #7388a5 repeat-x;
+
+body > .dialog,
+body[orient="landscape"] > .dialog {
+	top:		0px;
+    z-index: 	2;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 	0;
 }
+body > .dialog > div.toolbar {
+	width:		100%;
+}
+
+body > .dialog > fieldset {
+    margin: 		0;
+    border: 		none;
+    padding: 		10px 0 0 0;
+    border-top: 	1px solid #b3becd;
+    background: 	#7388a5 repeat-x;
+}
+
+body > .dialog > fieldset > div.row {
+    padding: 		0 10px;
+    border:			0px;
+    background-color:	transparent;
+    -webkit-border-radius:	0;
+}
+body > .dialog > fieldset > div.row > label {
+    position: 		absolute;
+	margin:			0;
+	padding:		10px 8px 10px 12px;
+	font-weight:	normal;
+	line-height: 	1em;
+    font-size:		12px;
+    color: 			#666;
+}
+body > .dialog > fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
+    font-size:		12px;
+	padding:		8px 0 6px 60px;
+	border:			1px solid #47607c;
+	-webkit-border-radius:	0px;
+	background-color:		#fff;
+}
+
 
 /************************************************************************************************/
 
 body > .panel {
-    background: #c8c8c8 url(../default/pinstripes.png);
+    padding-left: 	10px;
+    padding-right: 	10px;
+    background: 	#c5ccd4 url(pinstripes.png);
+}
+body > .panel > *:first-child {
+	margin-top:	10px;
+}
+body > .panel > h2 {
+    margin:			0 0 8px 14px;
+    font-weight:	bold;
+    color: 			#4d4d70;
+    text-shadow:	rgba(255, 255, 255, 0.75) 2px 2px 0;
+}
+body > .panel > ul > li {
+	list-style:		none;
+	padding:		12px;
 }
 
-.toggle {
-    border: 1px solid #888888;
-    background: #FFFFFF url(../default/toggle.png) repeat-x;
+fieldset > .row {
+    min-height: 	42px;
+}
+fieldset > .row > p {
+	width:			auto;
+	height:			auto;
+	padding:		12px;
+	margin:			0;
+	text-align:		left;
 }
 
-.toggle[toggled="true"] {
-    background: #194fdb url(../default/toggleOn.png) repeat-x;
+/************************************************************************************************/
+
+body > .panel > ul,
+body > .panel > fieldset {
+    margin: 		10px 0;
+    padding: 		0;
+    border: 		1px solid #999999;
+    font-size: 		16px;
+    -webkit-border-radius: 	10px;
+    -moz-border-radius: 	10px;
+    border-radius: 	10px;
+}
+body > .panel > fieldset {
+    background:		#fff;
+}
+body > .panel > ul > li {
+	font-weight:	bold;
+	color:			#000;
+    background:		#fff;
+}
+body > .panel > ul > li:first-child > a,
+body > .panel > ul > li:first-child {
+    -webkit-border-top-left-radius: 	10px;
+    -webkit-border-top-right-radius: 	10px;
+    -moz-border-radius-topleft: 		10px;
+    -moz-border-radius-topright: 		10px;
+    border-top-left-radius: 	10px;
+    border-top-right-radius: 	10px;
+}
+body > .panel > ul > li:last-child > a,
+body > .panel > ul > li:last-child {
+    -webkit-border-bottom-left-radius: 	10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-radius-bottomleft: 		10px;
+    -moz-border-radius-bottomright: 	10px;
+    border-bottom-left-radius: 	10px;
+    border-bottom-right-radius: 10px;
+}
+body > .panel > ul > li > a {
+	display:		block;
+    margin:			-12px;
+    padding:		12px;
+    color: 			inherit;
+    background: 	url(listArrow.png) no-repeat right center;
+    text-decoration:	none;
+}
+body > .panel > ul > li > a[selected],
+body > .panel > ul > li > a:active {
+	color:			#fff;
 }
 
-.thumb {
-    background: #ffffff url(../default/thumb.png) repeat-x;
+body > .panel > ul > li,
+fieldset > .row  {
+    border-bottom: 	1px solid #999999;
+    -webkit-border-radius:	0;
+    -moz-border-radius: 	0;
+}
+
+fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
+	width: 			100%;
+	margin: 		8px 0 0 0;
+	padding: 		6px 6px 6px 44px;
+	font-size: 		16px;
+	font-weight:	normal;
+	background-color: transparent;
+}
+body > .panel > ul li:last-child,
+fieldset > .row:last-child {
+    border-bottom: 	none !important;
+}
+
+/************************************************************************************************/
+
+fieldset > .row > input,
+fieldset > .row > select {
+    width:				100%;
+    margin: 			0;
+    height: 			inherit;
+	font-size:			.8em;
+	background:			transparent;
+	-webkit-appearance: none;
+	-moz-appearance:	none;
+}
+fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
+	-webkit-border-radius: 	0px;
+	margin-top:		0;
+    padding: 		10px 10px 14px 110px;
+	border:			0;
+}
+fieldset > .row > select {
+	float:			right;
+	width:			auto;
+	height:			42px;
+	color:			#425c8d;
+	font-size:		.8em;
+	padding-right:	10px;
+	border:			0;
+}
+fieldset > .row > input[type|=radio], 
+fieldset > .row > input[type|=checkbox] {
+	padding:		0;
+	margin:			7px 7px 0 0;
+	height:			25px;
+	width:			25px;
+	-webkit-appearance: 	radio;
+	-moz-appearance: 		radio;
+	-webkit-border-radius: 	1em;
+}
+fieldset > .row > input[type|=checkbox] {
+	-webkit-border-radius: 	.5em;
+	-webkit-appearance: 	checkbox;
+	-moz-appearance: 		checkbox;
+}
+fieldset > .row > label {
+    margin: 		0 0 0 14px;
+    line-height: 	42px;
+    font-weight: 	bold;
+}
+fieldset > .row > span {
+    padding: 		12px 10px 0 110px;
+    margin: 		0;
+}
+
+fieldset > .row > .toggle {
+    top: 			6px;
+    right: 			6px;
+    width: 			100px;
+    height: 		28px;
+    border: 		1px solid #888;
+    font-size: 		19px;
+    font-weight:	bold;
+    line-height:	30px;
+    -webkit-border-radius: 	6px;
+	-moz-border-radius: 	6px;
+}
+fieldset > .row > .toggle[toggled="true"] {
+    border: 		1px solid #143fae;
+}
+fieldset > .row > .toggle > .toggleOn {
+    width: 			62px;
+    text-align: 	center;
+    left: 			-62px;
+    top: 			0;
+    color: 			#fff;
+    text-shadow:	rgba(0, 0, 0, 0.4) 0px -1px 0;
+	background-image: 	-webkit-gradient(linear, left top, left bottom, 
+							from(rgb(17,53,148)), 
+								color-stop(0.2,rgb(32,89,222)),
+							to(rgb(66,134,245)));
+	background-image: 	-moz-linear-gradient(270deg, 
+	    					rgb(17,53,148) 0%,
+	    						rgb(32,89,222) 20%, 
+	    					rgb(66,134,245) 100%);
+    -webkit-border-top-left-radius: 	6px;
+    -webkit-border-bottom-left-radius:	6px;
+    -moz-border-radius-topleft: 		6px;
+    -moz-border-radius-bottomleft: 		6px;
+}
+fieldset > .row > .toggle[toggled="true"] > .toggleOn {
+    left: 			0px;
+}
+
+fieldset > .row > .toggle > .toggleOff {
+    width: 			62px;
+    text-align: 	center;
+    left: 			38px;
+    top: 			0;
+    color: 			#666;
+	background-image: 	-webkit-gradient(linear, left top, left bottom, 
+							from(rgb(160,160,160)), 
+								color-stop(0.2,rgb(235,235,235)),
+								color-stop(0.5,rgb(235,235,235)),
+								color-stop(0.5,rgb(255,255,255)),
+							to(rgb(255,255,255)));
+	background-image: 	-moz-linear-gradient(270deg, 
+	    					rgb(160,160,160) 0%, 
+	    						rgb(235,235,235) 20%, 
+	    						rgb(235,235,235) 50%,
+	    						rgb(255,255,255) 50%, 
+	    					rgb(255,255,255) 100%);
+    -webkit-border-top-right-radius: 	6px;
+    -webkit-border-bottom-right-radius:	6px;
+    -moz-border-radius-topright: 		6px;
+    -moz-border-radius-bottomright: 	6px;
+}
+fieldset > .row > .toggle[toggled="true"] > .toggleOff {
+    left: 			100px;
+}
+
+fieldset > .row > .toggle > .thumb {
+    top: 			-1px;
+    left: 			-1px;
+    width: 			40px;
+    height: 		28px;    
+    border: 		1px solid #888888;
+	z-index:		10;
+	background: 	-webkit-gradient(linear, left top, left bottom, 
+							from(rgb(218,218,218)), 
+								color-stop(0.03,rgb(207,207,207)),
+							to(rgb(255,255,255)));
+	background: 	-moz-linear-gradient(270deg, 
+	    					rgb(218,218,218) 0%,
+	    						rgb(207,207,207) 3%, 
+	    					rgb(255,255,255) 100%);
+    -webkit-border-radius:	6px;
+    -moz-border-radius:		6px;
+}
+fieldset > .row > .toggle[toggled="true"] > .thumb {
+    left: 			60px;
+    border: 		1px solid #143fae;
+}
+
+fieldset > .row > .toggle > .toggleOn,
+fieldset > .row > .toggle > .toggleOff,
+fieldset > .row > .toggle > .thumb {
+	-webkit-transition-timing-function:	linear;
+	-moz-transition-timing-function:	linear;
+	-webkit-transition-duration:	50ms;
+	-moz-transition-duration:		50ms;
+	-webkit-transition-property:	left;
+	-moz-transition-property:		left;
+}
+
+body> .panel > h2 {
+    margin: 		0 0 8px 14px;
+    font-size: 		inherit;
+    font-weight:	bold;
+    color: 			#4d4d70;
+    text-shadow:	rgba(255, 255, 255, 0.75) 2px 2px 0;
 }
 
 /************************************************************************************************/
 #preloader {
-    display: none;
-    background-image: url(../default/loading.gif), url(../default/selection.png),
-        url(../default/blueButton.png), url(../default/listArrowSel.png), url(../default/listGroup.png);
-}
-
-.toolbar > h1.titleImg {
-  background: url(../default/title-img.png) no-repeat top center;
-  color: rgba(0,0,0,0);
-}
-
-.backButtonImg {
-  width: 50px;
-  background: url(../default/back-img.png) no-repeat center left,
-              url(../default/backButtonBack.png) repeat-x top left !important;
-  color: rgba(0,0,0,0);
+    background-image: 	url(loading.gif), 
+    					url(backButton.png),
+    					url(backButtonSel.png),
+        				url(listArrow.png),
+        				url(listArrowSel.png),
+        				url(pinstripes.png);
 }
