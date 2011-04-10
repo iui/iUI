@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Test</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<link rel="icon" type="image/png" href="../../iui-favicon.png">
+	<link rel="apple-touch-icon" href="../../iui-logo-touch-icon-hd.png" />
+	<link rel="apple-touch-startup-image" href="../../iui-startup.png">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<link rel="stylesheet" href="../../iui.css" type="text/css" />
+	<link rel="stylesheet" href="../../t/default/default-theme.css"  type="text/css"/>
+
+	<script type="application/x-javascript" src="../../iui.js"></script>
+	<script type="application/x-javascript" src="iui-views.js"></script>
+	<script type="application/x-javascript" src="view-test.js"></script>
+</head>
+
+<body>
+    <div class="toolbar">
+        <h1 id="pageTitle"></h1>
+        <a id="backButton" class="button" href="#"></a>
+    </div>
+    
+    <ul id="main" title="ViewTest" selected="true">
+      <li><a href="#panel">Panel</a></li>
+    </ul>
+
+    <div id="panel" title="Panel(r/o)" class="panel">
+      <h2>Panel (read/only)</h2>
+      <fieldset>
+        <div class="row">
+            <label>Label</label>
+            <span>Text in a span</span>
+        </div>
+        <div class="row">
+            <label>Label 2</label>
+            <span>More text</span>
+        </div>
+      </fieldset>
+    </div>
+</body>
+
+</html>
