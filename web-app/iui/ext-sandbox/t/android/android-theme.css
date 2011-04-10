@@ -13,15 +13,16 @@ body {
 }
 body > *:not(.toolbar) {
 	margin: 	0;
-	padding:	0;
+	padding:	25px 0 0 0;
 	left:		0;
-	top:		25px;
+	top:		0;
+    z-index:	-1;
 }
 
 /************************************************************************************************/
 
 .toolbar {
-    height: 	25px;
+    height: 		25px;
 	background: 	-webkit-gradient(linear, left top, left bottom, from(#9a9a9a), to(#7b7d7b));
 	background: 	-moz-linear-gradient(270deg, #9a9a9a 0%, #7b7d7b 100%);
 
@@ -246,7 +247,8 @@ body > .dialog > fieldset > div.row > input:not([type|=radio]):not([type|=checkb
 
 body > .panel {
 	color:			#181818;
-	padding:		4px;
+	padding-left:	4px;
+	padding-right:	4px;
 }
 body > .panel > h2 {
 	font-size:		20px;
