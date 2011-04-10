@@ -5,14 +5,16 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
 	<link rel="icon" type="image/png" href="../../iui-favicon.png">
-	<link rel="apple-touch-icon" href="../../iui-logo-touch-icon-hd.png" />
-	<link rel="apple-touch-startup-image" href="../../iui-startup.png">
+	<link rel="apple-touch-icon" href="../../iui-logo-icon.png" />
+	<link rel="apple-touch-startup-image" href="../../iui-startup.jpg">
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 
 	<link rel="stylesheet" href="../../iui.css" type="text/css" />
-	<link rel="stylesheet" title="default" href="../../t/default/default-theme.css"  type="text/css"/>
+	<link rel="stylesheet" title="Default" href="../../t/default/default-theme.css"  type="text/css"/>
 	<script type="application/x-javascript" src="../../iui.js"></script>
 
+	<link rel="alternate stylesheet" title="defaultred" href="../t/defaultred/defaultred-theme.css"  type="text/css"/>
+	<link rel="alternate stylesheet" title="defaultdark" href="../t/defaultdark/defaultdark-theme.css"  type="text/css"/>
 	<link rel="alternate stylesheet" title="defaultgrad" href="../../t/defaultgrad/defaultgrad-theme.css"  type="text/css"/>
 	<link rel="alternate stylesheet" title="ipdc" href="../../t/ipdc/ipdc-theme.css"  type="text/css"/>
 	<link rel="alternate stylesheet" title="android" href="../t/android/android-theme.css"  type="text/css"/>
@@ -25,15 +27,9 @@
     <div class="toolbar">
         <h1 id="pageTitle"></h1>
         <a id="backButton" class="button" href="#"></a>
-        <a class="button button" href="#searchForm">Search</a>
+        <a class="button blueButton" href="#searchForm">Search</a>
     </div>
 
-	<ul id="home" title="Theme Switcher" selected="true">
-		<li><a href="#about">About Theme Switcher</a></li>
-		<li class="group">Theme Switcher</li>
-		<li><a href="#select">Select a theme</a></li>
-		<li><a href="#form">form</a></li>
-	</ul>
 
 
     <form id="searchForm" class="dialog" action="search.gtpl" method="GET">
@@ -42,6 +38,7 @@
             <a class="button leftButton" type="cancel">Cancel</a>
             <a class="button blueButton" type="submit">Search</a>
         </div>
+            
 		<fieldset>
 			<div class="row">
 				<label>Artist:</label>
@@ -86,17 +83,28 @@
 
 
 
+
+
+	<ul id="home" title="Demo" selected="true">
+		<li><a href="#about">About Theme Switcher</a></li>
+		<li class="group">tada</li>
+		<li><a href="#select">Select a theme</a></li>
+		<li><a href="#form">form</a></li>
+	</ul>
+
 	<form id="select" title="Theme switcher" class="panel" onsubmit="return iui.ts.setTheme(this.value)">
-        <h2>Select a theme</h2>
+        <h2>Theme Switcher</h2>
         <fieldset>
         	<div class="row">
         		<label>Choose a theme</label>
 	            <select onchange="return iui.ts.setTheme(this.value)" name="themeSelect" size="1">
-	                <option value="default">Default</option>
+	                <option value="Default">Default</option>
+	                <option value="defaultred">Default Red</option>
+	                <option value="defaultdark">Default Dark (translucide)</option>
 	                <option value="defaultgrad">Default using Gradients</option>
 	                <option value="ipdc">iPhoneDevCamp</option>
 	                <option value="android">Android</option>
-	                <option value="webos">Web OS (Palm)</option>
+	                <option value="webos">WebOS (Palm)</option>
 	            </select>
 	            <script>
 	            function updateSelect() {
