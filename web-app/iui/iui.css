@@ -9,6 +9,10 @@ body {
 }
 
 body > *:not(.toolbar) {
+    box-sizing: 		border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: 	border-box;
+    -o-box-sizing: 		border-box;
     display: 	none;
     position: 	absolute;
     width: 		100%;
@@ -108,12 +112,6 @@ input:not([type|=radio]):not([type|=checkbox]) {
 
 /************************************************************************************************/
 
-body > .panel {
-    box-sizing: 		border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: 	border-box;
-    -o-box-sizing: 		border-box;
-}
 body > .panel > h2 {
     font-size:		inherit;
 }

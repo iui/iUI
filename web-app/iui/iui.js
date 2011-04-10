@@ -981,7 +981,7 @@ function fitToScreen()
 	var heightVal;
 	var toolbarHeight = document.getElementsByClassName('toolbar')[0].clientHeight;
 	var sc = document.getElementsByTagName('body')[0].childNodes;
-	for(var i=1; i<=(sc.length-1); i++) 
+	for(var i=1; i<=(sc.length-1); i++)
 	{
 		if((sc[i].id != '') && (sc[i].id != undefined) && (typeof sc[i] === 'object')) 
 		{
@@ -990,18 +990,21 @@ function fitToScreen()
 				if(hasClass(sc[i], 'dialog'))
 					heightVal = (window.innerHeight+60)+'px';
 				else
-					heightVal = ((window.innerHeight-toolbarHeight)+60)+'px';
+					heightVal = ((window.innerHeight)+60)+'px';
 			}
 			else
 			{
 				if(hasClass(sc[i], 'dialog'))
 					heightVal = (window.innerHeight)+'px';
-				else 
+				else
 				{
 					if(navigator.userAgent.toLowerCase().search('android') > -1)
 						heightVal = (window.innerHeight+10)+'px';
-					else
+					else if(navigator.userAgent.toLowerCase().search('firefox') > -1)
 						heightVal = (window.innerHeight-toolbarHeight)+'px';
+					else {
+						heightVal = (window.innerHeight)+'px';
+					}
 				}
 			}
 			sc[i].style.minHeight = heightVal;
