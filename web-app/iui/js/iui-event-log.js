@@ -21,9 +21,9 @@ addEventListener("DOMContentLoaded", function(event)
 {
 	document.body.addEventListener('beforeinsert', logEvent, false);
 	document.body.addEventListener('afterinsert', afterInsert, false);
-// This will register event handlers on all initial nodes
-// We'll also need to register handlers on inserted (via ajax) nodes
-// To do that we'll need to use the afterInsert event
+	// This will register event handlers on all initial nodes
+	// We'll also need to register handlers on inserted (via ajax) nodes
+	// To do that we'll need to use the afterInsert event
 	var nodes = iui.getAllViews();
 	for (var i = 0; i  < nodes.length  ; i++)
 	{
