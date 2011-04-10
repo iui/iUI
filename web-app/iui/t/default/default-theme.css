@@ -7,12 +7,13 @@ body {
 }
 body > *:not(.toolbar) {
 	margin: 	0;
-	padding:	0;
+	padding:	45px 0 0 0;
 	left:		0;
-	top:		45px;
+	top:		0;
+	z-index:	-1;
 }
 body[orient="landscape"] > *:not(.toolbar) {
-	top:		32px;	
+	padding-top:	32px;
 }
 
 /************************************************************************************************/
@@ -172,6 +173,7 @@ body[orient="landscape"] > ul > li {
 body > ul > li.group,
 body > .panel > ul > li.group {
     top: 			-1px;
+    margin-bottom:	-1px;
     padding: 		0 10px;
     font-size:		17px;
     font-weight: 	bold;
@@ -270,7 +272,8 @@ body > .dialog > fieldset > div.row > input:not([type|=radio]):not([type|=checkb
 /************************************************************************************************/
 
 body > .panel {
-    padding: 	0 10px;
+    padding-left: 	10px;
+    padding-right: 	10px;
     background: #c8c8c8 url(pinstripes.png);
 }
 body > .panel > *:first-child {
