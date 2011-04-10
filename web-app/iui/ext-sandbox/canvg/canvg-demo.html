@@ -1,119 +1,101 @@
-<!DOCTYPE html>
 <html>
 <head>
-	<title>CanVG Extension Demo</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-	<link rel="icon" type="image/png" href="../../iui-favicon.png">
-	<link rel="apple-touch-icon" href="../../iui-logo-touch-icon-hd.png">
+  <title>CanVG Extension Demo</title>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+  <link rel="icon" type="image/png" href="../../iui-favicon.png">
+  <link rel="apple-touch-icon" href="../../iui-logo-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="no" />
+  <link rel="stylesheet" href="../../iui.css" type="text/css" />
+  <link rel="stylesheet" title="Default" href="../../t/default/default-theme.css"  type="text/css"/>
+  <link rel="stylesheet" href="../../../css/iui-panel-list.css" type="text/css" />
 
-	<link rel="stylesheet" type="text/css" href="../../iui.css" />
-	<link rel="stylesheet" type="text/css" href="../../t/default/default-theme.css" />
-	<link rel="stylesheet" type="text/css" href="../ext-css/iui-ext.css" /> <!-- only to use code class in about page -->
-	
-	<script type="application/x-javascript" src="../../iui.js"></script>	
-	<script type="application/x-javascript" src="rgbcolor.js"></script>
-	<script type="application/x-javascript" src="canvg.js"></script>
-	<script type="application/x-javascript" src="iui-canvg.js"></script>
-
+  <script type="application/x-javascript" src="../../iui.js"></script>	
+  <script type="application/x-javascript" src="rgbcolor.js"></script>
+  <script type="application/x-javascript" src="canvg.js"></script>
+  <script type="application/x-javascript" src="iui-canvg.js"></script>
+	<link href="../TbBMod/xtra.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<div class="toolbar" id="toolbar">
+	<h1 id="pageTitle"></h1>
+	<a id="backButton" class="button" href="#"></a>
+</div>
 
-	<div class="toolbar">
-		<h1 id="pageTitle"></h1>
-		<a id="backButton" class="button" href="#"></a>
-	</div>
+<ul id="home" title="CanVG Ext" selected="true">
+	<li><a href="#about">About CanVG Ext</a></li>
+	<li><a href="#instructions">Instructions</a></li>
+	<li class="group">SVG Views ("Pages")</li>
+	<li><a href="#svg1">Tiger</a></li>
+	<li><a href="#svg2">Butterfly</a></li>
+	<li><a href="#svg3">World</a></li>
+	<li><a href="#svg4">Ball</a></li>
+	<li><a href="#svg5">Tiger (SVG direct, no CanVG)</a></li>
+</ul>
 
 
-	<ul id="home" title="CanVG Ext" selected="true">
-		<li><a href="#about">About CanVG Ext</a></li>
-		<li><a href="#instructions">Instructions</a></li>
-		<li class="group">SVG Views ("Pages")</li>
-		<li><a href="#svg1">Tiger</a></li>
-		<li><a href="#svg2">Butterfly</a></li>
-		<li><a href="#svg3">World</a></li>
-		<li><a href="#svg4">Ball</a></li>
-		<li><a href="#svg5">Tiger (SVG direct, no CanVG)</a></li>
-	</ul>
 
-	<div id="about" class="panel" title="About">
-		<h2>About CanVG Extension</h2>
-		<fieldset>
-			<div class="row">
-				<p>iUI-CanVG.js is an extension for the iUI framework. It is currently EXPERIMENTAL</p>
-				<p>It uses <a href="http://code.google.com/p/canvg/">CanVG</a> to render SVG images into HTML5 canvas tags. SVG support is <b>NOT</b> required, but canvas support is. For more info on how to use this extension, see Instructions.</p>
-				<p>Sean Gilligan</p>
-			</div>
-		</fieldset>
-	</div>
 
-	<div id="instructions" class="panel" title="Instructions">
-		<h2>CanVG Ext - instructions for use.</h2>
-		<fieldset>
-			<div class="row">
-				<p>
-					The CanVG Extension is easy to install into your iUI powered web app. It requires no changes to existing iUI components. Start by linking the iui-canvg.js to your main index file just like the you would iui.js.
-				</p>
-				<p>
-					The canvg extension requires canvg.js and rgbcolor.js.  It requires HTML5 canvas support in the browser, but <b>does not require SVG support</b>.
-				</p>
-				<p>
-					You can now place compatible SVG content in iUI "pages" and have it automatically rendered in an HTML canvas.
-				</p>
-				<p>
-					Use the following markup for each iUI view ("page") that contains an SVG image:
-				</p>
-			</div>
-		</fieldset>
 
-		<fieldset>
-			<div class="row">
-				<br />
-				<ul class="code">
-					<li>&lt;div id="svg1"></li>
-					<li>&nbsp;&nbsp;&lt;a href="path/to/image.svg" target="_self" rel="iuicanvg"></li>
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;&lt;canvas>&lt;/canvas></li>
-					<li>&nbsp;&nbsp;&lt;/a></li>
-					<li>&lt;/div></li>
-				</ul>
-				<br />
-			</div>
-		</fieldset>
+<div id="about" class="panel" title="About">
+  <h2>About CanVG Extension</h2>
+	<fieldset>
+	<p class="normalText">iui-canvg.js is an extension for the iUI framework. It is currently EXPERIMENTAL</p>
+	<p class="normalText">It uses <a href="http://code.google.com/p/canvg/">CanVG</a> to render SVG images into HTML5 canvas tags.</p>
+	<p class="normalText">SVG support is <b>not</b> required, but canvas support is required.</p>
+	<p class="normalText">For info on how to use this extension see Instructions.</p>
+	<p class="normalText">Sean Gilligan</p>
+	</fieldset>
+</div>
 
-		<fieldset>
-			<div class="row">
-				<p>The CanVG Extension will use JavaScript to render the SVG image into the canvas tag before the iUI view (aka "page") is made active.</p>
-			</div>
-		</fieldset>
-	</div>
 
-	<div id="svg1" title="Tiger">
-		<a href="testimages/tiger.svg" target="_self" rel="iuicanvg">
-			<canvas width="600"></canvas>
-		</a>
-	</div>
+<div id="instructions" class="panel" title="Instructions">
+  <h2>CanVG Ext - instructions for use.</h2>
+	<fieldset>
+	<p class="normalText">The CanVG Extension is easy to install into your iUI powered web app. It requires no changes to existing iUI components. Start by linking the iui-canvg.js to your main index file just like the you would iui.js.</p>
+	<p class="normalText">The canvg extension requires canvg.js and rgbcolor.js.  It requires HTML5 canvas support in the browser, but <b>does not require SVG support</b>.</p>
+	<p class="normalText">You can now place compatible SVG content in iUI "pages" and have it automatically rendered in an HTML canvas</p>
+	<p class="normalText">Use the following markup for each iUI view ("page") that contains an SVG image:</p>
+</fieldset>
+<fieldset>
+	<p class="code">&lt;div id="svg1" &gt;</p>
+	<p class="code">&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href=&quot;path/to/image.svg&quot; target="_self" rel="iuicanvg" &gt;</p>
+	<p class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;canvas&gt;&lt;/canvas&gt; </p>
+	<p class="code">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;</p>
+	<p class="code">&lt;/div&gt;</p>
+</fieldset>
+<fieldset>
+	<p class="normalText">The CanVG Extension will use JavaScript to render the SVG image into the canvas tag before the iUI view (aka "page") is made active.</p>
+</fieldset>
+</div>
 
-	<div id="svg2" title="Butterfly">
-		<a href="testimages/butterfly.svg" target="_self" rel="iuicanvg">
-			<canvas width="600" height="600"></canvas>
-		</a>
-	</div>  
-	
-	<div id="svg3" title="World">
-		<a href="testimages/world.svg" target="_self" rel="iuicanvg">
-			<canvas></canvas>
-		</a>
-	</div>  
-	
-	<div id="svg4" title="Ball">
-		<a href="testimages/ball.svg" target="_self" rel="iuicanvg">
-			<canvas></canvas>
-		</a>
-	</div>  
-	
-	<div id="svg5" title="Tiger (direct)">
-		<object type="image/svg+xml" data="testimages/tiger.svg" width="600" height="800" ></object>
-	</div>
+<div id="svg1" title="Tiger">
+  <a href="testimages/tiger.svg" target="_self" rel="iuicanvg">
+    <canvas width="600px"></canvas>
+  </a>
+</div>  
+
+<div id="svg2" title="Butterfly">
+  <a href="testimages/butterfly.svg" target="_self" rel="iuicanvg">
+    <canvas width="600px" height="600px"></canvas>
+  </a>
+</div>  
+
+<div id="svg3" title="World">
+  <a href="testimages/world.svg" target="_self" rel="iuicanvg">
+    <canvas></canvas>
+  </a>
+</div>  
+
+<div id="svg4" title="Ball">
+  <a href="testimages/ball.svg" target="_self" rel="iuicanvg">
+    <canvas></canvas>
+  </a>
+</div>  
+
+<div id="svg5" title="Tiger (direct)">
+   <object type="image/svg+xml" data="testimages/tiger.svg" width="600px" height="800px" ></object>
+</div>  
+
 
 </body>
 </html>
