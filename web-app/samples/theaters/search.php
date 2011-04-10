@@ -1,18 +1,13 @@
-
 <?php
-
 $theaters = array("Los Gatos Cinema","Cinelux Plaza Theatre","Camera 7");
 $movies = array("Transformers","Knocked Up","Live Free Die Hard");
-
 $title = "-";
 if ($_POST["zip"])
     $title = "Zip " . $_POST['zip'];
 else
     $title = $_POST['movie'];
 ?>
-
 <ul title="<?php echo $title ?>">
-
 <?php
     if ($_POST["zip"])
     {
@@ -22,12 +17,13 @@ else
         }
     }
     else
+    {
         foreach ($movies as $movie)
         {
             echo '<li><a href="#movie">' . $movie . '</a></li>';
         }
+    }
 ?>
-
 </ul>
 
 <div id="theater" title="Theater" class="panel">
@@ -45,4 +41,3 @@ else
       <li><a href="http://www.youtube.com/watch?v=wFvUdt9BQhU">Transformers Trailer</a></li>
     </ul>
 </div>
-
