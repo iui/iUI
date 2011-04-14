@@ -268,6 +268,7 @@ window.iui =
 					var frag = document.createElement("div");
 					frag.innerHTML = xhr.responseText;
 
+					// EVENT beforeInsert->body
 					/*
 					events:
 					When new pages are inserted into the DOM after an AJAX load, the `body`
@@ -983,7 +984,7 @@ function fitToScreen()
 	var sc = document.getElementsByTagName('body')[0].childNodes;
 	for(var i=1; i<=(sc.length-1); i++)
 	{
-		if((sc[i].id != '') && (sc[i].id != undefined) && (typeof sc[i] === 'object')) 
+		if((sc[i].id != '') && (sc[i].id != undefined) && (typeof sc[i] === 'object') && !iui.hasClass(sc[i], 'toolbar')) 
 		{
 			if(window.navigator.standalone===false)
 			{	// for iphone
