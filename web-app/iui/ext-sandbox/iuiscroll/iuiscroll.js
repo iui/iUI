@@ -2,7 +2,7 @@
    Copyright (c) 2007-9, iUI Project Members
    See LICENSE.txt for licensing terms
    ************
-   LAST UDPATE: 31th Jan 2011 - remi.grumeau@gmail.com
+   LAST UDPATE: May 3rd 2011 - remi.grumeau@gmail.com
    ************
 */
 
@@ -18,6 +18,8 @@ iui.iScroll = {
 			var pageId = iui.getSelectedPage();
 			pageId = pageId.id;
 		}
+		
+		console.log('set iscroll height for: '+pageId);
 	
 		if(document.getElementById(pageId+'_scroller'))
 		{
@@ -26,6 +28,7 @@ iui.iScroll = {
 			var wrapperH = window.innerHeight - (toolbarHeight+footerHeight);
 			document.getElementById(pageId+'_scroller').parentNode.style.height = wrapperH + 'px';
 			document.getElementById(pageId+'_scroller').parentNode.style['min-height'] = wrapperH + 'px';
+			console.log('set iscroll height to: '+wrapperH+'px');
 		}
 	},
 
@@ -37,12 +40,13 @@ iui.iScroll = {
 			{
 				if(document.getElementById(screens[i].id+'_scroller'))
 				{
+					console.log('set iscroll for: '+screens[i].id);
 					screens[i].addEventListener('aftertransition', function() 
 					{
-						console.log(this.id);
 						iui.iScroll.setHeight(this.id);
 						if(iui.iScroll.myScroll) iui.iScroll.myScroll.destroy();
 						iui.iScroll.myScroll = new iScroll(this.id+'_scroller', {desktopCompatibility:true});
+						console.log('activate iscroll for: '+this.id);
 					}, false);
 				}
 			}
@@ -57,5 +61,4 @@ window.onload = function()
 	document.body.addEventListener('afterinsert', iui.iScroll.activeScroller, false);
 };
 
-//window.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 window.addEventListener('onorientationchange' in window ? 'orientationchange' : 'resize', iui.iScroll.setHeight, false);
