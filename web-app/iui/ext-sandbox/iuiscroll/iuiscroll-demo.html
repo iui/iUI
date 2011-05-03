@@ -148,31 +148,102 @@
     </ul>
     
 
-    <div id="about" title="About iUIScroll" class="panel">
+    <div id="about" title="About" class="panel">
     	<h2>About iUIScroll</h2>
     	<fieldset>
     		<div class="row">
     			<p>iUIScroll is an implementation of iScroll library for iUI.</p>
    				<p>Just add a classname "iuiscroll" to the main div/ul/form of the page, and an id value to '_scroller' prefixed by the main id name</p>
-   				<p>Remi Grumeau</p>
-   			</div>
-   		</fieldset>
-   		<fieldset>
-   			<div class="row">
-   				<br />
    				<ul class="code">
-   					<li>&lt;div id="default" title="Default" class="iuiscroll"&gt;</li>
-					<li>&nbsp;&nbsp;&lt;div id="default_scroller"&gt;</li>
+   					<li>&lt;div id="<span style=color:green>default</span>" title="Default" class="iuiscroll"&gt;</li>
+					<li>&nbsp;&nbsp;&lt;div id="<span style=color:green>default</span>_scroller"&gt;</li>
 					<li>&nbsp;&nbsp;&nbsp;&nbsp;This text is scrollable</li>
 					<li>&nbsp;&nbsp;&lt;/div&gt;</li>
 					<li>&lt;/div&gt;</li>
    				</ul>
    				<br>
+   				<ul class="code">
+   					<li>&lt;div id="<span style=color:red>music</span>" title="Music Demo" class="iuiscroll"&gt;</li>
+					<li>&nbsp;&nbsp;&lt;div id="<span style=color:red>default</span>_scroller"&gt;</li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;Album 1</li>
+					<li>&nbsp;&nbsp;&lt;/div&gt;</li>
+					<li>&lt;/div&gt;</li>
+   				</ul>
+   				<br>
+   				<p>Remi Grumeau</p>
        		</div>    	
-    	</fieldset>
-    </div>
+   		</fieldset>
 
-	
+   		<h2>Variables</h2>
+  		<ul>
+  			<li><a href="#about-myscroll">myScroll</a></li>
+  		</ul>
+
+   		<h2>Functions</h2>
+  		<ul>
+  			<li><a href="#about-activescroller">activeScroller()</a></li>
+  			<li><a href="#about-setheight">setHeight()</a></li>
+  		</ul>
+    </div>
+    
+	<div id="about-myscroll" class="panel" title="myScroll">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.iScroll.myScroll</strong> (iScroll object)<br />
+					<small>Default is null, set by activeScroller.</small>
+				</p>
+				<p>
+					It is set on afterTransition by the function <strong>activeScroller()</strong> and use by <strong>setHeight()</strong>.
+				</p>
+				<p>
+					To access all iScroll functions like destroy() or refresh() (see <a href="http://cubiq.org/iscroll" target="_blank">iScroll website</a> for more infos).
+				</p>
+				<p>
+					Ex: "home_scroller", "music_scroller", ...
+				</p>
+			</div>
+		</fieldset>
+	</div>
+
+	<div id="about-activescroller" class="panel" title="activeScroller()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.iScroll.activeScroller</strong> (Function)<br />
+					<small>Loaded once on load, and after each 'afterInsert' iUI event</small>
+				</p>
+				<p>
+					It selects all iUI screens (aka DOM element with id & title attributes) with a classname to 'iuiscroll', their child DOM elements with id attribute equal to parents ID + '_scroller'.
+				</p>
+				<p>
+					For each match, it adds an 'afterTransition' event listener that:<br />
+					- set iScroll object height using <strong>setHeight()</strong><br />
+					- destroy existing iScroll objects<br />
+					- declare a iScroll object on this DOM element
+				</p>
+			</div>
+		</fieldset>
+	</div>
+
+	<div id="about-setheight" class="panel" title="setHeight()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>iui.iScroll.setHeight</strong> (Function)<br />
+					<small>Loaded on each 'afterTransition' iUI event on iScroll-enable screens</small><br />
+					- page (string)
+				</p>
+				<p>
+					Use page, or iui.getSelectedPage() if empty.<br />
+					Detect toolbar height, and if present in the DOM for this screen, footer height too. It then set height & min-height of the scroller based on window height - ( toolbar height + footer height).
+				</p>
+			</div>
+		</fieldset>
+	</div>
+
+
+
 	<div id="default" title="Default" class="iuiscroll">
 		<div id="default_scroller" class="scroller">
 			<p>
