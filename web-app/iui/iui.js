@@ -438,8 +438,11 @@ window.iui =
 		else
 		{
 			var screens = document.getElementsByTagName('body')[0].childNodes;
-			var screensReturn = new Array();			for (var i=0; i<=(screens.length-1); i++) {
-				if ((screens[i].id) && (screens[i].title) && (typeof screens[i] === 'object')) 					screensReturn.push(screens[i]);			}
+			var screensReturn = new Array();
+			for (var i=0; i<=(screens.length-1); i++) {
+				if ((screens[i].id) && (screens[i].title) && (typeof screens[i] === 'object')) 
+					screensReturn.push(screens[i]);
+			}
 			return screensReturn;
 		}
 	},	
@@ -895,15 +898,15 @@ function slide2(fromPage, toPage, backwards, cb)
 	toPage.style.webkitTransitionDuration = '0ms'; // Turn off transitions to set toPage start offset
 	// fromStart is always 0% and toEnd is always 0%
 	// iPhone won't take % width on toPage
-	var toStart = 'translateX(' + (backwards ? '-' : '') + window.innerWidth +	'px)';
-	var fromEnd = 'translateX(' + (backwards ? '100%' : '-100%') + ')';
+	var toStart = 'translate3D(' + (backwards ? '-' : '') + window.innerWidth +	'px,0,0)';
+	var fromEnd = 'translate3D(' + (backwards ? '100%' : '-100%') + ',0,0)';
 	toPage.style.webkitTransform = toStart;
 	toPage.setAttribute("selected", "true");
 	toPage.style.webkitTransitionDuration = '';	  // Turn transitions back on
 	function startTrans()
 	{
 		fromPage.style.webkitTransform = fromEnd;
-		toPage.style.webkitTransform = 'translateX(0%)'; //toEnd
+		toPage.style.webkitTransform = 'translate3D(0%,0,0)'; //toEnd
 	}
 	fromPage.addEventListener('webkitTransitionEnd', cb, false);
 	setTimeout(startTrans, 0);
