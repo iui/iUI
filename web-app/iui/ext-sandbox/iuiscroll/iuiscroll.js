@@ -9,7 +9,6 @@
 iui.iScroll = {
 
 	myScroll : '',
-	a : 0,
 
 	setHeight : function(pageId) 
 	{
@@ -32,7 +31,7 @@ iui.iScroll = {
 		}
 	},
 
-	activeScroller : function(page) 
+	activeScroller : function() 
 	{
 		var screens = document.getElementsByClassName('iuiscroll');
 		for (var i = 0; i <= (screens.length-1); i++) {
