@@ -568,15 +568,27 @@ addEventListener("click", function(event)
 	var link = findParent(event.target, "a");
 	if (link)
 	{
-		function unselect() { link.removeAttribute("selected"); }
+		/* 
+		makes any interactive element being able to report a visual touch state by CSS
+		just like an :active state
+		*/ 
+		link.setAttribute("selected", "true");
+		setTimeout(function(){ link.removeAttribute("selected");}, 100);
+
 		if (link.href && link.hash && link.hash != "#" && !link.target)
 		{
 			followAnchor(link);
 		}
 		else if (link == $("backButton"))
 		{
-			link.setAttribute("selected", "true");
-			iui.goBack();
+			/* 
+			iui.goBack() is good is history is badly supported by the browser - aka Blackberry - but goofed iUI history and browser history
+			using history.go() keeps iUI & browser history synchronized
+			*/
+			if(window.history)
+				history.go(-1);
+			else
+				iui.goBack();
 		}
 		else if (link.getAttribute("type") == "submit")
 		{
