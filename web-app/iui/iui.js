@@ -466,8 +466,7 @@ window.iui =
 		new RegExp("^tel:"),
 		new RegExp("^http:\/\/www.youtube.com\/watch\\?v="),
 		new RegExp("^http:\/\/www.youtube.com\/v\/"),
-		new RegExp("^javascript:"),
-
+		new RegExp("^javascript:")
 	],
 	/*
 	method: iui.hasClass(self, name)
