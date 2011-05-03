@@ -453,9 +453,14 @@ fieldset > .row > .toggle > .toggleOn {
     -moz-border-radius-bottomleft: 		6px;
     border-top-left-radius: 			6px;
     border-bottom-left-radius:			6px;
+	-webkit-transform: translate3d(0px, 0, 0);
+	-moz-transform: translateX(0px);
+	-o-transform: translateX(0px);
 }
 fieldset > .row > .toggle[toggled="true"] > .toggleOn {
-    left: 			0px;
+    -webkit-transform: translate3d(60px, 0, 0);
+    -moz-transform: translateX(60px);
+    -o-transform: translateX(60px);
 }
 
 fieldset > .row > .toggle > .toggleOff {
@@ -472,9 +477,14 @@ fieldset > .row > .toggle > .toggleOff {
     -moz-border-radius-bottomright: 	6px;
     border-top-right-radius: 			6px;
     border-bottom-right-radius: 		6px;
+	-webkit-transform: translate3d(60px, 0, 0);
+	-moz-transform: translateX(60px);
+	-o-transform: translateX(60px);
 }
 fieldset > .row > .toggle[toggled="true"] > .toggleOff {
-    left: 			100px;
+    -webkit-transform: translate3d(100px, 0, 0);
+    -moz-transform: translateX(100px);
+    -o-transform: translateX(60px);
 }
 
 fieldset > .row > .toggle > .thumb {
@@ -490,18 +500,20 @@ fieldset > .row > .toggle > .thumb {
     border-radius: 			6px;
 }
 fieldset > .row > .toggle[toggled="true"] > .thumb {
-    left: 			60px;
+    -webkit-transform: translate3d(60px, 0, 0);
+    -moz-transform: translateX(60px);
+    -o-transform: translateX(60px);
 }
 
 fieldset > .row > .toggle > .toggleOn,
 fieldset > .row > .toggle > .toggleOff,
 fieldset > .row > .toggle > .thumb {
-	-webkit-transition-timing-function:	linear;
-	-moz-transition-timing-function:	linear;
-	-webkit-transition-duration:	150ms;
-	-moz-transition-duration:		150ms;
-	-webkit-transition-property:	left;
-	-moz-transition-property:		left;
+	-webkit-transition: all 150ms ease-in-out;
+	-moz-transition: all 150ms ease-in-out;
+	-o-transition: all 150ms ease-in-out;
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translateX(0px);
+	-o-transform: translateX(0px);
 }
 
 /************************************************************************************************/
