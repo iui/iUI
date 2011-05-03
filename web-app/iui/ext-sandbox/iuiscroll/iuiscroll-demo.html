@@ -91,6 +91,7 @@
 			line-height:7em;
 			font-size:	11px;
 			color:		rgba(255,255,255,.8);
+			text-decoration:	none;
 			-webkit-border-radius:	8px;
 			text-overflow: 		ellipsis;
 			-webkit-text-shadow: 0 1px 0 #000;
@@ -103,6 +104,29 @@
 			background-color:	rgba(255,255,255,.1);
 		}
 	</style>
+
+	<script type="text/javascript">
+	function switchTab(tabDiv, tabId, tabBtn) 
+	{
+		var a = document.getElementById(tabDiv);
+		var tabs = a.getElementsByClassName('tab');
+		for(var i=0;i<tabs.length;i++) {
+			tabs[i].style.display = (tabs[i].id==tabId)?'block':'none';
+		}
+		var tabbtns = a.getElementsByClassName('tabbtn');
+		for(var i=0;i<tabbtns.length;i++) {
+			if(iui.hasClass(tabbtns[i],tabBtn))
+				iui.addClass(tabbtns[i],'active');
+			else
+				iui.removeClass(tabbtns[i],'active');
+		}
+
+		iui.iScroll.myScroll.destroy();
+		iui.iScroll.myScroll = new iScroll(tabDiv+'_scroller', {desktopCompatibility:true});
+		
+	}
+	</script>
+
 </head>
 
 <body>
@@ -191,20 +215,59 @@
 	<div id="footer" title="Footer bar" class="iuiscroll">
 		<div>
 			<div id="footer_scroller" class="scroller">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tortor risus, aliquam vitae congue id, ultrices eget turpis. Ut imperdiet mattis dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis magna quis massa sagittis ultricies. Nunc adipiscing elit a tellus consectetur ac faucibus nibh ultrices. Sed vitae quam non metus porta sagittis. Donec nec quam metus. Aliquam suscipit libero lorem. Curabitur fringilla est id nisl dapibus a tincidunt nunc hendrerit. Proin accumsan tempus fermentum. Nunc at felis turpis, ac fringilla ligula. Morbi iaculis nulla sem, vestibulum pulvinar odio. Fusce eget nunc turpis. Aliquam vel libero vitae tortor faucibus posuere ut a nulla. Nunc blandit, lectus sed viverra hendrerit, libero nisi mattis lorem, non consectetur tellus urna vitae diam.
-				</p>
-				<p>
-					Pellentesque consequat vehicula faucibus. Proin venenatis luctus augue, a cursus ligula luctus non. Sed feugiat felis porttitor ligula cursus quis aliquam dolor placerat. Donec consequat dui et nisi vehicula sit amet imperdiet augue consectetur. Donec pellentesque turpis ut quam iaculis consequat. Cras vitae nisi risus, convallis laoreet ipsum. Etiam sagittis accumsan dignissim. Fusce quam diam, luctus gravida placerat vel, dapibus id nunc. Donec pulvinar elementum massa, nec hendrerit orci tristique eu. Sed nulla ante, ultricies eget imperdiet non, ornare in erat. Duis sed dui magna, sed iaculis elit. In in lectus eu sapien aliquam auctor dignissim vitae diam. Aenean tincidunt molestie augue ac congue. Nunc adipiscing, enim vel venenatis aliquet, mauris sem rhoncus sem, vel hendrerit mi turpis eu tellus. Etiam rutrum, neque in porttitor luctus, ipsum metus commodo nibh, et tempus augue neque vitae nisi. Vivamus convallis sodales magna a rutrum.
-				</p>
+				<div id="footer_tab1" class="tab">
+					<p>
+						<strong>Tab1</strong>
+					</p>
+					<p>
+						This is a pretty bad tab implementation, just to get a final result to show.<br />
+						A lot more could be done to get a real rock solid & scalable tab support.
+					</p>
+					<p>
+						Pellentesque consequat vehicula faucibus. Proin venenatis luctus augue, a cursus ligula luctus non. Sed feugiat felis porttitor ligula cursus quis aliquam dolor placerat. Donec consequat dui et nisi vehicula sit amet imperdiet augue consectetur. Donec pellentesque turpis ut quam iaculis consequat. Cras vitae nisi risus, convallis laoreet ipsum. Etiam sagittis accumsan dignissim. Fusce quam diam, luctus gravida placerat vel, dapibus id nunc. Donec pulvinar elementum massa, nec hendrerit orci tristique eu. Sed nulla ante, ultricies eget imperdiet non, ornare in erat. Duis sed dui magna, sed iaculis elit. In in lectus eu sapien aliquam auctor dignissim vitae diam. Aenean tincidunt molestie augue ac congue. Nunc adipiscing, enim vel venenatis aliquet, mauris sem rhoncus sem, vel hendrerit mi turpis eu tellus. Etiam rutrum, neque in porttitor luctus, ipsum metus commodo nibh, et tempus augue neque vitae nisi. Vivamus convallis sodales magna a rutrum.
+					</p>
+				</div>
+				<div id="footer_tab2" class="tab" style="display:none">
+					<p>
+						<strong>Tab2</strong>
+					</p>
+					<p>
+						Pellentesque consequat vehicula faucibus. Proin venenatis luctus augue, a cursus ligula luctus non. Sed feugiat felis porttitor ligula cursus quis aliquam dolor placerat. Donec consequat dui et nisi vehicula sit amet imperdiet augue consectetur. Donec pellentesque turpis ut quam iaculis consequat. Cras vitae nisi risus, convallis laoreet ipsum. Etiam sagittis accumsan dignissim. Fusce quam diam, luctus gravida placerat vel, dapibus id nunc. Donec pulvinar elementum massa, nec hendrerit orci tristique eu. Sed nulla ante, ultricies eget imperdiet non, ornare in erat. Duis sed dui magna, sed iaculis elit. In in lectus eu sapien aliquam auctor dignissim vitae diam. Aenean tincidunt molestie augue ac congue. Nunc adipiscing, enim vel venenatis aliquet, mauris sem rhoncus sem, vel hendrerit mi turpis eu tellus. Etiam rutrum, neque in porttitor luctus, ipsum metus commodo nibh, et tempus augue neque vitae nisi. Vivamus convallis sodales magna a rutrum.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tortor risus, aliquam vitae congue id, ultrices eget turpis. Ut imperdiet mattis dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis magna quis massa sagittis ultricies. Nunc adipiscing elit a tellus consectetur ac faucibus nibh ultrices. Sed vitae quam non metus porta sagittis. Donec nec quam metus. Aliquam suscipit libero lorem. Curabitur fringilla est id nisl dapibus a tincidunt nunc hendrerit. Proin accumsan tempus fermentum. Nunc at felis turpis, ac fringilla ligula. Morbi iaculis nulla sem, vestibulum pulvinar odio. Fusce eget nunc turpis. Aliquam vel libero vitae tortor faucibus posuere ut a nulla. Nunc blandit, lectus sed viverra hendrerit, libero nisi mattis lorem, non consectetur tellus urna vitae diam.
+					</p>
+				</div>
+				<div id="footer_tab3" class="tab" style="display:none">
+					<p>
+						<strong>Tab3</strong>
+					</p>
+					<p>
+						Pellentesque consequat vehicula faucibus. Proin venenatis luctus augue, a cursus ligula luctus non. Sed feugiat felis porttitor ligula cursus quis aliquam dolor placerat. Donec consequat dui et nisi vehicula sit amet imperdiet augue consectetur. Donec pellentesque turpis ut quam iaculis consequat. Cras vitae nisi risus, convallis laoreet ipsum. Etiam sagittis accumsan dignissim. Fusce quam diam, luctus gravida placerat vel, dapibus id nunc. Donec pulvinar elementum massa, nec hendrerit orci tristique eu. Sed nulla ante, ultricies eget imperdiet non, ornare in erat. Duis sed dui magna, sed iaculis elit. In in lectus eu sapien aliquam auctor dignissim vitae diam. Aenean tincidunt molestie augue ac congue. Nunc adipiscing, enim vel venenatis aliquet, mauris sem rhoncus sem, vel hendrerit mi turpis eu tellus. Etiam rutrum, neque in porttitor luctus, ipsum metus commodo nibh, et tempus augue neque vitae nisi. Vivamus convallis sodales magna a rutrum.
+					</p>
+				</div>
+				<div id="footer_tab4" class="tab" style="display:none">
+					<p>
+						<strong>Tab4</strong>
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tortor risus, aliquam vitae congue id, ultrices eget turpis. Ut imperdiet mattis dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis magna quis massa sagittis ultricies. Nunc adipiscing elit a tellus consectetur ac faucibus nibh ultrices. Sed vitae quam non metus porta sagittis. Donec nec quam metus. Aliquam suscipit libero lorem. Curabitur fringilla est id nisl dapibus a tincidunt nunc hendrerit. Proin accumsan tempus fermentum. Nunc at felis turpis, ac fringilla ligula. Morbi iaculis nulla sem, vestibulum pulvinar odio. Fusce eget nunc turpis. Aliquam vel libero vitae tortor faucibus posuere ut a nulla. Nunc blandit, lectus sed viverra hendrerit, libero nisi mattis lorem, non consectetur tellus urna vitae diam.
+					</p>
+					<p>
+						Pellentesque consequat vehicula faucibus. Proin venenatis luctus augue, a cursus ligula luctus non. Sed feugiat felis porttitor ligula cursus quis aliquam dolor placerat. Donec consequat dui et nisi vehicula sit amet imperdiet augue consectetur. Donec pellentesque turpis ut quam iaculis consequat. Cras vitae nisi risus, convallis laoreet ipsum. Etiam sagittis accumsan dignissim. Fusce quam diam, luctus gravida placerat vel, dapibus id nunc. Donec pulvinar elementum massa, nec hendrerit orci tristique eu. Sed nulla ante, ultricies eget imperdiet non, ornare in erat. Duis sed dui magna, sed iaculis elit. In in lectus eu sapien aliquam auctor dignissim vitae diam. Aenean tincidunt molestie augue ac congue. Nunc adipiscing, enim vel venenatis aliquet, mauris sem rhoncus sem, vel hendrerit mi turpis eu tellus. Etiam rutrum, neque in porttitor luctus, ipsum metus commodo nibh, et tempus augue neque vitae nisi. Vivamus convallis sodales magna a rutrum.
+					</p>
+					<p>
+						Pellentesque consequat vehicula faucibus. Proin venenatis luctus augue, a cursus ligula luctus non. Sed feugiat felis porttitor ligula cursus quis aliquam dolor placerat. Donec consequat dui et nisi vehicula sit amet imperdiet augue consectetur. Donec pellentesque turpis ut quam iaculis consequat. Cras vitae nisi risus, convallis laoreet ipsum. Etiam sagittis accumsan dignissim. Fusce quam diam, luctus gravida placerat vel, dapibus id nunc. Donec pulvinar elementum massa, nec hendrerit orci tristique eu. Sed nulla ante, ultricies eget imperdiet non, ornare in erat. Duis sed dui magna, sed iaculis elit. In in lectus eu sapien aliquam auctor dignissim vitae diam. Aenean tincidunt molestie augue ac congue. Nunc adipiscing, enim vel venenatis aliquet, mauris sem rhoncus sem, vel hendrerit mi turpis eu tellus. Etiam rutrum, neque in porttitor luctus, ipsum metus commodo nibh, et tempus augue neque vitae nisi. Vivamus convallis sodales magna a rutrum.
+					</p>
+				</div>
 			</div>
 		</div>
 		
 		<ul id="footer_footer">
-			<li><a class="link1 active">label</a></li>
-			<li><a class="link2">label</a></li>
-			<li><a class="link3">label</a></li>
-			<li><a class="link4">label</a></li>
+			<li><a class="tabbtn link1 active" href="javascript:switchTab('footer', 'footer_tab1', 'link1')">label</a></li>
+			<li><a class="tabbtn link2" href="javascript:switchTab('footer', 'footer_tab2', 'link2')">label</a></li>
+			<li><a class="tabbtn link3" href="javascript:switchTab('footer', 'footer_tab3', 'link3')">label</a></li>
+			<li><a class="tabbtn link4" href="javascript:switchTab('footer', 'footer_tab4', 'link4')">label</a></li>
 		</ul>
 
 	</div>
