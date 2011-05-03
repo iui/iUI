@@ -19,7 +19,7 @@ body > *:not(.toolbar) {
     height: 	auto;
     -webkit-transition-duration: 300ms;
     -webkit-transition-property: -webkit-transform;
-    -webkit-transform: translateX(0%);
+    -webkit-transform: translate3D(0%,0,0);
 }
 
 body > *[selected] {
