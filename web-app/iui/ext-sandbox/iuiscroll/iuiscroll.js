@@ -22,11 +22,18 @@ iui.iScroll = {
 	
 		if(document.getElementById(pageId+'_scroller'))
 		{
+			/* toolbar height can change from theme to theme */
 			var toolbarHeight = document.getElementsByClassName('toolbar')[0].clientHeight;
+			/* footer height can change */
 			var footerHeight = (document.getElementById(pageId+'_footer'))?document.getElementById(pageId+'_footer').clientHeight:0;
+			/* set wrapper height */
 			var wrapperH = window.innerHeight - (toolbarHeight+footerHeight);
-			document.getElementById(pageId+'_scroller').parentNode.style.height = wrapperH + 'px';
-			document.getElementById(pageId+'_scroller').parentNode.style['min-height'] = wrapperH + 'px';
+			/* update padding, margin & height to fit in the screen */
+			document.getElementById(pageId).style.paddingTop = '0px';
+			document.getElementById(pageId).style.height = document.getElementById(pageId).style.height + toolbarHeight;
+			document.getElementById(pageId+'_scroller').parentNode.style.height = (wrapperH+toolbarHeight) + 'px';
+			document.getElementById(pageId+'_scroller').parentNode.style.minHeight = (wrapperH+toolbarHeight) + 'px';
+			document.getElementById(pageId+'_scroller').style.paddingTop = toolbarHeight + 'px';
 			console.log('set iscroll height to: '+wrapperH+'px');
 		}
 	},
@@ -45,6 +52,7 @@ iui.iScroll = {
 						iui.iScroll.setHeight(this.id);
 						if(iui.iScroll.myScroll) iui.iScroll.myScroll.destroy();
 						iui.iScroll.myScroll = new iScroll(this.id+'_scroller', {desktopCompatibility:true});
+						iui.iScroll.myScroll.scrollBarY.bar.style.top = document.getElementsByClassName('toolbar')[0].clientHeight+'px';
 						console.log('activate iscroll for: '+this.id);
 					}, false);
 				}
