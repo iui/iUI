@@ -29,6 +29,7 @@ var hasOrientationEvent = false;
 var portraitVal = "portrait";
 var landscapeVal = "landscape";
 var hasTitle = true;
+var screenHeight = 0;
 
 // *************************************************************************************************
 
@@ -993,38 +994,59 @@ function replaceElementWithFrag(replace, frag)
 
 function fitToScreen() 
 {
-	var heightVal;
-	var toolbarHeight = document.getElementsByClassName('toolbar')[0].clientHeight;
-	var sc = document.getElementsByTagName('body')[0].childNodes;
-	for(var i=1; i<=(sc.length-1); i++)
-	{
-		if((sc[i].id != '') && (sc[i].id != undefined) && (typeof sc[i] === 'object') && !iui.hasClass(sc[i], 'toolbar')) 
+	/* to avoid innerHeight with scrollTo(0,100) address hide trick, on afterInserted for ex */
+	if(screenHeight==0) {
+		scrollTo(0,0);
+		var wih = screenHeight;
+	}
+	else
+		var wih = window.innerHeight;
+
+	/* we put this in a timeout to be sure the scrollTo(0,0) is done */
+	setTimeout(function(){
+		var heightVal;
+		var toolbarHeight = document.getElementsByClassName('toolbar')[0].clientHeight;
+		var sc = document.getElementsByTagName('body')[0].childNodes;
+		for(var i=1; i<=(sc.length-1); i++)
 		{
-			if(window.navigator.standalone===false)
-			{	// for iphone
-				if(hasClass(sc[i], 'dialog'))
-					heightVal = (window.innerHeight+60)+'px';
-				else
-					heightVal = ((window.innerHeight)+60)+'px';
-			}
-			else
+			if((sc[i].id != '') && (sc[i].id != undefined) && (typeof sc[i] === 'object') && !iui.hasClass(sc[i], 'toolbar')) 
 			{
-				if(hasClass(sc[i], 'dialog'))
-					heightVal = (window.innerHeight)+'px';
+				if(window.navigator.standalone===false)
+				{	// for iphone
+					if(hasClass(sc[i], 'dialog'))
+						heightVal = (wih+60)+'px';
+					else
+						heightVal = ((wih)+60)+'px';
+				}
 				else
 				{
-					if(navigator.userAgent.toLowerCase().search('android') > -1)
-						heightVal = (window.innerHeight+10)+'px';
-					else if(navigator.userAgent.toLowerCase().search('firefox') > -1)
-						heightVal = (window.innerHeight-toolbarHeight)+'px';
-					else {
-						heightVal = (window.innerHeight)+'px';
+					if(hasClass(sc[i], 'dialog'))
+						heightVal = (wih)+'px';
+					else
+					{
+						if(navigator.userAgent.toLowerCase().search('android') > -1) {
+							if(screenHeight==0)
+								heightVal = (wih+50)+'px';
+							else
+								heightVal = wih+'px';
+						}
+						else if(navigator.userAgent.toLowerCase().search('firefox') > -1)
+							heightVal = (wih-toolbarHeight)+'px';
+						else {
+							heightVal = wih+'px';
+						}
 					}
 				}
+				sc[i].style.minHeight = heightVal;
 			}
-			sc[i].style.minHeight = heightVal;
 		}
-	}
+		if(screenHeight==0) {
+			screenHeight=heightVal;
+			fitToScreen();
+		}
+		setTimeout(scrollTo, 100, 0, 1);
+
+	},10);
 }
 
 function $(id) { return document.getElementById(id); }
