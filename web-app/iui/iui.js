@@ -28,8 +28,8 @@ var checkTimer;
 var hasOrientationEvent = false;
 var portraitVal = "portrait";
 var landscapeVal = "landscape";
-var hasTitle = true;
-var screenHeight = 0;
+var hasTitle = true;  /* if false, toolbar > h1 will not be updated based on title attr - good for img logo */
+var screenHeight = 0; /* used by fitToScreen() */
 
 // *************************************************************************************************
 
@@ -994,11 +994,11 @@ function replaceElementWithFrag(replace, frag)
 
 function fitToScreen() 
 {
+	/* this script could use a cleanup... */
 	/* to avoid innerHeight with scrollTo(0,100) address hide trick, on afterInserted for ex */
-	if(screenHeight==0) {
-		scrollTo(0,0);
+	window.scrollTo(0,0);
+	if(screenHeight==0)
 		var wih = screenHeight;
-	}
 	else
 		var wih = window.innerHeight;
 
@@ -1011,42 +1011,35 @@ function fitToScreen()
 		{
 			if((sc[i].id != '') && (sc[i].id != undefined) && (typeof sc[i] === 'object') && !iui.hasClass(sc[i], 'toolbar')) 
 			{
+				heightVal = wih; /* default value */
 				if(window.navigator.standalone===false)
 				{	// for iphone
-					if(hasClass(sc[i], 'dialog'))
-						heightVal = (wih+60)+'px';
-					else
-						heightVal = ((wih)+60)+'px';
+					if(navigator.userAgent.toLowerCase().search('ipad') > -1)
+						heightVal = (wih);					
+					else if(hasClass(sc[i], 'dialog'))
+						heightVal = (wih+60);
+					else if(screenHeight<2)
+						heightVal = (wih+60);
 				}
 				else
 				{
-					if(hasClass(sc[i], 'dialog'))
-						heightVal = (wih)+'px';
-					else
-					{
-						if(navigator.userAgent.toLowerCase().search('android') > -1) {
-							if(screenHeight==0)
-								heightVal = (wih+50)+'px';
-							else
-								heightVal = wih+'px';
-						}
-						else if(navigator.userAgent.toLowerCase().search('firefox') > -1)
-							heightVal = (wih-toolbarHeight)+'px';
-						else {
-							heightVal = wih+'px';
-						}
-					}
+					if(navigator.userAgent.toLowerCase().search('android') > -1 && screenHeight==0)
+						heightVal = (wih+50);
+					else if(navigator.userAgent.toLowerCase().search('firefox') > -1)
+						heightVal = (wih-toolbarHeight);
 				}
-				sc[i].style.minHeight = heightVal;
+				sc[i].style.minHeight = heightVal+'px';
 			}
 		}
 		if(screenHeight==0) {
-			screenHeight=heightVal;
+			screenHeight=1;
 			fitToScreen();
+		} else if(screenHeight==1) {
+			screenHeight=heightVal;
 		}
-		setTimeout(scrollTo, 100, 0, 1);
+		setTimeout(function(){window.scrollTo(0,100)}, 1);
 
-	},10);
+	},100);
 }
 
 function $(id) { return document.getElementById(id); }
