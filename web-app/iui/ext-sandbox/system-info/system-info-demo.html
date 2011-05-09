@@ -101,12 +101,17 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.os.name</strong><br>
-					- iphoneos<br>
+					Based on user-agent.<br>
+					<br>
 					- android<br>
-					- maemo<br>
-					- webos<br>
+					- bada<br />
+					- blackberry<br />
+					- ios<br>
 					- macos<br>
-					- windows<br>
+					- maemo<br>
+					- playbook<br />
+					- webos<br>
+					- windows
 				</p>
 			</div>
 		</fieldset>
@@ -116,8 +121,9 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.os.version</strong><br>
-					- returns the OS version from the user-agent<br>
-					- xp / vista / seven (for windows)
+					Based on user-agent.<br>
+					<br>
+					- returns OS version number based on user-agent (or xp/vista/seven for windows)<br>
 				</p>
 			</div>
 		</fieldset>
@@ -127,7 +133,9 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.os.lang</strong><br>
-					- returns the 2 first letters from navigator.language
+					Based on navigator.language<br>
+					<br>
+					- returns the 2 first letters
 				</p>
 			</div>
 		</fieldset>
@@ -140,12 +148,15 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.device.vendor</strong><br>
+					Based on user-agent.<br>
+					<br>
 					- apple<br>
-					- htc<br>
-					- samsung<br>
 					- google<br>
+					- htc<br>
 					- motorola<br>
 					- nokia<br>
+					- rim<br>
+					- samsung<br>
 					- unknow
 				</p>
 			</div>
@@ -156,6 +167,8 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.device.type</strong><br>
+					Based on user-agent.<br>
+					<br>
 					- phone<br>
 					- pod<br>
 					- tablet<br>
@@ -169,6 +182,8 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.device.touch</strong><br>
+					Based on Touch<br>
+					<br>
 					- true / false
 				</p>
 			</div>
@@ -179,6 +194,8 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.device.gps</strong><br>
+					Based on navigator.geolocation<br>
+					<br>
 					- true / false
 				</p>
 			</div>
@@ -189,6 +206,8 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.device.orientation</strong><br>
+					Based on window.onorientation.<br>
+					<br>
 					- true / false
 				</p>
 			</div>
@@ -202,13 +221,17 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.browser.name</strong><br>
+					Based on user-agent<br>
+					<br>
+					- blackberry<br>
 					- chrome<br>
-					- safari<br>
-					- firefox<br>
+					- dolfin<br>
 					- fennec<br>
-					- opera<br>
-					- opera_mobile
+					- firefox<br>
 					- ie<br>
+					- safari<br>
+					- opera<br>
+					- opera_mobile<br>
 					- unknow
 				</p>
 			</div>
@@ -219,12 +242,16 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.browser.version</strong><br>
+					Based on user-agent<br>
+					<br>
+					- 4 / 5 / 6 (Blackberry)<br>
 					- 4 / 5 (Chrome)<br>
-					- 3 / 4 / 4.1 / 5 (Safari)<br>
 					- 2 / 3 / 3.5 / 3.6 (Firefox)<br>
-					- 1 (Fennec)
-					- 8 / 9 / 10 (Opera)
-					- 6 / 7 / 8 / 9 (IE)
+					- 1 (Fennec)<br>
+					- 6 / 7 / 8 / 9 (IE)<br>
+					- 8 / 9 / 10 (Opera)<br>
+					- 1 (Playbook)<br>
+					- 3 / 4 / 4.1 / 5 (Safari)<br>
 					- unknow
 				</p>
 			</div>
@@ -235,16 +262,20 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.browser.webapp</strong><br>
+					Based on window.navigator.standalone<br>
+					<br>
 					- true / false
 				</p>
 			</div>
 		</fieldset>
 
-	  	<h2>Webapp mode (avail on iOS only for now)</h2>
+	  	<h2>Webapp mode (available on iOS only for now - 2011)</h2>
 		<fieldset>
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.browser.standalone</strong><br>
+					Based on window.navigator.standalone<br>
+					<br>
 					- true / false
 				</p>
 			</div>
@@ -257,6 +288,8 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.screen.width</strong><br>
+					Based on window.innerWidth<br>
+					<br>
 					- returns the value, in pixels
 				</p>
 			</div>
@@ -267,6 +300,8 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.screen.height</strong><br>
+					Based on window.innerHeight<br>
+					<br>
 					- returns the value, in pixels
 				</p>
 			</div>
@@ -279,6 +314,8 @@
 			<div class="row">
 				<p>
 					<strong>iui.sysinfo.storage.cookie</strong><br>
+					Based on navigator.cookieEnabled<br>
+					<br>
 					- true / false
 				</p>
 			</div>
