@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>iUI Touch - Extensions - Theme Switcher</title>
+	<meta name="description" content="iUI is a framework consisting of a JavaScript library, CSS, and images for developing advanced mobile webapps for smartphones & mobile devices.">
+	<link href="../../../medias/images/favicon.png" rel="icon" type="image/png" /> 
+	<link href="../../../medias/images/favicon.ico" rel="shortcut icon" />
+	<link rel="image_src" type="image/jpeg" href="../../../medias/images/thumb.jpg" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+	<link rel='stylesheet' type='text/css' media="screen" href='../../../medias/css/globals.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='../../../medias/css/documentation.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='../../../medias/css/extensions.css' />
+	<!--[if lt IE 7]><link rel="stylesheet" type="text/css" media="screen" href="../../../medias/css/ie6.css"><![endif]-->
+
+	<script type='text/javascript' src="../../../medias/scripts/global.js"></script>
+	<script type='text/javascript' src="../../../medias/scripts/documentation.js"></script>
+
+</head>
+
+<body>
+
+	<div id="main">
+
+		<div id="menu">
+			<ul>
+				<li><span class="logo"></span></li>
+				<li><a href="../../../index.html" class="home"><span>Home</span></a></li>
+				<li><a href="../../../about.html" class="about"><span>About</span></a></li>
+				<li><a href="../../../demo.html" class="demo"><span>Demo</span></a></li>
+				<li><a href="../../../download.html" class="download"><span>Download</span></a></li>
+				<li><a href="../../../documentation.html" class="documentation active"><span>Documentation</span></a></li>
+				<li><a href="../../../gallery.html" class="gallery"><span>Gallery</span></a></li>
+				<li><a href="../../../get-involved.html" class="involved"><span>Get Involved</span></a></li>
+				<li><form method="GET" action="../../../search" name="header_search">
+					<a href="#" id="emptysearch" onclick="empty('search_q');hide(this.id)"></a>
+					<input type="text" name="q" id="search_q" class="searchform" onFocus="checkHeaderSearch()" onKeyUp="checkHeaderSearch()" value="">
+					<input type="submit" value="search" class="hide">
+				</form></li>
+			</ul>
+	
+		</div>
+	
+		<hr>
+
+		<div id="header">
+			<h1>iUI Extensions - Theme Switcher</h1>
+		</div>
+
+
+		<div id="content">
+
+			<div class="col-left">
+				<h2>Theme Switcher</h2> 
+
+				<p class="tcenter">
+					<img src="../images/extensions-theme-switcher.jpg">
+				</p>
+				<p>
+					iui-theme-switcher.js is an extension for the iUI framework. Its intend is to help you change which iUI theme you want to be used on-the-fly.
+				</p>
+				<p>
+					Note: this is a replacement of the post 0.4dev3 iUI release theme switcher code, that used to be in iui/js/theme-switcher.js (which is now to consider as obsolete, but can still be used).
+				</p>
+				<p class="tcenter">
+					<a href="../iui/ext-sandbox/theme-switcher/theme-switcher-demo.html" class="btn" target="_blank">Test System Infos</a>
+				</p>
+
+			</div>
+			
+			<div class="col-right">
+				<div>
+					<strong>Theme Switcher</strong><br />
+					Author: Remi Grumeau<br />
+					Version: 1.1
+				</div>
+				<div>
+					<strong>See also</strong><br />
+					- <a href="../getting-started.html">Getting Started</a><br />
+					- <a href="../../../faq.html">Frequently Asked Questions</a><br />
+					- <a href="../iui-documentation.html">iUI code documentation</a><br />
+					- <a href="../styles-themes.html">Advanced styling & themes</a><br />
+				</div>
+
+				<div>
+					<strong>Get Involved</strong><br />
+					Like in most open-source projects, the more we are, the meyer it is! HTML/CSS/JS, documentation, design, translation, ...<br />
+					<a href="../../../get-involved.html">Don’t be shy</a>
+				</div>
+			</div>
+
+			<div class="col-left">
+				<h5>1. Instructions of use</h5>
+				<p>
+					It comes as a JS object, "iui.ts".
+				</p>
+				<br />
+				<h5>1.1. Variables</h5>
+				<p>
+					<strong>iui.ts.currentTheme</strong><br>
+					It is set by iui.ts.init(), updated by iui.ts.setTheme().<br />
+					This is the theme currently in use. By default, same as iui.ts.defaultTheme.<br />
+					Ex: "iphone"
+				</p>
+				<p>
+					<strong>iui.ts.defaultTheme</strong><br>
+					It is set once on load by iui.ts.init().<br />
+					First link element in the header with a "title" attribute and "rel" attribute equals to "stylesheet".<br />
+					Ex: "iphone"
+				</p>
+				<p>
+					<strong>iui.ts.themes</strong><br>
+					It will be set by iui.ts.init() and updated by iui.ts.addTheme() and iui.ts.removeTheme().<br />
+					Selecting in the header all link elements with "rel" attribute value containing "stylesheet" and an existing title attribute.<br />
+					Ex: ["iphone", "android", "webos"]
+				</p>
+				<br />
+				<h5>1.2. Functions</h5>
+				<p>
+					<strong>iui.ts.init()</strong><br>
+					Initialized on load.<br />
+					no parameter<br />
+					<br />
+					Selecting in the header all link elements with both a "rel" attribute value containing "stylesheet" and an existing title attribute and store their title attribute value in iui.ts.themes array. If "stylesheet" attribute doesn't contain "alternate", both iui.ts.defaultTheme and iui.ts.currentTheme are defined.
+				</p>
+				<p>
+					<strong>iui.ts.setTheme(title)</strong><br>
+					Set a theme by its title.
+					- title (string)<br />
+					<br />
+					It disables all link elements with a "rel" attribute that contains "stylesheet" and a "title" attribute, and enable the one with the "title" attribute value equal to the title name given as a parameter. It will also update iui.ts.currentTheme value to title name given as a parameter.<br />
+					Ex: iui.ts.setTheme('android');
+				</p>
+				<p>
+					<strong>iui.ts.setDefaultTheme()</strong><br>
+					Alias to iui.ts.setTheme(iui.ts.defaultTheme)<br />
+					no parameter<br />
+					Ex: iui.ts.setDefaultTheme();
+				</p>
+				<p>
+					<strong>iui.ts.rememberTheme()</strong><br>
+					Remember theme currently in use.
+					no parameter<br />
+					<br />
+					It stores iui.ts.currentTheme value in a cookie called 'iui-theme'. The cookie will live a year. Note that iui.ts.init() will activate the theme title value of this cookie over the default one.<br />
+					Ex: iui.ts.rememberTheme();
+				</p>
+				<p>
+					<strong>iui.ts.addTheme(title, link, setIt)</strong><br>
+					Add a theme in the DOM.<br />
+					- title (string)<br />
+					- link (string)<br />
+					- setIt (true/false - optional, default is false)<br />
+					<br />
+					It adds a new link element in the header with 'title' parameter value as "title" attribute value, and 'link' parameter value as "href" attribute value. It also adds/pushes 'title' parameter value to iui.ts.themes array. If setIt is defined as true, iui.ts.setTheme() will be activated with it using this new theme. You can use absolute url as "link" value, theme doesn't have to be in iui/t folder (but it would be cleaner).<br />
+					Ex: iui.ts.addTheme('nokia', 'nokia-theme.css');
+				</p>
+				<p>
+					<strong>iui.ts.removeTheme(title)</strong><br>
+					Remove a theme from the DOM.<br />
+					- title (string)<br />
+					<br />
+					It removes the link element in the header with 'title' parameter value equal to "title" attribute value. It also removes it from iui.ts.themes array. If you remove the theme currently in use, iui.ts.setDefaultTheme will be used.<br />
+					Ex: iui.ts.removeTheme('nokia');
+				</p>
+
+			</div>
+
+			<div class="col-left">
+				<p>
+					<a href="../extensions.html">back to extensions</a>
+				</p>
+			</div>
+
+		</div>
+
+		<hr>
+
+		<p id="footer">
+			iUI-JS &copy; 2007 - iUI-JS is an opensource framwork released under LGPL license - <a href="../../../sitemap.html">sitemap</a> - <a href="../../../donate.html">DONATE</a>
+		</p>
+
+	</div>
+</body>
+</html>

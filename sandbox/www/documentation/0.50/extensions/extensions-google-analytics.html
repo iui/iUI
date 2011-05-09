@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>iUI Touch - Extensions - Extended Styles</title>
+	<meta name="description" content="iUI is a framework consisting of a JavaScript library, CSS, and images for developing advanced mobile webapps for smartphones & mobile devices.">
+	<link href="../../../medias/images/favicon.png" rel="icon" type="image/png" /> 
+	<link href="../../../medias/images/favicon.ico" rel="shortcut icon" />
+	<link rel="image_src" type="image/jpeg" href="../../../medias/images/thumb.jpg" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+	<link rel='stylesheet' type='text/css' media="screen" href='../../../medias/css/globals.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='../../../medias/css/documentation.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='../../../medias/css/extensions.css' />
+	<!--[if lt IE 7]><link rel="stylesheet" type="text/css" media="screen" href="../../../medias/css/ie6.css"><![endif]-->
+
+	<script type='text/javascript' src="../../../medias/scripts/global.js"></script>
+	<script type='text/javascript' src="../../../medias/scripts/documentation.js"></script>
+
+</head>
+
+<body>
+
+	<div id="main">
+
+		<div id="menu">
+			<ul>
+				<li><span class="logo"></span></li>
+				<li><a href="../../../index.html" class="home"><span>Home</span></a></li>
+				<li><a href="../../../about.html" class="about"><span>About</span></a></li>
+				<li><a href="../../../demo.html" class="demo"><span>Demo</span></a></li>
+				<li><a href="../../../download.html" class="download"><span>Download</span></a></li>
+				<li><a href="../../../documentation.html" class="documentation active"><span>Documentation</span></a></li>
+				<li><a href="../../../gallery.html" class="gallery"><span>Gallery</span></a></li>
+				<li><a href="../../../get-involved.html" class="involved"><span>Get Involved</span></a></li>
+				<li><form method="GET" action="../../../search" name="header_search">
+					<a href="#" id="emptysearch" onclick="empty('search_q');hide(this.id)"></a>
+					<input type="text" name="q" id="search_q" class="searchform" onFocus="checkHeaderSearch()" onKeyUp="checkHeaderSearch()" value="">
+					<input type="submit" value="search" class="hide">
+				</form></li>
+			</ul>
+	
+		</div>
+	
+		<hr>
+
+		<div id="header">
+			<h1>iUI Extensions - Google Analytics</h1>
+		</div>
+
+
+		<div id="content" class="gs">
+
+			<div class="col-left">
+				<h2>Google Analytics</h2> 
+
+				<p class="tcenter">
+					<img src="../images/extensions-google-analytics.jpg">
+				</p>
+				<p>
+					This extension send an event to GA (Google Analytics) each time iUI slides to a new screen. It then solves the problem of having one analytics event sent on page load with no ajax navigation event tracked.
+				</p>
+			</div>
+			
+			<div class="col-right">
+				<div>
+					<strong>Google Analytics</strong><br />
+					Author: Sean Gilligan<br />
+					Version: 1.0<br />
+				</div>
+				<div>
+					<strong>See also</strong><br />
+					- <a href="../getting-started.html">Getting Started</a><br />
+					- <a href="../../../faq.html">Frequently Asked Questions</a><br />
+					- <a href="../iui-documentation.html">iUI code documentation</a><br />
+					- <a href="../styles-themes.html">Advanced styling & themes</a><br />
+				</div>
+
+				<div>
+					<strong>Get Involved</strong><br />
+					Like in most open-source projects, the more we are, the meyer it is! HTML/CSS/JS, documentation, design, translation, ...<br />
+					<a href="../../../get-involved.html">Don’t be shy</a>
+				</div>
+			</div>
+			
+			<div class="col-left">
+				<h5>1. Installation</h5>
+				<p>
+					Just install GA following <a href="http://www.google.com/support/analytics/bin/answer.py?answer=66983" target="_blank">Google guideline</a> and make sure it works properly.
+				</p>
+			</div>
+			<div class="col-left">
+				<h5>2. Instructions for use</h5>
+				<p>
+					You don't have to do anything more, this extension do the job for you.<br />
+					Using iUI custom event 'focus', a "_trackEvent" is sent to GA each time iUI slides to a new screen with the following parameters:<br />
+					- category: '_trackEvent'<br />
+					- action: 'iUI'<br />
+					- opt_label: 'focus'<br />
+					- opt_value: current page name + '#' + page id attribute value<br />
+					(example: 'index.html#homepage', 'index.html#contact')
+				</p>
+				<p>
+					We could also use a some pageTrack but the benefit of this model is that you can add your own events if needed.<br />
+					Imagine you have a 'read more' button, you can add the following code to a normal &lt;a> click:
+					_gaq.push(['_trackEvent', 'iUI', 'readmore', e.target.tagName + "#" + e.target.id]);
+				</p>
+			</div>
+
+			<div class="col-left">
+				<p>
+					<a href="../extensions.html">back to extensions</a>
+				</p>
+			</div>
+
+		</div>
+
+		<hr>
+
+		<p id="footer">
+			iUI-JS &copy; 2007 - iUI-JS is an opensource framwork released under LGPL license - <a href="../../../sitemap.html">sitemap</a> - <a href="../../../donate.html">DONATE</a>
+		</p>
+
+	</div>
+</body>
+</html>

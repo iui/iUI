@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>iUI Touch - Extensions - System Infos</title>
+	<meta name="description" content="iUI is a framework consisting of a JavaScript library, CSS, and images for developing advanced mobile webapps for smartphones & mobile devices.">
+	<link href="../../../medias/images/favicon.png" rel="icon" type="image/png" /> 
+	<link href="../../../medias/images/favicon.ico" rel="shortcut icon" />
+	<link rel="image_src" type="image/jpeg" href="../../../medias/images/thumb.jpg" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+
+	<link rel='stylesheet' type='text/css' media="screen" href='../../../medias/css/globals.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='../../../medias/css/documentation.css' />
+	<link rel='stylesheet' type='text/css' media="screen" href='../../../medias/css/extensions.css' />
+	<!--[if lt IE 7]><link rel="stylesheet" type="text/css" media="screen" href="../../../medias/css/ie6.css"><![endif]-->
+
+	<script type='text/javascript' src="../../../medias/scripts/global.js"></script>
+	<script type='text/javascript' src="../../../medias/scripts/documentation.js"></script>
+
+</head>
+
+<body>
+
+	<div id="main">
+
+		<div id="menu">
+			<ul>
+				<li><span class="logo"></span></li>
+				<li><a href="../../../index.html" class="home"><span>Home</span></a></li>
+				<li><a href="../../../about.html" class="about"><span>About</span></a></li>
+				<li><a href="../../../demo.html" class="demo"><span>Demo</span></a></li>
+				<li><a href="../../../download.html" class="download"><span>Download</span></a></li>
+				<li><a href="../../../documentation.html" class="documentation active"><span>Documentation</span></a></li>
+				<li><a href="../../../gallery.html" class="gallery"><span>Gallery</span></a></li>
+				<li><a href="../../../get-involved.html" class="involved"><span>Get Involved</span></a></li>
+				<li><form method="GET" action="../../../search" name="header_search">
+					<a href="#" id="emptysearch" onclick="empty('search_q');hide(this.id)"></a>
+					<input type="text" name="q" id="search_q" class="searchform" onFocus="checkHeaderSearch()" onKeyUp="checkHeaderSearch()" value="">
+					<input type="submit" value="search" class="hide">
+				</form></li>
+			</ul>
+	
+		</div>
+	
+		<hr>
+
+		<div id="header">
+			<h1>iUI Extensions - System Infos</h1>
+		</div>
+
+
+		<div id="content">
+
+			<div class="col-left">
+				<h2>System Infos</h2> 
+
+				<p class="tcenter">
+					<img src="../images/extensions-system-info.jpg">
+				</p>
+				<p>
+					iui-system-info.js is an extension for the iUI framework. It gives system information in order to perform device detection. It may also be useful for the webapp developer you are to detect screen resolution, navigation mode, device capabilites & browser version.
+				</p>
+				<p class="tcenter">
+					<a href="../iui/ext-sandbox/system-info/system-info-demo.html" class="btn" target="_blank">Test System Infos</a>
+				</p>
+			</div>
+			
+			<div class="col-right">
+				<div>
+					<strong>Sytem Infos</strong><br />
+					Author: Remi Grumeau<br />
+					Version: 1.1<br />
+				</div>
+				<div>
+					<strong>See also</strong><br />
+					- <a href="../getting-started.html">Getting Started</a><br />
+					- <a href="../../../faq.html">Frequently Asked Questions</a><br />
+					- <a href="../iui-documentation.html">iUI code documentation</a><br />
+					- <a href="../styles-themes.html">Advanced styling & themes</a><br />
+				</div>
+
+				<div>
+					<strong>Get Involved</strong><br />
+					Like in most open-source projects, the more we are, the meyer it is! HTML/CSS/JS, documentation, design, translation, ...<br />
+					<a href="../../../get-involved.html">Don’t be shy</a>
+				</div>
+			</div>
+			
+			<div class="col-left">
+				<h5>1. Instructions of use</h5>
+				<p>
+					System Info has been created to help devs to get some common informations easily. If you need a really strong and complete device capabilities checker, perhaps you'd better grab latest release of <a href="http://www.modernizr.com/" target="_blank">Modernizr</a>.
+				</p>
+				<br />
+				<h5>1.1. OS infos</h5>
+				<p>
+					<strong>iui.sysinfo.os.name</strong> (based on user-agent)<br>
+					- ios<br>
+					- android<br>
+					- blackberry<br>
+					- playbook<br>
+					- windows_phone<br>
+					- maemo<br>
+					- webos<br>
+					- macos<br>
+					- windows
+				</p>
+				<p>
+					<strong>iui.sysinfo.os.version</strong> (based on user-agent)<br>
+					- returns OS version number based on user-agent (or xp/vista/seven for windows)
+				</p>
+				<p>
+					<strong>iui.sysinfo.os.lang</strong> (based on navigator.language)<br>
+					- returns the 2 first letters
+				</p>
+				<br />
+				<h5>1.2. Device infos</h5>
+				<p>
+					<strong>iui.sysinfo.device.vendor</strong> (based on user-agent)<br>
+					- apple<br>
+					- google<br>
+					- htc<br>
+					- motorola<br>
+					- nokia<br>
+					- rim<br>
+					- samsung<br>
+					- unknow
+				</p>
+				<p>
+					<strong>iui.sysinfo.device.type</strong> (based on user-agent)<br>
+					- phone<br>
+					- pod<br>
+					- tablet<br>
+					- desktop
+				</p>
+				<p>
+					<strong>iui.sysinfo.device.touch</strong> (based on window.touch)<br>
+					- true<br>
+					- false
+				</p>
+				<p>
+					<strong>iui.sysinfo.device.gps</strong> (based on navigator.geolocation)<br>
+					- true<br>
+					- false
+				</p>
+				<p>
+					<strong>iui.sysinfo.device.orientation</strong> (based on window.onorientation)<br>
+					- true<br>
+					- false
+				</p>
+				<br />
+				<h5>1.3. Browser infos</h5>
+				<p>
+					<strong>iui.sysinfo.browser.name</strong> (based on user-agent)<br>
+					- blackberry<br>
+					- chrome<br>
+					- dolfin<br>
+					- fennec<br>
+					- firefox<br>
+					- ie<br>
+					- safari<br>
+					- opera<br>
+					- opera_mobile<br>
+					- unknow
+				</p>
+				<p>
+					<strong>iui.sysinfo.browser.version</strong> (based on user-agent)<br>
+					- 4 / 5 / 6 (Blackberry)<br>
+					- 4 / 5 (Chrome)<br>
+					- 2 / 3 / 3.5 / 3.6 (Firefox)<br>
+					- 1 (Fennec)<br>
+					- 6 / 7 / 8 / 9 (IE)<br>
+					- 8 / 9 / 10 (Opera)<br>
+					- 1 (Playbook)<br>
+					- 3 / 4 / 4.1 / 5 (Safari)<br>
+					- unknow
+				</p>
+				<p>
+					<strong>iui.sysinfo.browser.webapp</strong> (based on window.navigator.standalone)<br>
+					- true<br>
+					- false
+				</p>
+				<p>
+					<strong>iui.sysinfo.browser.standalone</strong> (based on window.navigator.standalone - only on iOS)<br>
+					- true<br>
+					- false
+				</p>
+				<br />
+				<h5>1.4. Screen infos</h5>
+				<p>
+					<strong>iui.sysinfo.screen.width</strong> (based on window.innerWidth)<br>
+					- value in px
+				</p>
+				<p>
+					<strong>iui.sysinfo.screen.height</strong> (based on window.innerHeight)<br>
+					- value in px
+				</p>
+				<br />
+				<h5>1.5. Storage Infos</h5>
+				<p>
+					<strong>iui.sysinfo.storage.cookie</strong> (based on navigator.cookieEnabled)<br>
+					- true<br>
+					- false
+				</p>
+				<p>
+					<strong>iui.sysinfo.storage.local</strong><br>
+					- true<br>
+					- false
+				</p>
+				<p>
+					<strong>iui.sysinfo.storage.database</strong><br>
+					- true<br>
+					- false
+				</p>
+				<br />
+				<h5>1.6. Webkit Infos</h5>
+				<p>
+					<strong>iui.sysinfo.webkit.transition</strong><br>
+					- true<br>
+					- false
+				</p>
+				<p>
+					<strong>iui.sysinfo.webkit.points</strong><br>
+					- true<br>
+					- false
+				</p>
+				<p>
+					<strong>iui.sysinfo.webkit.transform</strong><br>
+					- true<br>
+					- false
+				</p>
+				<p>
+					<strong>iui.sysinfo.webkit.matrix</strong><br>
+					- true<br>
+					- false
+				</p>
+
+			</div>
+
+			<div class="col-left">
+				<h5>2. ChangeLog</h5>
+				<p>
+					<strong>1.1</strong><br />
+					- Added Bada support<br />
+					- Added Blackberry support<br />
+					- Added PlayBook support<br />
+					- Bugfixes
+				</p>
+				<p>
+					<strong>1.0</strong><br />
+					- Initial release
+				</p>
+			</div>
+
+			<div class="col-left">
+				<p>
+					<a href="../extensions.html">back to extensions</a>
+				</p>
+			</div>
+
+		</div>
+
+		<hr>
+
+		<p id="footer">
+			iUI-JS &copy; 2007 - iUI-JS is an opensource framwork released under LGPL license - <a href="../../../sitemap.html">sitemap</a> - <a href="../../../donate.html">DONATE</a>
+		</p>
+
+	</div>
+</body>
+</html>
