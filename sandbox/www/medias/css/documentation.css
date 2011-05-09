@@ -42,3 +42,7 @@
 	font-style:		italic;
 	color:			#F00;
 }
+
+#content p.tcenter a.btn {
+	margin:		0 auto;
+}
