@@ -1,3 +1,20 @@
+REL-0.40-dev3 20011-09-03
+ * Improvements and bugfixes to extension events
+ * iui.getAllViews (still needs code for older browsers!!!)
+ * iui.busy flag to fix Issue #191
+ * Android and WebOS themes
+ * Commented iui.js using Peter Rust's toolkit
+ * New extensions in Sandbox
+   * Javascript Loader (jit-loader)
+   * Cache Manager
+   * TbBMod (Toolbar button modification)
+   * Reachability
+   * Google Analytics
+   * HTML 5 Video
+   * Fragment unloader extension
+   * CanVG extension
+ * License change to MIT License (was New BSD License)
+
 REL-0.40-dev2 2009-12-18
  * Fix Issue #138 (orientation css not updating)
  * Fix Issue #184 (hardcoded width of 320 in "orientation event fallback")
