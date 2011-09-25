@@ -60,7 +60,7 @@ window.iui =
 	If defined, this user-set function will be called when an AJAX call returns
 	with an HTTP status other than `200` (currently all HTTP statuses other than
 	`200`, even including 200-level statuses like `201 Created`, are seen as
-	errors).
+	errors.  A status of `0` is treated as success for file:// URLs).
 	*/
 	ajaxErrHandler : null,
 	
@@ -258,7 +258,7 @@ window.iui =
 			console.log("xhr.readyState = " + xhr.readyState);
 			if (xhr.readyState == 4)
 			{
-				if (xhr.status == 200 && !xhr.aborted)
+				if ((xhr.status == 200 || xhr.status == 0) && !xhr.aborted)
 				{
 				  // Add 'if (xhr.responseText)' to make sure we have something???
 				  // Can't use createDocumentFragment() here because firstChild is null and childNodes is empty
