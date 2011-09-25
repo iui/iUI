@@ -20,7 +20,7 @@ if (fullPage) {
 <html>
 <head>
   <title>Full Page Echo</title>
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
   <link rel="stylesheet" href="../iui/iui.css" type="text/css" />
   <link rel="stylesheet" title="Default" href="../iui/t/default/default-theme.css"  type="text/css"/>
 </head>
