@@ -590,7 +590,7 @@ addEventListener("click", function(event)
 		{
 			location.href = link.href;
 		}
-		else if (!link.target)
+		else if (!link.target && link.href)
 		{
 			followAjax(link, null);
 		}
