@@ -242,7 +242,7 @@ body > .dialog {
     color: #999999;
 }
 
-input:not(input[type|=radio]):not(input[type|=checkbox]) {
+input:not([type|=radio]):not([type|=checkbox]) {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -290,7 +290,7 @@ fieldset > .row:last-child {
     border-bottom: none !important;
 }
 
-.row > input:not(input[type|=radio]):not(input[type|=checkbox]) {
+.row > input:not([type|=radio]):not([type|=checkbox]) {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
