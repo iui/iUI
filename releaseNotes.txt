@@ -1,4 +1,4 @@
-REL-0.40-alpha1 20011-09-03
+REL-0.40-alpha1 20011-09-30
  * Fix for Issue #301 -- <a> tag with no href and onclick
  * Fix for Issue #303 -- viewport metatags should use commas not semicolons
  * Fix for Issue #256 (Input field styling doesn't work in Safari 5+
