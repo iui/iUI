@@ -41,6 +41,12 @@ loading (besides the ajax pre-loading built into iUI).
 window.iui =
 {
 	/*
+	property: iui.logging
+	This is set to `true` logging (with console.log) is enabled.
+	*/
+	logging: false,
+
+	/*
 	property: iui.busy
 	This is set to `true` if a slide animation is in progress.
 	*/
@@ -97,7 +103,7 @@ window.iui =
 //			if (window.iui_ext)	window.iui_ext.injectEventMethods(page);	// TG -- why was this comment left here??
 			if (page == currentPage)
 			{
-//				console.log("page = currentPage = " + page.id);
+				log("page = currentPage = " + page.id);
 				iui.busy = false;	//  Don't do anything, just clear the busy flag and exit
 				return;
 			}
@@ -215,7 +221,7 @@ window.iui =
 				var index = pageHistory.indexOf(pageId);
 				var backwards = index != -1;
 				if (backwards)	// we're going back, shouldn't happen on replacePage()
-					console.log("error: can't replace page with ancestor");
+					log("error: can't replace page with ancestor");
 					
 				pageHistory.pop();
 	
@@ -255,7 +261,7 @@ window.iui =
 	  // I don't think we need onerror, because readstate will still go to 4 in that case
 		function spbhCB(xhr) 
 		{
-//			console.log("xhr.readyState = " + xhr.readyState);
+			log("xhr.readyState = " + xhr.readyState);
 			if (xhr.readyState == 4)
 			{
 				if ((xhr.status == 200 || xhr.status == 0) && !xhr.aborted)
@@ -339,7 +345,7 @@ window.iui =
 		   		xhr.aborted = true;
 			}
 		   	catch(err){
-				console.log(err);
+				log(err);
 		 	}
 		}
 	},
@@ -964,6 +970,6 @@ function replaceElementWithFrag(replace, frag)
 }
 
 function $(id) { return document.getElementById(id); }
-function ddd() { console.log.apply(console, arguments); }
+function log() { if ((window.console!=undefined) && iui.logging) console.log.apply(console, arguments); }
 
 })();
