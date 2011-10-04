@@ -97,7 +97,7 @@ window.iui =
 //			if (window.iui_ext)	window.iui_ext.injectEventMethods(page);	// TG -- why was this comment left here??
 			if (page == currentPage)
 			{
-				console.log("page = currentPage = " + page.id);
+//				console.log("page = currentPage = " + page.id);
 				iui.busy = false;	//  Don't do anything, just clear the busy flag and exit
 				return;
 			}
@@ -255,7 +255,7 @@ window.iui =
 	  // I don't think we need onerror, because readstate will still go to 4 in that case
 		function spbhCB(xhr) 
 		{
-			console.log("xhr.readyState = " + xhr.readyState);
+//			console.log("xhr.readyState = " + xhr.readyState);
 			if (xhr.readyState == 4)
 			{
 				if ((xhr.status == 200 || xhr.status == 0) && !xhr.aborted)
