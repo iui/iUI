@@ -32,6 +32,12 @@ body > .toolbar {
     -moz-border-image: url(backButtonBrdr.png) 0 8 0 14;
     background: url(backButtonBack.png) repeat-x;
 }
+#backButton[selected],
+#backButton:active {
+    -webkit-border-image: url(backButtonSel.png) 0 8 0 14;
+    -moz-border-image: url(backButtonSel.png) 0 8 0 14;
+    background: url(backButtonBackSel.png) repeat-x;
+}
 
 
 .whiteButton {
@@ -48,6 +54,15 @@ body > .toolbar {
 .grayButton {
     -webkit-border-image: url(grayButton.png) 0 12 0 12;
     -moz-border-image: url(grayButton.png) 0 12 0 12;
+    color: #FFFFFF;
+}
+.whiteButton[selected],
+.whiteButton:active,
+.grayButton[selected],
+.grayButton:active {
+    -webkit-border-image: url(../default/whiteButtonSel.png) 0 12 0 12;
+    -moz-border-image: url(../default/whiteButtonSel.png) 0 12 0 12;
+    text-shadow: none;
     color: #FFFFFF;
 }
 
@@ -91,7 +106,8 @@ body > .panel {
 #preloader {
     display: none;
     background-image: url(loading.gif), url(selection.png),
-        url(blueButton.png), url(listArrowSel.png), url(listGroup.png);
+        url(blueButton.png), url(listArrowSel.png), url(listGroup.png),
+        url(backButtonBackSel.png), url(whiteButtonSel.png);
 }
 
 .toolbar > h1.titleImg {

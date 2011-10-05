@@ -51,6 +51,15 @@ body > .toolbar {
     -moz-border-image: url(../default/grayButton.png) 0 12 0 12;
     color: #FFFFFF;
 }
+.whiteButton[selected],
+.whiteButton:active,
+.grayButton[selected],
+.grayButton:active {
+    -webkit-border-image: url(../default/whiteButtonSel.png) 0 12 0 12;
+    -moz-border-image: url(../default/whiteButtonSel.png) 0 12 0 12;
+    color: #FFFFFF;
+    text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
+}
 
 /************************************************************************************************/
 
