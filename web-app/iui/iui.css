@@ -241,7 +241,7 @@ body > .dialog {
 
 .dialog > fieldset > label {
     position: absolute;
-    margin: 16px 0 0 6px;
+    margin: 15px 0 0 6px;
     font-size: 14px;
     color: #999999;
 }
@@ -253,8 +253,12 @@ input:not([type|=radio]):not([type|=checkbox]) {
     width: 100%;
     margin: 8px 0 0 0;
     padding: 6px 6px 6px 44px;
-    font-size: 16px;
+    font-size: 1em;/* to avoid zooming on selection */
     font-weight: normal;
+}
+.dialog > fieldset > input {
+    font-size: 14px !important;
+	padding-left:	60px !important;
 }
 
 /************************************************************************************************/
@@ -292,6 +296,9 @@ body > .panel {
 .panel > ul li:last-child,
 fieldset > .row:last-child {
     border-bottom: none !important;
+}
+.panel > ul li a {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .row > input:not([type|=radio]):not([type|=checkbox]) {
