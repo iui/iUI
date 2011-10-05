@@ -101,6 +101,7 @@ body.landscape > .toolbar > h1 {
     text-decoration: none;
     white-space: nowrap;
     background: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .blueButton {
@@ -119,6 +120,7 @@ body.landscape > .toolbar > h1 {
     padding: 0;
     max-width: 55px;
     border-width: 0 8px 0 14px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .whiteButton,
@@ -132,6 +134,7 @@ body.landscape > .toolbar > h1 {
     font-weight: bold;
     text-decoration: inherit;
     color: inherit;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 /* TG */ .grayButton[selected], .grayButton:active,
@@ -188,6 +191,7 @@ body > ul > li > a {
     padding: 8px 32px 8px 10px;
     text-decoration: none;
     color: inherit;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 a[target="_replace"] {
@@ -334,6 +338,7 @@ fieldset > .row:last-child {
     font-size: 19px;
     font-weight: bold;
     line-height: 30px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .toggle[toggled="true"] {
