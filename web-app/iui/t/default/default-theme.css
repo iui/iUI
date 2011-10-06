@@ -1,5 +1,6 @@
 /* default-theme.css (c) 2007-10 by iUI Project Members, see LICENSE.txt for license */
 body {
+	font-size:	12px; /* to be used by inputs as 1em value to fix zooming on selection */
     color: #000000;
 }
 
