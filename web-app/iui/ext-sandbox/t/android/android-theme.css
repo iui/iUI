@@ -12,74 +12,109 @@ body {
 	background:		#181818;
 }
 body > *:not(.toolbar) {
-	top: 			35px;
+	top: 			25px;
 }
 
 li > a[selected], li > a:active {
-	color:			#000!important;
-	background-image:	url(blank.gif), -webkit-gradient(linear, left top, left bottom, 
-								from(#ad4500),
-								color-stop(0.1, #ff7500),
-								color-stop(0.5, #ff9200),
-								color-stop(0.8, #ff9200),
-                				to(#ff6900)
-                			) !important;
+	color:	#000;
+    background-image:	url(listArrow.png),
+    					-webkit-gradient(linear, left top, left bottom, 
+							from(#ad4500),
+							color-stop(0.1, #ff7500),
+							color-stop(0.5, #ff9200),
+							color-stop(0.8, #ff9200),
+               				to(#ff6900)
+               			);
+    background-image: 	url(listArrow.png),
+    					-moz-linear-gradient(270deg, 
+    						#ad4500 0%, 
+    						#ff7500 10%,
+    						#ff9200 50%,
+    						#ff9200 50%,
+    						#ff6900 100%
+    					);
 }
 
 li > a[selected="progress"] {
-	background-image:	url(loading.gif), -webkit-gradient(linear, left top, left bottom, 
-								from(#ad4500),
-								color-stop(0.1, #ff7500),
-								color-stop(0.5, #ff9200),
-								color-stop(0.8, #ff9200),
-								color-stop(0.9, #ff6900),
-                				to(#fdab00)
-                			) !important;
+	background-image:	url(loading.gif),
+    					-webkit-gradient(linear, left top, left bottom, 
+							from(#ad4500),
+							color-stop(0.1, #ff7500),
+							color-stop(0.5, #ff9200),
+							color-stop(0.8, #ff9200),
+               				to(#ff6900)
+               			);
+    background-image: 	url(loading.gif),
+    					-moz-linear-gradient(270deg, 
+    						#ad4500 0%, 
+    						#ff7500 10%,
+    						#ff9200 50%,
+    						#ff9200 50%,
+    						#ff6900 100%
+    					);
 }
 
 /************************************************************************************************/
 
 body > .toolbar {
-	border: 			0px;
-	padding: 			0px 5px 10px 5px;
-	height: 			35px;
-	background-image:	-webkit-gradient(linear, left top, left bottom,
-							from(#000),
-							to(#181818)
-						);
+	border: 		0px;
+	padding: 		0px 5px 10px 5px;
+    height: 		25px;
+	background: 	-webkit-gradient(linear, left top, left bottom, from(#9a9a9a), to(#7b7d7b));
+	background: 	-moz-linear-gradient(270deg, #9a9a9a 0%, #7b7d7b 100%);
 }
-.toolbar > h1 {
-	font-weight:	normal;
-	text-shadow:	none;
-	font-size:		16px;
-	padding-top:	7px!important;
-	padding-bottom:	5px;
-	height:			35px;
-}
-
-.button {
-	-moz-border-image:		url(toolButton.png) 0 5 0 5 round round;
-	-webkit-border-image:	url(toolButton.png) 0 5 0 5;
-}
-
-.blueButton {
-	-moz-border-image: 		url(blueButton.png) 0 5 0 5 round round;
-	-webkit-border-image:	url(blueButton.png) 0 5 0 5;
+.toolbar > h1,
+.dialog > h1 {
+	position:		absolute;
+    left: 			50%;
+    height:			auto;
+    margin: 		3px 0 0 -75px;
+    padding:		0px;
+    font-size: 		16px;
+    width: 			150px;
+    color: 			#FFF;
+    text-align:		center;
+	text-shadow:	rgba(0,0,0,.7) 0 1px 4px;
 }
 
 #backButton,
-.whiteButton[selected], 
-.whiteButton:active,
+.toolbar > .button,
+.dialog .button {
+	top: 			2px;
+	right:			2px;
+	width:			auto;
+	height:			auto;
+	margin:			0;
+	padding:		0px 8px;
+	color:			#000;
+	font-size:		12px;
+	line-height:	20px;
+	text-shadow:	none;
+    background-image:		-webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#d9d9d9));
+    background-image:		-moz-linear-gradient(270deg, #ebebeb 0%, #d9d9d9 100%);
+	-webkit-border-radius:	2px;
+	-moz-border-radius:		2px;
+    border-radius:			2px;
+}
+#backButton {
+	left:			2px;
+	right:			auto;
+}
+
+.toolbar > .blueButton {
+	color:		#d5d4d4;
+	background-image: 	-webkit-gradient(linear, left top, left bottom, from(#757575), to(#363636));
+	background-image: 	-moz-linear-gradient(270deg, #757575 0%, #363636 100%);
+}
+.toolbar > .redButton {
+	color:		#fff;
+	background-image:		-webkit-gradient(linear, left top, left bottom, from(#ff0000), to(#be0000))!important;
+	background-image:		-moz-linear-gradient(270deg, #ff0000 0%, #be0000 100%)!important;
+}
+
+
 .whiteButton,
-.redButton[selected], 
-.redButton:active,
-.redButton,
-.grayButton[selected], 
-.grayButton:active,
-.grayButton,
-.greenButton[selected], 
-.greenButton:active,
-.greenButton {
+.grayButton {
 	font-weight:			normal;
 	font-size:				16px;
 	-webkit-border-radius:	5px;
@@ -89,14 +124,8 @@ body > .toolbar {
 	margin:					2px 0;
 }
 
-.whiteButton[selected], 
-.whiteButton:active,
-.redButton[selected], 
-.redButton:active,
-.grayButton[selected], 
-.grayButton:active,
-.greenButton[selected], 
-.greenButton:active {
+.whiteButton[selected], .whiteButton:active,
+.grayButton[selected], .grayButton:active {
 	background-image:		-webkit-gradient(linear, left top, left bottom, 
 								from(#ff6900),
 								color-stop(0.2, #ff9200),
@@ -105,30 +134,6 @@ body > .toolbar {
                 				to(#ff6900)
                 			) !important;
 }
-#backButton {
-	top:			2px;
-	left:			2px;
-	color:			#524d52;
-	font-size:		11px;
-	margin:			0;
-	padding:		0px 7px 10px 7px;
-	height:			20px;
-	border:			none;
-	border-width: 	0px;
-	background-image:		-webkit-gradient(linear, left top, left bottom, 
-								from(#f7f7f7),
-                				to(#bdbabd)
-                			) !important;
-}
-#backButton:active,
-#backButton[selected] {
-	color:					#fff;
-	background-image:		-webkit-gradient(linear, left top, left bottom, 
-								from(#fea94b),
-                				to(#ef7217)
-                			) !important;
-}
-
 
 .whiteButton {
 	color:					#424142;
@@ -137,16 +142,6 @@ body > .toolbar {
                 				to(#c4c4c4)
                 			) !important;
 }
-
-.redButton {
-	color:					#fff;
-	border:					1px solid #524d52;
-	background-image:		-webkit-gradient(linear, left top, left bottom, 
-								from(#ff0000),
-								to(#be0000)
-                			) !important;
-}
-
 .grayButton {
 	background-image:		-webkit-gradient(linear, left top, left bottom, 
 								from(#797979),
@@ -154,65 +149,62 @@ body > .toolbar {
                 			) !important;
 }
 
-.greenButton {
-	display: 			block;
-	padding: 			10px;
-	text-align: 		center;
-	text-decoration:	none;
-	color:					#fff;
-	border:					1px solid #524d52;
-	background-image:		-webkit-gradient(linear, left top, left bottom, 
-								from(#01bf00),
-								to(#079600)
-                			) !important;
-}
-a.disable {
-	color: 			#333;
-}
-
-/* /ADDED */
-
 /************************************************************************************************/
 
 body > ul > li {
-	padding:		8px 0 8px 10px;
+	padding:		15px 0 15px 10px;
 	font-size: 		18px;
 	font-weight:	normal;
 	border:			0px;
-	background:		url(list.png) no-repeat bottom center, url(list.gif) repeat-x bottom center;
+    border-bottom:	1px solid rgba(255,255,255,.3);
+    background:		url(listArrow.png) no-repeat center right, #000;
 }
-body > ul > li:first-child {
-	background:		url(list.png) no-repeat bottom center, url(list.png) no-repeat top center, url(list.gif) repeat-x bottom center, url(list.gif) repeat-x top center;	
-}
-
 body > ul > li.group {
 	padding:		2px 10px;
 	font-size:		14px;
 	font-weight:	normal;
 	text-shadow: 	rgba(0, 0, 0, 0.9) 1px 1px 3px;
 	border:			0px;
-	background:		url(list.png) no-repeat bottom center,		-webkit-gradient(linear, left top, left bottom, 
-								from(#9c9a9c),
-                				to(#848284)
-                			);
+	background:		-webkit-gradient(linear, left top, left bottom, from(#9c9a9c), to(#848284));
+	background:		-moz-linear-gradient(270deg, #9c9a9c 0%, #848284 100%);
 }
-
 body > ul > li > a {
-	padding-top:	15px;
-	padding-bottom:	15px;
+	margin:			-15px 0 -15px -10px;
+	padding:		15px 0 15px 10px;
     background: 	none;
 }
 
 /************************************************************************************************/
     
+body > .dialog {
+	top:		0px;
+	min-height:	437px;
+}
+.dialog  .button {
+	left:	auto;
+	width:	auto;
+}
+.dialog  .leftButton {
+	left:	2px;
+	right:	auto;
+	width:	auto;
+}
 .dialog > fieldset {
-	background:				-webkit-gradient(linear, left top, left bottom, 
-								from(#cdd5df),
-								color-stop(0.05, #b0bccd),
-								color-stop(0.49, #8b9db5),
-								color-stop(0.5, #8195af),
-                				to(#6d84a2)
-                			);
+	border: 		0px;
+	padding: 		0px 5px 10px 5px;
+	background-color:	#CCC;
+	background-repeat:	repeat-x;
+	background-size:	auto 25px;
+	background-image: 	-webkit-gradient(linear, left top, left bottom, from(#9a9a9a), to(#7b7d7b));
+	background-image: 	-moz-linear-gradient(270deg, #9a9a9a 0%, #7b7d7b 100%);
+}
+.dialog > fieldset > h1 {
+	padding-top:	3px;
+	font-size:		16px;
+	text-shadow:	rgba(0,0,0,.7) 0 1px 4px;
+}
+.dialog > fieldset label {
+	margin-top:		17px;
 }
 
 /************************************************************************************************/
@@ -242,6 +234,9 @@ body > .panel > h2 {
 .toggle {
     border:			1px solid #888888;
     background: 	#FFFFFF url(toggle.png) repeat-x;
+}
+.toggle[toggled="true"] {
+    border:			1px solid #444;
 }
 
 .toggle[toggled="true"] {
