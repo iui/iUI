@@ -21,9 +21,13 @@
        width: 100%;
        opacity: 0.5;
     }
-    
     form.progress div.spinner {
         visibility: visible;  // need better styling here, placeholder
+    }
+    fieldset > div.row > span {
+    	position:	absolute;
+    	right:		0px;
+    	padding-left:	0px;
     }
   </style>
   <script type="application/x-javascript" src="../iui/iui.js"></script>
@@ -187,7 +191,7 @@ function formResultCB()
             </div>
             <div class="row">
                 <label>delay:</label>
-                <input type="text" name="delay" value="2"/>(seconds)
+                <input type="text" name="delay" value="2"/><span>(seconds)</span>
             </div>
         </fieldset>
         <a class="whiteButton" type="submit">Submit</a>

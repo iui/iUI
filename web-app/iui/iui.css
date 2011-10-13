@@ -101,6 +101,7 @@ body.landscape > .toolbar > h1 {
     text-decoration: none;
     white-space: nowrap;
     background: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .blueButton {
@@ -119,6 +120,7 @@ body.landscape > .toolbar > h1 {
     padding: 0;
     max-width: 55px;
     border-width: 0 8px 0 14px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .whiteButton,
@@ -132,6 +134,7 @@ body.landscape > .toolbar > h1 {
     font-weight: bold;
     text-decoration: inherit;
     color: inherit;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 /* TG */ .grayButton[selected], .grayButton:active,
@@ -188,6 +191,7 @@ body > ul > li > a {
     padding: 8px 32px 8px 10px;
     text-decoration: none;
     color: inherit;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 a[target="_replace"] {
@@ -237,7 +241,7 @@ body > .dialog {
 
 .dialog > fieldset > label {
     position: absolute;
-    margin: 16px 0 0 6px;
+    margin: 15px 0 0 6px;
     font-size: 14px;
     color: #999999;
 }
@@ -249,8 +253,12 @@ input:not([type|=radio]):not([type|=checkbox]) {
     width: 100%;
     margin: 8px 0 0 0;
     padding: 6px 6px 6px 44px;
-    font-size: 16px;
+    font-size: 1em;/* to avoid zooming on selection */
     font-weight: normal;
+}
+.dialog > fieldset > input {
+    font-size: 14px !important;
+	padding-left:	60px !important;
 }
 
 /************************************************************************************************/
@@ -288,6 +296,9 @@ body > .panel {
 .panel > ul li:last-child,
 fieldset > .row:last-child {
     border-bottom: none !important;
+}
+.panel > ul li a {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .row > input:not([type|=radio]):not([type|=checkbox]) {
@@ -334,6 +345,7 @@ fieldset > .row:last-child {
     font-size: 19px;
     font-weight: bold;
     line-height: 30px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .toggle[toggled="true"] {
