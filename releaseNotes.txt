@@ -1,11 +1,11 @@
-REL-0.40-alpha1 20011-09-30
+REL-0.40-alpha1 2011-09-30
  * Fix for Issue #301 -- <a> tag with no href and onclick
  * Fix for Issue #303 -- viewport metatags should use commas not semicolons
  * Fix for Issue #256 (Input field styling doesn't work in Safari 5+
  * Fix ajax calls against file URLs (don't treat xhr.status of 0 as error)
  * Have iui.css use 'landscape' class rather than custom orient='landscape' attribute
 
-REL-0.40-dev3 20011-09-03
+REL-0.40-dev3 2011-09-03
  * Improvements and bugfixes to extension events
  * iui.getAllViews (still needs code for older browsers!!!)
  * iui.busy flag to fix Issue #191
