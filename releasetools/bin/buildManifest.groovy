@@ -94,7 +94,7 @@ class HTMLManifest
         
     def output = { java.io.Writer writer ->
         writer << HTMLManifest.firstLine
-        writer << '# Date ' + this.modDate << "\n"
+        writer << '# Date: ' + this.modDate << "\n"
         writer << this.header
         this.cache.each{ filePath ->
             writer << filePath.path.substring(base.path.length()+1) << "\n"
