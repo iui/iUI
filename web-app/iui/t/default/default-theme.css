@@ -1,4 +1,4 @@
-/* default-theme.css (c) 2007-10 by iUI Project Members, see LICENSE.txt for license */
+/* default-theme.css (c) 2007-11 by iUI Project Members, see LICENSE.txt for license */
 body {
     color: #000000;
 }
@@ -8,7 +8,7 @@ li > a[selected], li > a:active {
 }
 
 li > a[selected="progress"] {
-    background-image: url(../default/loading.gif), url(selection.png) !important;
+    background-image: url(loading.gif), url(selection.png) !important;
 }
 
 /************************************************************************************************/
@@ -33,6 +33,11 @@ body > .toolbar {
     background: url(backButtonBack.png) repeat-x;
 }
 
+#backButton:active {
+    -webkit-border-image: url(backButtonSel.png) 0 8 0 14;
+    -moz-border-image: url(backButtonSel.png) 0 8 0 14;
+    background: url(backButtonSel.png) repeat-x;
+}
 
 .whiteButton {
     -webkit-border-image: url(whiteButton.png) 0 12 0 12;
@@ -90,8 +95,8 @@ body > .panel {
 /************************************************************************************************/
 #preloader {
     display: none;
-    background-image: url(loading.gif), url(selection.png),
-        url(blueButton.png), url(listArrowSel.png), url(listGroup.png);
+    background-image: url(loading.gif), url(backButtonSel.png), url(selection.png),
+        url(blueButton.png), url(listArrowSel.png), url(listArrowSel.png), url(listGroup.png);
 }
 
 .toolbar > h1.titleImg {

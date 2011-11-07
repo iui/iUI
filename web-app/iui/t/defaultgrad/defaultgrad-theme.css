@@ -1,4 +1,4 @@
-/* defaultgrad-theme.css (c) 2007-9 by iUI Project Members, see LICENSE.txt for license */
+/* defaultgrad-theme.css (c) 2007-11 by iUI Project Members, see LICENSE.txt for license */
 body {
     color: #000000;
 }
@@ -89,7 +89,7 @@ body > .toolbar {
 	box-shadow: 		none;
 }
 
-#backButton[selected],#backButton:active {
+#backButton:active {
     -webkit-border-image: url(../default/backButtonSel.png) 0 8 0 14;
     -moz-border-image: url(../default/backButtonSel.png) 0 8 0 14;
     background: url(../default/backButtonSel.png) repeat-x;
