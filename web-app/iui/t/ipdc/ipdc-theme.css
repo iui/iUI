@@ -1,15 +1,9 @@
 /* ipdc-theme.css (c) 2007-9 by iUI Project Members, see LICENSE.txt for license */
 body {
 	color: #40658A;
-
 	background: url(Logo_DevCamp.png);
-	background-position-x: 100%;
-	background-position-y: 60px;
-	
+	background-position: 100% 60px;
 	background-repeat: no-repeat;
-	/*{ background: url("banner.jpeg") right top } 
-	background-position: 100px 60px;
-	*/
 }
 
 li > a[selected], li > a:active {
@@ -23,6 +17,7 @@ li > a[selected="progress"] {
 /************************************************************************************************/
 
 body > .toolbar {
+	border-top:	1px solid #585858;
     background: url(toolbar.png) #6d84a2 repeat-x;
 }
 
@@ -73,7 +68,13 @@ body > ul > li > a {
 /************************************************************************************************/
     
 .dialog > fieldset {
-    background: url(toolbar.png) #7388a5 repeat-x;
+    background: #585858 url(toolbar.png) repeat-x;
+}
+.dialog > fieldset h1 {
+	height:		32px;
+}
+.dialog > fieldset > label {
+    margin-top: 	17px;
 }
 
 /************************************************************************************************/
@@ -88,7 +89,7 @@ body > .panel {
 }
 
 .toggle[toggled="true"] {
-    background: #194fdb url(../default/toggleOn.png) repeat-x;
+    background: #194fdb url(toggleOn.png) repeat-x;
 }
 
 .thumb {
