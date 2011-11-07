@@ -14,49 +14,206 @@ li > a[selected="progress"] {
 /************************************************************************************************/
 
 body > .toolbar {
-    background: -webkit-gradient(linear, left top, left bottom, from(#CDD5DF), to(#6D84A2)) ;
-//    background: url(../default/toolbar.png) #6d84a2 repeat-x;
+	border:		0px;
+    background-image: -webkit-gradient(linear, left top, left bottom, 
+    					from(rgb(204,210,218)), 
+	    					color-stop(0.03, rgb(181,192,206)), 
+	    					color-stop(0.5, rgb(136,155,179)),
+	    					color-stop(0.5, rgb(126,148,176)), 
+	    					color-stop(0.97, rgb(109,131,161)), 
+	    				to(rgb(45,54,66)));
+    background-image: -moz-linear-gradient(270deg, 
+    					rgb(204,210,218) 0%, 
+    						rgb(181,192,206) 3%, 
+    						rgb(136,155,179) 50%, 
+    						rgb(126,148,176) 51%,
+    						rgb(109,131,161) 97%, 
+    					rgb(45,54,66) 100%);
+    background-size:auto 45px;
 }
 
 .button {
-    -webkit-border-image: url(../default/toolButton.png) 0 5 0 5;
-    -moz-border-image: url(../default/toolButton.png) 0 5 0 5;
+	top: 			7px;
+    height: 		28px;
+	margin:			0;
+	padding:		0 8px;
+    text-shadow:	rgba(0,0,0,.6) 0px -1px 0;
+    background: 	none;
+    background-image: -webkit-gradient(linear, left top, left bottom, 
+    					from(#485461), 
+	    					color-stop(0.03, #8aa1bf), 
+	    					color-stop(0.5,#5877a2),
+	    					color-stop(0.5,#476999),
+	    				to(#4a6c9b));
+    background-image: -moz-linear-gradient(270deg, 
+    					#7e8fa7 0%, 
+    						#8ea4c1 3%, 
+    						#5877a2 50%, 
+    						#476999 50%,
+    					#4a6c9b 100%);
+    -webkit-border-radius:	5px;
+    -moz-border-radius:		5px;
+    border-radius:	5px;
+    border:			1px solid #354e71;
+    border-top:		1px solid #30363e;
+	-moz-box-shadow: 	0 1px 1px rgba(255,255,255,.3);
+	-webkit-box-shadow: 0 1px 1px rgba(255,255,255,.3);
+	box-shadow: 		0 1px 1px rgba(255,255,255,.3);
 }
 
 .blueButton {
-    -webkit-border-image: url(../default/blueButton.png) 0 5 0 5;
-    -moz-border-image: url(../default/blueButton.png) 0 5 0 5;
+    background-image: -webkit-gradient(linear, left top, left bottom, 
+    					from(#3e5177), 
+	    					color-stop(0.03, #779be9), 
+	    					color-stop(0.5,#376fe0),
+	    					color-stop(0.5,#2260dd),
+	    				to(#2463de));
+    background-image: -moz-linear-gradient(270deg, 
+    					#3e5177 0%, 
+    						#779be9 3%, 
+    						#376fe0 50%, 
+    						#2260dd 50%,
+    					#2463de 100%);
+    border:			1px solid #163d8d;
+    border-top:		1px solid #29354e;
 }
 
 #backButton {
-    -webkit-border-image: url(../default/backButtonBrdr.png) 0 8 0 14;
-    -moz-border-image: url(../default/backButtonBrdr.png) 0 8 0 14;
-    background: url(../default/backButtonBack.png) repeat-x;
+	top: 			8px;
+    height: 		30px;
+    -webkit-border-image: url(../default/backButton.png) 0 8 0 14;
+    -moz-border-image: url(../default/backButton.png) 0 8 0 14;
+    background: url(../default/backButton.png) repeat-x;
+	-moz-box-shadow: 	none;
+	-webkit-box-shadow: none;
+	box-shadow: 		none;
+}
+
+#backButton[selected],#backButton:active {
+    -webkit-border-image: url(../default/backButtonSel.png) 0 8 0 14;
+    -moz-border-image: url(../default/backButtonSel.png) 0 8 0 14;
+    background: url(../default/backButtonSel.png) repeat-x;
 }
 
 
-.whiteButton {
-    -webkit-border-image: url(../default/whiteButton.png) 0 12 0 12;
-    -moz-border-image: url(../default/whiteButton.png) 0 12 0 12;
-    text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
+.whiteButton,
+.redButton,
+.grayButton {
+	margin-bottom:		3px;
+    padding:			10px;
+	line-height:		15px;
+	text-shadow: 		rgba(255,255,255,.7) 0 1px 0;
+	-webkit-border-radius:	12px;
+	-moz-border-radius:		12px;
+	border-radius:		12px;
+	border:				3px solid rgb(115,115,115);
+	background-image: 	-webkit-gradient(linear, left top, left bottom, 
+	    					from(rgb(255,255,225)), 
+		    					color-stop(0.05,rgba(235,235,235,.95)),
+		    					color-stop(0.5,rgba(190,190,190,.9)),
+		    					color-stop(0.5,rgba(160,160,160,.66)),
+		    				to(rgba(167,167,167,.6)))!important;
+	background-image: 	-moz-linear-gradient(270deg, 
+	    					rgb(255,255,225) 0%, 
+	    						rgba(235,235,235,.95) 5%, 
+	    						rgba(190,190,190,.9) 50%,
+	    						rgba(160,160,160,.66) 50%, 
+	    					rgba(167,167,167,.6) 100%)!important;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-moz-box-shadow: 	0 1px 1px rgba(0,0,0,.3);
+	box-shadow: 		0 1px 1px rgba(0,0,0,.3);
+}
+
+.whiteButton[selected],
+.whiteButton:active {
+	background-image: 	-webkit-gradient(linear, left top, left bottom, 
+	    					from(#92bfff), 
+		    					color-stop(0.03, #4a8bf4),
+		    					color-stop(0.5, #2e6be6),
+		    					color-stop(0.5, #2863e2),
+		    				to(#1a50db))!important;
+	background-image: 	-moz-linear-gradient(270deg, 
+	    					#92bfff 0%, 
+	    						#4a8bf4 3%, 
+	    						#2e6be6 50%,
+	    						#2863e2 50%, 
+	    					#1a50db 100%)!important;
+    text-shadow: rgba(0, 0, 0, 0.7) 0 -1px 0;
+    color:		rgb(255,255,255);
+}
+
+.grayButton,
+.grayButton[selected],
+.grayButton:active {
+	background-image: 	-webkit-gradient(linear, left top, left bottom, 
+	    					from(rgba(120,120,120,.8)), 
+		    					color-stop(0.03, rgba(70,70,70,.8)),
+		    					color-stop(0.5, rgba(15,15,15,.8)),
+		    					color-stop(0.5, rgba(0,0,0,.8)),
+		    				to(rgba(0,0,0,.8)))!important;
+	background-image: 	-moz-linear-gradient(270deg, 
+	    					rgba(50,50,50,.8) 0%, 
+	    						rgba(40,40,40,.8) 3%, 
+	    						rgba(30,30,30,.8) 50%,
+	    						rgba(0,0,0,.8) 50%, 
+	    					rgba(0,0,0,.8) 100%)!important;
+    text-shadow: none;
+    color:		rgb(255,255,255);
+}
+.grayButton[selected],
+.grayButton:active {
+    color:		rgba(255,255,255,.7);
 }
 
 .redButton {
-    -webkit-border-image: url(../default/redButton.png) 0 12 0 12;
-    -moz-border-image: url(../default/redButton.png) 0 12 0 12;
+	color:		#fff;
+    background-image: -webkit-gradient(linear, left top, left bottom, 
+    					from(#c6686e), 
+	    					color-stop(0.03, #ef7c84), 
+	    					color-stop(0.5,#e73643),
+	    					color-stop(0.5,#e10a1b),
+	    				to(#ec1013))!important;
+    background-image: -moz-linear-gradient(270deg, 
+    					#c6686e 0%, 
+    						#ef7c84 3%, 
+    						#e73643 50%, 
+    						#e10a1b 50%,
+    					#ec1013 100%)!important;
+    text-shadow: rgba(0, 0, 0, 0.7) 0 -1px 0;
+}
+.toolbar > .redButton {
+    height: 		28px;
+	padding:		0 8px;
+	line-height:	30px;
+	font-size:		12px;
+    text-decoration: inherit;
+	border:				1px solid #7d2627;
+	-webkit-border-radius:	5px;
+	-moz-border-radius:		5px;
+	border-radius:		5px;
+	-moz-box-shadow: 	none;
+	-webkit-box-shadow: none;
+	box-shadow: 		none;
 }
 
-.grayButton {
-    -webkit-border-image: url(../default/grayButton.png) 0 12 0 12;
-    -moz-border-image: url(../default/grayButton.png) 0 12 0 12;
-    color: #FFFFFF;
-}
 
 /************************************************************************************************/
 
 body > ul > li.group {
-	opacity:0.7;
-    background: url(../default/listGroup.png) repeat-x;
+	padding: 		1px 10px 0 10px!important;
+	opacity:		0.8;
+	background: 	-webkit-gradient(linear, left top, left bottom, 
+	    					from(#c6ced4), 
+		    					color-stop(0.05, #82919c),
+		    					color-stop(0.7, #a8b1b9),
+		    				to(#a8b1b9));
+	background: 	-moz-linear-gradient(270deg, 
+	    					#c6ced4 0%, 
+	    						#82919c 5%, 
+	    						#a8b1b9 70%,
+	    					#a8b1b9 100%);
+    border-top: 	1px solid #6e7c85;
+    border-bottom: 	1px solid #778590;
 }
 
 body > ul > li > a {
@@ -66,8 +223,30 @@ body > ul > li > a {
 /************************************************************************************************/
     
 .dialog > fieldset {
-    background: -webkit-gradient(linear, left top, left bottom, from(#CDD5DF), to(#6D84A2)) ;
-//    background: url(../default/toolbar.png) #7388a5 repeat-x;
+	background-color:	rgb(109,131,161);
+	background-repeat:	repeat-x;
+    background-image: -webkit-gradient(linear, left top, left bottom, 
+    					from(rgb(204,210,218)), 
+	    					color-stop(0.03, rgb(181,192,206)), 
+	    					color-stop(0.5, rgb(136,155,179)),
+	    					color-stop(0.5, rgb(126,148,176)),
+	    				to(rgb(109,131,161)));
+    background-image: -moz-linear-gradient(270deg, 
+    					rgb(204,210,218) 0%, 
+    						rgb(181,192,206) 3%, 
+    						rgb(136,155,179) 50%, 
+    						rgb(126,148,176) 51%,
+    						rgb(109,131,161) 97%, 
+    					rgb(45,54,66) 100%);
+    background-size:auto 45px;
+}
+.dialog > fieldset > label {
+    margin-top: 	19px;
+}
+.dialog > fieldset > input {
+	font-size:		1em;
+	margin-top:		10px!important;
+	margin-bottom:	0px!important;
 }
 
 /************************************************************************************************/
@@ -75,25 +254,49 @@ body > ul > li > a {
 body > .panel {
     background: #c8c8c8 url(../default/pinstripes.png);
 }
-
 .toggle {
-    border: 1px solid #888888;
-    background: #FFFFFF url(../default/toggle.png) repeat-x;
+	background-image: 	-webkit-gradient(linear, left top, left bottom, 
+							from(rgb(160,160,160)), 
+								color-stop(0.2,rgb(235,235,235)),
+								color-stop(0.5,rgb(255,245,245)),
+								color-stop(0.5,rgb(255,255,255)),
+							to(rgb(255,255,255)));
+	background-image: 	-moz-linear-gradient(270deg, 
+	    					rgb(160,160,160) 0%, 
+	    						rgb(235,235,235) 20%, 
+	    						rgb(245,245,245) 50%,
+	    						rgb(255,255,255) 50%, 
+	    					rgb(255,255,255) 100%);
 }
-
 .toggle[toggled="true"] {
-    background: #194fdb url(../default/toggleOn.png) repeat-x;
+	border: 		1px solid #143fae;
+    text-shadow:	rgba(0, 0, 0, 0.4) 0px -1px 0;
+	background-image: 	-webkit-gradient(linear, left top, left bottom, 
+							from(rgb(17,53,148)), 
+								color-stop(0.2,rgb(32,89,222)),
+							to(rgb(66,134,245)));
+	background-image: 	-moz-linear-gradient(270deg, 
+	    					rgb(17,53,148) 0%,
+	    						rgb(32,89,222) 20%, 
+	    					rgb(66,134,245) 100%);
 }
 
 .thumb {
-    background: #ffffff url(../default/thumb.png) repeat-x;
+	background: 	-webkit-gradient(linear, left top, left bottom, 
+							from(rgb(218,218,218)), 
+								color-stop(0.03,rgb(207,207,207)),
+							to(rgb(255,255,255)));
+	background: 	-moz-linear-gradient(270deg, 
+	    					rgb(218,218,218) 0%,
+	    						rgb(207,207,207) 3%, 
+	    					rgb(255,255,255) 100%);
 }
 
 /************************************************************************************************/
 #preloader {
     display: none;
-    background-image: url(../default/loading.gif), url(../default/selection.png),
-        url(../default/blueButton.png), url(../default/listArrowSel.png), url(../default/listGroup.png);
+    background-image: url(../default/loading.gif), url(../default/backButtonSel.png), url(../default/selection.png),
+        url(../default/listArrow.png), url(../default/listArrowSel.png);
 }
 
 .toolbar > h1.titleImg {
