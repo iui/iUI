@@ -1,3 +1,14 @@
+REL-0.40-beta1 2012-01-03
+ * Update console logging function and control it with iui.logging boolean property
+ * Bug fixes and improvements to iui.css
+ * Bug fixes and improvements to default theme
+ * Bug fixes and improvements to default gradients theme
+ * Bug fixes and improvements to Android theme
+ * Bug fixes and improvements to WebOS theme
+ * Fixes and improvements in some test HTML files
+ * Update copyright date to 2012
+ * First release since switch to Git revision control system
+
 REL-0.40-alpha1 2011-09-30
  * Fix for Issue #301 -- <a> tag with no href and onclick
  * Fix for Issue #303 -- viewport metatags should use commas not semicolons
