@@ -1,6 +1,6 @@
 NOTICE.txt - iUI credits and copyright notices
 
-   iUI is Copyright (c) 2007-2010 by the iUI project members: 
+   iUI is Copyright (c) 2007-2012 by the iUI project members: 
            M. Sean Gilligan (msgilligan)
        Past members:  	 
            Joe  Hewitt (joehewitt)

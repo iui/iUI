@@ -1,6 +1,6 @@
 /*
    copyright:
-   Copyright (c) 2007-11, iUI Project Members.
+   Copyright (c) 2007-12, iUI Project Members.
    See LICENSE.txt for licensing terms.
    Version @VERSION@
  */
