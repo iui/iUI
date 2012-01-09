@@ -16,6 +16,7 @@ var slideSpeed = 20;
 var slideInterval = 0;
 var ajaxTimeoutVal = 30000;
 
+var	originalPage = null;
 var currentPage = null;
 var currentDialog = null;
 var currentWidth = 0;
@@ -26,6 +27,7 @@ var pageHistory = [];
 var newPageCount = 0;
 var checkTimer;
 var hasOrientationEvent = false;
+var hasOnHashChange = false;
 var portraitVal = "portrait";
 var landscapeVal = "landscape";
 
@@ -514,6 +516,8 @@ addEventListener("load", function(event)
 	
 	if (locPage && (locPage != page))
 		iui.showPage(locPage);
+	if (!locPage && page)
+		originalPage = page;
 	
 	setTimeout(preloadImages, 0);
 	if (typeof window.onorientationchange == "object")
@@ -522,8 +526,17 @@ addEventListener("load", function(event)
 		hasOrientationEvent = true;
 		setTimeout(orientChangeHandler, 0);
 	}
-	setTimeout(checkOrientAndLocation, 0);
-	checkTimer = setInterval(checkOrientAndLocation, 300);
+	if ("onhashchange" in window)
+	{  
+    	hasOnHashChange = true;  
+    	window.onhashchange = hashChangeHandler;
+	}
+	if (!hasOrientationEvent || !hasOnHashChange)
+	{
+		// If either event is missing we'll need to use a timer
+		setTimeout(checkOrientAndLocation, 0);
+		checkTimer = setInterval(checkOrientAndLocation, 300);
+	}
 }, false);
 
 addEventListener("unload", function(event)
@@ -693,6 +706,17 @@ function orientChangeHandler()
 	}
 }
 
+function hashChangeHandler()
+{
+	// Check that we're not getting an event for a change that we caused
+	if (location.hash != currentHash)
+	{	// looks like we didn't cause it.
+		var pageId = location.hash.substr(hashPrefix.length);
+		if (pageId == "" && originalPage)
+			pageId = originalPage.id;
+		iui.showPageById(pageId);
+	}
+}
 
 function checkOrientAndLocation()
 {
@@ -707,10 +731,12 @@ function checkOrientAndLocation()
 	  }
 	}
 
-	if (location.hash != currentHash)
+	if (!hasOnHashChange)
 	{
-		var pageId = location.hash.substr(hashPrefix.length);
-		iui.showPageById(pageId);
+		if (location.hash != currentHash)
+		{
+			hashChangeHandler();
+		}
 	}
 }
 
