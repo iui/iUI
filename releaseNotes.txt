@@ -1,3 +1,9 @@
+REL-0.40-beta2 2012-mm-dd (in progress)
+ * Use location.replace() and location.assign() rather than location.hash in updatePage
+ * Save originalPage and use it if location.hash becomes "" (Fix for Issue #322)
+ * HD theme (for retina display) in the sandbox (ext-sandbox/t/defaulthd)
+ * Fix Theme Switcher for Safari 5.1 (Issue #317)
+
 REL-0.40-beta1 2012-01-03
  * Update console logging function and control it with iui.logging boolean property
  * Bug fixes and improvements to iui.css
