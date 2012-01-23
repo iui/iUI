@@ -8,13 +8,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <link rel="stylesheet" href="../../iui/iui.css" type="text/css" />
 
-<link rel="stylesheet" title="Default" href="../../iui/t/default/default-theme.css"  type="text/css"/>
-<link rel="alternate stylesheet" title="Default using Gradients" href="../../iui/t/defaultgrad/defaultgrad-theme.css"  type="text/css"/>
-<link rel="alternate stylesheet" title="iPhoneDevCamp" href="../../iui/t/ipdc/ipdc-theme.css"  type="text/css"/>
-<link rel="alternate stylesheet" title="Android" href="../../iui/ext-sandbox/t/android/android-theme.css"  type="text/css"/>
-<link rel="alternate stylesheet" title="Web OS (Palm)" href="../../iui/ext-sandbox/t/webos/webos-theme.css"  type="text/css"/>
+<link rel="stylesheet" id="iui-theme" title="iUI Theme" href="../../iui/t/default/default-theme.css"  type="text/css"/>
 <script type="application/x-javascript" src="../../iui/iui.js"></script>
 <script type="application/x-javascript" src="../../iui/js/iui-theme-switcher.js"></script>
+<script type="application/x-javascript">iui.ts.basePath = "../../iui/";</script>
 <script type="application/x-javascript" src="../../iui/ext-sandbox/cache-manager/iui-cache-manager.js"></script>
 <script type="application/x-javascript" src="music-app.js"></script>
 <!--
@@ -102,13 +99,14 @@
     
     <div id="themes" class="panel" title="Theme Switcher">
         <h2>Theme Switcher</h2>
-        <form id="theme-form" onsubmit="return iui.ts.themeSubmit(this)" method="">
+        <form id="theme-form" onsubmit="return false;" method="">
             <select onchange="return iui.ts.themeSelect(this)" name="themeSelect" size="1">
-                <option>Default</option>
-                <option>Default using Gradients</option>
-                <option>iPhoneDevCamp</option>
-                <option>Android</option>
-                <option>Web OS (Palm)</option>
+                <option value="default">Default</option>
+                <option value="defaultgrad">Default w/Gradients</option>
+                <option value="defaulthd">Default w/HD Support</option>
+                <option value="ipdc">iOSDevCamp</option>
+                <option value="android">Android</option>
+                <option value="webos">WebOS</option>
             </select>
            <!-- <input type="submit" name="submit" value="Set"/> -->
         </form>
