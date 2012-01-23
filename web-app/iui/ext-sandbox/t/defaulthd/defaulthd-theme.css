@@ -1,0 +1,208 @@
+/* default-theme.css (c) 2007-2012 by iUI Project Members, see LICENSE.txt for license */
+body {
+	color: #000000;
+}
+
+li > a[selected], li > a:active {
+	background-image: url(../../../t/default/listArrowSel.png), url(../../../t/default/selection.png) !important;
+	-webkit-tap-highlight-color: transparent;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	li > a[selected], li > a:active {
+		background-image: url(listArrowSel-hd.png), url(selection-hd.png) !important;
+		background-size: 25px 20px, 1px 43px;
+		-webkit-tap-highlight-color: transparent;
+	}
+}
+
+li > a[selected="progress"] {
+	background-image: url(../../../t/default/loading.gif), url(selection-hd.png) !important;
+	background-size: , 1px 43px;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/************************************************************************************************/
+
+body > .toolbar {
+	background: url(../../../t/default/toolbar.png) #6d84a2 repeat-x;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	body > .toolbar {
+		background: url(toolbar-hd.png) #6d84a2 repeat-x;
+		background-size: 1px 43px;
+	}
+}
+
+.button {
+	-webkit-border-image: url(../../../t/default/toolButton.png) 0 5 0 5;
+	-moz-border-image: url(../../../t/default/toolButton.png) 0 5 0 5;
+	-webkit-tap-highlight-color: transparent;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	.button {
+		-webkit-border-image: url(toolButton-hd.png) 0 10 0 10;
+		-moz-border-image: url(toolButton-hd.png) 0 10 0 10;
+		-webkit-tap-highlight-color: transparent;
+	}
+}
+
+.button:active {
+	-webkit-border-image: url(../../../t/default/toolButtonSel.png) 0 5 0 5;
+	-moz-border-image: url(../../../t/default/toolButtonSel.png) 0 5 0 5;
+	background: url(../../../t/default/backButtonBackSel.png) repeat-x;
+	-webkit-tap-highlight-color: transparent;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	.button:active {
+		-webkit-border-image: url(toolButtonSel-hd.png) 0 10 0 10;
+		-moz-border-image: url(toolButtonSel-hd.png) 0 10 0 10;
+		background: url(backButtonBackSel-hd.png) repeat-x;
+		-webkit-tap-highlight-color: transparent;
+	}
+}
+
+.blueButton {
+	-webkit-border-image: url(../../../t/default/blueButton.png) 0 5 0 5;
+	-moz-border-image: url(../../../t/default/blueButton.png) 0 5 0 5;
+	-webkit-tap-highlight-color: transparent;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	.blueButton {
+		-webkit-border-image: url(blueButton-hd.png) 0 10 0 10;
+		-moz-border-image: url(blueButton-hd.png) 0 10 0 10;
+		-webkit-tap-highlight-color: transparent;
+	}
+}
+
+#backButton {
+	-webkit-border-image: url(../../../t/default/backButtonBrdr.png) 0 8 0 12;
+	-moz-border-image: url(../../../t/default/backButtonBrdr.png) 0 8 0 12;
+	background: url(../../../t/default/backButtonBack.png) repeat-x;
+	-webkit-tap-highlight-color: transparent;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	#backButton {
+		-webkit-border-image: url(backButtonBrdr-hd.png) 0 16 0 24;
+		-moz-border-image: url(backButtonBrdr-hd.png) 0 16 0 24;
+		background: url(backButtonBack-hd.png) repeat-x;
+		background-size: 1px 30px;
+		-webkit-tap-highlight-color: transparent;
+	}
+}
+
+#backButton:active {
+	-webkit-border-image: url(../../../t/default/backButtonSel.png) 0 8 0 12;
+	-moz-border-image: url(../../../t/default/backButtonSel.png) 0 8 0 12;
+	background: url(../../../t/default/backButtonSel.png) repeat-x;
+	-webkit-tap-highlight-color: transparent;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	#backButton:active {
+		-webkit-border-image: url(backButtonSel-hd.png) 0 16 0 24;
+		-moz-border-image: url(backButtonSel-hd.png) 0 16 0 24;
+		background: url(backButtonSel-hd.png) repeat-x;
+		background-size: 43px 30px;
+		-webkit-tap-highlight-color: transparent;
+	}
+}
+
+.whiteButton {
+	-webkit-border-image: url(../../../t/default/whiteButton.png) 0 12 0 12;
+	-moz-border-image: url(../../../t/default/whiteButton.png) 0 12 0 12;
+	text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
+}
+
+.redButton {
+	-webkit-border-image: url(../../../t/default/redButton.png) 0 12 0 12;
+	-moz-border-image: url(../../../t/default/redButton.png) 0 12 0 12;
+}
+
+.grayButton {
+	-webkit-border-image: url(../../../t/default/grayButton.png) 0 12 0 12;
+	-moz-border-image: url(../../../t/default/grayButton.png) 0 12 0 12;
+	color: #FFFFFF;
+}
+
+/************************************************************************************************/
+
+body > ul > li.group {
+	opacity:0.7;
+	background: url(../../../t/default/listGroup.png) repeat-x;
+}
+
+body > ul > li > a {
+	background: url(../../../t/default/listArrow.png) no-repeat right center;
+	-webkit-tap-highlight-color: transparent;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	body > ul > li > a {
+		background: url(listArrow-hd.png) no-repeat right center;
+		background-size: 25px 20px;
+		-webkit-tap-highlight-color: transparent;
+	}
+}
+
+/************************************************************************************************/
+
+.dialog > fieldset {
+	background: url(../../../t/default/toolbar.png) #7388a5 repeat-x;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	.dialog > fieldset {
+		background: url(toolbar-hd.png) #7388a5 repeat-x;
+	}
+}
+
+/************************************************************************************************/
+
+body > .panel {
+	background: #c8c8c8 url(../../../t/default/pinstripes.png);
+}
+
+.toggle {
+	border: 1px solid #888888;
+	background: #FFFFFF url(../../../t/default/toggle.png) repeat-x;
+}
+
+.toggle[toggled="true"] {
+	background: #194fdb url(../../../t/default/toggleOn.png) repeat-x;
+}
+
+.thumb {
+	background: #ffffff url(../../../t/default/thumb.png) repeat-x;
+}
+
+/************************************************************************************************/
+#preloader {
+	display: none;
+	background-image: url(../../../t/default/loading.gif), url(../../../t/default/backButtonSel.png), url(../../../t/default/selection.png), url(../../../t/default/blueButton.png), url(../../../t/default/listArrowSel.png), url(../../../t/default/listArrowSel.png), url(../../../t/default/listGroup.png);
+}
+
+.toolbar > h1.titleImg {
+	background: url(../../../t/default/title-img.png) no-repeat top center;
+	color: rgba(0,0,0,0);
+}
+
+.backButtonImg {
+	width: 50px;
+	background: url(../../../t/default/back-img.png) no-repeat center left, url(../../../t/default/backButtonBack.png) repeat-x top left !important;
+	color: rgba(0,0,0,0);
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	.backButtonImg {
+		width: 50px;
+		background: url(../../../t/default/back-img.png) no-repeat center left, url(backButtonBack-hd.png) repeat-x top left !important;
+		background-size: 45px 30px, 1px 30px;
+		color: rgba(0,0,0,0);
+	}
+}
