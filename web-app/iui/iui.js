@@ -16,6 +16,7 @@ var slideSpeed = 20;
 var slideInterval = 0;
 var ajaxTimeoutVal = 30000;
 
+var originalPage = null;
 var currentPage = null;
 var currentDialog = null;
 var currentWidth = 0;
@@ -510,7 +511,10 @@ addEventListener("load", function(event)
 	var locPage = getPageFromLoc();
 		
 	if (page)
-			iui.showPage(page);
+	{
+		originalPage = page;
+		iui.showPage(page);
+	}
 	
 	if (locPage && (locPage != page))
 		iui.showPage(locPage);
@@ -710,6 +714,8 @@ function checkOrientAndLocation()
 	if (location.hash != currentHash)
 	{
 		var pageId = location.hash.substr(hashPrefix.length);
+		if ((pageId == "") && originalPage)	// Workaround for WebKit Bug #63777
+			pageId = originalPage.id;
 		iui.showPageById(pageId);
 	}
 }
@@ -775,7 +781,18 @@ function updatePage(page, fromPage)
 	if (!page.id)
 		page.id = "__" + (++newPageCount) + "__";
 
-	location.hash = currentHash = hashPrefix + page.id;
+	currentHash = hashPrefix + page.id;
+	if (!fromPage)
+	{	// If fromPage is null, this is the initial load and we want to replace a hash of "" with "#_home" or whatever the initial page id is.
+//		location.replace(location.protocol + "//" + location.hostname + location.port + location.pathname + newHash + location.search);
+		location.replace(currentHash);
+	}
+	else
+	{	// Otherwise, we want to generate a new history entry
+//		location.hash = currentHash;
+		location.assign(currentHash);
+	}
+		
 	pageHistory.push(page.id);
 
 	var pageTitle = $("pageTitle");
