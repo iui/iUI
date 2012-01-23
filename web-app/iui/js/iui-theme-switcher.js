@@ -1,42 +1,30 @@
 /*
-   Copyright (c) 2007-9, iUI Project Members
-   See LICENSE.txt for licensing terms
+	iUI Theme Switcher
+	Copyright (c) 2007-2012, iUI Project Members
+	See LICENSE.txt for licensing terms
  */
 
 iui.ts = {
+	basePath: "/iui/",			/* Path to directory containing iui.css */
+	// theme map id->{namepath (path is relative to iui.css)
+	themes: {	"default":		{name:"Default", path:"t/default/default-theme.css"}, 
+				defaultgrad:	{name:"Default w/Gradients", path:"t/defaultgrad/defaultgrad-theme.css"},
+				defaulthd:		{name:"Default w/HD support", path:"ext-sandbox/t/defaulthd/defaulthd-theme.css"},
+				ipdc:			{name:"iOSDevCamp", path:"t/ipdc/ipdc-theme.css"},
+				android:		{name:"Android", path:"ext-sandbox/t/android/android-theme.css"},
+				webos:			{name:"WebOS", path:"ext-sandbox/t/webos/webos-theme.css"}
+			},
+
 	themeSelect: function(select)
 	{
-		var curTheme = iui.ts.getTheme();
-		var index = select.selectedIndex;
-		var newTheme = select.options[index].value;
-		iui.ts.setTheme(newTheme);
+		var newThemeID = select.options[select.selectedIndex].value;
+		iui.ts.setTheme(newThemeID);
 		return false;
 	},
-
-	getTheme: function()
-	{
-		var i, a, main;
-		for(i=0; (a = document.getElementsByTagName("link")[i]); i++)
-		{
-			if(a.getAttribute("rel").indexOf("style") != -1
-			&& a.getAttribute("title"))
-			{
-				if (a.disabled == false) return a.getAttribute("title");
-			}
-		}
-	},
 	
-	setTheme: function(title)
+	setTheme: function(themeID)
 	{
-		var i, a, main;
-		for(i=0; (a = document.getElementsByTagName("link")[i]); i++)
-		{
-			if(a.getAttribute("rel").indexOf("style") != -1
-			&& a.getAttribute("title"))
-			{
-				a.disabled = true;
-				if(a.getAttribute("title") == title) a.disabled = false;
-			}
-		}
+		var linkEl = document.getElementById("iui-theme");
+		linkEl.setAttribute('href', this.basePath + iui.ts.themes[themeID].path);
 	}
 };
