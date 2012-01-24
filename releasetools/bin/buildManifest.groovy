@@ -7,7 +7,7 @@ import java.io.*
 def outputFile = null;
 
 def iUIThemes = ['default', 'defaultgrad', 'ipdc']
-def iUISandboxThemes = ['android', 'webos']
+def iUISandboxThemes = ['defaulthd', 'android', 'webos']
 def mfest = new HTMLManifest("web-app/samples/music/music.manifest")
 
 def iuiPath = "../../iui";

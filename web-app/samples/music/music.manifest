@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Date: Mon Nov 07 00:11:43 PST 2011
+# Date: Tue Jan 24 00:20:44 PST 2012
 # header goes here
 music-app.js
 ../../iui/iui-favicon.png
@@ -42,6 +42,20 @@ music-app.js
 ../../iui/t/ipdc/toggleOn.png
 ../../iui/t/ipdc/toolbar.png
 ../../iui/t/ipdc/toolButton.png
+../../iui/ext-sandbox/t/defaulthd/backButton-hd.png
+../../iui/ext-sandbox/t/defaulthd/backButtonBack-hd.png
+../../iui/ext-sandbox/t/defaulthd/backButtonBackSel-hd.png
+../../iui/ext-sandbox/t/defaulthd/backButtonBrdr-hd.png
+../../iui/ext-sandbox/t/defaulthd/backButtonSel-hd.png
+../../iui/ext-sandbox/t/defaulthd/backButtonSelBrdr-hd.png
+../../iui/ext-sandbox/t/defaulthd/blueButton-hd.png
+../../iui/ext-sandbox/t/defaulthd/defaulthd-theme.css
+../../iui/ext-sandbox/t/defaulthd/listArrow-hd.png
+../../iui/ext-sandbox/t/defaulthd/listArrowSel-hd.png
+../../iui/ext-sandbox/t/defaulthd/selection-hd.png
+../../iui/ext-sandbox/t/defaulthd/toolbar-hd.png
+../../iui/ext-sandbox/t/defaulthd/toolButton-hd.png
+../../iui/ext-sandbox/t/defaulthd/toolButtonSel-hd.png
 ../../iui/ext-sandbox/t/android/android-theme.css
 ../../iui/ext-sandbox/t/android/cancel.png
 ../../iui/ext-sandbox/t/android/listArrow.png
