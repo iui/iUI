@@ -1,0 +1,151 @@
+/*
+ * build.gradle for iUI
+ * (c) 2012 by the iUI project members
+ *
+ * This file is used to run a local webserver for testing purposes and to
+ * publish to http://demo.iui-js.org on Google App Engine.
+ *
+ * iUI uses ant and build.xml to build the iUI distribution.
+ * (at some point in the future the build.xml functions may be migrated from
+ *  ant to gradle)
+ *
+ * To run a local weberver use:
+ *    ./gradlew gaeRun
+ *
+ * To publish to GAE run:
+ *    ./gradlew gaeUpload
+ *
+ * If you're not an administrator for http://demo.iui-js.org, you'll need to configure
+ * your own instance of GAE -- instructions TBD.
+ */
+
+import org.apache.ivy.plugins.resolver.URLResolver
+
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'gae'
+apply plugin: 'gaelyk'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+def compatibilityVersion = 1.5
+sourceCompatibility = compatibilityVersion
+targetCompatibility = compatibilityVersion
+
+buildscript {
+    gitHub = {
+        def resolver = new URLResolver()
+
+        resolver.with {
+            name = 'GitHub'
+            addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
+        }
+
+        resolver
+    }
+
+    repositories {
+        add gitHub()
+    }
+
+    dependencies {
+        classpath 'bmuschko:gradle-gae-plugin:0.5.1'
+        classpath 'bmuschko:gradle-gaelyk-plugin:0.1'
+    }
+}
+
+repositories {
+    mavenCentral()
+    add gitHub()
+}
+
+sourceSets {
+    main {
+        output.classesDir = file('web-app/WEB-INF/classes')
+    }
+}
+
+dependencies {
+    def gaeVersion = '1.6.0'
+    groovy 'org.codehaus.groovy:groovy-all:1.8.4'
+    compile "com.google.appengine:appengine-api-1.0-sdk:$gaeVersion",
+            "com.google.appengine:appengine-api-labs:$gaeVersion",
+            'glaforge:gaelyk:1.1'
+
+    testCompile 'org.spockframework:spock-core:0.5-groovy-1.8', {
+        exclude group: 'org.codehaus.groovy', name: 'groovy-all'
+    }
+    testCompile 'marcoVermeulen:gaelyk-spock:0.2',
+                "com.google.appengine:appengine-api-stubs:$gaeVersion",
+                "com.google.appengine:appengine-testing:$gaeVersion",
+                'javax.servlet:servlet-api:2.5',
+                'cglib:cglib-nodep:2.2',
+                'org.objenesis:objenesis:1.2'
+    gaeSdk "com.google.appengine:appengine-java-sdk:$gaeVersion"
+}
+
+webAppDirName = file('web-app')
+
+gae {
+    warDir = file('web-app')
+    downloadSdk = true
+}
+
+clean.doLast {
+     delete sourceSets*.output.classesDir
+}
+
+task copyRuntimeLibraries(type: Sync){
+    def webAppLibDirName = 'web-app/WEB-INF/lib'
+    description = "Copies runtime libraries to $webAppLibDirName."
+    copy{
+        from configurations.runtime  
+        into webAppLibDirName
+    }
+}
+
+idea {
+    project {
+        jdkName = compatibilityVersion
+
+        ipr.withXml { provider ->
+            def node = provider.asNode()
+
+            // Set Gradle home
+            def gradleSettings = node.appendNode('component', [name: 'GradleSettings'])
+            gradleSettings.appendNode('option', [name: 'SDK_HOME', value: gradle.gradleHomeDir])
+        }
+    }
+}
+
+eclipse {
+    project {
+        name = 'gaelyk-project'
+        file {
+            whenMerged { project ->
+                project.natures << 'com.google.appengine.eclipse.core.gaeNature'
+                project.natures << 'com.google.gdt.eclipse.core.webAppNature'
+                project.buildCommands << [name: 'com.google.appengine.eclipse.core.enhancerbuilder']
+                project.buildCommands << [name: 'com.google.appengine.eclipse.core.projectValidator']
+                project.buildCommands << [name: 'com.google.gdt.eclipse.core.webAppProjectValidator']
+            }
+        }
+    }
+    classpath {
+        file {
+            withXml { xml ->
+                xml.asNode().classpathentry.find { it.@kind == 'output' && it.@path == 'bin' }.@path = 'web-app/WEB-INF/classes'
+                xml.asNode().appendNode('classpathentry', [kind: 'con', path: 'com.google.appengine.eclipse.core.GAE_CONTAINER'])
+                            .appendNode('attributes')
+                            .appendNode('attribute', [name: 'org.eclipse.jst.component.nondependency', value: '/web-app/WEB-INF/lib'])
+                xml.asNode().appendNode('classpathentry', [exported: 'true', kind: 'con', path: 'GROOVY_SUPPORT'])
+                            .appendNode('attributes')
+                            .appendNode('attribute', [name: 'org.eclipse.jst.component.nondependency', value: '/web-app/WEB-INF/lib'])
+            }
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.0-milestone-4'
+}
