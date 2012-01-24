@@ -1,2 +1,3 @@
 #!/bin/sh
-/usr/local/appengine-java-sdk/bin/appcfg.sh update web-app
+# To use this script you should only need a Java Runtime installed
+./gradlew gaeUpload
