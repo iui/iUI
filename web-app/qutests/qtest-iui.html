@@ -12,47 +12,57 @@ function runTests()
     module("iui");
     
     test("test animOn default value", function() {
-        equals( true, iui.animOn, "animOn should be true by default." );
+        ok( iui.animOn, "animOn should be true by default." );
     });  
 
 
     test("check httpHeaders default value", function() {
-        equals("XMLHttpRequest", iui.httpHeaders["X-Requested-With"], "httpHeaders doesn't contain expected default" );
+        equals(iui.httpHeaders["X-Requested-With"], "XMLHttpRequest", "httpHeaders should contain expected default for X-Requested-With" );
     });  
 
     test("basic test of iui.param()", function() {
         var obj = {a:1};
         var queryString = iui.param(obj);
-        equals("a=1", queryString, "string not as expected" );
+        equals(queryString, "a=1", "queryString should be generated correctly" );
     });  
 
     test("test iui.isNativeUrl()", function() {
-        equals(false, iui.isNativeUrl("http://iui.googlecode.com"), "should NOT BE native" );
-        equals(true, iui.isNativeUrl("http://maps.google.com/maps?..."), "should BE native" );
-        equals(true, iui.isNativeUrl("mailto:..."), "should BE native" );
-        equals(true, iui.isNativeUrl("tel:..."), "should BE native" );
-        equals(true, iui.isNativeUrl("http://www.youtube.com/watch?v=..."), "should BE native" );
-        equals(true, iui.isNativeUrl("http://www.youtube.com/v/..."), "should BE native" );
-        equals(true, iui.isNativeUrl("javascript:..."), "should BE native" );
+        ok(!iui.isNativeUrl("http://iui.googlecode.com"), "should NOT BE native" );
+        ok(iui.isNativeUrl("http://maps.google.com/maps?..."), "should BE native" );
+        ok(iui.isNativeUrl("mailto:..."), "should BE native" );
+        ok(iui.isNativeUrl("tel:..."), "should BE native" );
+        ok(iui.isNativeUrl("http://www.youtube.com/watch?v=..."), "should BE native" );
+        ok(iui.isNativeUrl("http://www.youtube.com/v/..."), "should BE native" );
+        ok(iui.isNativeUrl("javascript:..."), "should BE native" );
     });  
 
     test("test iui.hasClass()", function() {
         var elem = document.createElement("div");
         elem.setAttribute("class", "red green");
-        equals(true, iui.hasClass(elem , "red"), "should HAVE class" );
-        equals(true, iui.hasClass(elem , "green"), "should HAVE class" );
-        equals(false, iui.hasClass(elem , "blue"), "should NOT HAVE class" );
+        ok(iui.hasClass(elem , "red"), "should HAVE class" );
+        ok(iui.hasClass(elem , "green"), "should HAVE class" );
+        ok(!iui.hasClass(elem , "blue"), "should NOT HAVE class" );
     });  
 
     test("test iui.haveClass, addClass, and removeClass sequentially", function() {
         var elem = document.createElement("div");
-        equals(false, iui.hasClass(elem , "red"), "should not have red" );
+        ok(!iui.hasClass(elem , "red"), "should not have red" );
         iui.addClass(elem, "red");
-        equals(true, iui.hasClass(elem , "red"), "should HAVE class" );
+        ok(iui.hasClass(elem , "red"), "should HAVE class" );
         iui.addClass(elem, "red");
-        equals(true, iui.hasClass(elem , "red"), "should HAVE class" );
+        ok(iui.hasClass(elem , "red"), "should HAVE class" );
         iui.removeClass(elem, "red");
-        equals(false, iui.hasClass(elem , "red"), "should not HAVE class" );
+        ok(!iui.hasClass(elem , "red"), "should not HAVE class" );
+    });  
+
+    test("make sure removeClass doesn't leave spaces", function() {
+        var elem = document.createElement("div");
+        elem.className = "red blue";
+        equals(elem.className.length, 8, "check className string length" );
+        iui.removeClass(elem, "blue");
+        equals(elem.className.length, 3, "check className string length" );
+        iui.addClass(elem, "blue");
+        equals(elem.className.length, 8, "check className string length" );
     });  
 
 }
