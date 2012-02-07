@@ -8,7 +8,7 @@
     <h1>iUI Documentation</h1>
     <p>
 <span class="copyright"><h3></h3>
-   Copyright (c) 2007-10, iUI Project Members.
+   Copyright (c) 2007-12, iUI Project Members.
    See LICENSE.txt for licensing terms.
    Version @VERSION@
  </copyright>
@@ -89,6 +89,11 @@ Both panels involved in a slide animation receive <span class="code">beforetrans
 parameters <span class="code">{ out :true }</span>, the panel being navigated to receives <span class="code">{ out: false }</span>.
 
 </p><h2>Properties</h2><p>
+<h3> iui.logging</h3>
+	This is set to <span class="code">true</span> logging (with console.log) is enabled.
+	
+</p>
+<p>
 <h3> iui.busy</h3>
 	This is set to <span class="code">true</span> if a slide animation is in progress.
 	
@@ -106,7 +111,7 @@ parameters <span class="code">{ out :true }</span>, the panel being navigated to
 	If defined, this user-set function will be called when an AJAX call returns
 	with an HTTP status other than <span class="code">200</span> (currently all HTTP statuses other than
 	<span class="code">200</span>, even including 200-level statuses like <span class="code">201 Created</span>, are seen as
-	errors).
+	errors.  A status of <span class="code">0</span> is treated as success for file:// URLs).
 	
 </p>
 <p>
@@ -201,6 +206,11 @@ parameters <span class="code">{ out :true }</span>, the panel being navigated to
 	Returns the panel element that is currently being viewed. Each panel must be a
 	direct child of the <span class="code">body</span> element. A panel is set as the selected panel by
 	setting the <span class="code">selected</span> attribute to <span class="code">true</span>.
+	
+</p>
+<p>
+<h3> iui.getAllViews()</h3>
+	Returns all panels -- currently requires querySelectorAll() will be fixed
 	
 </p>
 <p>
