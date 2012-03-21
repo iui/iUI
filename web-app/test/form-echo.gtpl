@@ -50,7 +50,7 @@ if (fullPage) {
   </fieldset>
   <h2>Parameters</h2>
   <fieldset>
-    <% for (p in params) { %>
+    <% for (p in params.sort()) { %>
     <div class="row">
         <label>$p.key</label>
         <span>$p.value</span>
