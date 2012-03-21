@@ -70,6 +70,8 @@ function formResultCB()
       <li><a href="#get">get</a></li>
       <li><a href="#post">post</a></li>
       <li><a href="#targ-self">POST to target="_self"</a></li>
+      <li><a href="#arrays">POST w/arrays</a></li>
+      <li><a href="#submits">POST w/Submit Buttons</a></li>
       <li><a href="#delay">default w/delay</a></li>
       <li><a href="#pop">default w/navstack pop</a></li>
     </ul>
@@ -177,6 +179,45 @@ function formResultCB()
         </fieldset>
         <a class="whiteButton" type="submit">Submit</a>
         <div class="spinner"></div>
+    </form>
+
+    <form id="arrays" title="post" class="panel" action="form-echo.gtpl" method="post">
+        <h2>Parm1</h2>
+        <fieldset>
+            <div class="row">
+                <label>Radio 1:</label>
+                <input type="radio" name="parm1" value="radio 1"/>
+            </div>
+            <div class="row">
+                <label>Radio 2:</label>
+                <input type="radio" name="parm1" value="radio 2"/>
+            </div>
+        </fieldset>
+        <h2>Parm2</h2>
+        <fieldset>
+            <div class="row">
+                <label>Checkbox 1:</label>
+                <input type="checkbox" name="parm2" value="checkbox 1"/>
+            </div>
+            <div class="row">
+                <label>Checkbox 2:</label>
+                <input type="checkbox" name="parm2" value="checkbox 2"/>
+            </div>
+        </fieldset>
+        <div class="spinner"></div>
+        <a class="whiteButton" type="submit">Submit</a>
+    </form>
+
+    <form id="submits" title="post" class="panel" action="form-echo.gtpl" method="post">
+        <fieldset>
+            <div class="row">
+                <label>Parm1:</label>
+                <input type="text" name="parm1" value="value 1"/>
+            </div>
+        </fieldset>
+        <div class="spinner"></div>
+        <input class="whiteButton" type="submit" name="submit" value="Submit" />
+        <input class="redButton" type="submit" name="submit" value="Expedite" />
     </form>
 
     <form id="delay" title="delay" class="panel" action="form-echo.gtpl">
