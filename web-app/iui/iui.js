@@ -362,7 +362,20 @@ window.iui =
 	
 	  // Serialize the key/values
 	  for ( var key in o )
-		s[ s.length ] = encodeURIComponent(key) + '=' + encodeURIComponent(o[key]);
+	  {
+	    var value = o[key];
+	    if (typeof(value) == "object" && typeof(value.length) == "number")
+	    {
+	        for (var i = 0; i < value.length ; i++)
+	        {
+		        s[ s.length ] = encodeURIComponent(key) + '=' + encodeURIComponent(value[i]);
+		    }
+	    }
+	    else
+	    {
+		    s[ s.length ] = encodeURIComponent(key) + '=' + encodeURIComponent(value);
+		}
+      }
   
 	  // Return the resulting serialization
 	  return s.join("&").replace(/%20/g, "+");
@@ -625,6 +638,19 @@ addEventListener("click", function(event)
 		div.setAttribute("toggled", div.getAttribute("toggled") != "true");
 		event.preventDefault();		   
 	}
+}, true);
+
+/*
+click: input[submit] Click Handling
+Add an attribute to an input[submit] so we can send the right value to the server.
+*/
+addEventListener("click", function(event)
+{
+    var input = findParent(event.target, "input");
+    if (input && input.type == "submit")
+    {
+		input.setAttribute("submitvalue", input.value);
+    }
 }, true);
 
 function followAnchor(link)
@@ -943,8 +969,41 @@ function encodeForm(form)
 	{
 		for (var i = 0; i < inputs.length; ++i)
 		{
-	        if (inputs[i].name)
-		        args[inputs[i].name] = inputs[i].value;
+			log("input[" + i + "]: " + inputs[i].name + " = " + inputs[i].value);
+            if (inputs[i].name)
+            {
+            	var input = inputs[i];
+            	if (input.getAttribute("type") == "checkbox" && !input.checked ||
+					input.getAttribute("type") == "radio" && !input.checked ||
+					input.disabled)
+				{
+            		continue;
+            	}
+            	if (input.getAttribute("type") == "submit")
+            	{
+            		if (input.getAttribute("submitvalue"))
+					{	// Was marked, this is the value to send, but clear it for next time
+						input.removeAttribute("submitvalue");
+					}
+					else
+					{	// not marked, don't send value -- continue
+						continue;
+					}
+				}
+            	var value = args[input.name];
+            	if (value === undefined)
+            	{	// If parm is 'empty' just set it
+					args[input.name] = input.value;
+            	}
+            	else if (value instanceof Array)
+            	{	// If parm is array, add to it
+					value.push(input.value);
+            	}
+            	else
+            	{	// If parm is scalar, change to array and add to it
+					args[input.name] = [value, input.value];
+				}
+            }
 		}
 	}
 
