@@ -1,6 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
 <head>
   <title>Form Tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
@@ -8,8 +6,13 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link rel="stylesheet" href="../iui/iui.css" type="text/css" />
-
   <link rel="stylesheet" title="Default" href="../iui/t/default/default-theme.css"  type="text/css"/>
+
+<!--
+    For Debugging with Weinre.jar  
+  <script src="http://localhost:9000/target/target-script-min.js#anonymous"></script>
+-->
+  
   <style type="text/css">
     div.spinner {
        visibility: hidden;
@@ -36,22 +39,22 @@ function myJSForm(form)
 {
     iui.addClass(form, "progress");
     iui.showPageByHref(form.action, encodeForm(form), form.method || "GET", null, clear);
-    iui.encodeForm
-    iui.ajax
+//    iui.encodeForm
+//    iui.ajax
     
     function clear() {   iui.removeClass(form, "progress"); }
     return false;  // cancel the browser's submit
 }
 function formResultCB()
 {
-    if (xyz)
-    {
-        iui.replacePage
-    }
-    else
-    {
-        iui.replacePage
-    }
+//     if (xyz)
+//     {
+//         iui.replacePage
+//     }
+//     else
+//     {
+//         iui.replacePage
+//     }
 }
   </script>
 </head>
@@ -73,7 +76,9 @@ function formResultCB()
       <li><a href="#arrays">POST w/arrays</a></li>
       <li><a href="#submits">POST w/Submit Buttons</a></li>
       <li><a href="#delay">default w/delay</a></li>
+      <!--
       <li><a href="#pop">default w/navstack pop</a></li>
+      -->
     </ul>
     
     <form id="def" title="default" class="panel" action="form-echo.gtpl">
@@ -91,20 +96,6 @@ function formResultCB()
         <div class="spinner"></div>
     </form>
 
-    <form id="pop" title="NavStack Pop" class="panel" onsubmit="return myJSForm(this)" target="_ajax" action="form-echo.gtpl" method="POST">
-        <fieldset>
-            <div class="row">
-                <label>Parm1:</label>
-                <input type="text" name="parm1" value="value 1"/>
-            </div>
-            <div class="row">
-                <label>Parm2:</label>
-                <input type="text" name="parm2" value="value 2"/>
-            </div>
-        </fieldset>
-        <a class="whiteButton" type="submit">Submit</a>
-        <div class="spinner"></div>
-    </form>
 
     <form id="GET" title="GET" class="panel" action="form-echo.gtpl" method="GET">
         <fieldset>
@@ -166,7 +157,7 @@ function formResultCB()
         <a class="whiteButton" type="submit">Submit</a>
     </form>
 
-    <form id="targ-self" title="Target Self" class="panel" target="_self" action="form-echo.gtpl" method="POST">
+    <form id="targ-self" title="Target Self" class="panel" onsubmit="return confirm('Are you sure?');" target="_self" action="form-echo.gtpl" method="POST">
         <fieldset>
             <div class="row">
                 <label>Parm1:</label>
@@ -177,7 +168,8 @@ function formResultCB()
                 <input type="text" name="parm2" value="value 2"/>
             </div>
         </fieldset>
-        <a class="whiteButton" type="submit">Submit</a>
+        <a class="whiteButton" href="javascript:{};" type="submit">Submit</a>
+        <input class="whiteButton" type="submit" name="submit" value="Submit" />
         <div class="spinner"></div>
     </form>
 
@@ -242,6 +234,23 @@ function formResultCB()
         <a class="whiteButton" type="submit">Submit</a>
         <div class="spinner"></div>
     </form>
+    
+    <!-- Not ready for primetime
+    <form id="pop" title="NavStack Pop" class="panel" onsubmit="return myJSForm(this)" target="_ajax" action="form-echo.gtpl" method="POST">
+        <fieldset>
+            <div class="row">
+                <label>Parm1:</label>
+                <input type="text" name="parm1" value="value 1"/>
+            </div>
+            <div class="row">
+                <label>Parm2:</label>
+                <input type="text" name="parm2" value="value 2"/>
+            </div>
+        </fieldset>
+        <a class="whiteButton" type="submit">Submit</a>
+        <div class="spinner"></div>
+    </form>
+    -->
 
     <form id="dialogForm" title="Dialog" class="dialog" target="_self" action="form-echo.gtpl" method="POST">
         <fieldset>
