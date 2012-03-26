@@ -592,11 +592,21 @@ addEventListener("click", function(event)
 			var form = findParent(link, "form");
 			if (form.target == "_self")
 			{
-				// Note: this will not call any onsubmit handlers!
-			    form.submit();
+				/* Browser submit (with full-page response) */
+				if (typeof form.onsubmit == 'function')
+				{
+                    if (form.onsubmit() == true)
+                    {
+                    	form.submit();
+                    }
+                }
+                else
+                {
+                    form.submit();
+                }
 			    return;  // allow default
 			}
-			submitForm(form);
+			submitForm(form);	// Ajax submit
 		}
 		else if (link.getAttribute("type") == "cancel")
 		{
