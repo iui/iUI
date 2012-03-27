@@ -130,7 +130,7 @@
 	<target name="releasedir" depends="compress-js, compress-css" description="* - Build releasedir (all tasks)">
 	</target>
 	
-	<target name="clean" description="* - Remove all generated files">
+	<target name="iui-clean" description="* - Remove all generated files">
 	  <echo message="Deleting ${target.dir}" />
 		<delete dir="${target.dir}" />
 	</target>
