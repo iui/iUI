@@ -252,7 +252,20 @@ body > ul > li > a {
 /************************************************************************************************/
 
 body > .panel {
-    background: #c8c8c8 url(../default/pinstripes.png);
+    background-color: #c5ccd4;
+    background-image: -webkit-gradient(linear, left top, right top,
+                          from(rgb(197,204,212)),
+                          color-stop(0.860,rgb(197,204,212)),
+                          color-stop(0.861,rgb(203,210,216)),
+                          to(rgb(203,210,216)));
+    background-image: -moz-linear-gradient(0deg,
+                          rgb(197,204,212) 0%,
+                          rgb(197,204,212) 86%,
+                          rgb(203,210,216) 87%,
+                          rgb(203,210,216) 100%);
+    -webkit-background-size:  7px 1px;
+    -moz-background-size:     7px 1px;
+    background-size:          7px 1px;
 }
 .toggle {
 	background-image: 	-webkit-gradient(linear, left top, left bottom, 
