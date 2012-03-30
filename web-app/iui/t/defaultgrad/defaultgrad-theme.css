@@ -255,8 +255,8 @@ body > .panel {
     background-color: #c5ccd4;
     background-image: -webkit-gradient(linear, left top, right top,
                           from(rgb(197,204,212)),
-                          color-stop(0.860,rgb(197,204,212)),
-                          color-stop(0.861,rgb(203,210,216)),
+                          color-stop(0.86,rgb(197,204,212)),
+                          color-stop(0.87,rgb(203,210,216)),
                           to(rgb(203,210,216)));
     background-image: -moz-linear-gradient(0deg,
                           rgb(197,204,212) 0%,
