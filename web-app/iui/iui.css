@@ -298,10 +298,18 @@ fieldset > .row:last-child {
     height: 42px;
     background: none;
 }
-.row > input[type|=radio], .row > input[type|=checkbox] {
+
+.row > input[type|=radio], .row > input[type|=checkbox], 
+.row > select {
+  float: right;
   margin: 7px 7px 0 0;
   height: 25px;
   width: 25px;
+}
+
+.row > select {
+  width: auto;
+  margin: 9px 7px 0 0;
 }
 
 .row > label {
