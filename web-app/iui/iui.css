@@ -314,6 +314,8 @@ fieldset > .row:last-child {
 
 .row > label {
     position: absolute;
+    top:    0;
+    left:   0;
     margin: 0 0 0 14px;
     line-height: 42px;
     font-weight: bold;
