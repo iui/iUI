@@ -1,8 +1,9 @@
 CACHE MANIFEST
-# Date: Fri Mar 09 12:54:14 PST 2012
+# Date: Tue Apr 03 16:43:47 PDT 2012
 # header goes here
 music-app.js
 ../../iui/iui-favicon.png
+../../iui/iui-logo-touch-icon-hd.png
 ../../iui/iui-logo-touch-icon.png
 ../../iui/iui.css
 ../../iui/iui.js
