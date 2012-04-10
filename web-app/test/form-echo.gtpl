@@ -11,6 +11,7 @@ try {
 catch(InterruptedException ie) { }
 Boolean fullPage = headers."X-Requested-With" != "XMLHttpRequest"
 String selected = ""
+String backURL = params.Referer ?: 'form-test.html'
 if (fullPage) {
     selected = 'selected="true"'
 }
@@ -28,7 +29,7 @@ if (fullPage) {
 <body>
     <div class="toolbar">
         <h1 id="pageTitle">Full Page Echo</h1>
-        <a id="backButton" class="button" style="display: inline" href="form-test.html">Back</a>
+        <a id="backButton" class="button" style="display: inline" href="${backURL}">Back</a>
     </div>
 <% } %>   
 
