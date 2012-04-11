@@ -968,7 +968,7 @@ function submitForm(form)
 	{
 		iui.busy = true;
 		iui.addClass(form, "progress");
-		iui.showPageByHref(form.action, encodeForm(form), form.method || "GET", null, clear);
+		iui.showPageByHref(form.getAttribute('action'), encodeForm(form), form.hasAttribute('method') ? form.getAttribute('method') : 'GET', null, clear);
 	}
     function clear() {   iui.removeClass(form, "progress"); }
 }
