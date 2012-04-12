@@ -842,7 +842,7 @@ function updatePage(page, fromPage)
 	var ttlClass = page.getAttribute("ttlclass");
 	pageTitle.className = ttlClass ? ttlClass : "";
 
-	if (page.localName.toLowerCase() == "form" && !page.target)
+	if (page.localName.toLowerCase() == "form")
 		showForm(page);
 		
 	var backButton = $("backButton");
