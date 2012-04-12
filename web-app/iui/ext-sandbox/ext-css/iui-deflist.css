@@ -1,0 +1,60 @@
+/* dl.tabular is for when dd's can fit on one line */
+/* This is a quick hack to remind us to make a better, more-integrated version */
+dl.tabular {
+/* Should behave similarly to fieldset/row */
+    position: relative;
+    margin: 0 0 20px 0;
+    padding: 0;
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border: 1px solid #999999;
+    font-size: 16px;
+}
+
+dl.tabular > dt {
+/* Should behave similarly to .row > label */
+    float: left;
+    clear: left;
+    width: 100px;
+    padding: 0 0 0 14px;
+    line-height: 42px;
+    font-weight: bold;
+    border-bottom: 1px solid #999999;
+}
+
+dl.tabular > dt:last-of-type {
+    border-bottom: none !important;
+}
+
+dl.tabular > dd {
+/* Should behave similarly to .row > span */
+    margin-left: 110px;
+    line-height: 42px;
+    border-bottom: 1px solid #999999;
+}
+
+dl.tabular > dd:last-of-type {
+    border-bottom: none !important;
+}
+
+/* dl.long is for when dd's need multiple lines */
+dl.long > dt {
+    margin: 0 0 8px 14px;
+    font-size: inherit;
+    font-weight: bold;
+    color: #4d4d70;
+    text-shadow: rgba(255, 255, 255, 0.75) 2px 2px 0;
+}
+
+dl.long > dd {
+    position: relative;
+    margin: 0 0 20px 0;
+    text-align: left;
+    padding: 6px 12px 6px 12px;
+    background: #FFFFFF;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border: 1px solid #999999;
+    font-size: 16px;
+}
