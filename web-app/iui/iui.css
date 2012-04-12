@@ -242,7 +242,7 @@ body > .dialog {
     color: #999999;
 }
 
-input:not([type|=radio]):not([type|=checkbox]) {
+input:not([type|=submit]):not([type|=radio]):not([type|=checkbox]) {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -305,6 +305,10 @@ fieldset > .row:last-child {
   margin: 7px 7px 0 0;
   height: 25px;
   width: 25px;
+}
+
+.panel input[type|=submit] {
+    width: 100%
 }
 
 .row > select {
