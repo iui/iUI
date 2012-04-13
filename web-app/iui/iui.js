@@ -589,6 +589,9 @@ addEventListener("click", function(event)
 		}
 		else if (link.getAttribute("type") == "submit")
 		{
+			/* Forms with a[type=submit] links are deprecated
+			 * this code will be removed in a future release.
+			 */
 			var form = findParent(link, "form");
 			if (form.target == "_self")
 			{
@@ -660,6 +663,20 @@ addEventListener("click", function(event)
     if (input && input.type == "submit")
     {
 		input.setAttribute("submitvalue", input.value);
+    }
+}, true);
+
+/*
+submit: Form submit handling
+All forms without target="_self" will use iUI's Ajax from submission.
+*/
+addEventListener("submit", function(event)
+{
+    var form = event.target;
+	if (form.target != "_self")
+	{
+		event.preventDefault();
+    	submitForm(form);
     }
 }, true);
 
@@ -790,22 +807,9 @@ function showDialog(page)
 
 function showForm(form)
 {
-	form.onsubmit = function(event)
-	{
-//  submitForm and preventDefault are called in the click handler
-//  when the user clicks the submit a.button
-// 
-		event.preventDefault();
-		submitForm(form);
-	};
-	
-	form.onclick = function(event)
-	{
-// Why is this code needed?  cancelDialog is called from
-// the click hander.  When will this be called?
-		if (event.target == form && hasClass(form, "dialog"))
-			cancelDialog(form);
-	};
+	/* Noop click-handler on the page works around problem where
+	   our main click handler doesn't get called in Mobile Safari */
+	form.addEventListener("click",function(event){},true);
 }
 
 function cancelDialog(form)
@@ -838,7 +842,7 @@ function updatePage(page, fromPage)
 	var ttlClass = page.getAttribute("ttlclass");
 	pageTitle.className = ttlClass ? ttlClass : "";
 
-	if (page.localName.toLowerCase() == "form" && !page.target)
+	if (page.localName.toLowerCase() == "form")
 		showForm(page);
 		
 	var backButton = $("backButton");
