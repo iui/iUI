@@ -237,9 +237,11 @@ body > .dialog {
 
 .dialog > fieldset > label {
     position: absolute;
-    margin: 16px 0 0 6px;
+    margin: 18px 0 0 6px;
     font-size: 14px;
     color: #999999;
+    width:	5em;
+    text-align:	left;
 }
 
 input:not([type|=submit]):not([type|=radio]):not([type|=checkbox]) {
@@ -248,8 +250,8 @@ input:not([type|=submit]):not([type|=radio]):not([type|=checkbox]) {
     -moz-box-sizing: border-box;
     width: 100%;
     margin: 8px 0 0 0;
-    padding: 6px 6px 6px 44px;
-    font-size: 16px;
+    padding: 6px 6px 6px 5em;
+    font-size: 14px;
     font-weight: normal;
 }
 
