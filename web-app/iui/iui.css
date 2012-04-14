@@ -237,7 +237,7 @@ body > .dialog {
 
 .dialog > fieldset > label {
     position: absolute;
-    margin: 18px 0 0 6px;
+    margin: 16px 0 0 6px;
     font-size: 14px;
     color: #999999;
     width:	5em;
