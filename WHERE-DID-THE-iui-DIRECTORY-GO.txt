@@ -4,5 +4,5 @@ The reason for this change is because the web-app directory represents "document
 or the root of the portion of the project that should be served with a webserver
 for development, testing, or deployment.
 
-Note: If you used Mercurial ('hg clone') to get iUI, there is now a symbolic link 
+Note: If you used Git ('git clone') to get iUI, there is now a symbolic link 
 named 'iui' that points to 'web-app/iui' that should work on the Mac OS X or Linux platforms.
