@@ -21,7 +21,7 @@
 	</description>
 
 	<!-- If  you wish to override build settings, create a file called local.build.properties in
-	     The project root.  SVN is configured to ignore this file, so it won't accidentally be
+	     The project root.  Git is configured to ignore this file, so it won't accidentally be
 	     checked in.  Note that in Ant, whatever sets a property first "wins".  -->
 	<property file="local.build.properties" />
 	<loadproperties srcFile="build.properties" />	<!-- Required -->
