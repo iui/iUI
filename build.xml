@@ -73,6 +73,10 @@
 																				classpathref="ant-googlecode.path" />
 																				
 	<!-- Ant targets, use "ant -p" for easier reading of the "description" attributes -->
+	<target name="setup">
+        <echo message="Building iUI with ${ant.version} on JVM version ${ant.java.version}..." />
+	</target>
+	
 	<target name="compress-js" depends="docopy" description="* - Create iuix.js by compressing iui.js">
 		<mkdir dir="${release.dir}" />
 		<compress-js	file="${src.dir.iui}/iui.js"
@@ -93,7 +97,7 @@
         <!-- TODO: Compress/Concat themes & extensions -->
 	</target>
 	
-	<target name="docopy" description="* - Copy Files to release directory">
+	<target name="docopy" depends="setup" description="* - Copy Files to release directory">
 		<mkdir dir="${release.dir.webapp}/iui"/>
 		<!-- Copy subset of files of project root to release root -->
 		<copy todir="${release.dir}">
@@ -101,14 +105,16 @@
                 <include name="*.txt"/>
             </fileset>
         </copy>
-        <!-- Copy iUI images, css, and js -->
+        <!-- Copy iUI *.js and *.css, using a filter to replace @VERSION@ with the value of iui.version -->
          <copy todir="${release.dir.webapp}">
-            <fileset dir="${src.dir.webapp}">
-                <exclude name="**/*.jar"/>
-            </fileset>
+            <fileset dir="${src.dir.webapp}" includes="**/*.js, **/*.css" />
             <filterset>
               <filter token="VERSION" value="${iui.version}"/>
             </filterset>
+        </copy>
+        <!-- Copy everything else (except .jar files) without filtering -->
+         <copy todir="${release.dir.webapp}">
+            <fileset dir="${src.dir.webapp}" excludes="**/*.js, **/*.css, **/*.jar" />
         </copy>
     <!-- Make second copy of sample.html in samplex.html that uses iuix.css and iuix.js -->
     <!-- Disable for now...
@@ -130,7 +136,7 @@
 	<target name="releasedir" depends="compress-js, compress-css" description="* - Build releasedir (all tasks)">
 	</target>
 	
-	<target name="iui-clean" description="* - Remove all generated files">
+	<target name="iui-clean" depends="setup" description="* - Remove all generated files">
 	  <echo message="Deleting ${target.dir}" />
 		<delete dir="${target.dir}" />
 	</target>
