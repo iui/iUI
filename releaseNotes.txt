@@ -1,3 +1,17 @@
+REL-0.4-beta3 2012-05-10
+ * Adjust our release naming convention from 0.40 to 0.4
+ * Major fixes/improvements to AJAX form submission (Issue #48, Issue #67, Issue #72, Issue #77)
+ * Treat sms: and callto: as "native links" (Issue #319)
+ * Add "HD" icon and images from the 0.50 branch
+ * Text Alignment fixes in .panel (Issue #90)
+ * Call onsubmit() for forms using submit buttons (Issue #53)
+ * Gradient theme (defaultgrad) replaces PNG file for .panel background
+ * Fix alignment issues for radio, checkbox, and select (Issue #90)
+ * Correctly handle form inputs with names of "action" or "method" (Issue #94)
+ * Support standard form submit inputs input[type="submit"] everywhere (Issue #332)
+ * Tutorial examples from www.iui-js.org are now in the release (web-app/tutorials/getting-started/)
+ * Other formatting fixes, testing and documentation fixes, etc.
+
 REL-0.40-beta2 2012-01-26
  * Use location.replace() and location.assign() rather than location.hash in updatePage
  * Save originalPage and use it if location.hash becomes "" (Fix for Issue #322)
