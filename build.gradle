@@ -49,8 +49,8 @@ buildscript {
     }
 
     dependencies {
-        classpath 'bmuschko:gradle-gae-plugin:0.5.1'
-        classpath 'bmuschko:gradle-gaelyk-plugin:0.1'
+        classpath 'bmuschko:gradle-gae-plugin:0.6.1'
+        classpath 'bmuschko:gradle-gaelyk-plugin:0.3.1'
     }
 }
 
@@ -66,7 +66,7 @@ sourceSets {
 }
 
 dependencies {
-    def gaeVersion = '1.6.0'
+    def gaeVersion = '1.6.3'
     groovy 'org.codehaus.groovy:groovy-all:1.8.4'
     compile "com.google.appengine:appengine-api-1.0-sdk:$gaeVersion",
             "com.google.appengine:appengine-api-labs:$gaeVersion",
@@ -89,6 +89,7 @@ webAppDirName = file('web-app')
 gae {
     warDir = file('web-app')
     downloadSdk = true
+    jvmFlags = ['-Dappengine.user.timezone=UTC']
 }
 
 clean.doLast {
