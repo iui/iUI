@@ -2,6 +2,20 @@
     <application>iui-js</application>
 <!--        <application>iui-framework</application> -->
     <version>53</version>
+
+    <!-- Enable concurrent requests by default to serve requests in parallel -->
+    <threadsafe>true</threadsafe>
+
+    <!-- If all your templates and groovlets are encoding in UTF-8 -->
+    <!-- Please specify the settings below, otherwise weird characters may appear in your templates -->
+    <system-properties>
+        <property name="file.encoding" value="UTF-8"/>
+        <property name="groovy.source.encoding" value="UTF-8"/>
+    </system-properties>
+
+    <!-- It it advised to keep this parameter to true -->
+    <!-- as per the release of SDK 1.2.8, -->
+    <!-- this should speed up cold startups of applications by 10% -->
     <precompilation-enabled>true</precompilation-enabled>
     
     <static-files>
