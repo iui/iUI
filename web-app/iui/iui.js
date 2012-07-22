@@ -18,7 +18,7 @@ var currentWidth = 0;
 var currentHeight = 0;
 var currentHash = location.hash;
 var hashPrefix = "#_";
-var pageHistory = [];
+var pageHistory = [];			// Navigation stack (poorly named, different from browser history)
 var newPageCount = 0;
 var checkTimer;
 var hasOrientationEvent = false;
@@ -152,6 +152,46 @@ window.iui =
 	},
 
 
+	gotoView: function(view, replace)
+	{
+		var node, nodeId;
+		
+		if (view instanceof HTMLElement)
+		{
+			node = view;
+			nodeId = node.id;
+		}
+		else
+		{
+			nodeId = view;
+			node = $(nodeId);
+		}
+		if (!node) log("gotoView: node is null");
+		if (!iui.busy)
+		{
+			iui.busy = true;
+			var index = pageHistory.indexOf(nodeId);
+			var backwards = index != -1;
+			if (backwards)
+			{
+				// we're going back, remove history from index on
+				// remember - pageId will be added again in updatePage
+				pageHistory.splice(index);
+			}
+			else if (replace)
+			{
+				pageHistory.pop();				
+			}
+			iui.showPage(node, backwards);
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	},
+
+
 	/*
 	method: iui.showPageById(pageId)
 	Looks up the page element by the id and checks the internal history to
@@ -160,24 +200,7 @@ window.iui =
 	*/
 	showPageById: function(pageId)
 	{
-		var page = $(pageId);
-		if (page)
-		{
-			if (!iui.busy)
-			{
-				iui.busy = true;
-				var index = pageHistory.indexOf(pageId);
-				var backwards = index != -1;
-				if (backwards)
-				{
-					// we're going back, remove history from index on
-					// remember - pageId will be added again in updatePage
-					pageHistory.splice(index);
-				}
-	
-				iui.showPage(page, backwards);
-			}
-		}
+		iui.gotoView(pageId, false);
 	},
 
 	/*
@@ -186,14 +209,7 @@ window.iui =
 	*/
 	goBack: function()
 	{
-		if (!iui.busy)
-		{
-			iui.busy = true;
-			pageHistory.pop();	// pop current page
-			var pageID = pageHistory.pop();  // pop/get parent
-			var page = $(pageID);
-			iui.showPage(page, true);
-		}
+	    iui.gotoView(pageHistory.slice(-2,-1)[0], false);
 	},
 
 
@@ -204,25 +220,9 @@ window.iui =
 	the current page in the navStack.
 	It should probably use a different animation (slide-up/slide-down).
 	*/
-	replacePage: function(pageId)
+	replacePage: function(view)
 	{
-		// Should probably take either an ID or an Element
-		var page = $(pageId);
-		if (page)
-		{
-			if (!iui.busy)
-			{
-				iui.busy = true;
-				var index = pageHistory.indexOf(pageId);
-				var backwards = index != -1;
-				if (backwards)	// we're going back, shouldn't happen on replacePage()
-					log("error: can't replace page with ancestor");
-					
-				pageHistory.pop();
-	
-				iui.showPage(page, false);
-			}
-		}
+	    gotoView(view, true);
 	},
 
 	/*
@@ -669,17 +669,10 @@ addEventListener("submit", function(event)
 
 function followAnchor(link)
 {
-	function unselect() { link.removeAttribute("selected"); }
-	
-	if (!iui.busy)
-	{
-		iui.busy = true;
-		link.setAttribute("selected", "true");
-		// We need to check for backlinks here like in showPageID()
-		// That backlink functionality needs to be in here somewhere
-		iui.showPage($(link.hash.substr(1)));
-		setTimeout(unselect, 500);
-	}
+	link.setAttribute("selected", "true");
+	var busy = iui.gotoView(link.hash.substr(1), false);
+	// clear selected immmediately if busy, else wait for transition to finish
+	setTimeout(function() {link.removeAttribute("selected")}, busy ? 0 : 500);   
 }
 
 function followAjax(link, replaceLink)
