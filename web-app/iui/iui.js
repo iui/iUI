@@ -5,15 +5,10 @@
    Version @VERSION@
  */
 
-/* note:
-   This version of iUI has a partial implementation of the `busy` flag for Issue #191,
-   it will not work with webapps that call `iui.showPage()` or `iui.showPageByHref()` directly.
-   This issue will be resolved in a later version. */
-
 (function() {
 
-var slideSpeed = 20;
-var slideInterval = 0;
+var slideSpeed = 20;			// Slide percentage per interval
+var slideInterval = 0;			// Intervals are as fast as possible for mobile, should be slower for desktop
 var ajaxTimeoutVal = 30000;
 
 var originalPage = null;
@@ -85,7 +80,7 @@ window.iui =
 	/*
 	method: iui.showPage(page[, backwards=false])
 	`showPage()` should probably be an internal function, outside callers should
-	call `showPageById()` instead. `showPage()` doesn't set the busy flag because
+	call `showPageById()` instead. `showPage()` does NOT set the busy flag because
 	it is already set by the public-facing functions.
 	
 	`page` is the html element to show. If `backwards` is set to `true`, it will
@@ -101,7 +96,6 @@ window.iui =
 	{
 		if (page)
 		{
-//			if (window.iui_ext)	window.iui_ext.injectEventMethods(page);	// TG -- why was this comment left here??
 			if (page == currentPage)
 			{
 				log("page = currentPage = " + page.id);
@@ -232,10 +226,9 @@ window.iui =
 	},
 
 	/*
-	method: iui.showPageByHrefExt(href, args, method, replace, cb)
+	method: iui.showPageByHref(href, args, method, replace, cb)
 	Outside callers should use this version to do an ajax load programmatically
-	from your webapp. In a future version, this will be renamed to
-	`showPageByHref()` (once the old method and  all its calls are renamed).
+	from your webapp.
 	
 	`href` is a URL string, `method` is the HTTP method (defaults to `GET`),
 	`args` is an Object of key-value pairs that are used to generate the querystring,
@@ -243,23 +236,9 @@ window.iui =
 	panel that the incoming HTML will replace (if not supplied, iUI will append
 	the incoming HTML to the `body`), and `cb` is a user-supplied callback function.
 	*/
-	showPageByHrefExt: function(href, args, method, replace, cb)
-	{
-		if (!iui.busy)
-		{
-			iui.busy = true;
-			iui.showPageByHref(href, args, method, replace, cb);	
-		}
-	},
-
-	/*
-	method: iui.showPageByHref(href, args, method, replace, cb)
-	This one should only be used by iUI internally.  It should be renamed and
-	possibly moved into the closure.
-	*/
 	showPageByHref: function(href, args, method, replace, cb)
 	{
-	  // I don't think we need onerror, because readstate will still go to 4 in that case
+	  // I don't think we need onerror, because readyState will still go to 4 in that case
 		function spbhCB(xhr) 
 		{
 			log("xhr.readyState = " + xhr.readyState);
@@ -304,13 +283,21 @@ window.iui =
 			}
 		  
 		};
-	  iui.ajax(href, args, method, spbhCB);
+		if (!iui.busy)
+		{
+			iui.busy = true;
+			iui.ajax(href, args, method, spbhCB);
+		}
+		else 
+		{
+			cb();	// We didn't get the "lock", we may need to unselect something
+		}
 	},
 	
 	/*
 	method: iui.ajax(url, args, method, cb)
 	Handles ajax requests and also fires a `setTimeout()` call
-	to abort the request if it takes longer than 30 seconds. See `showPageByHrefExt()`
+	to abort the request if it takes longer than 30 seconds. See `showPageByHref()`
 	above for a description of the various arguments (`url` is the same as `href`).
 	*/
 	ajax: function(url, args, method, cb)
@@ -697,14 +684,8 @@ function followAnchor(link)
 
 function followAjax(link, replaceLink)
 {
-	function unselect() { link.removeAttribute("selected"); }
-
-	if (!iui.busy)
-	{
-		iui.busy = true;
-		link.setAttribute("selected", "progress");
-		iui.showPageByHref(link.href, null, "GET", replaceLink, unselect);	
-	}
+	link.setAttribute("selected", "progress");
+	iui.showPageByHref(link.href, null, "GET", replaceLink, function() { link.removeAttribute("selected"); });	
 }
 
 function sendEvent(type, node, props)
@@ -968,13 +949,8 @@ function preloadImages()
 
 function submitForm(form)
 {
- 	if (!iui.busy)
-	{
-		iui.busy = true;
-		iui.addClass(form, "progress");
-		iui.showPageByHref(form.getAttribute('action'), encodeForm(form), form.hasAttribute('method') ? form.getAttribute('method') : 'GET', null, clear);
-	}
-    function clear() {   iui.removeClass(form, "progress"); }
+	iui.addClass(form, "progress");
+	iui.showPageByHref(form.getAttribute('action'), encodeForm(form), form.hasAttribute('method') ? form.getAttribute('method') : 'GET', null, function() {iui.removeClass(form, "progress")});
 }
 
 function encodeForm(form)
