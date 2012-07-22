@@ -20,14 +20,21 @@
         <h1 id="pageTitle"></h1>
         <a id="backButton" class="button" href="#"></a>
     </div>
-    
-    <ul id="links" title="Link Tests" selected="true">
+
+    <ul id="home" title="Link Tests" selected="true">
       <li><a href="#panel">Standard Internal Link (#id)</a></li>
+      <li><a href="#backlinkdiv">Navigation back-link test</a></li>
       <li><a onclick="alert('hello')">No @href, only @onclick</a></li>
     </ul>
-    
+
     <div id="panel" title="Int Panel" class="panel">
       <h2>Internal Panel</h2>
+    </div>
+
+    <div id="backlinkdiv" title="Int Panel" class="panel">
+      <h2>Backlink Test</h2>
+      <p>Clicking on the #home link should go back, not forward</p>
+      <a href="#home">Backlink (to #home)</a>
     </div>
 
 </body>
