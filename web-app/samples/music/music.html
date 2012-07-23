@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html manifest="music.manifest">
+<html lang="en" manifest="music.manifest">
 <head>
-<title>iUI Music Demo</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-<link rel="icon" type="image/png" href="../../iui/iui-favicon.png">
-<link rel="apple-touch-icon" href="../../iui/iui-logo-touch-icon.png" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<link rel="stylesheet" href="../../iui/iui.css" type="text/css" />
+	<title>iUI Music Demo</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="../../iui/iui.css" type="text/css">
+	<link rel="stylesheet" id="iui-theme" title="iUI Theme" href="../../iui/t/default/default-theme.css"  type="text/css">
+	<script type="application/x-javascript" src="../../iui/iui.js"></script>
 
-<link rel="stylesheet" id="iui-theme" title="iUI Theme" href="../../iui/t/default/default-theme.css"  type="text/css"/>
-<script type="application/x-javascript" src="../../iui/iui.js"></script>
-<script type="application/x-javascript" src="../../iui/js/iui-theme-switcher.js"></script>
-<script type="application/x-javascript">iui.ts.basePath = "../../iui/";</script>
-<script type="application/x-javascript" src="../../iui/ext-sandbox/cache-manager/iui-cache-manager.js"></script>
-<script type="application/x-javascript" src="music-app.js"></script>
-<!--
-<script type="application/x-javascript" src="http://10.0.1.2:1840/ibug.js"></script>
--->
+	<script type="application/x-javascript" src="../../iui/js/iui-theme-switcher.js"></script>
+	<script type="application/x-javascript" src="../../iui/ext-sandbox/cache-manager/iui-cache-manager.js"></script>
+	<script type="application/x-javascript" src="music-app.js"></script>
+
+	<link rel="icon" type="image/png" href="../../iui/iui-favicon.png">
+	<link rel="apple-touch-icon" href="../../iui/iui-logo-touch-icon.png">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<script type="application/x-javascript">
+	iui.ts.basePath = "../../iui/";
+	</script>
+
 </head>
 
 <body>
+
     <div class="toolbar">
         <h1 id="pageTitle"></h1>
         <a id="backButton" class="button" href="#"></a>
@@ -108,7 +112,6 @@
                 <option value="android">Android</option>
                 <option value="webos">WebOS</option>
             </select>
-           <!-- <input type="submit" name="submit" value="Set"/> -->
         </form>
     </div>
 

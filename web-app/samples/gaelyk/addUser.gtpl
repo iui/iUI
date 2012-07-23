@@ -22,16 +22,16 @@ if (users.isUserLoggedIn() &&
 
 <% if (saved) { %>
 
-<div class="panel" id="added" title="User Added">
-    <h2>User Add Completed</h2>
-</div>
+	<div class="panel" id="added" title="User Added">
+	    <h2>User Add Completed</h2>
+	</div>
 
 <% } else { %>
 
-<div class="panel" id="not-added" title="User Not Added">
-    <h2>Error or Permission Denied</h2>
-    <p>You must be logged in to add a user</a>
-    <p>Non-admins can only add a user whose e-mail matches their Google account<p>
-</div>
+	<div class="panel" id="not-added" title="User Not Added">
+	    <h2>Error or Permission Denied</h2>
+	    <p>You must be logged in to add a user</a>
+	    <p>Non-admins can only add a user whose e-mail matches their Google account<p>
+	</div>
 
 <% } %>
