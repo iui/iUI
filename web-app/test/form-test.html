@@ -1,66 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Form Tests</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-  <link rel="apple-touch-icon-precomposed" href="../iui/iui-logo-touch-icon.png" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <link rel="stylesheet" href="../iui/iui.css" type="text/css" />
-  <link rel="stylesheet" title="Default" href="../iui/t/default/default-theme.css"  type="text/css"/>
+	<title>Form Tests</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="../iui/iui.css" type="text/css">
+	<link rel="stylesheet" href="../iui/t/default/default-theme.css"  type="text/css">
+	<script type="application/x-javascript" src="../iui/iui.js"></script>
 
-<!--
-    For Debugging with Weinre.jar  
-  <script src="http://localhost:9000/target/target-script-min.js#anonymous"></script>
--->
-  
-  <style type="text/css">
-    div.spinner {
-       visibility: hidden;
-       background: black url(../iui/t/default/loading.gif) no-repeat center center;
-       position: absolute;
-       top: 0px;
-       left: 0px;
-       height: 100%;
-       width: 100%;
-       opacity: 0.5;
-    }
-    form.progress div.spinner {
-        visibility: visible;  // need better styling here, placeholder
-    }
-    fieldset > div.row > span {
-    	position:	absolute;
-    	right:		0px;
-    	padding-left:	0px;
-    }
-  </style>
-  <script src="../iui/iui.js"></script>
-  <script>
-function myJSForm(form)
-{
-    iui.addClass(form, "progress");
-    iui.showPageByHref(form.action, encodeForm(form), form.method || "GET", null, clear);
-//    iui.encodeForm
-//    iui.ajax
-    
-    function clear() {   iui.removeClass(form, "progress"); }
-    return false;  // cancel the browser's submit
-}
-function formResultCB()
-{
-//     if (xyz)
-//     {
-//         iui.replacePage
-//     }
-//     else
-//     {
-//         iui.replacePage
-//     }
-}
-  </script>
+	<link rel="apple-touch-icon-precomposed" href="../iui/iui-logo-touch-icon.png">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<style type="text/css">
+	  div.spinner {
+	     visibility: hidden;
+	     background: black url(../iui/t/default/loading.gif) no-repeat center center;
+	     position: absolute;
+	     top: 0px;
+	     left: 0px;
+	     height: 100%;
+	     width: 100%;
+	     opacity: 0.5;
+	  }
+	  form.progress div.spinner {
+	      visibility: visible;  // need better styling here, placeholder
+	  }
+	  fieldset > div.row > span {
+	  	position:	absolute;
+	  	right:		0px;
+	  	padding-left:	0px;
+	  }
+	</style>
+
+	<script>
+	function myJSForm(form)
+	{
+	    iui.addClass(form, "progress");
+	    iui.showPageByHref(form.action, encodeForm(form), form.method || "GET", null, clear);
+	//    iui.encodeForm
+	//    iui.ajax
+	    
+	    function clear() {   iui.removeClass(form, "progress"); }
+	    return false;  // cancel the browser's submit
+	}
+	function formResultCB()
+	{
+	//     if (xyz)
+	//     {
+	//         iui.replacePage
+	//     }
+	//     else
+	//     {
+	//         iui.replacePage
+	//     }
+	}
+	</script>
 </head>
 
 <body>
+
     <div class="toolbar">
         <h1 id="pageTitle"></h1>
         <a id="backButton" class="button" href="#"></a>
@@ -80,9 +79,6 @@ function formResultCB()
       <li><a href="#dialogFormSelf">dialog w/target="self"</a></li>
       <li><a href="#dialogFormSubmit">dialog w/submit button</a></li>
       <li><a href="#dialogFormSubmitSelf">dialog w/submit _self</a></li>
-      <!--
-      <li><a href="#pop">default w/navstack pop</a></li>
-      -->
     </ul>
     
     <form id="def" title="default" class="panel" action="form-echo.gtpl">
@@ -259,23 +255,7 @@ function formResultCB()
         <input class="whiteButton" type="submit" name="submitInput" value="Submit" />
         <div class="spinner"></div>
     </form>
-    
-    <!-- Not ready for primetime
-    <form id="pop" title="NavStack Pop" class="panel" onsubmit="return myJSForm(this)" target="_ajax" action="form-echo.gtpl" method="POST">
-        <fieldset>
-            <div class="row">
-                <label>Parm1:</label>
-                <input type="text" name="parm1" value="value 1"/>
-            </div>
-            <div class="row">
-                <label>Parm2:</label>
-                <input type="text" name="parm2" value="value 2"/>
-            </div>
-        </fieldset>
-        <a class="whiteButton" type="submit">Submit</a>
-        <div class="spinner"></div>
-    </form>
-    -->
+
 
     <form id="dialogForm" title="Dialog" class="dialog" action="form-echo.gtpl" method="POST">
         <fieldset>
@@ -333,7 +313,5 @@ function formResultCB()
         <div class="spinner"></div>
     </form>
 
-
 </body>
-
 </html>

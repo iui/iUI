@@ -1,78 +1,81 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
-                    "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <script type="text/javascript" src="../iui/iui.js"></script>
-    <link rel="stylesheet" href="../qunit/qunit.css" type="text/css" media="screen">
+	<title>qTest</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <link rel="stylesheet" href="../qunit/qunit.css" type="text/css">
     <script type="text/javascript" src="../qunit/qunit.js"></script>
 
     <script type="text/javascript">
-function runTests()
-{
-    module("iui");
-    
-    test("test animOn default value", function() {
-        ok( iui.animOn, "animOn should be true by default." );
-    });  
-
-
-    test("check httpHeaders default value", function() {
-        equals(iui.httpHeaders["X-Requested-With"], "XMLHttpRequest", "httpHeaders should contain expected default for X-Requested-With" );
-    });  
-
-    test("basic test of iui.param()", function() {
-        var obj = {a:1};
-        var queryString = iui.param(obj);
-        equals(queryString, "a=1", "queryString should be generated correctly" );
-    });  
-
-    test("test iui.isNativeUrl()", function() {
-        ok(!iui.isNativeUrl("http://iui.googlecode.com"), "should NOT BE native" );
-        ok(iui.isNativeUrl("http://maps.google.com/maps?..."), "should BE native" );
-        ok(iui.isNativeUrl("mailto:..."), "should BE native" );
-        ok(iui.isNativeUrl("tel:..."), "should BE native" );
-        ok(iui.isNativeUrl("http://www.youtube.com/watch?v=..."), "should BE native" );
-        ok(iui.isNativeUrl("http://www.youtube.com/v/..."), "should BE native" );
-        ok(iui.isNativeUrl("javascript:..."), "should BE native" );
-    });  
-
-    test("test iui.hasClass()", function() {
-        var elem = document.createElement("div");
-        elem.setAttribute("class", "red green");
-        ok(iui.hasClass(elem , "red"), "should HAVE class" );
-        ok(iui.hasClass(elem , "green"), "should HAVE class" );
-        ok(!iui.hasClass(elem , "blue"), "should NOT HAVE class" );
-    });  
-
-    test("test iui.haveClass, addClass, and removeClass sequentially", function() {
-        var elem = document.createElement("div");
-        ok(!iui.hasClass(elem , "red"), "should not have red" );
-        iui.addClass(elem, "red");
-        ok(iui.hasClass(elem , "red"), "should HAVE class" );
-        iui.addClass(elem, "red");
-        ok(iui.hasClass(elem , "red"), "should HAVE class" );
-        iui.removeClass(elem, "red");
-        ok(!iui.hasClass(elem , "red"), "should not HAVE class" );
-    });  
-
-    test("make sure removeClass doesn't leave spaces", function() {
-        var elem = document.createElement("div");
-        elem.className = "red blue";
-        equals(elem.className.length, 8, "check className string length" );
-        iui.removeClass(elem, "blue");
-        equals(elem.className.length, 3, "check className string length" );
-        iui.addClass(elem, "blue");
-        equals(elem.className.length, 8, "check className string length" );
-    });  
-
-}
+	function runTests()
+	{
+	    module("iui");
+	    
+	    test("test animOn default value", function() {
+	        ok( iui.animOn, "animOn should be true by default." );
+	    });  
+	
+	
+	    test("check httpHeaders default value", function() {
+	        equals(iui.httpHeaders["X-Requested-With"], "XMLHttpRequest", "httpHeaders should contain expected default for X-Requested-With" );
+	    });  
+	
+	    test("basic test of iui.param()", function() {
+	        var obj = {a:1};
+	        var queryString = iui.param(obj);
+	        equals(queryString, "a=1", "queryString should be generated correctly" );
+	    });  
+	
+	    test("test iui.isNativeUrl()", function() {
+	        ok(!iui.isNativeUrl("http://iui.googlecode.com"), "should NOT BE native" );
+	        ok(iui.isNativeUrl("http://maps.google.com/maps?..."), "should BE native" );
+	        ok(iui.isNativeUrl("mailto:..."), "should BE native" );
+	        ok(iui.isNativeUrl("tel:..."), "should BE native" );
+	        ok(iui.isNativeUrl("http://www.youtube.com/watch?v=..."), "should BE native" );
+	        ok(iui.isNativeUrl("http://www.youtube.com/v/..."), "should BE native" );
+	        ok(iui.isNativeUrl("javascript:..."), "should BE native" );
+	    });  
+	
+	    test("test iui.hasClass()", function() {
+	        var elem = document.createElement("div");
+	        elem.setAttribute("class", "red green");
+	        ok(iui.hasClass(elem , "red"), "should HAVE class" );
+	        ok(iui.hasClass(elem , "green"), "should HAVE class" );
+	        ok(!iui.hasClass(elem , "blue"), "should NOT HAVE class" );
+	    });  
+	
+	    test("test iui.haveClass, addClass, and removeClass sequentially", function() {
+	        var elem = document.createElement("div");
+	        ok(!iui.hasClass(elem , "red"), "should not have red" );
+	        iui.addClass(elem, "red");
+	        ok(iui.hasClass(elem , "red"), "should HAVE class" );
+	        iui.addClass(elem, "red");
+	        ok(iui.hasClass(elem , "red"), "should HAVE class" );
+	        iui.removeClass(elem, "red");
+	        ok(!iui.hasClass(elem , "red"), "should not HAVE class" );
+	    });  
+	
+	    test("make sure removeClass doesn't leave spaces", function() {
+	        var elem = document.createElement("div");
+	        elem.className = "red blue";
+	        equals(elem.className.length, 8, "check className string length" );
+	        iui.removeClass(elem, "blue");
+	        equals(elem.className.length, 3, "check className string length" );
+	        iui.addClass(elem, "blue");
+	        equals(elem.className.length, 8, "check className string length" );
+	    });  
+	
+	}
     </script>
 </head>
+
 <body onload="runTests()">
- <h1 id="qunit-header">iUI QUnit Tests</h1>
- <h2 id="qunit-banner"></h2>
- <div id="qunit-testrunner-toolbar"></div>
- <h2 id="qunit-userAgent"></h2>
- <ol id="qunit-tests"></ol>
+	<h1 id="qunit-header">iUI QUnit Tests</h1>
+	<h2 id="qunit-banner"></h2>
+	<div id="qunit-testrunner-toolbar"></div>
+	<h2 id="qunit-userAgent"></h2>
+	<ol id="qunit-tests"></ol>
 </body>
 </html>
