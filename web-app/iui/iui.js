@@ -246,27 +246,69 @@ window.iui =
 			{
 				if ((xhr.status == 200 || xhr.status == 0) && !xhr.aborted)
 				{
-				  // Add 'if (xhr.responseText)' to make sure we have something???
-				  // Can't use createDocumentFragment() here because firstChild is null and childNodes is empty
-				  var frag = document.createElement("div");
-				  frag.innerHTML = xhr.responseText;
-				  // EVENT beforeInsert->body
-					/*
-					events:
-					When new pages are inserted into the DOM after an AJAX load, the `body`
-					element receives a `beforeinsert` event with `{ fragment: frag }` parameters
-					and afterwards receives an `afterinsert` event with `{insertedNode: docNode}` parameters.
-					*/
-				  sendEvent("beforeinsert", document.body, {fragment:frag})
-				  if (replace)
-				  {
-					  replaceElementWithFrag(replace, frag);
-					  iui.busy = false;
-				  }
-				  else
-				  {
-					  iui.insertPages(frag);
-				  }
+					if(xhr.responseText)
+					{
+						// Can't use createDocumentFragment() here because firstChild is null and childNodes is empty
+						var frag = document.createElement("div");
+						var fragBody;
+
+						// keeping only HTML inside the body
+						if(xhr.responseText.indexOf('<body')>-1)
+						{
+							fragBody = xhr.responseText.split('<body');
+							fragHeader = fragBody[0];
+							fragBody = fragBody[1];
+							fragBody = fragBody.split('</body>')[0];
+							// get everything inside the body tag from the loaded page
+							var fragBodyTag = fragBody.split('>')[0];
+							fragBody = fragBody.substr(fragBodyTag.length+1);
+						}
+						else
+							fragBody = xhr.responseText;
+
+						// removing the toolbar div
+						frag.innerHTML = fragBody;
+						frag.id='iui_ajaxtemp';
+						document.body.appendChild(frag);
+						var fragTB = frag.getElementsByClassName('toolbar')[0];
+						if(fragTB)
+							frag.removeChild(fragTB);
+						// remove selected attribute in new file
+						var fragSel = frag.childNodes;
+						for(var i=0,inb=frag.childNodes.length;i<inb;i++) {
+							if(frag.childNodes[i].nodeType==1)
+								frag.childNodes[i].removeAttribute('selected');
+						}
+						fragBody = frag.innerHTML;
+						document.body.removeChild(frag);
+
+						// using a setTimeout to avoid annoying effect
+						setTimeout(function() 
+						{
+							frag.innerHTML = fragBody;
+							// EVENT beforeInsert->body
+							/*
+							events:
+							When new pages are inserted into the DOM after an AJAX load, the `body`
+							element receives a `beforeinsert` event with `{ fragment: frag }` parameters
+							and afterwards receives an `afterinsert` event with `{insertedNode: docNode}` parameters.
+							*/
+							sendEvent("beforeinsert", document.body, {fragment:frag})
+							if (replace)
+							{
+								replaceElementWithFrag(replace, frag);
+								iui.busy = false;
+							}
+							else
+							{
+								iui.insertPages(frag);
+							}
+						}, 10);
+					} else {
+						iui.busy = false;
+						if (iui.ajaxErrHandler)
+							iui.ajaxErrHandler("Document is empty");
+					}
 				}
 				else
 				{
@@ -283,6 +325,7 @@ window.iui =
 			}
 		  
 		};
+
 		if (!iui.busy)
 		{
 			iui.busy = true;

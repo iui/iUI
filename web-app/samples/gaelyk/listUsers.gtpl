@@ -29,18 +29,18 @@ else
 %>
 
 <% if (cursor == null) { %>
-<ul id="users" title="User List">
+	<ul id="users" title="User List">
 <% } %>
 
     <% for (peop in peopsList) {  %>
-    <li><a href="userInfo.gtpl?id=${peop.key.id}">$peop.name</a></li>
+ 	   <li><a href="userInfo.gtpl?id=${peop.key.id}">$peop.name</a></li>
     <% } %>
     
     
     <% if ((peopsList.size() > 0) && (peopsList.getCursor() != null)) { %>
-    <li><a href="listUsers.gtpl?next=${peopsList.getCursor().toWebSafeString()}" target="_replace">Get 10 More</a></li>
+ 	   <li><a href="listUsers.gtpl?next=${peopsList.getCursor().toWebSafeString()}" target="_replace">Get 10 More</a></li>
     <% } %>
 
 <% if (cursor == null) { %>
-</ul>
+	</ul>
 <% } %>
