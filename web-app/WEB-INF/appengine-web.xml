@@ -1,7 +1,7 @@
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
     <application>iui-js</application>
 <!--        <application>iui-framework</application> -->
-    <version>53</version>
+    <version>55</version>
 
     <!-- Enable concurrent requests by default to serve requests in parallel -->
     <threadsafe>true</threadsafe>
