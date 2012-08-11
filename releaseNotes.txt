@@ -1,4 +1,4 @@
-REL-0.4 2012-08-xx
+REL-0.4 2012-08-11
  * Code cleaup around iui.busy flag - fix Issue #346 (http://code.google.com/p/iui/issues/detail?id=346)
  * README.txt is now READE.md (markdown) for GitHub
  * Update GAE version and scripts for demo site on Google App Engine
