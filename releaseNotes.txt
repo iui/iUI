@@ -1,3 +1,8 @@
+REL-0.4 2012-08-xx
+ * Code cleaup around iui.busy flag - fix Issue #346 (http://code.google.com/p/iui/issues/detail?id=346)
+ * README.txt is now READE.md (markdown) for GitHub
+ * Update GAE version and scripts for demo site on Google App Engine
+
 REL-0.4-beta3 2012-05-10
  * Adjust our release naming convention from 0.40 to 0.4
  * Major fixes/improvements to AJAX form submission (Issue #48, Issue #67, Issue #72, Issue #77)
