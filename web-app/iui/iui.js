@@ -436,7 +436,12 @@ window.iui =
 	*/
 	getAllViews: function()
 	{
-		return document.querySelectorAll("body > *:not(.toolbar)");
+		var all = document.body.children;
+		for(var i=0,inb=all.length;i<inb;i++) {
+			if(this.hasClass(all[i],'toolbar'))
+				all.splice(i,1);
+		}
+		return all;
 	},
 	
 	/*
