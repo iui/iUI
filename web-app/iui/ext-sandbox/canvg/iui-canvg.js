@@ -1,5 +1,5 @@
 /*
-   Copyright (c) 2010, iUI Project Members
+   Copyright (c) 2010-12, iUI Project Members
    See LICENSE.txt for licensing terms
  */
 

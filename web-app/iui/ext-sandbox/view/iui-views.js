@@ -1,11 +1,9 @@
 /*
-   Copyright (c) 2007-9, iUI Project Members
+   Copyright (c) 2007-12, iUI Project Members
    See LICENSE.txt for licensing terms
  */
 
 // requires iui.js
-// requires querySelectorAll, therefore iPhone OS 2.x or later
-// or Safari 3.x or later
 // requires DOMContentLoaded event
 
 (function() {
@@ -31,7 +29,7 @@ addEventListener("DOMContentLoaded", function(event)
 // This will register event handlers on all initial nodes
 // We'll also need to register handlers on inserted (via ajax) nodes
 // To do that we'll need to use the beforeInsert event
-	nodes = document.querySelectorAll("body > *:not(.toolbar)");
+	var nodes = iui.getAllViews();
 	for (var i = 0; i  < nodes.length  ; i++)
 	{
 		registerNode(nodes[i]);

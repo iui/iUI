@@ -1,10 +1,7 @@
 /*
-   Copyright (c) 2007-9, iUI Project Members
+   Copyright (c) 2007-12, iUI Project Members
    See LICENSE.txt for licensing terms
  */
-
-// requires querySelectorAll, therefore iPhone OS 2.x or later
-// or Safari 3.x or later
 
 (function() {
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (c) 2007-10, iUI Project Members
+   Copyright (c) 2007-12, iUI Project Members
    See LICENSE.txt for licensing terms
  */
 
@@ -11,10 +11,6 @@
 //
 // This will prevent your DOM from getting overloaded.  It can also be used as a template
 // for a more advanced unloading scheme.
-//
-// requires querySelectorAll, therefore iPhone OS 2.x or later
-// or Safari 3.x or later
-//
 //
 
 (function() {
@@ -32,7 +28,7 @@ addEventListener("DOMContentLoaded", function(event)
 // This will register event handlers on all initial nodes
 // We'll also need to register handlers on inserted (via ajax) nodes
 // To do that we'll need to use the afterInsert event
-	nodes = document.querySelectorAll("body > *:not(.toolbar)");
+	var nodes = iui.getAllViews();
 	for (var i = 0; i  < nodes.length  ; i++)
 	{
 		registerEvents(nodes[i]);

@@ -1,13 +1,10 @@
 /*
-   Copyright (c) 2007-10, iUI Project Members
+   Copyright (c) 2007-12, iUI Project Members
    See LICENSE.txt for licensing terms
  */
 
 //
 // For an example see web-app/index.html
-//
-// requires querySelectorAll, therefore iPhone OS 2.x or later
-// or Safari 3.x or later
 //
 // Assumes that Google Analytics has been installed in the page in asynchronous mode
 // Typically this is done by inserting the recommended script tag and contents at the bottom
