@@ -693,7 +693,7 @@ function sendEvent(type, node, props)
     if (node)
     {
         var event = document.createEvent("UIEvent");
-        event.initEvent(type, false, false);  // no bubble, no cancel
+        event.initEvent(type, true, false);  // bubble, no cancel
         if (props)
         {
             for (i in props)

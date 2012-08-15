@@ -5,10 +5,10 @@
 
 (function() {
 
-var eventNames = ['blur', 'focus', 'load', 'unload', 'beforetransition', 'aftertransition' ];
+var eventNames = ['beforeinsert', 'afterinsert', 'afterinsertend', 'blur', 'focus', 'load', 'unload', 'beforetransition', 'aftertransition' ];
 
 // Using DOMContentLoaded so this loads before the onload in iui.js -- need a better method (Issue #204?)
-// We need to register before iui's main onload handler so we can get the 'load' and 'focus' events
+// We need to register before iUI's main onload handler so we can get the 'load' and 'focus' events
 // for the default 'page' (view).
 //
 // The "better method" may be related to http://code.google.com/p/iui/issues/detail?id=204
@@ -16,33 +16,11 @@ var eventNames = ['blur', 'focus', 'load', 'unload', 'beforetransition', 'aftert
 //
 addEventListener("DOMContentLoaded", function(event)
 {
-	document.body.addEventListener('beforeinsert', logEvent, false);
-	document.body.addEventListener('afterinsert', afterInsert, false);
-	document.body.addEventListener('afterinsertend', logEvent, false);
-// This will register event handlers on all initial nodes
-// We'll also need to register handlers on inserted (via ajax) nodes
-// To do that we'll need to use the afterInsert event
-	var nodes = iui.getAllViews();
-	for (var i = 0; i  < nodes.length  ; i++)
-	{
-		registerAllEvents(nodes[i]);
-	}
-}, false);
-
-function registerAllEvents(node)
-{
 	for (var i = 0; i  < eventNames.length  ; i++)
-	{
-		console.log("addlistener: " + eventNames[i] + " on #" + node.id + " = " + node);
-		node.addEventListener(eventNames[i], logEvent, false);
-	}
-}
-
-function afterInsert(e)
-{
-	logEvent(e);
-	registerAllEvents(e.insertedNode);	// Set event handlers on newly added node
-}
+    {
+        document.body.addEventListener(eventNames[i], logEvent, false);        
+    }
+}, false);
 
 function logEvent(e)
 {
@@ -61,6 +39,5 @@ function logEvent(e)
 		console.log("  fragment = " + e.fragment);
 	}
 }
-
 
 })();
