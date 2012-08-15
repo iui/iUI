@@ -432,16 +432,18 @@ window.iui =
 	
 	/*
 	method: iui.getAllViews()
-	Returns all panels -- currently requires querySelectorAll() will be fixed
+	Returns all panels.
 	*/
 	getAllViews: function()
 	{
-		var all = document.body.children;
-		for(var i=0,inb=all.length;i<inb;i++) {
-			if(this.hasClass(all[i],'toolbar'))
-				all.splice(i,1);
+		var kids = document.body.children;
+		var views = [];
+		for(var i=0;i<kids.length;i++) {
+			if (!this.hasClass(kids[i],'toolbar')) {
+				views.push(kids[i]);
+			}
 		}
-		return all;
+		return views;
 	},
 	
 	/*
