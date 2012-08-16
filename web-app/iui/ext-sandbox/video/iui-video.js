@@ -20,15 +20,8 @@ var waitForPlayThrough = false;
 //
 addEventListener("DOMContentLoaded", function(event)
 {
-	document.body.addEventListener('afterinsert', afterInsert, false);
-// This will register event handlers on all initial nodes
-// We'll also need to register handlers on inserted (via ajax) nodes
-// To do that we'll need to use the beforeInsert event
-	var nodes = iui.getAllViews();
-	for (var i = 0; i  < nodes.length  ; i++)
-	{
-		registerAllEvents(nodes[i]);
-	}
+	document.body.addEventListener('aftertransition', afterTrans, false);
+	document.body.addEventListener('blur', onBlur, false);
 
 	if (false)
 	{
@@ -50,18 +43,6 @@ addEventListener("DOMContentLoaded", function(event)
 	}
 	
 }, false);
-
-function registerAllEvents(node)
-{
-	node.addEventListener('aftertransition', afterTrans, false);
-	node.addEventListener('blur', onBlur, false);
-//	node.addEventListener('beforetransition', beforeTrans, false);
-}
-
-function afterInsert(e)
-{
-	registerAllEvents(e.insertedNode);	// Set event handlers on newly added node
-}
 
 function afterTrans(e)
 {
@@ -120,27 +101,6 @@ function onBlur(e)
 			//aNode.style.visibility = 'visible';
 			//vid.style.visibility = 'hidden';
 			iui.removeClass(aNode, 'poster-out');
-		}
-	}
-}
-
-function beforeTrans(e)
-{
-	if (e.out)
-	{
-		var vid = e.target.querySelector("video");
-		if (vid)
-		{
-			console.log("beforeTrans of video div");
-			vid.pause();			
-			iui.addClass(vid, 'video-out');
-			var aNode = e.target.querySelector("a[rel='iuiposter']");
-			if (aNode)
-			{
-				//aNode.style.visibility = 'visible';
-				//vid.style.visibility = 'hidden';
-				iui.removeClass(aNode, 'poster-out');
-			}
 		}
 	}
 }
@@ -208,6 +168,5 @@ function addVideoListeners(vid)
     	addVideoLoggers(vid);
     }
 }
-
 
 })();
