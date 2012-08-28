@@ -10,8 +10,6 @@
 (function() {
 		  
 
-var eventNames = ['blur', 'focus'/*, 'load', 'unload', 'beforetransition', 'aftertransition' */];
-
 // Using DOMContentLoaded so this loads before the onload in iui.js -- need a better method
 // We need to register before iui's main onload handler so we can get the 'load' and 'focus' events
 // for the default 'page' (view).
@@ -19,28 +17,10 @@ var eventNames = ['blur', 'focus'/*, 'load', 'unload', 'beforetransition', 'afte
 
 addEventListener("DOMContentLoaded", function(event)
 {
-	document.body.addEventListener('beforeinsert', registerTbBModEvents, false);
-	document.body.addEventListener('afterinsert', afterInsert, false);
-// This will register event handlers on all initial nodes
-// We'll also need to register handlers on inserted (via ajax) nodes
-// To do that we'll need to use the beforeInsert event
-	nodes = document.querySelectorAll("ul, div, form");		// select all of the usual page containers	
-	for (var i = 0; i  < nodes.length  ; i++){				// loop through them
-		registerTbBModEvents(nodes[i]);						// adding event listener
-		
-	}
+	document.body.addEventListener('iui.blur', TbBModHandler, false);
+	document.body.addEventListener('iui.focus', TbBModHandler, false);
 }, false);
 
-function registerTbBModEvents(node){						// add TbBMod event listener to page containers
-	for (var i = 0; i  < eventNames.length  ; i++){
-		node.addEventListener(eventNames[i], TbBModHandler, false);
-	}
-}
-
-function afterInsert(e){
-	//TbBModHandler(e);
-	registerTbBModEvents(e.insertedNode);					// Set event handlers on newly added node
-}
 
 ////////////////////////////////////////////////////////////// Variables used for mustiple functions
 var TbBModForm;												// The form with TbBMods in it
@@ -50,13 +30,13 @@ var urls = [];												// array(stack)to save the origanl button links so we 
 
 ////////////////////////////////////////////////////////////// TbBModHandler(e)
 function TbBModHandler(e){									// function called on page focus and blur to mod buttons
-	if (e.type == "focus"){ 								// focus event - look in page for TbBMods
+	if (e.type == "iui.focus"){ 								// focus event - look in page for TbBMods
 		var page = e.target;								// assign event target page to variable
 		if (page.tagName == "FORM" && hasTbBMod(page)){		// page is a form and has TbBMods
 			doTbBMods();									// take care of TbBMods in form
 		} else if (hasForm(page) && checkForms(page))		// page has a form and has TbBMods
 			doTbBMods();									// take care of TbBMods in form
-	} else if (e.type == "blur"){							// blur event -  reset TbBMods before leaving 
+	} else if (e.type == "iui.blur"){							// blur event -  reset TbBMods before leaving 
 		undoTbBMods();										// undo buttons modded before leaving page
 	}
 }

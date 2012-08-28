@@ -31,8 +31,8 @@ var loadedScripts = {};
 
 addEventListener("load", function(event)
 {
-	document.body.addEventListener('beforeinsert', beforeInsert, false);
-	document.body.addEventListener('afterinsertend', afterInsertEnd, false);
+	document.body.addEventListener('iui.beforeinsert', beforeInsert, false);
+	document.body.addEventListener('iui.afterinsertend', afterInsertEnd, false);
 }, false);
 
 var loading = false;
