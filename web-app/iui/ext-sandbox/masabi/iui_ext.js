@@ -37,7 +37,7 @@ window.iui_ext =
 addEventListener("DOMContentLoaded", function(event)
 {
 // Use afterinsert to injectEventMethods on inserted (via ajax) nodes
-	document.body.addEventListener('afterinsert', afterInsert, false);
+	document.body.addEventListener('iui.afterinsert', afterInsert, false);
 // This will register event handlers on all initial form nodes
 	nodes = document.querySelectorAll("body > form");
 	for (var i = 0; i  < nodes.length  ; i++)
@@ -179,8 +179,8 @@ function convertSelectToSortedList(select)
 	var generated=addChild(document.body,"ul","az",name),n,c,o;
 	generated.title=caption;
 	generated.name=select.name;
-	generated.addEventListener('focus',azFocus,true);
-	generated.addEventListener('blur',azBlur,true);
+	generated.addEventListener('iui.focus',azFocus,true);
+	generated.addEventListener('iui.blur',azBlur,true);
 	var nav=addChild(generated,"nav");
 	
 	// build name/value map of children, adding radios to the new form

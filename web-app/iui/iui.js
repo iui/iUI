@@ -106,7 +106,7 @@ window.iui =
 			if (currentDialog)
 			{
 				currentDialog.removeAttribute("selected");
-				sendEvent("blur", currentDialog);					// EVENT: BLUR
+				sendEvent("iui.blur", currentDialog);					// EVENT: BLUR
 				currentDialog = null;
 			}
 
@@ -120,7 +120,7 @@ window.iui =
 				iui.busy = false;	// There's no slide transition, so clear busy flag
 				// There's no LOAD/UNLOAD events for dialogs -- is that the way it should be??
 				// Should the view the dialog is going over get a BLUR??
-				sendEvent("focus", page);							// EVENT: FOCUS
+				sendEvent("iui.focus", page);							// EVENT: FOCUS
 				showDialog(page);
 			}
 			/*
@@ -130,13 +130,13 @@ window.iui =
 			*/
 			else
 			{
-				sendEvent("load", page);    						// EVENT: LOAD
+				sendEvent("iui.load", page);    						// EVENT: LOAD
 													// 127(stylesheet), 128(script), 129(onload)
 													// 130(onFocus), 133(loadActionButton)
 				var fromPage = currentPage;
-				sendEvent("blur", currentPage);						// EVENT: BLUR
+				sendEvent("iui.blur", currentPage);						// EVENT: BLUR
 				currentPage = page;
-				sendEvent("focus", page);							// EVENT: FOCUS
+				sendEvent("iui.focus", page);							// EVENT: FOCUS
 
 				if (fromPage)
 				{
@@ -257,7 +257,7 @@ window.iui =
 					element receives a `beforeinsert` event with `{ fragment: frag }` parameters
 					and afterwards receives an `afterinsert` event with `{insertedNode: docNode}` parameters.
 					*/
-				  sendEvent("beforeinsert", document.body, {fragment:frag})
+				  sendEvent("iui.beforeinsert", document.body, {fragment:frag})
 				  if (replace)
 				  {
 					  replaceElementWithFrag(replace, frag);
@@ -397,7 +397,7 @@ window.iui =
 				else
 					docNode = document.body.appendChild(child);
 					
-				sendEvent("afterinsert", document.body, {insertedNode:docNode});   
+				sendEvent("iui.afterinsert", document.body, {insertedNode:docNode});   
 
 				// First child becomes selected page/view by default unless
 				// selected="true" is set
@@ -408,7 +408,7 @@ window.iui =
 				--i;
 			}
 		}
-		sendEvent("afterinsertend", document.body, {fragment:frag})
+		sendEvent("iui.afterinsertend", document.body, {fragment:frag})
 
 		if (targetPage)
 			iui.showPage(targetPage);
@@ -854,8 +854,8 @@ function slidePages(fromPage, toPage, backwards)
 
 	clearInterval(checkTimer);
 	
-	sendEvent("beforetransition", fromPage, {out:true});
-	sendEvent("beforetransition", toPage, {out:false});
+	sendEvent("iui.beforetransition", fromPage, {out:true});
+	sendEvent("iui.beforetransition", toPage, {out:false});
 	if (canDoSlideAnim() && axis != 'y')
 	{
 	  slide2(fromPage, toPage, backwards, slideDone);
@@ -872,9 +872,9 @@ function slidePages(fromPage, toPage, backwards)
 	  checkTimer = setInterval(checkOrientAndLocation, 300);
 	  setTimeout(updatePage, 0, toPage, fromPage);
 	  fromPage.removeEventListener('webkitTransitionEnd', slideDone, false);
-	  sendEvent("aftertransition", fromPage, {out:true});
-      sendEvent("aftertransition", toPage, {out:false});
-	  if (backwards) sendEvent("unload", fromPage);	// EVENT: UNLOAD
+	  sendEvent("iui.aftertransition", fromPage, {out:true});
+      sendEvent("iui.aftertransition", toPage, {out:false});
+	  if (backwards) sendEvent("iui.unload", fromPage);	// EVENT: UNLOAD
 	}
 }
 
@@ -1031,9 +1031,9 @@ function replaceElementWithFrag(replace, frag)
     var docNode;
 	while (frag.firstChild) {
 		docNode = page.appendChild(frag.firstChild);
-		sendEvent("afterinsert", document.body, {insertedNode:docNode});
+		sendEvent("iui.afterinsert", document.body, {insertedNode:docNode});
     }
-	sendEvent("afterinsertend", document.body, {fragment:frag})
+	sendEvent("iui.afterinsertend", document.body, {fragment:frag})
 }
 
 function $(id) { return document.getElementById(id); }

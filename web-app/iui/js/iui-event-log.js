@@ -5,7 +5,7 @@
 
 (function() {
 
-var eventNames = ['beforeinsert', 'afterinsert', 'afterinsertend', 'blur', 'focus', 'load', 'unload', 'beforetransition', 'aftertransition' ];
+var eventNames = ['iui.beforeinsert', 'iui.afterinsert', 'iui.afterinsertend', 'iui.blur', 'iui.focus', 'iui.load', 'iui.unload', 'iui.beforetransition', 'iui.aftertransition'];
 
 // Using DOMContentLoaded so this loads before the onload in iui.js -- need a better method (Issue #204?)
 // We need to register before iUI's main onload handler so we can get the 'load' and 'focus' events
@@ -25,17 +25,17 @@ addEventListener("DOMContentLoaded", function(event)
 function logEvent(e)
 {
 	console.log("logEvent type: " + e.type + "  target " + e.target.tagName + "#" + e.target.id);
-	if (e.type == "beforetransition" || e.type == "aftertransition")
+	if (e.type == "iui.beforetransition" || e.type == "iui.aftertransition")
 	{
 		console.log("  out trans = " + e.out);
 	}
-	else if (e.type == "beforeinsert") {
+	else if (e.type == "iui.beforeinsert") {
 		console.log("  fragment = " + e.fragment);
 	}
-	else if (e.type == "afterinsert") {
+	else if (e.type == "iui.afterinsert") {
 		console.log("  node = " + e.insertedNode);
 	}
-	else if (e.type == "afterinsertend") {
+	else if (e.type == "iui.afterinsertend") {
 		console.log("  fragment = " + e.fragment);
 	}
 }

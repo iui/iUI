@@ -27,7 +27,7 @@ addEventListener("DOMContentLoaded", function(event)
 		cache.addEventListener('obsolete', cacheEventListener, false);
 	}
 	var cacheView = document.getElementById('iui-cache-panel');
-	cacheView.addEventListener('focus', infoPanelFocus, false);
+	cacheView.addEventListener('iui.focus', infoPanelFocus, false);
 
 	updateButton = document.querySelector('.iui-cache-update-button');
 	updateButton.addEventListener('click', updateClicked, false);

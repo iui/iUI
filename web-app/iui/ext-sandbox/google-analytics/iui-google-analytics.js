@@ -22,7 +22,7 @@
 //
 addEventListener("DOMContentLoaded", function(event)
 {
-	document.body.addEventListener('focus', trackEvent, false);
+	document.body.addEventListener('iui.focus', trackEvent, false);
 }, false);
 
 function trackEvent(e)

@@ -24,8 +24,8 @@
 //
 addEventListener("DOMContentLoaded", function(event)
 {
-	document.body.addEventListener('afterinsert', afterInsert, false);
-	document.body.addEventListener('unload', unloader, false);
+	document.body.addEventListener('iui.afterinsert', afterInsert, false);
+	document.body.addEventListener('iui.unload', unloader, false);
 }, false);
 
 function afterInsert(e)

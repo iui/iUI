@@ -20,8 +20,8 @@ var waitForPlayThrough = false;
 //
 addEventListener("DOMContentLoaded", function(event)
 {
-	document.body.addEventListener('aftertransition', afterTrans, false);
-	document.body.addEventListener('blur', onBlur, false);
+	document.body.addEventListener('iui.aftertransition', afterTrans, false);
+	document.body.addEventListener('iui.blur', onBlur, false);
 
 	if (false)
 	{

@@ -21,7 +21,7 @@
 //
 addEventListener("DOMContentLoaded", function(event)
 {
-	document.body.addEventListener('load', onLoad, false);
+	document.body.addEventListener('iui.load', onLoad, false);
 }, false);
 
 function onLoad(e)

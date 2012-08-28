@@ -35,5 +35,5 @@ function loadGeoMAP(divID)
 
 //var def12 = document.getElementById('default_map');
 //var geo12 = document.getElementById('geo_map');
-//def12.addEventListener("focus", function(){ loadGMAP('dmap') }, false);
-//geo12.addEventListener("focus", function(){ loadGeoMAP('geomap') }, false);
+//def12.addEventListener("iui.focus", function(){ loadGMAP('dmap') }, false);
+//geo12.addEventListener("iui.focus", function(){ loadGeoMAP('geomap') }, false);
