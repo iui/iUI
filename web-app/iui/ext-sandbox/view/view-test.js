@@ -37,14 +37,14 @@ window.iui.views.byClass['panel'] = myView;
 function logEvent(e)
 {
 	console.log("logEvent type: " + e.type + "  target " + e.target.tagName + "#" + e.target.id);
-	if (e.type == "beforetransition" || e.type == "aftertransition")
+	if (e.type == "iui.beforetransition" || e.type == "iui.aftertransition")
 	{
 		console.log("  out trans = " + e.out);
 	}
-	else if (e.type == "beforeinsert") {
+	else if (e.type == "iui.beforeinsert") {
 		console.log("  fragment = " + e.fragment);
 	}
-	else if (e.type == "afterinsert") {
+	else if (e.type == "iui.afterinsert") {
 		console.log("  node = " + e.insertedNode);
 	}
 }

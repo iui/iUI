@@ -9,8 +9,8 @@
 // An iUI extension that will remove any iUI fragment or view (aka "page") when it receives
 // an 'unload' event from iUI core.
 //
-// This will prevent your DOM from getting overloaded.  It can also be used as a template
-// for a more advanced unloading scheme.
+// This will prevent your DOM from getting overloaded and using up memory.
+// It could also be used as a template for a more advanced caching/unloading scheme.
 //
 
 (function() {
@@ -24,25 +24,12 @@
 //
 addEventListener("DOMContentLoaded", function(event)
 {
-	document.body.addEventListener('afterinsert', afterInsert, false);
-// This will register event handlers on all initial nodes
-// We'll also need to register handlers on inserted (via ajax) nodes
-// To do that we'll need to use the afterInsert event
-	var nodes = iui.getAllViews();
-	for (var i = 0; i  < nodes.length  ; i++)
-	{
-		registerEvents(nodes[i]);
-	}
+	document.body.addEventListener('iui.afterinsert', afterInsert, false);
+	document.body.addEventListener('iui.unload', unloader, false);
 }, false);
-
-function registerEvents(node)
-{
-	node.addEventListener('unload', unloader, false);
-}
 
 function afterInsert(e)
 {
-	registerEvents(e.insertedNode);	// Set event handlers on newly added node
 	console.log("Marking " + e.insertedNode + " for removal from DOM on unload");
 	e.insertedNode.unloadMe = true;	// Mark everything inserted by Ajax for removal
 }
@@ -55,6 +42,5 @@ function unloader(e)
 		e.target.parentNode.removeChild(e.target);	// remove the node after unloaded
 	}
 }
-
 
 })();

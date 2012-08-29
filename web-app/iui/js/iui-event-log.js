@@ -5,10 +5,10 @@
 
 (function() {
 
-var eventNames = ['blur', 'focus', 'load', 'unload', 'beforetransition', 'aftertransition' ];
+var eventNames = ['iui.beforeinsert', 'iui.afterinsert', 'iui.afterinsertend', 'iui.blur', 'iui.focus', 'iui.load', 'iui.unload', 'iui.beforetransition', 'iui.aftertransition'];
 
 // Using DOMContentLoaded so this loads before the onload in iui.js -- need a better method (Issue #204?)
-// We need to register before iui's main onload handler so we can get the 'load' and 'focus' events
+// We need to register before iUI's main onload handler so we can get the 'load' and 'focus' events
 // for the default 'page' (view).
 //
 // The "better method" may be related to http://code.google.com/p/iui/issues/detail?id=204
@@ -16,51 +16,28 @@ var eventNames = ['blur', 'focus', 'load', 'unload', 'beforetransition', 'aftert
 //
 addEventListener("DOMContentLoaded", function(event)
 {
-	document.body.addEventListener('beforeinsert', logEvent, false);
-	document.body.addEventListener('afterinsert', afterInsert, false);
-	document.body.addEventListener('afterinsertend', logEvent, false);
-// This will register event handlers on all initial nodes
-// We'll also need to register handlers on inserted (via ajax) nodes
-// To do that we'll need to use the afterInsert event
-	var nodes = iui.getAllViews();
-	for (var i = 0; i  < nodes.length  ; i++)
-	{
-		registerAllEvents(nodes[i]);
-	}
-}, false);
-
-function registerAllEvents(node)
-{
 	for (var i = 0; i  < eventNames.length  ; i++)
-	{
-		console.log("addlistener: " + eventNames[i] + " on #" + node.id + " = " + node);
-		node.addEventListener(eventNames[i], logEvent, false);
-	}
-}
-
-function afterInsert(e)
-{
-	logEvent(e);
-	registerAllEvents(e.insertedNode);	// Set event handlers on newly added node
-}
+    {
+        document.body.addEventListener(eventNames[i], logEvent, false);        
+    }
+}, false);
 
 function logEvent(e)
 {
 	console.log("logEvent type: " + e.type + "  target " + e.target.tagName + "#" + e.target.id);
-	if (e.type == "beforetransition" || e.type == "aftertransition")
+	if (e.type == "iui.beforetransition" || e.type == "iui.aftertransition")
 	{
 		console.log("  out trans = " + e.out);
 	}
-	else if (e.type == "beforeinsert") {
+	else if (e.type == "iui.beforeinsert") {
 		console.log("  fragment = " + e.fragment);
 	}
-	else if (e.type == "afterinsert") {
+	else if (e.type == "iui.afterinsert") {
 		console.log("  node = " + e.insertedNode);
 	}
-	else if (e.type == "afterinsertend") {
+	else if (e.type == "iui.afterinsertend") {
 		console.log("  fragment = " + e.fragment);
 	}
 }
-
 
 })();
