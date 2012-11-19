@@ -1,0 +1,8 @@
+{
+  "name" : "iui",
+  "version" : "0.4.1",
+  "description": "iUI sdk, samples, and test as a node.js app",
+  "dependencies": {
+    "node-static": ">=0.6.5"
+  }
+}
