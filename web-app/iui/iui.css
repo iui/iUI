@@ -244,7 +244,7 @@ body > .dialog {
     text-align:	left;
 }
 
-input:not([type|=submit]):not([type|=radio]):not([type|=checkbox]) {
+textarea,input:not([type|=submit]):not([type|=radio]):not([type|=checkbox]) {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
