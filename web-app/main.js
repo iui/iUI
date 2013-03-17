@@ -1,8 +1,10 @@
-var static = require('node-static');
+var http = require('http'),
+    node_static = require('node-static'),
+    connect = require('connect');
+            
+var fileServer = new node_static.Server('.');
 
-var fileServer = new static.Server('.');
-
-require('http').createServer(function (request, response) {
+http.createServer(function (request, response) {
     request.addListener('end', function () {
         fileServer.serve(request, response);
     });
