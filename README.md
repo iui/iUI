@@ -28,7 +28,7 @@ Downloads
 =========
 You'll find the latest stable release on our [download](http://www.iui-js.org/download) page. (Downloads are powered by [Google Code](https://code.google.com/p/iui/downloads/list).)
 
-[Development builds](https://cmt.ci.cloudbees.com/job/iUI/) are produced automatically by our [Continuous Integration server](https://iui.ci.cloudbees.com) -- powered by [CloudBees](http://www.cloudbees.com/).
+[Development builds](https://iui.ci.cloudbees.com/job/iUI/) are produced automatically by our [Continuous Integration server](https://iui.ci.cloudbees.com) -- powered by [CloudBees](http://www.cloudbees.com/).
 
 See also
 ========
