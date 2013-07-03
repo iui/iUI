@@ -1,13 +1,12 @@
 /*
- * build.gradle for iUI
- * (c) 2012 by the iUI project members
+ * gae.gradle Google App Engine Local Server Runner and Deployment for iUI
+ * (c) 2012-13 by the iUI project members
  *
  * This file is used to run a local webserver for testing purposes and to
  * publish to http://demo.iui-js.org on Google App Engine.
  *
- * iUI uses ant and build.xml to build the iUI distribution.
- * (at some point in the future the build.xml functions may be migrated from
- *  ant to gradle)
+ * iUI is converting to Gradle for the main build now, too.  So build.gradle will
+ * be replacing the ANT build in build.xml.
  *
  * To run a local weberver use:
  *    ./gradlew gaeRun
