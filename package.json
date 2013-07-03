@@ -11,6 +11,12 @@
       "type" : "git"
     , "url" : "https://github.com/iui/iUI.git"
   },
+  "devDependencies": {
+   "grunt-contrib-connect": "0.1.1",
+   "grunt-contrib-jshint": "0.1.1rc6",
+   "grunt": "~0.4",
+   "grunt-cli": "0.1.6"
+  },
   "dependencies": {
     "node-static": ">=0.6.5"
   }
