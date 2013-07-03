@@ -1,0 +1,62 @@
+/*
+ * build.gradle for iUI
+ * (c) 2013 by the iUI project members
+ *
+ * Work-in-progress on Gradle replacement for ANT build.
+ *
+ * Google App Engine Gradle file has been renamed to gae.gradle
+ */
+
+import com.google.javascript.jscomp.CompilerOptions as ClosureCompilerOptions
+
+// Pull plugins from Maven Repos
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.eriwen:gradle-js-plugin:1.5.1'
+        classpath 'com.eriwen:gradle-css-plugin:1.2.1'
+    }
+}
+
+// Invoike the plugins
+apply plugin: 'js'
+apply plugin: 'css'
+
+// Get version number from build.properties until we get it from package.json??
+Properties buildProps = new Properties()
+buildProps.load(new FileInputStream("build.properties"))
+def iuiVersion =  buildProps.get("iui.version")
+
+def iuiSrcDir       = 'web-app/iui'
+def iuiReleaseDir   = "${buildDir}/iui-release"
+
+task outputDirs << {
+    file(iuiReleaseDir).mkdirs()
+}
+
+ClosureCompilerOptions closureOptionsMinify = new ClosureCompilerOptions()
+//def googleClosureReplacements = ['iui.version': iuiVersion]
+closureOptionsMinify.prettyPrint = true;
+
+task compressJs(type: com.eriwen.gradle.js.tasks.MinifyJsTask, dependsOn: outputDirs) {
+    source = "${iuiSrcDir}/iui.js"
+    dest = file("${iuiReleaseDir}/iui-min.js")
+    closure {
+        warningLevel = 'DEFAULT'
+//        compilationLevel = 'WHITESPACE_ONLY'
+        compilerOptions = closureOptionsMinify
+//        compilerOptions.setDefineReplacements(googleClosureReplacements)
+    }
+}
+
+task copyStaticFiles(type: Copy) {
+    from iuiSrcDir
+    into file(iuiReleaseDir)
+    include 'iui.js', '*.png', '*.jpg', '*.css'
+}
+
+task releasedir(dependsOn: [compressJs, copyStaticFiles]) << {
+	println "Built iUI Release Directory"
+}
