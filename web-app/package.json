@@ -2,6 +2,15 @@
   "name" : "iui",
   "version" : "0.4.1",
   "description": "iUI sdk, samples, and test as a node.js app",
+  "contributors": [ "Fish",
+   "Dog"],
+  "engines": {
+    "node": ">=0.8.16"
+  },
+  "repository" : {
+      "type" : "git"
+    , "url" : "https://github.com/iui/iUI.git"
+  },
   "dependencies": {
     "node-static": ">=0.6.5"
   }
