@@ -27,10 +27,13 @@ apply plugin: 'css'
 // Get version number from build.properties until we get it from package.json??
 Properties buildProps = new Properties()
 buildProps.load(new FileInputStream("build.properties"))
-def iuiVersion =  buildProps.get("iui.version")
+def propVersion =  buildProps.get("iui.version")
+def DSTAMP = (new Date()).format("yyyyMMdd")
+def iuiVersion = propVersion ?: DSTAMP
+println "iuiVersion: ${iuiVersion}"
 
 def iuiSrcDir       = 'web-app/iui'
-def iuiReleaseDir   = "${buildDir}/iui-release"
+def iuiReleaseDir   = "${buildDir}/iui-${iuiVersion}"
 
 task outputDirs << {
     file(iuiReleaseDir).mkdirs()
@@ -38,7 +41,7 @@ task outputDirs << {
 
 ClosureCompilerOptions closureOptionsMinify = new ClosureCompilerOptions()
 //def googleClosureReplacements = ['iui.version': iuiVersion]
-closureOptionsMinify.prettyPrint = true;
+closureOptionsMinify.prettyPrint = false;
 
 task compressJs(type: com.eriwen.gradle.js.tasks.MinifyJsTask, dependsOn: outputDirs) {
     source = "${iuiSrcDir}/iui.js"
@@ -46,17 +49,50 @@ task compressJs(type: com.eriwen.gradle.js.tasks.MinifyJsTask, dependsOn: output
     closure {
         warningLevel = 'DEFAULT'
 //        compilationLevel = 'WHITESPACE_ONLY'
+//        compilationLevel = 'ADVANCED_OPTIMIZATIONS'
         compilerOptions = closureOptionsMinify
 //        compilerOptions.setDefineReplacements(googleClosureReplacements)
     }
 }
 
-task copyStaticFiles(type: Copy) {
+gzipJs {
+    source = compressJs
+    dest = file("${iuiReleaseDir}/iui-min.js.gzip")
+}
+
+minifyCss {
+    source = "${iuiSrcDir}/iui.css"
+    dest = file("${iuiReleaseDir}/iui-min.css")
+    yuicompressor { // Optional
+        lineBreakPos = -1
+    }
+}
+
+gzipCss {
+    source = minifyCss
+    dest = "${iuiReleaseDir}/iui-min.css.gzip"
+}
+
+task copyStaticFiles(type: Copy, description: "Copy static files to release directory") {
     from iuiSrcDir
     into file(iuiReleaseDir)
     include 'iui.js', '*.png', '*.jpg', '*.css'
 }
 
-task releasedir(dependsOn: [compressJs, copyStaticFiles]) << {
+task releaseDir(dependsOn: [gzipJs, gzipCss, copyStaticFiles], description: "Build the iUI release directory." ) << {
 	println "Built iUI Release Directory"
 }
+
+task zipRelease(type: Zip, dependsOn: releaseDir) {
+    description "Build the iUI release zip file."
+    from iuiReleaseDir
+    destinationDir  buildDir
+    baseName  "iui"
+    version iuiVersion
+}
+
+task clean(description: "Delete build directory") << {
+    delete buildDir
+}
+
+
