@@ -28,7 +28,11 @@ apply plugin: 'css'
 Properties buildProps = new Properties()
 buildProps.load(new FileInputStream("build.properties"))
 Properties localProps = new Properties()
-localProps.load(new FileInputStream("local.build.properties"))
+try {
+    localProps.load(new FileInputStream("local.build.properties"))
+} catch(Exception e) {
+    println "Couldn't read 'local.build.properties' -- only needed for Google Code release upload"
+}
 def propVersion =  buildProps.get("iui.version")
 def iuiReleaseSummary =  buildProps.get("iui.release.summary") ?: "unofficial release"
 def DSTAMP = (new Date()).format("yyyyMMdd")
