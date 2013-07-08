@@ -99,13 +99,14 @@ task copyStaticFiles(type: Copy, dependsOn: outputDirs, description: "Copy stati
     from iuiWebAppSrcDir
     into file(iuiWebAppReleaseDir)
     include '**/*'
-    exclude '**/*.js', '**/*.css', '**/*.jar'
+    exclude '**/*.js', '**/*.css', '**/*.jar', '**/node_modules/**'
 }
 
 task copyFilteredFiles(type: Copy, dependsOn: outputDirs, description: "Copy filtered files to release directory") {
     from iuiWebAppSrcDir
     into file(iuiWebAppReleaseDir)
     include '**/*.js', '**/*.css'
+    exclude '**/node_modules/**'
     filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [VERSION: iuiVersion])
 }
 
