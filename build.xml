@@ -61,7 +61,7 @@
 
 	<path id="ant-googlecode.path">
 		<fileset dir="releasetools/lib">
-			<include name="ant-googlecode-0.0.0test.jar"/>
+			<include name="ant-googlecode-0.0.3.jar"/>
 		</fileset>
 	</path>
 	

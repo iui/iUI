@@ -27,16 +27,27 @@ apply plugin: 'css'
 // Get version number from build.properties until we get it from package.json??
 Properties buildProps = new Properties()
 buildProps.load(new FileInputStream("build.properties"))
+Properties localProps = new Properties()
+localProps.load(new FileInputStream("local.build.properties"))
 def propVersion =  buildProps.get("iui.version")
+def iuiReleaseSummary =  buildProps.get("iui.release.summary") ?: "unofficial release"
 def DSTAMP = (new Date()).format("yyyyMMdd")
-def iuiVersion = propVersion ?: DSTAMP
+def iuiVersion = propVersion ?: "v${DSTAMP}".toString()
 println "iuiVersion: ${iuiVersion}"
 
-def iuiSrcDir       = 'web-app/iui'
-def iuiReleaseDir   = "${buildDir}/iui-${iuiVersion}"
+def iuiSrcDir           = "${rootDir}/web-app/iui"
+def iuiReleaseDir       = "${buildDir}/iui-${iuiVersion}"
+
+def iuiWebAppSrcDir     = "${rootDir}/web-app"
+def iuiWebAppReleaseDir = "${iuiReleaseDir}/web-app"
+
+def iuiLibSrcDir        = "${iuiWebAppSrcDir}/iui"
+def iuiLibReleaseDir    = "${iuiWebAppReleaseDir}/iui"
+
+defaultTasks 'releaseDir'
 
 task outputDirs << {
-    file(iuiReleaseDir).mkdirs()
+    file(iuiLibReleaseDir).mkdirs()
 }
 
 ClosureCompilerOptions closureOptionsMinify = new ClosureCompilerOptions()
@@ -45,7 +56,7 @@ closureOptionsMinify.prettyPrint = false;
 
 task compressJs(type: com.eriwen.gradle.js.tasks.MinifyJsTask, dependsOn: outputDirs) {
     source = "${iuiSrcDir}/iui.js"
-    dest = file("${iuiReleaseDir}/iui-min.js")
+    dest = file("${iuiLibReleaseDir}/iui-min.js")
     closure {
         warningLevel = 'DEFAULT'
 //        compilationLevel = 'WHITESPACE_ONLY'
@@ -57,12 +68,13 @@ task compressJs(type: com.eriwen.gradle.js.tasks.MinifyJsTask, dependsOn: output
 
 gzipJs {
     source = compressJs
-    dest = file("${iuiReleaseDir}/iui-min.js.gzip")
+    dest = file("${iuiLibReleaseDir}/iui-min.js.gzip")
 }
 
 minifyCss {
+    file(iuiLibReleaseDir).mkdirs()
     source = "${iuiSrcDir}/iui.css"
-    dest = file("${iuiReleaseDir}/iui-min.css")
+    dest = file("${iuiLibReleaseDir}/iui-min.css")
     yuicompressor { // Optional
         lineBreakPos = -1
     }
@@ -70,17 +82,31 @@ minifyCss {
 
 gzipCss {
     source = minifyCss
-    dest = "${iuiReleaseDir}/iui-min.css.gzip"
+    dest = "${iuiLibReleaseDir}/iui-min.css.gzip"
 }
 
-task copyStaticFiles(type: Copy, description: "Copy static files to release directory") {
-    from iuiSrcDir
+task copyTxtFiles(type: Copy, dependsOn: outputDirs, description: "Copy text files from root to release root directory") {
+    from rootDir
     into file(iuiReleaseDir)
-    include 'iui.js', '*.png', '*.jpg', '*.css'
+    include '*.txt'
 }
 
-task releaseDir(dependsOn: [gzipJs, gzipCss, copyStaticFiles], description: "Build the iUI release directory." ) << {
-	println "Built iUI Release Directory"
+task copyStaticFiles(type: Copy, dependsOn: outputDirs, description: "Copy static files to release directory") {
+    from iuiWebAppSrcDir
+    into file(iuiWebAppReleaseDir)
+    include '**/*'
+    exclude '**/*.js', '**/*.css', '**/*.jar'
+}
+
+task copyFilteredFiles(type: Copy, dependsOn: outputDirs, description: "Copy filtered files to release directory") {
+    from iuiWebAppSrcDir
+    into file(iuiWebAppReleaseDir)
+    include '**/*.js', '**/*.css'
+    filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [VERSION: iuiVersion])
+}
+
+task releaseDir(dependsOn: [gzipJs, gzipCss, copyTxtFiles, copyStaticFiles, copyFilteredFiles], description: "Build the iUI release directory." ) << {
+    println "Built iUI Release Directory"
 }
 
 task zipRelease(type: Zip, dependsOn: releaseDir) {
@@ -89,6 +115,33 @@ task zipRelease(type: Zip, dependsOn: releaseDir) {
     destinationDir  buildDir
     baseName  "iui"
     version iuiVersion
+}
+
+task uploadGoogleCode(dependsOn: zipRelease) << {
+    ant.taskdef(name: 'googlecode_upload', classname : 'net.bluecow.googlecode.ant.GoogleCodeUploadTask') {
+        classpath {
+            fileset(dir: 'releasetools/lib', includes: 'ant-googlecode-0.0.3.jar')
+        }
+    }
+    ant.property(file: 'local.build.properties')
+    def username = localProps.get("gc.username")
+    def password = localProps.get("gc.password")
+    def uploadFile =  zipRelease.outputs.files.getSingleFile()
+    def targetFilename = uploadFile.name
+    def dryRun = false
+    if (!dryRun) {
+        ant.googlecode_upload(
+                username: username,
+                password: password,
+                projectname: 'iui',
+                filename: uploadFile,
+                targetfilename: targetFilename,
+                summary: iuiReleaseSummary,
+                verbose: "true"
+        )
+    } else {
+        println "Google Code Upload Dry run. Configured to upload ${uploadFile} to ${targetFilename} as ${username}/${password}"
+    }
 }
 
 task clean(description: "Delete build directory") << {
