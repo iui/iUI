@@ -1,5 +1,5 @@
 /*
-   Copyright (c) 2010-2012, iUI Project Members
+   Copyright (c) 2010-2013, iUI Project Members
    See LICENSE.txt for licensing terms
    
    (derived from Apple Sample code)

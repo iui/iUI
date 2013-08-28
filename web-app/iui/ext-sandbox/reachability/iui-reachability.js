@@ -1,5 +1,5 @@
 // iUI Reachability Extension
-// Copyright (c) 2010-12, iUI Project Members
+// Copyright (c) 2010-13, iUI Project Members
 // See LICENSE.txt for licensing terms
 //
 // Requires DOMContentLoaded event
