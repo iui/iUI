@@ -25,6 +25,7 @@
         <include path="/**.ico" expiration="1d" />
         <include path="/**.js" />
         <include path="/**.css"/>
+        <include path="/**.less"/>
         <include path="**.html"/>
         <include path="/**.frag"/>
         <include path="/**.manifest"/>
