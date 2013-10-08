@@ -33,3 +33,8 @@ https://iui.ci.cloudbees.com/job/iUI/[Development builds] are produced automatic
 
 * https://github.com/iui/iUI/blob/master/NOTICE.txt[NOTICE.txt]  - iUI credits and copyright notices
 * https://github.com/iui/iUI/blob/master/LICENSE.txt[LICENSE.txt] - iUI licensing terms (MIT License)
+
+== About this README
+
+This +README.adoc+ file is in http://asciidoctor.org/docs/what-is-asciidoc/[AsciiDoc] format.  GitHub provides https://github.com/github/markup[built in support] for AsciiDoc.  Future iUI documentation will likely be in AsciiDoc.  See the http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[AsciiDoc Syntax Quick Reference] to learn how to format AsciiDoc.
+
