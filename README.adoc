@@ -1,5 +1,4 @@
-iUI README
-==========
+= iUI README
 
 iUI is a JavaScript and CSS User-Interface framework for smartphones and other mobile devices.
    
