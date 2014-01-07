@@ -1,6 +1,6 @@
 /*
 	iUI Theme Switcher
-	Copyright (c) 2007-2013, iUI Project Members
+	Copyright (c) 2007-2014, iUI Project Members
 	See LICENSE.txt for licensing terms
  */
 
