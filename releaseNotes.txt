@@ -2,6 +2,8 @@ REL-0.4.1 2014-04-28
  * Use 'bubble' mode for iUI events (simplifies and improves plugins)
  * Namespace iUI Javascript events, e.g. 'load' becomes 'iui.load'
  * Remove dependency on querySelectorAll()
+ * Remove some GAE website-related files from the release (e.g. WEB-INF directory)
+
 
 REL-0.4 2012-08-11
  * Code cleaup around iui.busy flag - fix Issue #346 (http://code.google.com/p/iui/issues/detail?id=346)

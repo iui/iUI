@@ -107,14 +107,14 @@
         </copy>
         <!-- Copy iUI *.js and *.css, using a filter to replace @VERSION@ with the value of iui.version -->
          <copy todir="${release.dir.webapp}">
-            <fileset dir="${src.dir.webapp}" includes="**/*.js, **/*.css" />
+            <fileset dir="${src.dir.webapp}" includes="**/*.js, **/*.css" excludes="main.js"/>
             <filterset>
               <filter token="VERSION" value="${iui.version}"/>
             </filterset>
         </copy>
         <!-- Copy everything else (except .jar files) without filtering -->
          <copy todir="${release.dir.webapp}">
-            <fileset dir="${src.dir.webapp}" excludes="**/*.js, **/*.css, **/*.jar" />
+            <fileset dir="${src.dir.webapp}" excludes="**/*.js, **/*.css, **/*.jar, package.json, WEB-INF/**" />
         </copy>
     <!-- Make second copy of sample.html in samplex.html that uses iuix.css and iuix.js -->
     <!-- Disable for now...
