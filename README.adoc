@@ -25,9 +25,11 @@ The https://code.google.com/p/iui/w/list[iUI Wiki] is also hosted on Google Code
 
 == Downloads
 
-You'll find the latest stable release on our http://www.iui-js.org/download[download] page. (Downloads are powered by https://code.google.com/p/iui/downloads/list[Google Code].)
+You'll find the latest stable release on our http://www.iui-js.org/download[Download] page.
 
-https://iui.ci.cloudbees.com/job/iUI/[Development builds] are produced automatically by our https://iui.ci.cloudbees.com[Continuous Integration server] -- powered by http://www.cloudbees.com/[CloudBees].
+* Recent downloads are powered by https://bintray.com/iui/releases/iUI/[Bintray].
+* https://iui.ci.cloudbees.com/job/iUI/[Development builds] are produced automatically by our https://iui.ci.cloudbees.com[Continuous Integration server] -- powered by http://www.cloudbees.com/[CloudBees].
+* Older, historical downloads are on https://code.google.com/p/iui/downloads/list?can=4[Google Code].
 
 == See also
 
