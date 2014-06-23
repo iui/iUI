@@ -500,7 +500,13 @@ window.iui =
 		  var reg = new RegExp('(\\s|^)'+name+'(\\s|$)');
 		self.className=self.className.replace(reg,' ');
 	  }
-	}
+	},
+
+    /*
+    method: iui.encodeForm(form)
+    Convenience function to extract form data into url data
+    */
+    encodeForm: encodeForm
 };
 
 // *************************************************************************************************
